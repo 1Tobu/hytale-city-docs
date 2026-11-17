@@ -8,7 +8,7 @@ Der Bericht exportiert ausschließlich ausgewählte Metadaten. Er liest keine pr
 
 | Plugin | Repository | Commit | Serverbereich |
 | --- | --- | --- | --- |
-| CorePlugin | `hytale-city-core-plugin` | [`1171566`](https://github.com/1Tobu/hytale-city-core-plugin/commit/1171566fbf103da9562e78e1a41c2b0529faa2d0) | `^0.7.7` |
+| CorePlugin | `hytale-city-core-plugin` | [`e6fd1a6`](https://github.com/1Tobu/hytale-city-core-plugin/commit/e6fd1a63cbaf26a232b9b3d481c2eaf40a49f41e) | `^0.7.7` |
 | CityBuildPlugin | `hytale-city-build-plugin` | [`38c0e94`](https://github.com/1Tobu/hytale-city-build-plugin/commit/38c0e9497fa64d49bc189f991c385e6a0653c45e) | `^0.7.7` |
 | HomePlugin | `hytale-home-plugin` | [`ac917ae`](https://github.com/1Tobu/hytale-home-plugin/commit/ac917aee14dc540ab598278f04b447487eda6a24) | `^0.7.7` |
 | EconomyPlugin | `hytale-money-system-plugin` | [`2390970`](https://github.com/1Tobu/hytale-money-system-plugin/commit/2390970146c959861369e8da4ba8f806fb3765d3) | `^0.7.7` |

@@ -4,7 +4,7 @@
     {
       "repository": "hytale-city-core-plugin",
       "source_url": "https://github.com/1Tobu/hytale-city-core-plugin",
-      "commit": "1171566fbf103da9562e78e1a41c2b0529faa2d0",
+      "commit": "e6fd1a63cbaf26a232b9b3d481c2eaf40a49f41e",
       "plugin": "CorePlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",
