@@ -425,6 +425,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#datenordner-unserer-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datenordner unserer Plugins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#core-dateien" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1702,6 +1713,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#datenordner-unserer-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datenordner unserer Plugins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#core-dateien" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1760,6 +1782,11 @@
 <li>Mit einem Testspieler Profile, Geld, Teleports, Plots, Jobs und UIs prüfen.</li>
 </ol>
 <p>Die Hytale-Ladereihenfolge wird über die <a href="../../reference/inventory/">Manifest-Abhängigkeiten</a> bestimmt, nicht durch das alphabetische Umbenennen von JARs. Nur die gebauten Plugin-JARs ausliefern; <code>original-*.jar</code> und Build-Abhängigkeiten sind keine zusätzlichen Plugins.</p>
+<h2 id="datenordner-unserer-plugins">Datenordner unserer Plugins<a class="headerlink" href="#datenordner-unserer-plugins" title="Permanent link">&para;</a></h2>
+<p>Die Plugins mit eigener aktiver Dateikonfiguration verwenden die Ordner <code>CorePlugin</code>, <code>AfkPlugin</code>, <code>JobsPlugin</code> und <code>LevelPlugin</code> unter dem bisherigen Plugin-Datenverzeichnis des Servers. Der Gruppenpräfix <code>HytaleCity_</code> entfällt im Dateipfad; die Plugin-IDs wie <code>HytaleCity:CorePlugin</code> bleiben unverändert.</p>
+<p>Core, AFK, Jobs und Level zusammen aktualisieren. Beim nächsten Start werden vorhandene <code>HytaleCity_*</code>-Verzeichnisse automatisch auf die kurzen Namen migriert. Bereits von Hand korrekt umbenannte Ordner werden weiterverwendet.</p>
+<p>Bei Level wird außerdem <code>com.hytalecity_LevelPlugin</code> berücksichtigt: fehlende Spielerdateien werden übernommen, während die aktuelle Config Vorrang vor der historischen Config hat. Bei Zusammenführungen bleiben die alten Verzeichnisse unter <code>.config-backups</code> erhalten. Unterschiedliche gleichnamige Daten werden nicht überschrieben; solche Konflikte stoppen den Pluginstart vor der Migration und müssen aufgelöst werden. Die Ausnahme ist nur die nachrangige historische Level-Config, deren Original archiviert wird.</p>
+<p>Hytale-eigene Module behalten ihre eigenen Verzeichnisse, beispielsweise <code>Hytale_Shop</code> und <code>Hytale_HytaleGenerator</code>. Nicht jedes Gameplay-Plugin benötigt überhaupt einen eigenen Dateidatenordner.</p>
 <h2 id="core-dateien">Core-Dateien<a class="headerlink" href="#core-dateien" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1783,7 +1810,7 @@
 <tr>
 <td><code>jobConfig.yml</code></td>
 <td><code>jobConfig</code></td>
-<td>Job-XP-Kurve, Raritätsmultiplikatoren und Meilensteinkonfiguration</td>
+<td>Globale Job-XP-Kurve und Raritätsmultiplikatoren; Meilensteine ausschließlich in der DB</td>
 </tr>
 </tbody>
 </table>

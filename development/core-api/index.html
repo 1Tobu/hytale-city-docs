@@ -1267,6 +1267,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#eigene-plugin-datenverzeichnisse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eigene Plugin-Datenverzeichnisse
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1723,6 +1734,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#eigene-plugin-datenverzeichnisse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eigene Plugin-Datenverzeichnisse
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1829,6 +1851,14 @@
 <li><a href="../../architecture/data-and-threads/">DB-/Threadgrenzen</a></li>
 <li><a href="../npc-actions/">NPC-Anbieter registrieren</a></li>
 </ul>
+<h2 id="eigene-plugin-datenverzeichnisse">Eigene Plugin-Datenverzeichnisse<a class="headerlink" href="#eigene-plugin-datenverzeichnisse" title="Permanent link">&para;</a></h2>
+<p>Für Plugins mit einer deklarierten Core-Abhängigkeit übernimmt der gemeinsame Helfer den kurzen Datenpfad bereits in der Initialisierung:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="nf">MyPlugin</span><span class="p">(</span><span class="n">JavaPluginInit</span><span class="w"> </span><span class="n">init</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">super</span><span class="p">(</span><span class="n">PluginDataDirectory</span><span class="p">.</span><span class="na">prepare</span><span class="p">(</span><span class="n">init</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Import: <code>com.hytalecity.core.plugin.PluginDataDirectory</code>. Der Helfer erhält Manifest, JAR-Pfad und Classloader; die Plugin-ID ändert sich nicht. Hytale erhält den angepassten <code>JavaPluginInit</code>, sodass sowohl <code>getDataDirectory()</code> als auch native <code>withConfig</code>-Aufrufe denselben neuen Pfad verwenden. Nur einen Getter zu überschreiben würde den internen nativen Config-Pfad nicht zuverlässig umstellen.</p>
+<p>Die Migration findet während des Pluginladens statt, bevor Config-Loader Defaults anlegen. Sie überschreibt keine widersprüchlichen Bestandsdateien. <a href="../../getting-started/setup/#datenordner-unserer-plugins">Migration und Verzeichnisnamen</a>.</p>
 
 
 
