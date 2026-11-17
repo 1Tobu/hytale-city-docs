@@ -1,0 +1,82 @@
+site_name: HytaleCity Plugin-Dokumentation
+site_description: Plugins, Core-APIs, Administration und Architektur von HytaleCity
+site_url: https://1tobu.github.io/hytale-city-docs/
+repo_url: https://github.com/1Tobu/hytale-city-docs
+repo_name: HytaleCity Dokumentation
+edit_uri: edit/main/docs/
+strict: true
+theme:
+  name: material
+  language: de
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+  palette:
+    - scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Helles Design
+    - scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Dunkles Design
+plugins:
+  - search:
+      lang: [de, en]
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.superfences
+nav:
+  - Start: index.md
+  - Einstieg:
+      - Installation und Konfiguration: getting-started/setup.md
+      - Befehle und Berechtigungen: getting-started/commands.md
+  - Architektur:
+      - Zusammenspiel: architecture/overview.md
+      - Daten und Threads: architecture/data-and-threads.md
+      - Ablaufbeispiele: architecture/flows.md
+      - Minigames und Ausblick: architecture/minigames.md
+  - Plugins:
+      - Überblick: plugins/index.md
+      - Core: plugins/core.md
+      - CityBuild: plugins/citybuild.md
+      - Homes: plugins/homes.md
+      - Economy: plugins/economy.md
+      - Jobs: plugins/jobs.md
+      - Level: plugins/level.md
+      - HcNpcs: plugins/npcs.md
+      - Enchantments: plugins/enchantments.md
+      - PlayerStats: plugins/playerstats.md
+      - PlayerHud: plugins/playerhud.md
+      - AFK: plugins/afk.md
+      - Teleport: plugins/teleport.md
+      - Warp: plugins/warp.md
+      - FarmWorld: plugins/farmworld.md
+      - Protection: plugins/protection.md
+      - Ingame-Dokumentation: plugins/documentation.md
+  - Entwicklung:
+      - Core-APIs nutzen: development/core-api.md
+      - NPC-Aktionen erweitern: development/npc-actions.md
+      - Hytale UIs und HUDs: development/ui.md
+      - Bauen und Prüfen: development/build-and-test.md
+      - Dokumentation pflegen: development/documentation.md
+  - Betrieb:
+      - Updates und Wiederherstellung: operations/updates.md
+      - Fehler und Logs: operations/troubleshooting.md
+  - Referenz:
+      - Level-API im Detail: reference/level-api.md
+      - NPC- und Verkaufsverträge: reference/npc-contracts.md
+      - Plugin-Inventar und Quellstände: reference/inventory.md
