@@ -16,4 +16,6 @@ Core verbucht Geld, passende Job-XP und Verkaufszähler zusammen. Unklare Invent
 
 ## Speicherung und Grenzen
 
-Jobs, Fortschritt, Itemtotale und Claims liegen im Core. Shopangebote (`job-shop-offers.json`) und Rezepte (`job-upgrades.json`) sind weiterhin lokale Konfiguration. Die Job-XP-Kurve ist unabhängig vom allgemeinen Spielerlevel. Ältere Shop-/Upgrade-/Meilensteinabläufe sind noch nicht insgesamt so transaktional und asynchron wie der neue Verkaufspfad.
+Jobs, Fortschritt, Itemtotale, Meilensteindefinitionen und Claims liegen im Core. Meilensteine werden ausschließlich aus der DB gelesen; es gibt keinen YAML-/JSON-Fallback. Eine leere DB-Liste bleibt leer. Änderungen über die Jobs-Verwaltung werden vom transaktionalen Core-Service gespeichert. Shopangebote (`job-shop-offers.json`) und Rezepte (`job-upgrades.json`) sind weiterhin lokale Konfiguration. Die Job-XP-Kurve ist unabhängig vom allgemeinen Spielerlevel. Ältere Shop-/Upgrade-/Meilensteinabläufe sind noch nicht insgesamt so transaktional und asynchron wie der neue Verkaufspfad.
+
+Die frühere `JobsPlugin/jobConfig.json` und Item-Seed-Loader sind nicht mehr Teil der aktiven Konfiguration. `CorePlugin/jobConfig.yml` enthält nur globale Balancingwerte (`baseXp`, `xpScale`, `maxLevel`, Preis- und XP-Multiplikatoren). Alte `jobMilestones`-Abschnitte werden aus Kompatibilitätsgründen ignoriert und nicht als Testdefinitionen in die DB importiert. Aktive Shopangebote und Upgrade-Rezepte bleiben bis zu ihrer gesonderten DB-Migration dateibasiert.

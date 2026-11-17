@@ -58,3 +58,17 @@ Job-XP dagegen mit `jobs.adjustXp(playerUuid, jobKey, delta)` additiv ändern. `
 - [NPC- und Verkaufszustände](../reference/npc-contracts.md)
 - [DB-/Threadgrenzen](../architecture/data-and-threads.md)
 - [NPC-Anbieter registrieren](npc-actions.md)
+
+## Eigene Plugin-Datenverzeichnisse
+
+Für Plugins mit einer deklarierten Core-Abhängigkeit übernimmt der gemeinsame Helfer den kurzen Datenpfad bereits in der Initialisierung:
+
+```java
+public MyPlugin(JavaPluginInit init) {
+    super(PluginDataDirectory.prepare(init));
+}
+```
+
+Import: `com.hytalecity.core.plugin.PluginDataDirectory`. Der Helfer erhält Manifest, JAR-Pfad und Classloader; die Plugin-ID ändert sich nicht. Hytale erhält den angepassten `JavaPluginInit`, sodass sowohl `getDataDirectory()` als auch native `withConfig`-Aufrufe denselben neuen Pfad verwenden. Nur einen Getter zu überschreiben würde den internen nativen Config-Pfad nicht zuverlässig umstellen.
+
+Die Migration findet während des Pluginladens statt, bevor Config-Loader Defaults anlegen. Sie überschreibt keine widersprüchlichen Bestandsdateien. [Migration und Verzeichnisnamen](../getting-started/setup.md#datenordner-unserer-plugins).

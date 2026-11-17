@@ -17,13 +17,23 @@
 
 Die Hytale-Ladereihenfolge wird über die [Manifest-Abhängigkeiten](../reference/inventory.md) bestimmt, nicht durch das alphabetische Umbenennen von JARs. Nur die gebauten Plugin-JARs ausliefern; `original-*.jar` und Build-Abhängigkeiten sind keine zusätzlichen Plugins.
 
+## Datenordner unserer Plugins
+
+Die Plugins mit eigener aktiver Dateikonfiguration verwenden die Ordner `CorePlugin`, `AfkPlugin`, `JobsPlugin` und `LevelPlugin` unter dem bisherigen Plugin-Datenverzeichnis des Servers. Der Gruppenpräfix `HytaleCity_` entfällt im Dateipfad; die Plugin-IDs wie `HytaleCity:CorePlugin` bleiben unverändert.
+
+Core, AFK, Jobs und Level zusammen aktualisieren. Beim nächsten Start werden vorhandene `HytaleCity_*`-Verzeichnisse automatisch auf die kurzen Namen migriert. Bereits von Hand korrekt umbenannte Ordner werden weiterverwendet.
+
+Bei Level wird außerdem `com.hytalecity_LevelPlugin` berücksichtigt: fehlende Spielerdateien werden übernommen, während die aktuelle Config Vorrang vor der historischen Config hat. Bei Zusammenführungen bleiben die alten Verzeichnisse unter `.config-backups` erhalten. Unterschiedliche gleichnamige Daten werden nicht überschrieben; solche Konflikte stoppen den Pluginstart vor der Migration und müssen aufgelöst werden. Die Ausnahme ist nur die nachrangige historische Level-Config, deren Original archiviert wird.
+
+Hytale-eigene Module behalten ihre eigenen Verzeichnisse, beispielsweise `Hytale_Shop` und `Hytale_HytaleGenerator`. Nicht jedes Gameplay-Plugin benötigt überhaupt einen eigenen Dateidatenordner.
+
 ## Core-Dateien
 
 | Datei | YAML-Wurzel | Aufgabe |
 | --- | --- | --- |
 | `database.yml` | `database` | JDBC-Treiber, URL, Zugangsdaten und Pool |
 | `coreConfig.yml` | `coreConfig` | Bauhöhe, Plotgröße/-preise/-namenlänge, Limits und Startgeld |
-| `jobConfig.yml` | `jobConfig` | Job-XP-Kurve, Raritätsmultiplikatoren und Meilensteinkonfiguration |
+| `jobConfig.yml` | `jobConfig` | Globale Job-XP-Kurve und Raritätsmultiplikatoren; Meilensteine ausschließlich in der DB |
 
 Beispiel mit ausschließlich fiktiven Werten:
 

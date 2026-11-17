@@ -8,17 +8,17 @@ Der Bericht exportiert ausschließlich ausgewählte Metadaten. Er liest keine pr
 
 | Plugin | Repository | Commit | Serverbereich |
 | --- | --- | --- | --- |
-| CorePlugin | `hytale-city-core-plugin` | [`70f6d95`](https://github.com/1Tobu/hytale-city-core-plugin/commit/70f6d9509a82a55aa42accd0bce6da6ae6ac6ffb) | `^0.7.7` |
+| CorePlugin | `hytale-city-core-plugin` | [`10a3c19`](https://github.com/1Tobu/hytale-city-core-plugin/commit/10a3c1991cbbfcd68338281bde327007410278f8) | `^0.7.7` |
 | CityBuildPlugin | `hytale-city-build-plugin` | [`38c0e94`](https://github.com/1Tobu/hytale-city-build-plugin/commit/38c0e9497fa64d49bc189f991c385e6a0653c45e) | `^0.7.7` |
 | HomePlugin | `hytale-home-plugin` | [`ac917ae`](https://github.com/1Tobu/hytale-home-plugin/commit/ac917aee14dc540ab598278f04b447487eda6a24) | `^0.7.7` |
 | EconomyPlugin | `hytale-money-system-plugin` | [`2390970`](https://github.com/1Tobu/hytale-money-system-plugin/commit/2390970146c959861369e8da4ba8f806fb3765d3) | `^0.7.7` |
-| JobsPlugin | `hytale-jobs-plugin` | [`e4c5652`](https://github.com/nebbsen/hytale-jobs-plugin/commit/e4c565252302068afb281956d15a9314099c26d4) | `^0.7.7` |
-| LevelPlugin | `hytale-level-plugin` | [`d7d4427`](https://github.com/1Tobu/hytale-level-plugin/commit/d7d4427a4b437a79b5ad94b6b0ad3da031734adc) | `^0.7.7` |
+| JobsPlugin | `hytale-jobs-plugin` | [`fcd3904`](https://github.com/nebbsen/hytale-jobs-plugin/commit/fcd390415638461a6524a6f97a759433eeae6812) | `^0.7.7` |
+| LevelPlugin | `hytale-level-plugin` | [`54f7097`](https://github.com/1Tobu/hytale-level-plugin/commit/54f7097607d38494f41a2957299d412f11ea2a8d) | `^0.7.7` |
 | HcNpcs | `HcNpcs` | [`5e07335`](https://github.com/nebbsen/HcNpcs/commit/5e07335f5a2ab5869499cc93ae9638359396fa81) | `^0.7.7` |
 | EnchantmentsPlugin | `hytale-city-enchantments` | [`6d78e4a`](https://github.com/nebbsen/hytale-city-enchantments/commit/6d78e4ac514b0cc13c8edcf49150de3231074d4b) | `^0.7.7` |
 | PlayerStatsPlugin | `hytale-player-stats-plugin` | [`74b23c1`](https://github.com/1Tobu/PlayerStatsPlugin/commit/74b23c1436152b0264658c282f33afa6c9ad1a3c) | `^0.7.7` |
 | PlayerHudPlugin | `hytale-playerhud-plugin` | [`d94de79`](https://github.com/nebbsen/hytale-playerhud-plugin/commit/d94de792f66baa6065d1051f1dc605cb636bdcc2) | `^0.7.7` |
-| AfkPlugin | `hytale-afk-plugin` | [`55abeeb`](https://github.com/1Tobu/hytale-afk-plugin/commit/55abeebac752faa629ff6cdd2b49769d293b1f64) | `^0.7.7` |
+| AfkPlugin | `hytale-afk-plugin` | [`183be31`](https://github.com/1Tobu/hytale-afk-plugin/commit/183be31bd4b2011257110de05ab57f0eb30d1a1f) | `^0.7.7` |
 | TeleportPlugin | `hytale-teleport-plugin` | [`45bd8fd`](https://github.com/1Tobu/hytale-teleport-plugin/commit/45bd8fd233c6dc92eb05e166602a3811e119486d) | `^0.7.7` |
 | WarpPlugin | `hytale-warp-plugin` | [`882fd9d`](https://github.com/1Tobu/hytale-warp-plugin/commit/882fd9df67b3b2759eecf5ed7eab0d642938b2de) | `^0.7.7` |
 | FarmWorldPlugin | `hytale-farmworld-plugin` | [`f878a0a`](https://github.com/1Tobu/hytale-farmworld-plugin/commit/f878a0a50472792aeaf97f33eb7dc38eb195635a) | `^0.7.7` |

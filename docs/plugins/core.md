@@ -6,7 +6,7 @@ Der gemeinsame Kern stellt den Spring-Kontext, Datenbankzugriffe und fachliche S
 
 - Spieler beim ersten Kontakt anlegen, Profile und Ränge bereitstellen.
 - Geld, Plot-/Home-Limits, Grundstücke, Angebote, Einladungen und Schutzgebiete verwalten.
-- Jobs, Job-XP, Itemtotale, Meilensteinclaims und Enchantment-Definitionen speichern.
+- Jobs, Job-XP, Itemtotale, Meilensteindefinitionen/-claims und Enchantment-Definitionen speichern. Meilensteindefinitionen werden ausschließlich aus der DB bezogen.
 - Allgemeine Spielerlevel, XP-Operationen und dauerhafte Levelbelohnungen verwalten.
 - NPC-Definitionen und Aktionen sowie vorbereitete/verbuchte Verkaufsvorgänge speichern.
 - Statistikbatches atomar und mit wiederholbaren Vorgangskennungen anwenden.
