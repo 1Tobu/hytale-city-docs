@@ -1,0 +1,424 @@
+{
+  "snapshot_date": "2026-11-17",
+  "plugins": [
+    {
+      "repository": "hytale-city-core-plugin",
+      "source_url": "https://github.com/1Tobu/hytale-city-core-plugin",
+      "commit": "1171566fbf103da9562e78e1a41c2b0529faa2d0",
+      "plugin": "CorePlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {},
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:CorePlugin:1.0.0",
+      "command_classes": [],
+      "api_classes": [],
+      "service_classes": [
+        "AsyncLevelService",
+        "HomeService",
+        "ItemEnchantmentService",
+        "ItemService",
+        "JobItemTotalService",
+        "JobItemUnlockService",
+        "JobMerchantQueryService",
+        "JobMilestoneClaimService",
+        "JobMilestoneDefinitionService",
+        "JobSaleService",
+        "JobService",
+        "JobXpProgressService",
+        "LevelProgressionService",
+        "LevelRewardService",
+        "NpcDefinitionService",
+        "PlayerLevelService",
+        "PlayerService",
+        "PlayerStatsBatchService",
+        "PlayerStatsService",
+        "PlotCoOwnerService",
+        "PlotInviteService",
+        "PlotMenuService",
+        "PlotOfferService",
+        "PlotService",
+        "ProtectionService",
+        "RankService"
+      ],
+      "ui_documents": []
+    },
+    {
+      "repository": "hytale-city-build-plugin",
+      "source_url": "https://github.com/1Tobu/hytale-city-build-plugin",
+      "commit": "38c0e9497fa64d49bc189f991c385e6a0653c45e",
+      "plugin": "CityBuildPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*"
+      },
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:CityBuildPlugin:1.0.0",
+      "command_classes": [
+        "PlotCommand",
+        "PlotsCommand",
+        "BuySubCommand",
+        "InfoSubCommand",
+        "InviteAcceptSubCommand",
+        "InviteCancelSubCommand",
+        "InviteDenySubCommand",
+        "InvitesSubCommand",
+        "InviteSubCommand",
+        "LimitGetSubCommand",
+        "LimitIncreaseSubCommand",
+        "LimitResetSubCommand",
+        "LimitSetSubCommand",
+        "LimitSubCommand",
+        "ListSubCommand",
+        "OfferAcceptSubCommand",
+        "OfferCancelSubCommand",
+        "OfferDenySubCommand",
+        "OffersSubCommand",
+        "OfferSubCommand",
+        "RenameSubCommand",
+        "SellToCitySubCommand"
+      ],
+      "api_classes": [],
+      "service_classes": [],
+      "ui_documents": [
+        "Common/UI/Custom/Plots/Plots.ui"
+      ]
+    },
+    {
+      "repository": "hytale-home-plugin",
+      "source_url": "https://github.com/1Tobu/hytale-home-plugin",
+      "commit": "ac917aee14dc540ab598278f04b447487eda6a24",
+      "plugin": "HomePlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*"
+      },
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:HomePlugin:1.0.0",
+      "command_classes": [
+        "HomeCommand",
+        "HomesCommand",
+        "SetHomeCommand",
+        "HomeRemoveSubCommand"
+      ],
+      "api_classes": [],
+      "service_classes": [],
+      "ui_documents": [
+        "Common/UI/Custom/Homes/Homes.ui"
+      ]
+    },
+    {
+      "repository": "hytale-money-system-plugin",
+      "source_url": "https://github.com/1Tobu/hytale-money-system-plugin",
+      "commit": "2390970146c959861369e8da4ba8f806fb3765d3",
+      "plugin": "EconomyPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*"
+      },
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:EconomyPlugin:1.0.0",
+      "command_classes": [
+        "MoneyCommand",
+        "MoneyAddSubCommand",
+        "MoneyRemoveSubCommand",
+        "MoneySendSubCommand",
+        "MoneySetSubCommand"
+      ],
+      "api_classes": [],
+      "service_classes": [],
+      "ui_documents": []
+    },
+    {
+      "repository": "hytale-jobs-plugin",
+      "source_url": "https://github.com/nebbsen/hytale-jobs-plugin",
+      "commit": "e4c565252302068afb281956d15a9314099c26d4",
+      "plugin": "JobsPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*",
+        "HytaleCity:HcNpcs": "*"
+      },
+      "optional_dependencies": {
+        "HytaleCity:EnchantmentsPlugin": "*"
+      },
+      "artifact": "com.hytalecity:JobsPlugin:1.0.0",
+      "command_classes": [
+        "JobCommand",
+        "JobAdminItemAddSubCommand",
+        "JobAdminMilestonesUiSubCommand",
+        "JobAdminNpcSetSubCommand",
+        "JobAdminShopUiSubCommand",
+        "JobAdminSubCommand",
+        "JobAdminUpgradeUiSubCommand",
+        "JobEnterSubCommand",
+        "JobInfoSubCommand",
+        "JobSellSubCommand"
+      ],
+      "api_classes": [
+        "JobsAPI",
+        "JobUpdateListener"
+      ],
+      "service_classes": [
+        "EnchantmentsBridgeService",
+        "JobMilestoneRuntimeService",
+        "JobShopOfferService",
+        "JobUpgradeRecipeService",
+        "NpcJobKeyService"
+      ],
+      "ui_documents": [
+        "Common/UI/Custom/Jobs/JobNpc.ui",
+        "Common/UI/Custom/Jobs/JobShopAdmin.ui",
+        "Common/UI/Custom/Jobs/JobUpgradeAdmin.ui",
+        "Common/UI/Custom/Jobs/JobUpgradeSelect.ui",
+        "Common/UI/Custom/Jobs/Jobs.ui",
+        "Common/UI/Custom/Jobs/MilestoneAdmin.ui",
+        "Common/UI/Custom/Jobs/MilestoneRow.ui"
+      ]
+    },
+    {
+      "repository": "hytale-level-plugin",
+      "source_url": "https://github.com/1Tobu/hytale-level-plugin",
+      "commit": "34b1329c6d35791996857a76e49367d8555653e2",
+      "plugin": "LevelPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*"
+      },
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:LevelPlugin:1.0.0",
+      "command_classes": [],
+      "api_classes": [],
+      "service_classes": [
+        "LevelService"
+      ],
+      "ui_documents": []
+    },
+    {
+      "repository": "HcNpcs",
+      "source_url": "https://github.com/nebbsen/HcNpcs",
+      "commit": "5e07335f5a2ab5869499cc93ae9638359396fa81",
+      "plugin": "HcNpcs",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*"
+      },
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:HcNpcs:1.0.0",
+      "command_classes": [
+        "NpcCommand"
+      ],
+      "api_classes": [
+        "HcNpcsAPI",
+        "HcNpcsService",
+        "NpcActionHandler",
+        "Registration"
+      ],
+      "service_classes": [
+        "HcNpcsService"
+      ],
+      "ui_documents": [
+        "Common/UI/Custom/HcNpcs/ActionRow.ui",
+        "Common/UI/Custom/HcNpcs/Actions.ui"
+      ]
+    },
+    {
+      "repository": "hytale-city-enchantments",
+      "source_url": "https://github.com/nebbsen/hytale-city-enchantments",
+      "commit": "6d78e4ac514b0cc13c8edcf49150de3231074d4b",
+      "plugin": "EnchantmentsPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*"
+      },
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:EnchantmentsPlugin:1.0.0",
+      "command_classes": [
+        "EnchantItemCommand"
+      ],
+      "api_classes": [
+        "EnchantmentsApi"
+      ],
+      "service_classes": [
+        "EnchantmentBehaviorService",
+        "EnchantmentsService",
+        "EnchantmentValueService",
+        "ItemUpgradeRollService",
+        "MoneyFindRewardService"
+      ],
+      "ui_documents": []
+    },
+    {
+      "repository": "hytale-player-stats-plugin",
+      "source_url": "https://github.com/1Tobu/PlayerStatsPlugin",
+      "commit": "74b23c1436152b0264658c282f33afa6c9ad1a3c",
+      "plugin": "PlayerStatsPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*"
+      },
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:PlayerStatsPlugin:1.0.0",
+      "command_classes": [],
+      "api_classes": [],
+      "service_classes": [],
+      "ui_documents": []
+    },
+    {
+      "repository": "hytale-playerhud-plugin",
+      "source_url": "https://github.com/nebbsen/hytale-playerhud-plugin",
+      "commit": "d94de792f66baa6065d1051f1dc605cb636bdcc2",
+      "plugin": "PlayerHudPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*"
+      },
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:PlayerHudPlugin:1.0.0",
+      "command_classes": [
+        "HudCommand"
+      ],
+      "api_classes": [],
+      "service_classes": [
+        "HudService"
+      ],
+      "ui_documents": [
+        "Common/UI/Custom/Hud/PlayerHud.ui"
+      ]
+    },
+    {
+      "repository": "hytale-afk-plugin",
+      "source_url": "https://github.com/1Tobu/hytale-afk-plugin",
+      "commit": "55abeebac752faa629ff6cdd2b49769d293b1f64",
+      "plugin": "AfkPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*"
+      },
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:AfkPlugin:1.0.0",
+      "command_classes": [],
+      "api_classes": [],
+      "service_classes": [
+        "AfkDisconnectService",
+        "AfkService"
+      ],
+      "ui_documents": []
+    },
+    {
+      "repository": "hytale-teleport-plugin",
+      "source_url": "https://github.com/1Tobu/hytale-teleport-plugin",
+      "commit": "45bd8fd233c6dc92eb05e166602a3811e119486d",
+      "plugin": "TeleportPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*"
+      },
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:TeleportPlugin:1.0.0",
+      "command_classes": [
+        "TpAcceptCommand",
+        "TpaCommand",
+        "TpDenyCommand"
+      ],
+      "api_classes": [],
+      "service_classes": [
+        "TpaService"
+      ],
+      "ui_documents": []
+    },
+    {
+      "repository": "hytale-warp-plugin",
+      "source_url": "https://github.com/1Tobu/hytale-warp-plugin",
+      "commit": "882fd9df67b3b2759eecf5ed7eab0d642938b2de",
+      "plugin": "WarpPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {},
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:WarpPlugin:1.0.0",
+      "command_classes": [
+        "CitySubCommand",
+        "FarmWorldSubCommand",
+        "SpawnSubCommand",
+        "WarpCommand"
+      ],
+      "api_classes": [],
+      "service_classes": [],
+      "ui_documents": []
+    },
+    {
+      "repository": "hytale-farmworld-plugin",
+      "source_url": "https://github.com/1Tobu/hytale-farmworld-plugin",
+      "commit": "f878a0a50472792aeaf97f33eb7dc38eb195635a",
+      "plugin": "FarmWorldPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {},
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:FarmWorldPlugin:1.0.0",
+      "command_classes": [],
+      "api_classes": [],
+      "service_classes": [
+        "FarmWorldService"
+      ],
+      "ui_documents": []
+    },
+    {
+      "repository": "hytale-protection-plugin",
+      "source_url": "https://github.com/1Tobu/hytale-protection-plugin",
+      "commit": "a0242ca2740929459d09bdee493a3037ef43a831",
+      "plugin": "ProtectionPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {
+        "HytaleCity:CorePlugin": "*"
+      },
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:ProtectionPlugin:1.0.0",
+      "command_classes": [
+        "ProtectionCommand",
+        "ListSubCommand",
+        "RegisterSubCommand",
+        "RemoveSubCommand"
+      ],
+      "api_classes": [],
+      "service_classes": [],
+      "ui_documents": []
+    },
+    {
+      "repository": "hytale-city-documentation-plugin",
+      "source_url": "https://github.com/1Tobu/hytale-city-documentation-plugin",
+      "commit": "fc90cb16a9a540f8fac1268f6faa293865167b64",
+      "plugin": "DocumentationPlugin",
+      "group": "HytaleCity",
+      "server_range": "^0.7.7",
+      "dependencies": {},
+      "optional_dependencies": {},
+      "artifact": "com.hytalecity:DocumentationPlugin:1.0.0",
+      "command_classes": [
+        "RulesCommand",
+        "TutorialCommand"
+      ],
+      "api_classes": [],
+      "service_classes": [
+        "DocumentationService"
+      ],
+      "ui_documents": [
+        "Common/UI/Custom/Rules/Rules.ui",
+        "Common/UI/Custom/Tutorial/Tutorial.ui"
+      ]
+    }
+  ]
+}

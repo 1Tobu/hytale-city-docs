@@ -1,0 +1,2310 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Plugins, Core-APIs, Administration und Architektur von HytaleCity">
+      
+      
+      
+        <link rel="canonical" href="https://1tobu.github.io/hytale-city-docs/reference/inventory/">
+      
+      
+        <link rel="prev" href="../npc-contracts/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Plugin-Inventar und Quellstände - HytaleCity Plugin-Dokumentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plugin-inventar-und-quellstande" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href="../.." title="HytaleCity Plugin-Dokumentation" class="md-header__button md-logo" aria-label="HytaleCity Plugin-Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            HytaleCity Plugin-Dokumentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plugin-Inventar und Quellstände
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Helles Design"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Helles Design" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Dunkles Design"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Dunkles Design" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/1Tobu/hytale-city-docs" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HytaleCity Dokumentation
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="HytaleCity Plugin-Dokumentation" class="md-nav__button md-logo" aria-label="HytaleCity Plugin-Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    HytaleCity Plugin-Dokumentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/1Tobu/hytale-city-docs" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    HytaleCity Dokumentation
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einstieg
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Einstieg
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation und Konfiguration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Befehle und Berechtigungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architektur
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architektur
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zusammenspiel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/data-and-threads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Daten und Threads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/flows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ablaufbeispiele
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/minigames/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minigames und Ausblick
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plugins
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Überblick
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/citybuild/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CityBuild
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/homes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/economy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Economy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/jobs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jobs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/level/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/npcs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HcNpcs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/enchantments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enchantments
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/playerstats/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PlayerStats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/playerhud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PlayerHud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/afk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AFK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/teleport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teleport
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/warp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Warp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/farmworld/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FarmWorld
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/protection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingame-Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entwicklung
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Entwicklung
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/core-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core-APIs nutzen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/npc-actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NPC-Aktionen erweitern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hytale UIs und HUDs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/build-and-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bauen und Prüfen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dokumentation pflegen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Betrieb
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Betrieb
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/updates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Updates und Wiederherstellung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fehler und Logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referenz
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referenz
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../level-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level-API im Detail
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../npc-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NPC- und Verkaufsverträge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin-Inventar und Quellstände
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin-Inventar und Quellstände
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#coreplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CorePlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citybuildplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CityBuildPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#homeplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HomePlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#economyplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EconomyPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jobsplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JobsPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#levelplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LevelPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hcnpcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HcNpcs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enchantmentsplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EnchantmentsPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playerstatsplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PlayerStatsPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playerhudplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PlayerHudPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#afkplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AfkPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teleportplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TeleportPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#warpplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#farmworldplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FarmWorldPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protectionplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProtectionPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentationplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DocumentationPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#coreplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CorePlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citybuildplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CityBuildPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#homeplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HomePlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#economyplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EconomyPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jobsplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JobsPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#levelplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LevelPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hcnpcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HcNpcs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enchantmentsplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EnchantmentsPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playerstatsplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PlayerStatsPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playerhudplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PlayerHudPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#afkplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AfkPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teleportplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TeleportPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#warpplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WarpPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#farmworldplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FarmWorldPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protectionplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProtectionPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentationplugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DocumentationPlugin
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="plugin-inventar-und-quellstande">Plugin-Inventar und Quellstände<a class="headerlink" href="#plugin-inventar-und-quellstande" title="Permanent link">&para;</a></h1>
+<p>Inventar erzeugt am <strong>2026-11-17</strong>. Die Tabelle nennt den lokalen Commit, nicht einen behaupteten produktiven Deploymentstand.</p>
+<p>Der Bericht exportiert ausschließlich ausgewählte Metadaten. Er liest keine produktiven Konfigurationsdateien oder Logs. Private Quellrepositories erfordern weiterhin eigene Zugriffsrechte.</p>
+<p><a href="../inventory.json">Inventar als JSON herunterladen</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Repository</th>
+<th>Commit</th>
+<th>Serverbereich</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CorePlugin</td>
+<td><code>hytale-city-core-plugin</code></td>
+<td><a href="https://github.com/1Tobu/hytale-city-core-plugin/commit/1171566fbf103da9562e78e1a41c2b0529faa2d0"><code>1171566</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>CityBuildPlugin</td>
+<td><code>hytale-city-build-plugin</code></td>
+<td><a href="https://github.com/1Tobu/hytale-city-build-plugin/commit/38c0e9497fa64d49bc189f991c385e6a0653c45e"><code>38c0e94</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>HomePlugin</td>
+<td><code>hytale-home-plugin</code></td>
+<td><a href="https://github.com/1Tobu/hytale-home-plugin/commit/ac917aee14dc540ab598278f04b447487eda6a24"><code>ac917ae</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>EconomyPlugin</td>
+<td><code>hytale-money-system-plugin</code></td>
+<td><a href="https://github.com/1Tobu/hytale-money-system-plugin/commit/2390970146c959861369e8da4ba8f806fb3765d3"><code>2390970</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>JobsPlugin</td>
+<td><code>hytale-jobs-plugin</code></td>
+<td><a href="https://github.com/nebbsen/hytale-jobs-plugin/commit/e4c565252302068afb281956d15a9314099c26d4"><code>e4c5652</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>LevelPlugin</td>
+<td><code>hytale-level-plugin</code></td>
+<td><a href="https://github.com/1Tobu/hytale-level-plugin/commit/34b1329c6d35791996857a76e49367d8555653e2"><code>34b1329</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>HcNpcs</td>
+<td><code>HcNpcs</code></td>
+<td><a href="https://github.com/nebbsen/HcNpcs/commit/5e07335f5a2ab5869499cc93ae9638359396fa81"><code>5e07335</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>EnchantmentsPlugin</td>
+<td><code>hytale-city-enchantments</code></td>
+<td><a href="https://github.com/nebbsen/hytale-city-enchantments/commit/6d78e4ac514b0cc13c8edcf49150de3231074d4b"><code>6d78e4a</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>PlayerStatsPlugin</td>
+<td><code>hytale-player-stats-plugin</code></td>
+<td><a href="https://github.com/1Tobu/PlayerStatsPlugin/commit/74b23c1436152b0264658c282f33afa6c9ad1a3c"><code>74b23c1</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>PlayerHudPlugin</td>
+<td><code>hytale-playerhud-plugin</code></td>
+<td><a href="https://github.com/nebbsen/hytale-playerhud-plugin/commit/d94de792f66baa6065d1051f1dc605cb636bdcc2"><code>d94de79</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>AfkPlugin</td>
+<td><code>hytale-afk-plugin</code></td>
+<td><a href="https://github.com/1Tobu/hytale-afk-plugin/commit/55abeebac752faa629ff6cdd2b49769d293b1f64"><code>55abeeb</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>TeleportPlugin</td>
+<td><code>hytale-teleport-plugin</code></td>
+<td><a href="https://github.com/1Tobu/hytale-teleport-plugin/commit/45bd8fd233c6dc92eb05e166602a3811e119486d"><code>45bd8fd</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>WarpPlugin</td>
+<td><code>hytale-warp-plugin</code></td>
+<td><a href="https://github.com/1Tobu/hytale-warp-plugin/commit/882fd9df67b3b2759eecf5ed7eab0d642938b2de"><code>882fd9d</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>FarmWorldPlugin</td>
+<td><code>hytale-farmworld-plugin</code></td>
+<td><a href="https://github.com/1Tobu/hytale-farmworld-plugin/commit/f878a0a50472792aeaf97f33eb7dc38eb195635a"><code>f878a0a</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>ProtectionPlugin</td>
+<td><code>hytale-protection-plugin</code></td>
+<td><a href="https://github.com/1Tobu/hytale-protection-plugin/commit/a0242ca2740929459d09bdee493a3037ef43a831"><code>a0242ca</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+<tr>
+<td>DocumentationPlugin</td>
+<td><code>hytale-city-documentation-plugin</code></td>
+<td><a href="https://github.com/1Tobu/hytale-city-documentation-plugin/commit/fc90cb16a9a540f8fac1268f6faa293865167b64"><code>fc90cb1</code></a></td>
+<td><code>^0.7.7</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="coreplugin">CorePlugin<a class="headerlink" href="#coreplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:CorePlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: keine deklariert.</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> <code>AsyncLevelService</code>, <code>HomeService</code>, <code>ItemEnchantmentService</code>, <code>ItemService</code>, <code>JobItemTotalService</code>, <code>JobItemUnlockService</code>, <code>JobMerchantQueryService</code>, <code>JobMilestoneClaimService</code>, <code>JobMilestoneDefinitionService</code>, <code>JobSaleService</code>, <code>JobService</code>, <code>JobXpProgressService</code>, <code>LevelProgressionService</code>, <code>LevelRewardService</code>, <code>NpcDefinitionService</code>, <code>PlayerLevelService</code>, <code>PlayerService</code>, <code>PlayerStatsBatchService</code>, <code>PlayerStatsService</code>, <code>PlotCoOwnerService</code>, <code>PlotInviteService</code>, <code>PlotMenuService</code>, <code>PlotOfferService</code>, <code>PlotService</code>, <code>ProtectionService</code>, <code>RankService</code>.</p>
+<p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
+<h2 id="citybuildplugin">CityBuildPlugin<a class="headerlink" href="#citybuildplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:CityBuildPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> <code>PlotCommand</code>, <code>PlotsCommand</code>, <code>BuySubCommand</code>, <code>InfoSubCommand</code>, <code>InviteAcceptSubCommand</code>, <code>InviteCancelSubCommand</code>, <code>InviteDenySubCommand</code>, <code>InvitesSubCommand</code>, <code>InviteSubCommand</code>, <code>LimitGetSubCommand</code>, <code>LimitIncreaseSubCommand</code>, <code>LimitResetSubCommand</code>, <code>LimitSetSubCommand</code>, <code>LimitSubCommand</code>, <code>ListSubCommand</code>, <code>OfferAcceptSubCommand</code>, <code>OfferCancelSubCommand</code>, <code>OfferDenySubCommand</code>, <code>OffersSubCommand</code>, <code>OfferSubCommand</code>, <code>RenameSubCommand</code>, <code>SellToCitySubCommand</code>.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/Plots/Plots.ui</code>.</p>
+<h2 id="homeplugin">HomePlugin<a class="headerlink" href="#homeplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:HomePlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> <code>HomeCommand</code>, <code>HomesCommand</code>, <code>SetHomeCommand</code>, <code>HomeRemoveSubCommand</code>.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/Homes/Homes.ui</code>.</p>
+<h2 id="economyplugin">EconomyPlugin<a class="headerlink" href="#economyplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:EconomyPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> <code>MoneyCommand</code>, <code>MoneyAddSubCommand</code>, <code>MoneyRemoveSubCommand</code>, <code>MoneySendSubCommand</code>, <code>MoneySetSubCommand</code>.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
+<h2 id="jobsplugin">JobsPlugin<a class="headerlink" href="#jobsplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:JobsPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>), <code>HytaleCity:HcNpcs</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: <code>HytaleCity:EnchantmentsPlugin</code> (<code>*</code>).</p>
+<p><strong>Command-Klassen:</strong> <code>JobCommand</code>, <code>JobAdminItemAddSubCommand</code>, <code>JobAdminMilestonesUiSubCommand</code>, <code>JobAdminNpcSetSubCommand</code>, <code>JobAdminShopUiSubCommand</code>, <code>JobAdminSubCommand</code>, <code>JobAdminUpgradeUiSubCommand</code>, <code>JobEnterSubCommand</code>, <code>JobInfoSubCommand</code>, <code>JobSellSubCommand</code>.</p>
+<p><strong>API-Klassen:</strong> <code>JobsAPI</code>, <code>JobUpdateListener</code>.</p>
+<p><strong>Services:</strong> <code>EnchantmentsBridgeService</code>, <code>JobMilestoneRuntimeService</code>, <code>JobShopOfferService</code>, <code>JobUpgradeRecipeService</code>, <code>NpcJobKeyService</code>.</p>
+<p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/Jobs/JobNpc.ui</code>, <code>Common/UI/Custom/Jobs/JobShopAdmin.ui</code>, <code>Common/UI/Custom/Jobs/JobUpgradeAdmin.ui</code>, <code>Common/UI/Custom/Jobs/JobUpgradeSelect.ui</code>, <code>Common/UI/Custom/Jobs/Jobs.ui</code>, <code>Common/UI/Custom/Jobs/MilestoneAdmin.ui</code>, <code>Common/UI/Custom/Jobs/MilestoneRow.ui</code>.</p>
+<h2 id="levelplugin">LevelPlugin<a class="headerlink" href="#levelplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:LevelPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> <code>LevelService</code>.</p>
+<p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
+<h2 id="hcnpcs">HcNpcs<a class="headerlink" href="#hcnpcs" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:HcNpcs:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> <code>NpcCommand</code>.</p>
+<p><strong>API-Klassen:</strong> <code>HcNpcsAPI</code>, <code>HcNpcsService</code>, <code>NpcActionHandler</code>, <code>Registration</code>.</p>
+<p><strong>Services:</strong> <code>HcNpcsService</code>.</p>
+<p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/HcNpcs/ActionRow.ui</code>, <code>Common/UI/Custom/HcNpcs/Actions.ui</code>.</p>
+<h2 id="enchantmentsplugin">EnchantmentsPlugin<a class="headerlink" href="#enchantmentsplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:EnchantmentsPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> <code>EnchantItemCommand</code>.</p>
+<p><strong>API-Klassen:</strong> <code>EnchantmentsApi</code>.</p>
+<p><strong>Services:</strong> <code>EnchantmentBehaviorService</code>, <code>EnchantmentsService</code>, <code>EnchantmentValueService</code>, <code>ItemUpgradeRollService</code>, <code>MoneyFindRewardService</code>.</p>
+<p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
+<h2 id="playerstatsplugin">PlayerStatsPlugin<a class="headerlink" href="#playerstatsplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:PlayerStatsPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
+<h2 id="playerhudplugin">PlayerHudPlugin<a class="headerlink" href="#playerhudplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:PlayerHudPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> <code>HudCommand</code>.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> <code>HudService</code>.</p>
+<p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/Hud/PlayerHud.ui</code>.</p>
+<h2 id="afkplugin">AfkPlugin<a class="headerlink" href="#afkplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:AfkPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> <code>AfkDisconnectService</code>, <code>AfkService</code>.</p>
+<p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
+<h2 id="teleportplugin">TeleportPlugin<a class="headerlink" href="#teleportplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:TeleportPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> <code>TpAcceptCommand</code>, <code>TpaCommand</code>, <code>TpDenyCommand</code>.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> <code>TpaService</code>.</p>
+<p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
+<h2 id="warpplugin">WarpPlugin<a class="headerlink" href="#warpplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:WarpPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: keine deklariert.</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> <code>CitySubCommand</code>, <code>FarmWorldSubCommand</code>, <code>SpawnSubCommand</code>, <code>WarpCommand</code>.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
+<h2 id="farmworldplugin">FarmWorldPlugin<a class="headerlink" href="#farmworldplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:FarmWorldPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: keine deklariert.</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> <code>FarmWorldService</code>.</p>
+<p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
+<h2 id="protectionplugin">ProtectionPlugin<a class="headerlink" href="#protectionplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:ProtectionPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> <code>ProtectionCommand</code>, <code>ListSubCommand</code>, <code>RegisterSubCommand</code>, <code>RemoveSubCommand</code>.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
+<h2 id="documentationplugin">DocumentationPlugin<a class="headerlink" href="#documentationplugin" title="Permanent link">&para;</a></h2>
+<p>Maven: <code>com.hytalecity:DocumentationPlugin:1.0.0</code>.</p>
+<p>Pflichtabhängigkeiten: keine deklariert.</p>
+<p>Optionale Abhängigkeiten: keine deklariert.</p>
+<p><strong>Command-Klassen:</strong> <code>RulesCommand</code>, <code>TutorialCommand</code>.</p>
+<p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Services:</strong> <code>DocumentationService</code>.</p>
+<p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/Rules/Rules.ui</code>, <code>Common/UI/Custom/Tutorial/Tutorial.ui</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
