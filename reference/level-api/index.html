@@ -1819,8 +1819,18 @@ Default XP requirements are 150 (level 1), 951 (10), 1085 (11), 8951 (30), 9299 
 and 26551 (50). Actual pacing still depends on XP sources and session lengths.
 <code>LevelPolicy</code> validates finite scaling and overflow settings, strictly increasing
 coefficients, arithmetic limits, and level range. LevelPlugin configures this Core
-policy at setup. Legacy section-2/3 <code>base</code> values no longer reset the curve; only
-section 1's base and each section's linear/quadratic coefficients are used.</p>
+policy at setup using only <code>maxLevel</code>, <code>startLevel</code> and <code>scalingExponent</code> from
+<code>config.json</code>. Curve coefficients and the overflow-cap multiplier are fixed Core
+defaults. Valid legacy configs are rewritten to those three supported fields at
+startup; obsolete autosave/debug/curve/overflow settings are removed. Malformed
+or invalid files remain unchanged while the plugin falls back to defaults.</p>
+<p><code>scalingExponent</code> affects <strong>XP awarded by scaled grants</strong>, not the level thresholds.
+The scaled amount is rounded from <code>baseXp * (requiredXp(currentLevel) /
+requiredXp(1))^scalingExponent</code>. With exponent <code>0</code>, no level-based award scaling
+is applied; <code>0.35</code> gives moderate scaling, not a fixed 35% increase per level.
+For example, 100 base XP at level 10 becomes approximately 191 XP. Raw XP grants
+remain unscaled. The fixed quadratic curve independently determines XP required
+for each next level (150, 191 and 244 XP at levels 1, 2 and 3).</p>
 <p>Reaching a threshold exactly levels up immediately, carries remaining XP forward,
 and may cross multiple levels in one operation. Reaching level 50 exactly does not
 invent overflow XP. Additional XP at max level goes to overflow using the existing

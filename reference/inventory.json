@@ -4,7 +4,7 @@
     {
       "repository": "hytale-city-core-plugin",
       "source_url": "https://github.com/1Tobu/hytale-city-core-plugin",
-      "commit": "e6fd1a63cbaf26a232b9b3d481c2eaf40a49f41e",
+      "commit": "70f6d9509a82a55aa42accd0bce6da6ae6ac6ffb",
       "plugin": "CorePlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",
@@ -183,7 +183,7 @@
     {
       "repository": "hytale-level-plugin",
       "source_url": "https://github.com/1Tobu/hytale-level-plugin",
-      "commit": "34b1329c6d35791996857a76e49367d8555653e2",
+      "commit": "d7d4427a4b437a79b5ad94b6b0ad3da031734adc",
       "plugin": "LevelPlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",

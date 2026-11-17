@@ -878,6 +878,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#kurze-konfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kurze Konfiguration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#was-bedeutet-scalingexponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was bedeutet scalingExponent?
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1679,6 +1701,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#kurze-konfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kurze Konfiguration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#was-bedeutet-scalingexponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was bedeutet scalingExponent?
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1703,11 +1747,29 @@
 <p>LevelPlugin adaptiert das allgemeine Spielerlevel an Hytale. Fortschritt und Belohnungsverwaltung liegen im Core, nicht mehr in einer laufend gespeicherten Spieler-JSON-Datei.</p>
 <h2 id="verhalten">Verhalten<a class="headerlink" href="#verhalten" title="Permanent link">&para;</a></h2>
 <p>Die XP-Anforderung steigt über zusammenhängende quadratische Kurvenabschnitte. Genau beim Erreichen der Grenze erfolgt der Aufstieg. Eine große XP-Vergabe kann mehrere Level überspringen; dabei werden Zwischenlevel und deren Belohnungsansprüche berücksichtigt.</p>
-<p>Die aktuelle Standardkonfiguration startet bei Level 1 und begrenzt auf Level 50. <code>config.json</code> im Level-Datenverzeichnis legt die Kurve und Skalierung fest. Bestehende Daten dürfen durch eine neue Kurve nicht stillschweigend zurückgesetzt werden.</p>
+<p>Die aktuelle Standardkonfiguration startet bei Level 1 und begrenzt auf Level 50. <code>config.json</code> im Level-Datenverzeichnis enthält ausschließlich <code>maxLevel</code>, <code>startLevel</code> und <code>scalingExponent</code>. Kurvenkoeffizienten und Overflow-Grenze sind feste Core-Vorgaben. Bestehende Daten dürfen durch eine neue Kurve nicht stillschweigend zurückgesetzt werden.</p>
 <h2 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h2>
 <p>Neue Plugins verwenden bevorzugt <code>AsyncLevelService</code> aus Core. Änderungen bestätigen erst nach DB-Commit Erfolg. Für wiederholbare Vergaben dieselbe Operations-UUID verwenden. Der Level-Adapter stellt außerdem Futures und lokale LevelUp-/LevelDown-Callbacks bereit.</p>
 <p>Alte Spielerdateien werden idempotent importiert und als Sicherungen erhalten. Das allgemeine PlayerHud zeigt derzeit Jobinformationen statt eines echten allgemeinen Spielerlevels.</p>
 <p>Vollständige Methoden, Kurven-, Import- und Reward-Verträge: <a href="../../reference/level-api/">Level-API</a>.</p>
+<h2 id="kurze-konfiguration">Kurze Konfiguration<a class="headerlink" href="#kurze-konfiguration" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"maxLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"startLevel"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"scalingExponent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.35</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Gültige alte Dateien werden beim nächsten Pluginstart auf diese drei Felder gekürzt. Die drei vorhandenen Werte bleiben erhalten. <code>autosaveIntervalSeconds</code> und <code>logging.debug</code> hatten bereits keine Wirkung mehr; Kurven- und Overflow-Einstellungen werden jetzt ebenfalls nicht mehr aus der Datei übernommen. Die Standardkurve bleibt unverändert. Beschädigte oder ungültige Dateien werden nicht überschrieben.</p>
+<h2 id="was-bedeutet-scalingexponent">Was bedeutet scalingExponent?<a class="headerlink" href="#was-bedeutet-scalingexponent" title="Permanent link">&para;</a></h2>
+<p><code>scalingExponent</code> beeinflusst die <strong>erhaltenen XP bei skalierten Vergaben</strong>, nicht die benötigten XP für das nächste Level. <code>0.35</code> bedeutet deshalb keinen festen Aufschlag von 35 Prozent pro Level.</p>
+<div class="highlight"><pre><span></span><code>Erhaltene XP = Basis-XP × (XP-Grenze des aktuellen Levels / XP-Grenze von Level 1)^scalingExponent
+</code></pre></div>
+<ul>
+<li><code>0</code>: kein levelabhängiger Belohnungsmultiplikator.</li>
+<li><code>0.35</code>: moderate Skalierung; 100 Basis-XP werden auf Level 10 zu ungefähr 191 XP.</li>
+<li><code>1</code>: Belohnungen steigen proportional zur jeweiligen XP-Grenze.</li>
+</ul>
+<p>Direkte Vergaben über <code>grantRawExp</code> bleiben unskaliert. Die feste Kurve verlangt unabhängig davon beispielsweise 150 XP für Level 1 → 2, 191 XP für Level 2 → 3 und 244 XP für Level 3 → 4. Allgemeine Spielerlevel und Joblevel verwenden weiterhin getrennte Fortschrittssysteme.</p>
 
 
 
