@@ -45,7 +45,7 @@ Das Beispiel ist nur der DB-Teil. Die beiden anderen Konfigurationen sind ebenfa
 ## Plugin-spezifische Einstellungen
 
 - AFK: `afk.json`, validierter Live-Reload.
-- Level: `config.json` mit Start-/Maxlevel, Kurve und Skalierung.
+- Level: `config.json` ausschließlich mit `maxLevel`, `startLevel` und `scalingExponent`; feste Kurven-/Overflow-Vorgaben im Core.
 - Jobs: `job-shop-offers.json` und `job-upgrades.json` zusätzlich zu Core-Jobdaten.
 - FarmWorld: eingebettete `worldConfig.json`; der Resetzeitpunkt ist aktuell im Code festgelegt.
 - HcNpcs: Definitionen in der DB; Befehle und API statt einer zweiten NPC-JSON-Datei.

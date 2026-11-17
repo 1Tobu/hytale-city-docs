@@ -8,12 +8,12 @@ Der Bericht exportiert ausschließlich ausgewählte Metadaten. Er liest keine pr
 
 | Plugin | Repository | Commit | Serverbereich |
 | --- | --- | --- | --- |
-| CorePlugin | `hytale-city-core-plugin` | [`e6fd1a6`](https://github.com/1Tobu/hytale-city-core-plugin/commit/e6fd1a63cbaf26a232b9b3d481c2eaf40a49f41e) | `^0.7.7` |
+| CorePlugin | `hytale-city-core-plugin` | [`70f6d95`](https://github.com/1Tobu/hytale-city-core-plugin/commit/70f6d9509a82a55aa42accd0bce6da6ae6ac6ffb) | `^0.7.7` |
 | CityBuildPlugin | `hytale-city-build-plugin` | [`38c0e94`](https://github.com/1Tobu/hytale-city-build-plugin/commit/38c0e9497fa64d49bc189f991c385e6a0653c45e) | `^0.7.7` |
 | HomePlugin | `hytale-home-plugin` | [`ac917ae`](https://github.com/1Tobu/hytale-home-plugin/commit/ac917aee14dc540ab598278f04b447487eda6a24) | `^0.7.7` |
 | EconomyPlugin | `hytale-money-system-plugin` | [`2390970`](https://github.com/1Tobu/hytale-money-system-plugin/commit/2390970146c959861369e8da4ba8f806fb3765d3) | `^0.7.7` |
 | JobsPlugin | `hytale-jobs-plugin` | [`e4c5652`](https://github.com/nebbsen/hytale-jobs-plugin/commit/e4c565252302068afb281956d15a9314099c26d4) | `^0.7.7` |
-| LevelPlugin | `hytale-level-plugin` | [`34b1329`](https://github.com/1Tobu/hytale-level-plugin/commit/34b1329c6d35791996857a76e49367d8555653e2) | `^0.7.7` |
+| LevelPlugin | `hytale-level-plugin` | [`d7d4427`](https://github.com/1Tobu/hytale-level-plugin/commit/d7d4427a4b437a79b5ad94b6b0ad3da031734adc) | `^0.7.7` |
 | HcNpcs | `HcNpcs` | [`5e07335`](https://github.com/nebbsen/HcNpcs/commit/5e07335f5a2ab5869499cc93ae9638359396fa81) | `^0.7.7` |
 | EnchantmentsPlugin | `hytale-city-enchantments` | [`6d78e4a`](https://github.com/nebbsen/hytale-city-enchantments/commit/6d78e4ac514b0cc13c8edcf49150de3231074d4b) | `^0.7.7` |
 | PlayerStatsPlugin | `hytale-player-stats-plugin` | [`74b23c1`](https://github.com/1Tobu/PlayerStatsPlugin/commit/74b23c1436152b0264658c282f33afa6c9ad1a3c) | `^0.7.7` |
