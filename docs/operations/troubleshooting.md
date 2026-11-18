@@ -33,3 +33,7 @@ Versionswarnungen können von externen Plugins stammen. Vor Zuordnung den Plugin
 ## Alte HcNpcs-Spawnversuche
 
 `Could not spawn NPC city.lumberjack` mit `Unknown or invalid NPC role: holzfaeller` stammt aus einer historischen DB-Spawn-Definition. Es ist keine Folge des neuen `set merchant miner`-Befehls. Die aktuelle HcNpcs-Version enthält keine Spawn-/Despawn-Logik mehr und ignoriert Rollendefinitionen beim Laden. Neue HcNpcs-JAR bei gestopptem Server ersetzen und neu starten. Eine manuelle DB-Löschung ist für diese Korrektur nicht erforderlich. Bereits gespeicherte native Zuordnungen und Anzeigenamen bleiben erhalten.
+
+## HcNpcs-Shutdown nach gestoppten Welten
+
+`World thread is not accepting tasks` beim HcNpcs-Shutdown entstand, wenn die Welt bereits gestoppt war, bevor das Plugin seine Interaktionshinweise entfernen konnte. HcNpcs überspringt diese abgelehnten Weltaufgaben jetzt auch bei der nativen Exception-Verpackung. Für noch aktive Welten bleibt das Aufräumen in deren Weltwarteschlange. Lokale Caches werden abschließend geleert; wiederholtes Schließen ist wirkungslos. Es wird keine ECS-Arbeit ersatzweise auf dem Shutdown-Thread ausgeführt.

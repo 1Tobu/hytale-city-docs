@@ -27,3 +27,7 @@ Die frühere `JobsPlugin/jobConfig.json` und Item-Seed-Loader sind nicht mehr Te
 ## Händler-Shoplayout
 
 Die Shopkategorien Tools, Seeds und Essence verwenden gemeinsame Zeilen mit getrennten Bereichen für Itemname, Preis und Kaufen-Button. Größere Tab-Zeilen berücksichtigen die native Buttonhöhe; Abstände trennen Kategorien, Liste und Kaufaktionen. Beide mitgelieferten UI-Ressourcenkopien sind synchron. Übersetzte Shopnamen werden über `TextSpans` übertragen. Die visuelle Darstellung muss im Hytale-Client geprüft werden.
+
+## Verkaufen mit leerer Hand
+
+Beim Klick auf „Gehaltenen Itemtyp verkaufen“ bestätigt die Händlerseite das UI-Ereignis sofort mit einem leeren Update. So wartet der Client auch bei leerer Hand, Bestätigungsabfrage oder abgewiesenem Verkauf nicht endlos auf eine Seitenantwort. Bei leerer Hand erscheint die Core-Notification „Du hast nichts in der Hand!“; die bestehende Seite bleibt geöffnet und es wird kein Verkauf gestartet. Erst ein erfolgreicher Verkauf lädt die Händlerdaten erneut.
