@@ -1516,6 +1516,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#hcnpcs-shutdown-nach-gestoppten-welten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HcNpcs-Shutdown nach gestoppten Welten
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1767,6 +1778,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#hcnpcs-shutdown-nach-gestoppten-welten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HcNpcs-Shutdown nach gestoppten Welten
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1805,6 +1827,8 @@
 <p>Versionswarnungen können von externen Plugins stammen. Vor Zuordnung den Plugin-/Dateinamen aus dem Log prüfen, statt alle Warnungen pauschal dem Core zuzuschreiben.</p>
 <h2 id="alte-hcnpcs-spawnversuche">Alte HcNpcs-Spawnversuche<a class="headerlink" href="#alte-hcnpcs-spawnversuche" title="Permanent link">&para;</a></h2>
 <p><code>Could not spawn NPC city.lumberjack</code> mit <code>Unknown or invalid NPC role: holzfaeller</code> stammt aus einer historischen DB-Spawn-Definition. Es ist keine Folge des neuen <code>set merchant miner</code>-Befehls. Die aktuelle HcNpcs-Version enthält keine Spawn-/Despawn-Logik mehr und ignoriert Rollendefinitionen beim Laden. Neue HcNpcs-JAR bei gestopptem Server ersetzen und neu starten. Eine manuelle DB-Löschung ist für diese Korrektur nicht erforderlich. Bereits gespeicherte native Zuordnungen und Anzeigenamen bleiben erhalten.</p>
+<h2 id="hcnpcs-shutdown-nach-gestoppten-welten">HcNpcs-Shutdown nach gestoppten Welten<a class="headerlink" href="#hcnpcs-shutdown-nach-gestoppten-welten" title="Permanent link">&para;</a></h2>
+<p><code>World thread is not accepting tasks</code> beim HcNpcs-Shutdown entstand, wenn die Welt bereits gestoppt war, bevor das Plugin seine Interaktionshinweise entfernen konnte. HcNpcs überspringt diese abgelehnten Weltaufgaben jetzt auch bei der nativen Exception-Verpackung. Für noch aktive Welten bleibt das Aufräumen in deren Weltwarteschlange. Lokale Caches werden abschließend geleert; wiederholtes Schließen ist wirkungslos. Es wird keine ECS-Arbeit ersatzweise auf dem Shutdown-Thread ausgeführt.</p>
 
 
 

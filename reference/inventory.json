@@ -135,7 +135,7 @@
     {
       "repository": "hytale-jobs-plugin",
       "source_url": "https://github.com/nebbsen/hytale-jobs-plugin",
-      "commit": "4325b77f032254c129278a4b28bc1ac0b8326517",
+      "commit": "bd40fa713297b3ad4bc93264a3cf16d982850692",
       "plugin": "JobsPlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",
@@ -202,7 +202,7 @@
     {
       "repository": "HcNpcs",
       "source_url": "https://github.com/nebbsen/HcNpcs",
-      "commit": "9b84e4983608c270674a9170f86fcd77a5bb819d",
+      "commit": "f8929fdcb57c29ab0272ddae785b962a27069188",
       "plugin": "HcNpcs",
       "group": "HytaleCity",
       "server_range": "^0.7.7",

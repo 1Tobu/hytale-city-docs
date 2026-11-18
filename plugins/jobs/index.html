@@ -883,6 +883,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#verkaufen-mit-leerer-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verkaufen mit leerer Hand
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1745,6 +1756,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#verkaufen-mit-leerer-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verkaufen mit leerer Hand
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1780,6 +1802,8 @@
 <p><code>/job info</code> öffnet die Job- und Meilensteinübersicht. Übersetzte Itemnamen und zusammengesetzte Belohnungstexte werden als Hytale-TextSpans übertragen. Der frühere Clientabbruch bei <code>#Reward0.Text</code> ist damit im UI-Befehl korrigiert; die Darstellung weiterhin im Client prüfen.</p>
 <h2 id="handler-shoplayout">Händler-Shoplayout<a class="headerlink" href="#handler-shoplayout" title="Permanent link">&para;</a></h2>
 <p>Die Shopkategorien Tools, Seeds und Essence verwenden gemeinsame Zeilen mit getrennten Bereichen für Itemname, Preis und Kaufen-Button. Größere Tab-Zeilen berücksichtigen die native Buttonhöhe; Abstände trennen Kategorien, Liste und Kaufaktionen. Beide mitgelieferten UI-Ressourcenkopien sind synchron. Übersetzte Shopnamen werden über <code>TextSpans</code> übertragen. Die visuelle Darstellung muss im Hytale-Client geprüft werden.</p>
+<h2 id="verkaufen-mit-leerer-hand">Verkaufen mit leerer Hand<a class="headerlink" href="#verkaufen-mit-leerer-hand" title="Permanent link">&para;</a></h2>
+<p>Beim Klick auf „Gehaltenen Itemtyp verkaufen“ bestätigt die Händlerseite das UI-Ereignis sofort mit einem leeren Update. So wartet der Client auch bei leerer Hand, Bestätigungsabfrage oder abgewiesenem Verkauf nicht endlos auf eine Seitenantwort. Bei leerer Hand erscheint die Core-Notification „Du hast nichts in der Hand!“; die bestehende Seite bleibt geöffnet und es wird kein Verkauf gestartet. Erst ein erfolgreicher Verkauf lädt die Händlerdaten erneut.</p>
 
 
 
