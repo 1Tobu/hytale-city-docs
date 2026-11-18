@@ -29,3 +29,7 @@ Ein zu kleiner UDP-Empfangspuffer wird am Linux-Host begrenzt, nicht durch das J
 Warnungen zu doppelten Asset-IDs anhand der benannten Pfade untersuchen. Ein Pack mit eigenen Inhalten kann trotzdem kopierte oder kollidierende IDs enthalten. Ordner mit Plugin-Konfiguration sind keine Asset-Packs und besitzen entsprechend nicht zwingend ein Asset-Manifest.
 
 Versionswarnungen können von externen Plugins stammen. Vor Zuordnung den Plugin-/Dateinamen aus dem Log prüfen, statt alle Warnungen pauschal dem Core zuzuschreiben.
+
+## Alte HcNpcs-Spawnversuche
+
+`Could not spawn NPC city.lumberjack` mit `Unknown or invalid NPC role: holzfaeller` stammt aus einer historischen DB-Spawn-Definition. Es ist keine Folge des neuen `set merchant miner`-Befehls. Die aktuelle HcNpcs-Version enthält keine Spawn-/Despawn-Logik mehr und ignoriert Rollendefinitionen beim Laden. Neue HcNpcs-JAR bei gestopptem Server ersetzen und neu starten. Eine manuelle DB-Löschung ist für diese Korrektur nicht erforderlich. Bereits gespeicherte native Zuordnungen und Anzeigenamen bleiben erhalten.

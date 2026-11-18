@@ -1,40 +1,94 @@
-# HcNpcs
+# Custom-NPCs: Jobs zuweisen
 
-HcNpcs erzeugt und konfiguriert verwaltete NPCs und verbindet sichere Interaktionen mit typisierten Pluginaktionen. Der Core speichert die Definitionen; HcNpcs besitzt die aktuellen Weltinstanzen.
+Erzeuge den gewünschten NPC mit Hytales nativen Werkzeugen. HcNpcs weist diesem NPC eine Funktion und einen Jobtyp zu und öffnet bei Interaktion die passende eigene UI. HcNpcs spawnt keine NPCs.
 
-## Beispiel
+Benötigte Berechtigung: `hcnpcs.admin`.
 
-`EXISTING_ROLE_ASSET` ist ein Platzhalter für eine tatsächlich installierte Hytale-NPC-Rolle; keine Modell-ID.
+## NPC setzen
 
-```text
-/hcnpc create city.lumberjack EXISTING_ROLE_ASSET Holzhaendler
-/hcnpc action city.lumberjack merchant lumberjack
-/hcnpc move city.lumberjack
-/hcnpc configure city.lumberjack default Holzhaendler true true true
-```
-
-Benötigte Berechtigung: `hcnpcs.admin`. Die drei Booleans bedeuten stationär, unverwundbar, aktiviert. Mit dem letzten Wert `false` wird ein verwalteter NPC entfernt, seine Definition aber erhalten. `removeaction` entfernt eine Zuordnung; `reload` liest gespeicherte Definitionen neu.
-
-## Lebenszyklus
-
-Eine Definition hat einen stabilen Schlüssel; die Laufzeit-Entity-UUID kann wechseln. Verwaltete NPCs werden nur in geladenen Chunks erzeugt und mit `NonSerialized` markiert. Hytale speichert sie dadurch nicht zusätzlich in Weltdateien.
-
-Vorhandene NPCs aus der alten Jobs-Tabelle bleiben an ihre bisherige Entity-UUID gebunden und behalten ihren nativen Spawner. Geladene verbundene NPCs erhalten konfigurierte Flags; deren Position wird nicht durch den neuen Move-Befehl übernommen.
-
-Ein Packet-Watcher prüft Sitzung, Welt, echte NPC-Komponente und maximal fünf Blöcke Reichweite. Mehrere verfügbare Aktionen öffnen ein Auswahlmenü. Eine Questaktion ist ein Erweiterungspunkt; ein fertiges Quest-System existiert noch nicht.
-
-Weiter: [eigene Aktionen](../development/npc-actions.md) und [vollständiger Vertrag](../reference/npc-contracts.md).
-
-## NPC-Job und Typ
+Den NPC ansehen und eingeben:
 
 ```text
-/hcnpc action <npc> <job> <typ>
-/hcnpc action city.holzhaendler merchant lumberjack
-/hcnpc action city.erzhaendler merchant miner
+/hcnpc set merchant lumberjack
+/hcnpc set merchant miner "Peter"
 ```
 
-`<job>` ist der Funktionsanbieter des NPCs, beispielsweise `merchant`. `<typ>` bestimmt den Berufsbereich: `farmer`, `lumberjack`, `hunter` oder `miner`. Es müssen keine Präfixe wie `job:` oder `typ:` eingegeben werden. Intern werden `job:merchant` und etwa `typ:lumberjack` gespeichert. Die bestehenden deutschen Berufsschlüssel und ihre Fortschritte werden nicht umbenannt.
+Der angesehene NPC muss innerhalb von fünf Blöcken stehen. Alternativ seine Entity-UUID oder einen bereits gespeicherten HcNpcs-Schlüssel angeben:
 
-Der Befehl erlaubt beliebige registrierte NPC-Jobs. Aktuell stellt Jobs nur `merchant` bereit. Ein späterer Worker-Anbieter kann `job:worker` registrieren; am Befehlsaufbau muss dafür nichts geändert werden. Ohne einen registrierten Anbieter wird der Auftrag mit einer Meldung abgewiesen. Alte `jobs:merchant`-Zuordnungen werden beim Laden automatisch auf das neue Format umgestellt.
+```text
+/hcnpc set <identifier> merchant lumberjack
+/hcnpc set <identifier> merchant miner "Peter"
+```
 
-Die NPC-Funktion ändert nicht automatisch die Hytale-Rolle oder das Modell, die beim Erzeugen/Konfigurieren gewählt wurden. Shopinhalte und akzeptierte Verkaufsitems stammen weiterhin aus den Daten des jeweiligen Berufs.
+Vollständige Syntax:
+
+```text
+/hcnpc set [identifier] <job> <typ> [Anzeigename]
+```
+
+Eckige Klammern markieren optionale Werte; nicht mit eingeben. Ein expliziter Identifier hat Vorrang vor dem angesehenen NPC. Anzeigenamen sind keine Identifier. `/hcnpc` zeigt gespeicherte Schlüssel, UUIDs und Zuordnungen an. Neue Zuordnungen erhalten derzeit intern einen Schlüssel wie `legacy.<UUID>`.
+
+Neue UUID-Zuordnungen benötigen einen geladenen echten NPC in deiner Welt. Bestehende Schlüssel können ohne Namensänderung auch bei ungeladenem NPC neu zugewiesen werden. Für eine Namensänderung muss er geladen sein, damit der ursprüngliche Name gesichert werden kann.
+
+## Verfügbare Jobs
+
+| Job | Funktion |
+| --- | --- |
+| `merchant` | Öffnet die Händler-UI des gewählten Berufs, unter anderem zum Verkauf zugehöriger Items. |
+
+Aktuell ist nur `merchant` implementiert. Weitere Funktionen benötigen einen registrierten Anbieter im jeweiligen Plugin.
+
+## Verfügbare Jobtypen
+
+| Typ im Befehl | Beruf |
+| --- | --- |
+| `farmer` | Farmer |
+| `lumberjack` | Holzfäller |
+| `hunter` | Jäger |
+| `miner` | Miner |
+
+Beispiele:
+
+```text
+/hcnpc set merchant farmer "Farmer"
+/hcnpc set merchant lumberjack "Holzhändler"
+/hcnpc set merchant hunter "Jagdhändler"
+/hcnpc set merchant miner "Erzhändler"
+```
+
+Der Typ bestimmt die Berufszuordnung und passende Inhalte der Jobs-UI. Er verändert nicht das Modell oder die native Rolle des NPCs.
+
+## Optionaler Anzeigename
+
+Der letzte Parameter setzt den Namen sichtbar über dem NPC. Namen mit Leerzeichen in Anführungszeichen schreiben:
+
+```text
+/hcnpc set merchant lumberjack "Peter der Holzhändler"
+```
+
+Ohne Anzeigenamen bleibt der bisherige Name unverändert. Erlaubt sind 1-128 Zeichen ohne Steuerzeichen. Der ursprüngliche Name wird beim ersten Überschreiben dauerhaft in Core gesichert.
+
+Bei drei Argumenten gilt: Ist das erste ein registrierter Job, werden sie als `job typ name` gelesen; andernfalls als `identifier job typ`. Falls ein gespeicherter Schlüssel wie ein registrierter Job heißt, stattdessen die Entity-UUID verwenden.
+
+## NPC zurücksetzen
+
+Den NPC ansehen oder seinen Identifier angeben:
+
+```text
+/hcnpc reset
+/hcnpc reset <identifier>
+```
+
+Reset entfernt alle HcNpcs-Aktionen und stellt den ursprünglich gesicherten Namen wieder her. War vorher keine Nameplate vorhanden, wird die von uns gesetzte entfernt. Ohne vorherige Namensänderung bleibt der native Name unangetastet. Der NPC bleibt bestehen.
+
+Ein gespeicherter Schlüssel kann auch bei ungeladenem NPC zurückgesetzt werden; die Namenswiederherstellung erfolgt beim Laden. Core behält einen deaktivierten Eintrag, damit alte Zuordnungen nach einem Neustart nicht erneut importiert werden. Ein erneutes `set` aktiviert die Zuordnung wieder.
+
+## Weitere Befehle
+
+`/hcnpc` zeigt die Zuordnungen an. `/hcnpc reload` lädt sie erneut aus Core. Verfügbar sind nur `set`, `reset` und `reload`; Erzeugung, Modell, Position und physisches Verhalten werden nativ in Hytale eingestellt.
+
+## Taste zum Öffnen erkennen
+
+Bei aktiven NPCs mit verfügbarer Pluginaktion ergänzt HcNpcs den nativen Interaktionshinweis am Fadenkreuz. Händler erhalten den Handelshinweis. Hytale zeigt die belegte Benutzen-Taste an, standardmäßig **F**; sie wird nicht im Plugin fest vorgegeben. Der Client steuert die Anzeige beim Ansehen und in Interaktionsreichweite.
+
+Vorhandene native Interaktionshinweise bleiben erhalten. Nach `reset` oder wenn kein passender Aktionsanbieter mehr verfügbar ist, entfernt HcNpcs seine zusätzlich eingeblendeten Hinweise. Die Aktualisierung erfolgt innerhalb etwa einer Sekunde. Es wird kein eigenes HUD und kein dauerhaftes Interactable-Flag in den Weltdateien angelegt. Die Darstellung ist im Client zu prüfen.

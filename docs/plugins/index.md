@@ -8,7 +8,7 @@
 | [EconomyPlugin](economy.md) | Das Geld-Plugin ist die Befehlsschicht für das gemeinsame Core-Konto. Jobs, Plotkäufe, Levelbelohnungen und andere Systeme dürfen keine unabhängigen Geldstände führen. |
 | [JobsPlugin](jobs.md) | Jobs bietet Berufe, Job-XP, Verkauf, Händlerseiten, Shops, Upgrades und Meilensteine. Es benötigt **CorePlugin und HcNpcs**; Enchantments ist optional. |
 | [LevelPlugin](level.md) | LevelPlugin adaptiert das allgemeine Spielerlevel an Hytale. Fortschritt und Belohnungsverwaltung liegen im Core, nicht mehr in einer laufend gespeicherten Spieler-JSON-Datei. |
-| [HcNpcs](npcs.md) | HcNpcs erzeugt und konfiguriert verwaltete NPCs und verbindet sichere Interaktionen mit typisierten Pluginaktionen. Der Core speichert die Definitionen; HcNpcs besitzt die aktuellen Weltinstanzen. |
+| [HcNpcs](npcs.md) | HcNpcs verbindet vorhandene native NPCs mit sicheren Pluginaktionen und eigenen UIs. Core speichert die Zuordnungen; Hytale besitzt den nativen NPC-Lebenszyklus. |
 | [EnchantmentsPlugin](enchantments.md) | Enchantments verwaltet zufällige Verzauberungen, Upgrade-Rolls, Konflikte und verhaltensabhängige Itemeffekte. Core stellt Definitionen und gemeinsame Item-/Upgrade-Daten bereit. |
 | [PlayerStatsPlugin](playerstats.md) | PlayerStats sammelt Spielereignisse und persistiert gebündelte Änderungen über Core. Join- und Leave-Zähler gehören diesem Plugin; Core übernimmt nur die Spieleranlage. |
 | [PlayerHudPlugin](playerhud.md) | PlayerHud zeigt gemeinsame Spielerdaten als Hytale-Custom-HUD. `/hud` schaltet die Anzeige um. Das UI-Dokument liegt unter `Hud/PlayerHud.ui`. |

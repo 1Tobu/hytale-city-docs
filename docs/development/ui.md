@@ -32,3 +32,9 @@ Ein Build prüft Java und Ressourcenverpackung, nicht die Hytale-Clientsyntax. I
 `Failed to load Custom UI documents` kann den Verbindungsaufbau abbrechen. Dann zuerst zuletzt geänderte `.ui`-Dateien, Template-Struktur und Ressourcenpfade eingrenzen. Ein unauffälliger Maven-Build ist kein Gegenbeweis.
 
 Für neue Noesis-/XAML-APIs oder andere Releases ist eine eigene Prüfung gegen den konkreten Server-/Clientbuild nötig; diese Dokumentation behauptet keine Kompatibilität mit einem neueren Framework.
+
+## Label-Texte und zusammengesetzte Nachrichten
+
+Bei Labels reine Zeichenketten über `.Text`, übersetzte oder zusammengesetzte Hytale-`Message`-Werte über `.TextSpans` setzen. Das entspricht beispielsweise Hytales nativer `ConfirmationPage`. Ein zusammengesetzter Reward-Text als Message auf `#Reward0.Text` kann den Client mit `CustomUI Set command couldn't set value` trennen.
+
+Die Jobs-Meilensteinseite (`/job info`) setzt Itemnamen und Belohnungsvorschauen deshalb einheitlich über `.TextSpans`, auch beim Leeren ungenutzter Zeilen mit `Message.raw("")`. Regressionstests bauen die Seite für leere Listen, Items ohne Meilensteine und zusammengesetzte Geld-/XP-/Itembelohnungen. Das ersetzt keinen Test im Hytale-Client.
