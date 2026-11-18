@@ -1833,7 +1833,7 @@
 <li>Level: <code>config.json</code> ausschließlich mit <code>maxLevel</code>, <code>startLevel</code> und <code>scalingExponent</code>; feste Kurven-/Overflow-Vorgaben im Core.</li>
 <li>Jobs: <code>job-shop-offers.json</code> und <code>job-upgrades.json</code> zusätzlich zu Core-Jobdaten.</li>
 <li>FarmWorld: eingebettete <code>worldConfig.json</code>; der Resetzeitpunkt ist aktuell im Code festgelegt.</li>
-<li>HcNpcs: Definitionen in der DB; Befehle und API statt einer zweiten NPC-JSON-Datei.</li>
+<li>HcNpcs: NPC-Zuordnungen in der DB; <code>HcNpcs/config.json</code> enthält <code>interactionDistanceMeters</code> (Standard 3.0). Änderungen mit <code>/hcnpc reload</code> laden.</li>
 </ul>
 <p>Eine allgemeine <code>config.json</code> als Plugin-Ressource ist kein Nachweis für einen aktiven Einstellungsmechanismus. Die jeweilige Pluginseite beschreibt die tatsächlich ausgewerteten Dateien.</p>
 
