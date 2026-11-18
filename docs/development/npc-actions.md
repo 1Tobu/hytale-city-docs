@@ -1,6 +1,6 @@
 # Eigene NPC-Aktionen anbinden
 
-Ein NPC kann mehrere benannte Aktionen tragen, beispielsweise `jobs:merchant` und künftig `quests:giver`. Die Aktionsregistrierung ist typisiert und besitzt einen schließbaren Lebenszyklus.
+Ein NPC kann mehrere benannte Aktionen tragen, beispielsweise `job:merchant` und künftig `quests:giver`. Die Aktionsregistrierung ist typisiert und besitzt einen schließbaren Lebenszyklus.
 
 ```java
 HcNpcsService npcs = HcNpcsAPI.getService();
@@ -37,3 +37,9 @@ Beim Start die Sitzung, Welt, aktuelle Entity-UUID und logischen NPC-Schlüssel 
 Die Reichweitenprüfung auch bei späteren kaufenden/claimenden UI-Aktionen berücksichtigen. `CompletableFuture`-Rückgaben der API nicht auf einem Welt-Thread blockieren.
 
 Die persistente Identität ist `definition.key()`, nicht die momentane Entity-UUID. Verwaltete NPCs können nach Konfigurations-, Welt- oder Chunkwechseln neu erzeugt werden. [Referenz](../reference/npc-contracts.md).
+
+## Registrierte NPC-Jobs
+
+Für die Kurzsyntax `/hcnpc action <npc> <job> <typ>` registriert ein Anbieter seinen Aktionsschlüssel unter dem Namensraum `job`, beispielsweise `job:worker`. HcNpcs prüft die tatsächliche Registrierung und beschränkt die Funktion nicht fest auf Händler. Das Argument wird als kanonischer Typ wie `typ:miner` übergeben. `NpcJobBinding.jobKey(argument)` aus Core liefert für bestehende Berufe den internen Schlüssel wie `Miner` oder `Holzfäller`.
+
+Aktuell ist nur `job:merchant` implementiert. Zusätzliche Funktionsanbieter müssen ihre Regeln und UI selbst bereitstellen; ein neuer Name allein implementiert keinen Worker. Für weitere Berufe wird die gemeinsame Typzuordnung erweitert. Allgemeine Aktionsnamensräume wie `quests:giver` bleiben davon unabhängig.

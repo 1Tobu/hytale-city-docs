@@ -18,7 +18,7 @@ Eine verfügbare Aktion öffnet direkt. Mehrere registrierte Aktionen zeigen ein
 
 ## Holz verkaufen
 
-1. Der Händler muss `jobs:merchant` mit dem gültigen Beruf `Holzfäller` besitzen; das Item muss diesem Beruf zugeordnet sein.
+1. Der Händler muss `job:merchant` mit dem Typ `typ:lumberjack` (Beruf `Holzfäller`) besitzen; das Item muss diesem Beruf zugeordnet sein.
 2. Jobs ermittelt Menge, Preis und XP, fordert eine zweite Bestätigung und erstellt einen exakten Inventarplan.
 3. Core speichert einen neuen Verkaufsvorgang vor der Entnahme. Eine bereits bekannte ID erlaubt keine zweite Entnahme.
 4. Auf dem World-Thread wird geprüft, ob die geplanten Slots und Metadaten noch passen. Dann werden die Items reserviert.

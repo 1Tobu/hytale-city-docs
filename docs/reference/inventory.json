@@ -1,10 +1,10 @@
 {
-  "snapshot_date": "2026-11-17",
+  "snapshot_date": "2026-11-18",
   "plugins": [
     {
       "repository": "hytale-city-core-plugin",
       "source_url": "https://github.com/1Tobu/hytale-city-core-plugin",
-      "commit": "10a3c1991cbbfcd68338281bde327007410278f8",
+      "commit": "c375b2813ea3212154680427a5e838237220be54",
       "plugin": "CorePlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",
@@ -135,7 +135,7 @@
     {
       "repository": "hytale-jobs-plugin",
       "source_url": "https://github.com/nebbsen/hytale-jobs-plugin",
-      "commit": "fcd390415638461a6524a6f97a759433eeae6812",
+      "commit": "a78dd8988d22f5124b257a56d404132fb1cf6f86",
       "plugin": "JobsPlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",
@@ -202,7 +202,7 @@
     {
       "repository": "HcNpcs",
       "source_url": "https://github.com/nebbsen/HcNpcs",
-      "commit": "5e07335f5a2ab5869499cc93ae9638359396fa81",
+      "commit": "77a509c7cd8bdee19580d7c5ec03c23d3b59fbfd",
       "plugin": "HcNpcs",
       "group": "HytaleCity",
       "server_range": "^0.7.7",

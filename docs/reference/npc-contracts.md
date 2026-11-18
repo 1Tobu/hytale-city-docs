@@ -19,10 +19,10 @@ Permission: `hcnpcs.admin`. All commands are player commands; position comes fro
 ```text
 /hcnpc
 /hcnpc create city.lumberjack <EXISTING_ROLE_ASSET> Holzhaendler
-/hcnpc action city.lumberjack jobs:merchant Holzfäller
+/hcnpc action city.lumberjack merchant lumberjack
 /hcnpc move city.lumberjack
 /hcnpc configure city.lumberjack <MODEL_ASSET_OR_default> Holzhaendler true true true
-/hcnpc removeaction city.lumberjack jobs:merchant
+/hcnpc removeaction city.lumberjack merchant
 /hcnpc reload
 ```
 
@@ -81,3 +81,9 @@ Inventory/world saving and MariaDB cannot share a transaction. A crash between r
 Core tests cover migration, immutable snapshots, optimistic bindings, movement ownership, action limits, atomic rewards, rollback, concurrent replay, stale job writes, opposing transfers, concurrent deposits/XP changes and unresolved sales. HcNpcs tests cover action registration/cleanup. Jobs tests cover exact inventory plans, changed items and compensation failures.
 
 Maven cannot validate Hytale's client UI DSL or a live world. Before production acceptance, test create/restart/chunk unload, configure/disable, both merchant confirmation paths, movement during UI loads and plugin shutdown on a Hytale 0.7.7 test server. The UI files reuse native Common.ui templates and send only server-defined action values.
+
+## Short NPC duty commands
+
+`/hcnpc action <npc> <job> <typ>` uses plain command arguments, for example `merchant lumberjack` or `merchant miner`. The duty is resolved against registered providers; the command does not hardcode a merchant-only switch. Only `merchant` is currently registered by Jobs. A future provider can register `job:worker` and use the same command after adding its implementation.
+
+Stored keys use singular `job:merchant` and canonical type arguments such as `typ:lumberjack`. Current type names are `farmer`, `lumberjack`, `hunter`, `miner`; Core maps these to the existing profession keys without renaming job progress. Old `jobs:merchant` bindings with German profession arguments migrate idempotently on startup. Generic namespaced actions such as `quests:giver forest` remain supported. Unregistered duties and unknown profession types are rejected before saving.
