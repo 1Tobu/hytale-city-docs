@@ -298,7 +298,7 @@
     {
       "repository": "hytale-afk-plugin",
       "source_url": "https://github.com/1Tobu/hytale-afk-plugin",
-      "commit": "183be31bd4b2011257110de05ab57f0eb30d1a1f",
+      "commit": "c7e598a743b8ca6f974fcd73df03e8f34192a44b",
       "plugin": "AfkPlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",
