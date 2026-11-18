@@ -135,7 +135,7 @@
     {
       "repository": "hytale-jobs-plugin",
       "source_url": "https://github.com/nebbsen/hytale-jobs-plugin",
-      "commit": "f0b51c2634de4ba6d12dc842fa65bbe076c6fc0a",
+      "commit": "4325b77f032254c129278a4b28bc1ac0b8326517",
       "plugin": "JobsPlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",

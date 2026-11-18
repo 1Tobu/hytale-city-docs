@@ -872,6 +872,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#handler-shoplayout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Händler-Shoplayout
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1723,6 +1734,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#handler-shoplayout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Händler-Shoplayout
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1756,6 +1778,8 @@
 <p>Die frühere <code>JobsPlugin/jobConfig.json</code> und Item-Seed-Loader sind nicht mehr Teil der aktiven Konfiguration. <code>CorePlugin/jobConfig.yml</code> enthält nur globale Balancingwerte (<code>baseXp</code>, <code>xpScale</code>, <code>maxLevel</code>, Preis- und XP-Multiplikatoren). Alte <code>jobMilestones</code>-Abschnitte werden aus Kompatibilitätsgründen ignoriert und nicht als Testdefinitionen in die DB importiert. Aktive Shopangebote und Upgrade-Rezepte bleiben bis zu ihrer gesonderten DB-Migration dateibasiert.</p>
 <h2 id="job-info-und-meilensteine">Job-Info und Meilensteine<a class="headerlink" href="#job-info-und-meilensteine" title="Permanent link">&para;</a></h2>
 <p><code>/job info</code> öffnet die Job- und Meilensteinübersicht. Übersetzte Itemnamen und zusammengesetzte Belohnungstexte werden als Hytale-TextSpans übertragen. Der frühere Clientabbruch bei <code>#Reward0.Text</code> ist damit im UI-Befehl korrigiert; die Darstellung weiterhin im Client prüfen.</p>
+<h2 id="handler-shoplayout">Händler-Shoplayout<a class="headerlink" href="#handler-shoplayout" title="Permanent link">&para;</a></h2>
+<p>Die Shopkategorien Tools, Seeds und Essence verwenden gemeinsame Zeilen mit getrennten Bereichen für Itemname, Preis und Kaufen-Button. Größere Tab-Zeilen berücksichtigen die native Buttonhöhe; Abstände trennen Kategorien, Liste und Kaufaktionen. Beide mitgelieferten UI-Ressourcenkopien sind synchron. Übersetzte Shopnamen werden über <code>TextSpans</code> übertragen. Die visuelle Darstellung muss im Hytale-Client geprüft werden.</p>
 
 
 
