@@ -1631,6 +1631,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#short-npc-duty-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Short NPC duty commands
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1767,6 +1778,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#short-npc-duty-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Short NPC duty commands
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1803,10 +1825,10 @@
 <p>Permission: <code>hcnpcs.admin</code>. All commands are player commands; position comes from the executing player. Names with spaces need command quoting.</p>
 <div class="highlight"><pre><span></span><code>/hcnpc
 /hcnpc create city.lumberjack &lt;EXISTING_ROLE_ASSET&gt; Holzhaendler
-/hcnpc action city.lumberjack jobs:merchant Holzfäller
+/hcnpc action city.lumberjack merchant lumberjack
 /hcnpc move city.lumberjack
 /hcnpc configure city.lumberjack &lt;MODEL_ASSET_OR_default&gt; Holzhaendler true true true
-/hcnpc removeaction city.lumberjack jobs:merchant
+/hcnpc removeaction city.lumberjack merchant
 /hcnpc reload
 </code></pre></div>
 <p>The three configure booleans are <code>stationary</code>, <code>invulnerable</code>, <code>enabled</code>. Set the last one to <code>false</code> to despawn a managed NPC while retaining its definition. A successful command means the DB change was stored; spawning follows when its world/chunk is loaded. Invalid assets are reported in the server log.</p>
@@ -1845,6 +1867,9 @@
 <h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h2>
 <p>Core tests cover migration, immutable snapshots, optimistic bindings, movement ownership, action limits, atomic rewards, rollback, concurrent replay, stale job writes, opposing transfers, concurrent deposits/XP changes and unresolved sales. HcNpcs tests cover action registration/cleanup. Jobs tests cover exact inventory plans, changed items and compensation failures.</p>
 <p>Maven cannot validate Hytale's client UI DSL or a live world. Before production acceptance, test create/restart/chunk unload, configure/disable, both merchant confirmation paths, movement during UI loads and plugin shutdown on a Hytale 0.7.7 test server. The UI files reuse native Common.ui templates and send only server-defined action values.</p>
+<h2 id="short-npc-duty-commands">Short NPC duty commands<a class="headerlink" href="#short-npc-duty-commands" title="Permanent link">&para;</a></h2>
+<p><code>/hcnpc action &lt;npc&gt; &lt;job&gt; &lt;typ&gt;</code> uses plain command arguments, for example <code>merchant lumberjack</code> or <code>merchant miner</code>. The duty is resolved against registered providers; the command does not hardcode a merchant-only switch. Only <code>merchant</code> is currently registered by Jobs. A future provider can register <code>job:worker</code> and use the same command after adding its implementation.</p>
+<p>Stored keys use singular <code>job:merchant</code> and canonical type arguments such as <code>typ:lumberjack</code>. Current type names are <code>farmer</code>, <code>lumberjack</code>, <code>hunter</code>, <code>miner</code>; Core maps these to the existing profession keys without renaming job progress. Old <code>jobs:merchant</code> bindings with German profession arguments migrate idempotently on startup. Generic namespaced actions such as <code>quests:giver forest</code> remain supported. Unregistered duties and unknown profession types are rejected before saving.</p>
 
 
 

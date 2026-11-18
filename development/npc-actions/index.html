@@ -1273,6 +1273,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#registrierte-npc-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registrierte NPC-Jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1679,6 +1690,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#registrierte-npc-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registrierte NPC-Jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1700,7 +1722,7 @@
 
 
 <h1 id="eigene-npc-aktionen-anbinden">Eigene NPC-Aktionen anbinden<a class="headerlink" href="#eigene-npc-aktionen-anbinden" title="Permanent link">&para;</a></h1>
-<p>Ein NPC kann mehrere benannte Aktionen tragen, beispielsweise <code>jobs:merchant</code> und künftig <code>quests:giver</code>. Die Aktionsregistrierung ist typisiert und besitzt einen schließbaren Lebenszyklus.</p>
+<p>Ein NPC kann mehrere benannte Aktionen tragen, beispielsweise <code>job:merchant</code> und künftig <code>quests:giver</code>. Die Aktionsregistrierung ist typisiert und besitzt einen schließbaren Lebenszyklus.</p>
 <div class="highlight"><pre><span></span><code><span class="n">HcNpcsService</span><span class="w"> </span><span class="n">npcs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HcNpcsAPI</span><span class="p">.</span><span class="na">getService</span><span class="p">();</span>
 <span class="n">Registration</span><span class="w"> </span><span class="n">registration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">npcs</span><span class="p">.</span><span class="na">registerAction</span><span class="p">(</span>
 <span class="w">    </span><span class="s">"MyQuestPlugin"</span><span class="p">,</span><span class="w"> </span><span class="s">"quests:giver"</span><span class="p">,</span><span class="w"> </span><span class="s">"Quests"</span><span class="p">,</span>
@@ -1727,6 +1749,9 @@
 </ol>
 <p>Die Reichweitenprüfung auch bei späteren kaufenden/claimenden UI-Aktionen berücksichtigen. <code>CompletableFuture</code>-Rückgaben der API nicht auf einem Welt-Thread blockieren.</p>
 <p>Die persistente Identität ist <code>definition.key()</code>, nicht die momentane Entity-UUID. Verwaltete NPCs können nach Konfigurations-, Welt- oder Chunkwechseln neu erzeugt werden. <a href="../../reference/npc-contracts/">Referenz</a>.</p>
+<h2 id="registrierte-npc-jobs">Registrierte NPC-Jobs<a class="headerlink" href="#registrierte-npc-jobs" title="Permanent link">&para;</a></h2>
+<p>Für die Kurzsyntax <code>/hcnpc action &lt;npc&gt; &lt;job&gt; &lt;typ&gt;</code> registriert ein Anbieter seinen Aktionsschlüssel unter dem Namensraum <code>job</code>, beispielsweise <code>job:worker</code>. HcNpcs prüft die tatsächliche Registrierung und beschränkt die Funktion nicht fest auf Händler. Das Argument wird als kanonischer Typ wie <code>typ:miner</code> übergeben. <code>NpcJobBinding.jobKey(argument)</code> aus Core liefert für bestehende Berufe den internen Schlüssel wie <code>Miner</code> oder <code>Holzfäller</code>.</p>
+<p>Aktuell ist nur <code>job:merchant</code> implementiert. Zusätzliche Funktionsanbieter müssen ihre Regeln und UI selbst bereitstellen; ein neuer Name allein implementiert keinen Worker. Für weitere Berufe wird die gemeinsame Typzuordnung erweitert. Allgemeine Aktionsnamensräume wie <code>quests:giver</code> bleiben davon unabhängig.</p>
 
 
 

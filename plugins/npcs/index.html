@@ -906,6 +906,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#npc-job-und-typ" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPC-Job und Typ
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1679,6 +1690,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#npc-job-und-typ" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPC-Job und Typ
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1704,7 +1726,7 @@
 <h2 id="beispiel">Beispiel<a class="headerlink" href="#beispiel" title="Permanent link">&para;</a></h2>
 <p><code>EXISTING_ROLE_ASSET</code> ist ein Platzhalter für eine tatsächlich installierte Hytale-NPC-Rolle; keine Modell-ID.</p>
 <div class="highlight"><pre><span></span><code>/hcnpc create city.lumberjack EXISTING_ROLE_ASSET Holzhaendler
-/hcnpc action city.lumberjack jobs:merchant Holzfäller
+/hcnpc action city.lumberjack merchant lumberjack
 /hcnpc move city.lumberjack
 /hcnpc configure city.lumberjack default Holzhaendler true true true
 </code></pre></div>
@@ -1714,6 +1736,14 @@
 <p>Vorhandene NPCs aus der alten Jobs-Tabelle bleiben an ihre bisherige Entity-UUID gebunden und behalten ihren nativen Spawner. Geladene verbundene NPCs erhalten konfigurierte Flags; deren Position wird nicht durch den neuen Move-Befehl übernommen.</p>
 <p>Ein Packet-Watcher prüft Sitzung, Welt, echte NPC-Komponente und maximal fünf Blöcke Reichweite. Mehrere verfügbare Aktionen öffnen ein Auswahlmenü. Eine Questaktion ist ein Erweiterungspunkt; ein fertiges Quest-System existiert noch nicht.</p>
 <p>Weiter: <a href="../../development/npc-actions/">eigene Aktionen</a> und <a href="../../reference/npc-contracts/">vollständiger Vertrag</a>.</p>
+<h2 id="npc-job-und-typ">NPC-Job und Typ<a class="headerlink" href="#npc-job-und-typ" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>/hcnpc action &lt;npc&gt; &lt;job&gt; &lt;typ&gt;
+/hcnpc action city.holzhaendler merchant lumberjack
+/hcnpc action city.erzhaendler merchant miner
+</code></pre></div>
+<p><code>&lt;job&gt;</code> ist der Funktionsanbieter des NPCs, beispielsweise <code>merchant</code>. <code>&lt;typ&gt;</code> bestimmt den Berufsbereich: <code>farmer</code>, <code>lumberjack</code>, <code>hunter</code> oder <code>miner</code>. Es müssen keine Präfixe wie <code>job:</code> oder <code>typ:</code> eingegeben werden. Intern werden <code>job:merchant</code> und etwa <code>typ:lumberjack</code> gespeichert. Die bestehenden deutschen Berufsschlüssel und ihre Fortschritte werden nicht umbenannt.</p>
+<p>Der Befehl erlaubt beliebige registrierte NPC-Jobs. Aktuell stellt Jobs nur <code>merchant</code> bereit. Ein späterer Worker-Anbieter kann <code>job:worker</code> registrieren; am Befehlsaufbau muss dafür nichts geändert werden. Ohne einen registrierten Anbieter wird der Auftrag mit einer Meldung abgewiesen. Alte <code>jobs:merchant</code>-Zuordnungen werden beim Laden automatisch auf das neue Format umgestellt.</p>
+<p>Die NPC-Funktion ändert nicht automatisch die Hytale-Rolle oder das Modell, die beim Erzeugen/Konfigurieren gewählt wurden. Shopinhalte und akzeptierte Verkaufsitems stammen weiterhin aus den Daten des jeweiligen Berufs.</p>
 
 
 
