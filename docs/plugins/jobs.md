@@ -23,3 +23,7 @@ Die frühere `JobsPlugin/jobConfig.json` und Item-Seed-Loader sind nicht mehr Te
 ## Job-Info und Meilensteine
 
 `/job info` öffnet die Job- und Meilensteinübersicht. Übersetzte Itemnamen und zusammengesetzte Belohnungstexte werden als Hytale-TextSpans übertragen. Der frühere Clientabbruch bei `#Reward0.Text` ist damit im UI-Befehl korrigiert; die Darstellung weiterhin im Client prüfen.
+
+## Händler-Shoplayout
+
+Die Shopkategorien Tools, Seeds und Essence verwenden gemeinsame Zeilen mit getrennten Bereichen für Itemname, Preis und Kaufen-Button. Größere Tab-Zeilen berücksichtigen die native Buttonhöhe; Abstände trennen Kategorien, Liste und Kaufaktionen. Beide mitgelieferten UI-Ressourcenkopien sind synchron. Übersetzte Shopnamen werden über `TextSpans` übertragen. Die visuelle Darstellung muss im Hytale-Client geprüft werden.
