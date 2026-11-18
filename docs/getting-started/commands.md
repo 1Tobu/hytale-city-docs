@@ -11,7 +11,7 @@ Die Tabelle beschreibt die vorhandenen Einstiegspunkte. `<...>` sind Pflichtwert
 | Geld | `/money`, `/money send <player> <amount>`; Admin: `add`, `remove`, `set` |
 | Jobs | `/job <jobKey>`, `/job enter <jobKey>`, `/job info`, `/job sell <amount|all>` |
 | Jobs-Admin | `/job admin item`, `milestones`, `shop`, `upgrades`, `npcset <jobKey>` |
-| NPCs | `/hcnpc`, `set [identifier] <job> <typ> [Anzeigename]`, `reset [identifier]`, `reload` |
+| NPCs | `/hcnpc`, `set [identifier] <job> <type> [name]`, `reset [identifier]`, `reload` |
 | Verzaubern | `/enchant item [enchantment] [value]` |
 | HUD | `/hud` |
 | Teleportanfrage | `/tpa <player>`, `/tpaccept`, `/tpdeny` |

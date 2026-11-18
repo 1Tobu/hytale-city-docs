@@ -202,7 +202,7 @@
     {
       "repository": "HcNpcs",
       "source_url": "https://github.com/nebbsen/HcNpcs",
-      "commit": "ec632b3cc1716c8f38e6fccfeb2a9cb7bd3f53c7",
+      "commit": "9b84e4983608c270674a9170f86fcd77a5bb819d",
       "plugin": "HcNpcs",
       "group": "HytaleCity",
       "server_range": "^0.7.7",

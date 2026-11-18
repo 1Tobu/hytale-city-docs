@@ -58,6 +58,6 @@ Das Beispiel ist nur der DB-Teil. Die beiden anderen Konfigurationen sind ebenfa
 - Level: `config.json` ausschließlich mit `maxLevel`, `startLevel` und `scalingExponent`; feste Kurven-/Overflow-Vorgaben im Core.
 - Jobs: `job-shop-offers.json` und `job-upgrades.json` zusätzlich zu Core-Jobdaten.
 - FarmWorld: eingebettete `worldConfig.json`; der Resetzeitpunkt ist aktuell im Code festgelegt.
-- HcNpcs: Definitionen in der DB; Befehle und API statt einer zweiten NPC-JSON-Datei.
+- HcNpcs: NPC-Zuordnungen in der DB; `HcNpcs/config.json` enthält `interactionDistanceMeters` (Standard 3.0). Änderungen mit `/hcnpc reload` laden.
 
 Eine allgemeine `config.json` als Plugin-Ressource ist kein Nachweis für einen aktiven Einstellungsmechanismus. Die jeweilige Pluginseite beschreibt die tatsächlich ausgewerteten Dateien.

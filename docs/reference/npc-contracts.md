@@ -26,7 +26,7 @@ Spawn NPCs with native Hytale tools first. Permission: `hcnpcs.admin`.
 /hcnpc reload
 ```
 
-Without an identifier, set/reset uses the NPC under the crosshair within five blocks. Explicit identifiers take precedence. New UUID bindings require a loaded real NPC in the same world. Existing keys may be assigned without a name, or reset, while unloaded. A new name requires the NPC to be loaded so its original Nameplate can be captured safely. Names with spaces must be quoted; names must contain 1-128 characters and no control characters. With three set arguments, a registered job in first position means `job type name`; otherwise they mean `identifier job type`. Saved keys matching registered job names should use the unambiguous entity UUID instead.
+Without an identifier, set/reset uses the NPC under the crosshair within the configured interaction distance (three metres by default). Explicit identifiers take precedence. New UUID bindings require a loaded real NPC in the same world. Existing keys may be assigned without a name, or reset, while unloaded. A new name requires the NPC to be loaded so its original Nameplate can be captured safely. Names with spaces must be quoted; names must contain 1-128 characters and no control characters. With three set arguments, a registered job in first position means `job type name`; otherwise they mean `identifier job type`. Saved keys matching registered job names should use the unambiguous entity UUID instead.
 
 Names are stored atomically with the action in Core and applied through Hytale's `Nameplate` component, making them visible above the NPC. Omitting the name preserves it. The first overridden native name (including an absent nameplate) is recorded durably. Reset clears **all** plugin actions, disables dispatch and restores that original name on the world queue, also after restart/unload. The native NPC remains in the world. A disabled tombstone prevents old mappings from being reimported; set reactivates it. Historical managed definitions are ignored and cannot be selected through HcNpcs.
 
@@ -55,7 +55,7 @@ Duplicate action registrations are rejected. Registration handles remove only th
 
 ## Interaction and UI
 
-One retained inbound watcher recognizes Use interaction targets, limits scheduling to once per player per 250 ms, and is deregistered on shutdown. All target resolution happens on the captured world queue. It verifies the current PlayerRef/store/world, an actual NPC component and a maximum distance of five blocks. Only persisted bindings dispatch actions. Internal exceptions are logged with their cause; implementation details are not sent to players.
+One retained inbound watcher recognizes Use interaction targets, limits scheduling to once per player per 250 ms, and is deregistered on shutdown. All target resolution happens on the captured world queue. It verifies the current PlayerRef/store/world, an actual NPC component and the configured interaction distance (three metres by default). Only persisted bindings dispatch actions. Internal exceptions are logged with their cause; implementation details are not sent to players.
 
 Jobs loads a Core merchant snapshot on its IO worker before opening the UI. Tab rendering uses this immutable snapshot. The page rechecks NPC/session/range on interactions, including the upgrade selector's return path. Existing shop purchase/upgrade and milestone-claim workflows remain separate operations; their XP mutations now use the shared additive API. This change does not claim those older workflows are fully asynchronous, atomic or deduplicated like the new sale path.
 
@@ -95,3 +95,19 @@ Stored keys use singular `job:merchant` and canonical type arguments such as `ty
 Enabled native NPC bindings with an available action advertise Hytale's native interactable hint to their current entity viewers. Merchants use `server.interactionHints.trade`; other providers use `server.interactionHints.generic`. The client draws the crosshair/key prompt with its configured Use binding (normally F). Existing native Interactable components and their hints are preserved.
 
 Hints use the native EntityViewer/InteractableUpdate replication path, without persisting an Interactable component or adding a custom HUD. The world queue refreshes visible-viewer hints once per second, including newly connected viewers. Reset, removed/unavailable actions and shutdown remove only HcNpcs-added client hints; native interactability is retained. Live client visibility, key remapping and interaction tests are still required.
+
+Command results use Core `NotificationUtility`: success displays `NPC Gespeichert`, failure displays `NPC Aktion Fehlgeschlagen`. Help and the binding list remain chat output.
+
+Command descriptions, argument hints and usage placeholders are in English (`type`, `identifier-or-job`, `job-or-type`, `type-or-name`). Result notifications retain the configured German wording.
+
+## Interaction distance configuration
+
+HcNpcs creates `HcNpcs/config.json` in its short plugin data directory:
+
+```json
+{
+  "interactionDistanceMeters": 3.0
+}
+```
+
+Edit the value and run `/hcnpc reload` to apply it without restarting. Accepted range: 0.5 to 10 metres. Invalid reloads retain the last valid value and leave the file unchanged; startup logs invalid settings and uses the default. The same distance gates crosshair selection, Use/action dispatch, UI validation and HcNpcs-added viewer hints. Explicit administrative identifiers can still update/reset stored bindings without standing beside the NPC. Hytale's own pre-existing hints/client targeting may impose their own presentation limits; setting a larger server limit does not extend native client targeting automatically.

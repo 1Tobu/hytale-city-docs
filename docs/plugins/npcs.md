@@ -13,7 +13,7 @@ Den NPC ansehen und eingeben:
 /hcnpc set merchant miner "Peter"
 ```
 
-Der angesehene NPC muss innerhalb von fünf Blöcken stehen. Alternativ seine Entity-UUID oder einen bereits gespeicherten HcNpcs-Schlüssel angeben:
+Der angesehene NPC muss innerhalb der konfigurierten Interaktionsdistanz (standardmäßig drei Meter) stehen. Alternativ seine Entity-UUID oder einen bereits gespeicherten HcNpcs-Schlüssel angeben:
 
 ```text
 /hcnpc set <identifier> merchant lumberjack
@@ -23,7 +23,7 @@ Der angesehene NPC muss innerhalb von fünf Blöcken stehen. Alternativ seine En
 Vollständige Syntax:
 
 ```text
-/hcnpc set [identifier] <job> <typ> [Anzeigename]
+/hcnpc set [identifier] <job> <type> [name]
 ```
 
 Eckige Klammern markieren optionale Werte; nicht mit eingeben. Ein expliziter Identifier hat Vorrang vor dem angesehenen NPC. Anzeigenamen sind keine Identifier. `/hcnpc` zeigt gespeicherte Schlüssel, UUIDs und Zuordnungen an. Neue Zuordnungen erhalten derzeit intern einen Schlüssel wie `legacy.<UUID>`.
@@ -92,3 +92,21 @@ Ein gespeicherter Schlüssel kann auch bei ungeladenem NPC zurückgesetzt werden
 Bei aktiven NPCs mit verfügbarer Pluginaktion ergänzt HcNpcs den nativen Interaktionshinweis am Fadenkreuz. Händler erhalten den Handelshinweis. Hytale zeigt die belegte Benutzen-Taste an, standardmäßig **F**; sie wird nicht im Plugin fest vorgegeben. Der Client steuert die Anzeige beim Ansehen und in Interaktionsreichweite.
 
 Vorhandene native Interaktionshinweise bleiben erhalten. Nach `reset` oder wenn kein passender Aktionsanbieter mehr verfügbar ist, entfernt HcNpcs seine zusätzlich eingeblendeten Hinweise. Die Aktualisierung erfolgt innerhalb etwa einer Sekunde. Es wird kein eigenes HUD und kein dauerhaftes Interactable-Flag in den Weltdateien angelegt. Die Darstellung ist im Client zu prüfen.
+
+Befehlsergebnisse erscheinen als Core-Notification: **NPC Gespeichert** bei Erfolg, **NPC Aktion Fehlgeschlagen** bei Fehlern. Hilfe und Zuordnungsliste bleiben im Chat.
+
+Die Befehlshilfe und Argumenthinweise im Spiel sind auf Englisch, beispielsweise `type`, `identifier-or-job` und `type-or-name`. Die Ergebnis-Notifications bleiben deutsch.
+
+## Interaktionsdistanz einstellen
+
+Im Plugin-Datenordner wird `HcNpcs/config.json` automatisch erstellt:
+
+```json
+{
+  "interactionDistanceMeters": 3.0
+}
+```
+
+Der Wert gilt für alle HcNpcs-Zuordnungen. Er begrenzt das Öffnen, spätere UI-Aktionen, die Auswahl per Blick und die von HcNpcs ergänzten Interaktionshinweise. Erlaubt sind **0,5 bis 10 Meter**. Nach dem Ändern `/hcnpc reload` ausführen; ein Neustart ist nicht nötig. Ungültige Werte lassen den letzten gültigen Wert aktiv und werden nicht in die Datei zurückgeschrieben.
+
+Administrative Änderungen über einen expliziten gespeicherten Identifier bleiben auch aus der Entfernung möglich. Vorhandene native Hinweise und Hytales clientseitige Zielerkennung folgen zusätzlich den eigenen Grenzen; ein höherer Configwert erweitert die native Zielerkennung nicht automatisch.

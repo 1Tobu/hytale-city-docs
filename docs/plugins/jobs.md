@@ -6,7 +6,7 @@ Jobs bietet Berufe, Job-XP, Verkauf, Händlerseiten, Shops, Upgrades und Meilens
 
 Die bestehenden Schlüssel sind `Farmer`, `Holzfäller`, `Jäger` und `Miner`. `/job enter <jobKey>` aktiviert einen Beruf. `/job <jobKey>` öffnet die Job-Seite für einen freigeschalteten Beruf. `/job info` und die Admin-Werkzeuge sind in der [Befehlsübersicht](../getting-started/commands.md) eingeordnet.
 
-Ein NPC wird über `/hcnpc set [identifier] merchant <typ> [Anzeigename]` zum Händler. Die [Custom-NPC-Anleitung](npcs.md) erklärt Zielauswahl, Anzeigenamen und Reset. Die Typen heißen `farmer`, `lumberjack`, `hunter` und `miner`; intern werden sie den vorhandenen Berufsschlüsseln zugeordnet. `/job admin npcset <jobKey>` bindet den nächsten echten NPC innerhalb von 60 Sekunden; benötigt `hcnpcs.admin`. Der NPC-Klick lädt die Anzeige im Hintergrund und prüft die Bindung erneut vor dem Öffnen.
+Ein NPC wird über `/hcnpc set [identifier] merchant <type> [name]` zum Händler. Die [Custom-NPC-Anleitung](npcs.md) erklärt Zielauswahl, Anzeigenamen und Reset. Die Typen heißen `farmer`, `lumberjack`, `hunter` und `miner`; intern werden sie den vorhandenen Berufsschlüsseln zugeordnet. `/job admin npcset <jobKey>` bindet den nächsten echten NPC innerhalb von 60 Sekunden; benötigt `hcnpcs.admin`. Der NPC-Klick lädt die Anzeige im Hintergrund und prüft die Bindung erneut vor dem Öffnen.
 
 ## Verkauf
 
