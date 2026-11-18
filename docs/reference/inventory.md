@@ -18,7 +18,7 @@ Der Bericht exportiert ausschließlich ausgewählte Metadaten. Er liest keine pr
 | EnchantmentsPlugin | `hytale-city-enchantments` | [`6d78e4a`](https://github.com/nebbsen/hytale-city-enchantments/commit/6d78e4ac514b0cc13c8edcf49150de3231074d4b) | `^0.7.7` |
 | PlayerStatsPlugin | `hytale-player-stats-plugin` | [`74b23c1`](https://github.com/1Tobu/PlayerStatsPlugin/commit/74b23c1436152b0264658c282f33afa6c9ad1a3c) | `^0.7.7` |
 | PlayerHudPlugin | `hytale-playerhud-plugin` | [`d94de79`](https://github.com/nebbsen/hytale-playerhud-plugin/commit/d94de792f66baa6065d1051f1dc605cb636bdcc2) | `^0.7.7` |
-| AfkPlugin | `hytale-afk-plugin` | [`183be31`](https://github.com/1Tobu/hytale-afk-plugin/commit/183be31bd4b2011257110de05ab57f0eb30d1a1f) | `^0.7.7` |
+| AfkPlugin | `hytale-afk-plugin` | [`c7e598a`](https://github.com/1Tobu/hytale-afk-plugin/commit/c7e598a743b8ca6f974fcd73df03e8f34192a44b) | `^0.7.7` |
 | TeleportPlugin | `hytale-teleport-plugin` | [`45bd8fd`](https://github.com/1Tobu/hytale-teleport-plugin/commit/45bd8fd233c6dc92eb05e166602a3811e119486d) | `^0.7.7` |
 | WarpPlugin | `hytale-warp-plugin` | [`882fd9d`](https://github.com/1Tobu/hytale-warp-plugin/commit/882fd9df67b3b2759eecf5ed7eab0d642938b2de) | `^0.7.7` |
 | FarmWorldPlugin | `hytale-farmworld-plugin` | [`f878a0a`](https://github.com/1Tobu/hytale-farmworld-plugin/commit/f878a0a50472792aeaf97f33eb7dc38eb195635a) | `^0.7.7` |
