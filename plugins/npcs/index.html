@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hcnpcs" class="md-skip">
+        <a href="#custom-npcs-jobs-zuweisen" class="md-skip">
           Zum Inhalt
         </a>
       
@@ -885,10 +885,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#beispiel" class="md-nav__link">
+  <a href="#npc-setzen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Beispiel
+        NPC setzen
       
     </span>
   </a>
@@ -896,10 +896,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lebenszyklus" class="md-nav__link">
+  <a href="#verfugbare-jobs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lebenszyklus
+        Verfügbare Jobs
       
     </span>
   </a>
@@ -907,10 +907,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#npc-job-und-typ" class="md-nav__link">
+  <a href="#verfugbare-jobtypen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NPC-Job und Typ
+        Verfügbare Jobtypen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optionaler-anzeigename" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optionaler Anzeigename
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npc-zurucksetzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPC zurücksetzen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weitere-befehle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weitere Befehle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taste-zum-offnen-erkennen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Taste zum Öffnen erkennen
       
     </span>
   </a>
@@ -1669,10 +1713,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#beispiel" class="md-nav__link">
+  <a href="#npc-setzen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Beispiel
+        NPC setzen
       
     </span>
   </a>
@@ -1680,10 +1724,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lebenszyklus" class="md-nav__link">
+  <a href="#verfugbare-jobs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lebenszyklus
+        Verfügbare Jobs
       
     </span>
   </a>
@@ -1691,10 +1735,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#npc-job-und-typ" class="md-nav__link">
+  <a href="#verfugbare-jobtypen" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NPC-Job und Typ
+        Verfügbare Jobtypen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optionaler-anzeigename" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optionaler Anzeigename
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#npc-zurucksetzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPC zurücksetzen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weitere-befehle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weitere Befehle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taste-zum-offnen-erkennen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Taste zum Öffnen erkennen
       
     </span>
   </a>
@@ -1721,29 +1809,91 @@
   
 
 
-<h1 id="hcnpcs">HcNpcs<a class="headerlink" href="#hcnpcs" title="Permanent link">&para;</a></h1>
-<p>HcNpcs erzeugt und konfiguriert verwaltete NPCs und verbindet sichere Interaktionen mit typisierten Pluginaktionen. Der Core speichert die Definitionen; HcNpcs besitzt die aktuellen Weltinstanzen.</p>
-<h2 id="beispiel">Beispiel<a class="headerlink" href="#beispiel" title="Permanent link">&para;</a></h2>
-<p><code>EXISTING_ROLE_ASSET</code> ist ein Platzhalter für eine tatsächlich installierte Hytale-NPC-Rolle; keine Modell-ID.</p>
-<div class="highlight"><pre><span></span><code>/hcnpc create city.lumberjack EXISTING_ROLE_ASSET Holzhaendler
-/hcnpc action city.lumberjack merchant lumberjack
-/hcnpc move city.lumberjack
-/hcnpc configure city.lumberjack default Holzhaendler true true true
+<h1 id="custom-npcs-jobs-zuweisen">Custom-NPCs: Jobs zuweisen<a class="headerlink" href="#custom-npcs-jobs-zuweisen" title="Permanent link">&para;</a></h1>
+<p>Erzeuge den gewünschten NPC mit Hytales nativen Werkzeugen. HcNpcs weist diesem NPC eine Funktion und einen Jobtyp zu und öffnet bei Interaktion die passende eigene UI. HcNpcs spawnt keine NPCs.</p>
+<p>Benötigte Berechtigung: <code>hcnpcs.admin</code>.</p>
+<h2 id="npc-setzen">NPC setzen<a class="headerlink" href="#npc-setzen" title="Permanent link">&para;</a></h2>
+<p>Den NPC ansehen und eingeben:</p>
+<div class="highlight"><pre><span></span><code>/hcnpc set merchant lumberjack
+/hcnpc set merchant miner "Peter"
 </code></pre></div>
-<p>Benötigte Berechtigung: <code>hcnpcs.admin</code>. Die drei Booleans bedeuten stationär, unverwundbar, aktiviert. Mit dem letzten Wert <code>false</code> wird ein verwalteter NPC entfernt, seine Definition aber erhalten. <code>removeaction</code> entfernt eine Zuordnung; <code>reload</code> liest gespeicherte Definitionen neu.</p>
-<h2 id="lebenszyklus">Lebenszyklus<a class="headerlink" href="#lebenszyklus" title="Permanent link">&para;</a></h2>
-<p>Eine Definition hat einen stabilen Schlüssel; die Laufzeit-Entity-UUID kann wechseln. Verwaltete NPCs werden nur in geladenen Chunks erzeugt und mit <code>NonSerialized</code> markiert. Hytale speichert sie dadurch nicht zusätzlich in Weltdateien.</p>
-<p>Vorhandene NPCs aus der alten Jobs-Tabelle bleiben an ihre bisherige Entity-UUID gebunden und behalten ihren nativen Spawner. Geladene verbundene NPCs erhalten konfigurierte Flags; deren Position wird nicht durch den neuen Move-Befehl übernommen.</p>
-<p>Ein Packet-Watcher prüft Sitzung, Welt, echte NPC-Komponente und maximal fünf Blöcke Reichweite. Mehrere verfügbare Aktionen öffnen ein Auswahlmenü. Eine Questaktion ist ein Erweiterungspunkt; ein fertiges Quest-System existiert noch nicht.</p>
-<p>Weiter: <a href="../../development/npc-actions/">eigene Aktionen</a> und <a href="../../reference/npc-contracts/">vollständiger Vertrag</a>.</p>
-<h2 id="npc-job-und-typ">NPC-Job und Typ<a class="headerlink" href="#npc-job-und-typ" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>/hcnpc action &lt;npc&gt; &lt;job&gt; &lt;typ&gt;
-/hcnpc action city.holzhaendler merchant lumberjack
-/hcnpc action city.erzhaendler merchant miner
+<p>Der angesehene NPC muss innerhalb von fünf Blöcken stehen. Alternativ seine Entity-UUID oder einen bereits gespeicherten HcNpcs-Schlüssel angeben:</p>
+<div class="highlight"><pre><span></span><code>/hcnpc set &lt;identifier&gt; merchant lumberjack
+/hcnpc set &lt;identifier&gt; merchant miner "Peter"
 </code></pre></div>
-<p><code>&lt;job&gt;</code> ist der Funktionsanbieter des NPCs, beispielsweise <code>merchant</code>. <code>&lt;typ&gt;</code> bestimmt den Berufsbereich: <code>farmer</code>, <code>lumberjack</code>, <code>hunter</code> oder <code>miner</code>. Es müssen keine Präfixe wie <code>job:</code> oder <code>typ:</code> eingegeben werden. Intern werden <code>job:merchant</code> und etwa <code>typ:lumberjack</code> gespeichert. Die bestehenden deutschen Berufsschlüssel und ihre Fortschritte werden nicht umbenannt.</p>
-<p>Der Befehl erlaubt beliebige registrierte NPC-Jobs. Aktuell stellt Jobs nur <code>merchant</code> bereit. Ein späterer Worker-Anbieter kann <code>job:worker</code> registrieren; am Befehlsaufbau muss dafür nichts geändert werden. Ohne einen registrierten Anbieter wird der Auftrag mit einer Meldung abgewiesen. Alte <code>jobs:merchant</code>-Zuordnungen werden beim Laden automatisch auf das neue Format umgestellt.</p>
-<p>Die NPC-Funktion ändert nicht automatisch die Hytale-Rolle oder das Modell, die beim Erzeugen/Konfigurieren gewählt wurden. Shopinhalte und akzeptierte Verkaufsitems stammen weiterhin aus den Daten des jeweiligen Berufs.</p>
+<p>Vollständige Syntax:</p>
+<div class="highlight"><pre><span></span><code>/hcnpc set [identifier] &lt;job&gt; &lt;typ&gt; [Anzeigename]
+</code></pre></div>
+<p>Eckige Klammern markieren optionale Werte; nicht mit eingeben. Ein expliziter Identifier hat Vorrang vor dem angesehenen NPC. Anzeigenamen sind keine Identifier. <code>/hcnpc</code> zeigt gespeicherte Schlüssel, UUIDs und Zuordnungen an. Neue Zuordnungen erhalten derzeit intern einen Schlüssel wie <code>legacy.&lt;UUID&gt;</code>.</p>
+<p>Neue UUID-Zuordnungen benötigen einen geladenen echten NPC in deiner Welt. Bestehende Schlüssel können ohne Namensänderung auch bei ungeladenem NPC neu zugewiesen werden. Für eine Namensänderung muss er geladen sein, damit der ursprüngliche Name gesichert werden kann.</p>
+<h2 id="verfugbare-jobs">Verfügbare Jobs<a class="headerlink" href="#verfugbare-jobs" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Funktion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>merchant</code></td>
+<td>Öffnet die Händler-UI des gewählten Berufs, unter anderem zum Verkauf zugehöriger Items.</td>
+</tr>
+</tbody>
+</table>
+<p>Aktuell ist nur <code>merchant</code> implementiert. Weitere Funktionen benötigen einen registrierten Anbieter im jeweiligen Plugin.</p>
+<h2 id="verfugbare-jobtypen">Verfügbare Jobtypen<a class="headerlink" href="#verfugbare-jobtypen" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Typ im Befehl</th>
+<th>Beruf</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>farmer</code></td>
+<td>Farmer</td>
+</tr>
+<tr>
+<td><code>lumberjack</code></td>
+<td>Holzfäller</td>
+</tr>
+<tr>
+<td><code>hunter</code></td>
+<td>Jäger</td>
+</tr>
+<tr>
+<td><code>miner</code></td>
+<td>Miner</td>
+</tr>
+</tbody>
+</table>
+<p>Beispiele:</p>
+<div class="highlight"><pre><span></span><code>/hcnpc set merchant farmer "Farmer"
+/hcnpc set merchant lumberjack "Holzhändler"
+/hcnpc set merchant hunter "Jagdhändler"
+/hcnpc set merchant miner "Erzhändler"
+</code></pre></div>
+<p>Der Typ bestimmt die Berufszuordnung und passende Inhalte der Jobs-UI. Er verändert nicht das Modell oder die native Rolle des NPCs.</p>
+<h2 id="optionaler-anzeigename">Optionaler Anzeigename<a class="headerlink" href="#optionaler-anzeigename" title="Permanent link">&para;</a></h2>
+<p>Der letzte Parameter setzt den Namen sichtbar über dem NPC. Namen mit Leerzeichen in Anführungszeichen schreiben:</p>
+<div class="highlight"><pre><span></span><code>/hcnpc set merchant lumberjack "Peter der Holzhändler"
+</code></pre></div>
+<p>Ohne Anzeigenamen bleibt der bisherige Name unverändert. Erlaubt sind 1-128 Zeichen ohne Steuerzeichen. Der ursprüngliche Name wird beim ersten Überschreiben dauerhaft in Core gesichert.</p>
+<p>Bei drei Argumenten gilt: Ist das erste ein registrierter Job, werden sie als <code>job typ name</code> gelesen; andernfalls als <code>identifier job typ</code>. Falls ein gespeicherter Schlüssel wie ein registrierter Job heißt, stattdessen die Entity-UUID verwenden.</p>
+<h2 id="npc-zurucksetzen">NPC zurücksetzen<a class="headerlink" href="#npc-zurucksetzen" title="Permanent link">&para;</a></h2>
+<p>Den NPC ansehen oder seinen Identifier angeben:</p>
+<div class="highlight"><pre><span></span><code>/hcnpc reset
+/hcnpc reset &lt;identifier&gt;
+</code></pre></div>
+<p>Reset entfernt alle HcNpcs-Aktionen und stellt den ursprünglich gesicherten Namen wieder her. War vorher keine Nameplate vorhanden, wird die von uns gesetzte entfernt. Ohne vorherige Namensänderung bleibt der native Name unangetastet. Der NPC bleibt bestehen.</p>
+<p>Ein gespeicherter Schlüssel kann auch bei ungeladenem NPC zurückgesetzt werden; die Namenswiederherstellung erfolgt beim Laden. Core behält einen deaktivierten Eintrag, damit alte Zuordnungen nach einem Neustart nicht erneut importiert werden. Ein erneutes <code>set</code> aktiviert die Zuordnung wieder.</p>
+<h2 id="weitere-befehle">Weitere Befehle<a class="headerlink" href="#weitere-befehle" title="Permanent link">&para;</a></h2>
+<p><code>/hcnpc</code> zeigt die Zuordnungen an. <code>/hcnpc reload</code> lädt sie erneut aus Core. Verfügbar sind nur <code>set</code>, <code>reset</code> und <code>reload</code>; Erzeugung, Modell, Position und physisches Verhalten werden nativ in Hytale eingestellt.</p>
+<h2 id="taste-zum-offnen-erkennen">Taste zum Öffnen erkennen<a class="headerlink" href="#taste-zum-offnen-erkennen" title="Permanent link">&para;</a></h2>
+<p>Bei aktiven NPCs mit verfügbarer Pluginaktion ergänzt HcNpcs den nativen Interaktionshinweis am Fadenkreuz. Händler erhalten den Handelshinweis. Hytale zeigt die belegte Benutzen-Taste an, standardmäßig <strong>F</strong>; sie wird nicht im Plugin fest vorgegeben. Der Client steuert die Anzeige beim Ansehen und in Interaktionsreichweite.</p>
+<p>Vorhandene native Interaktionshinweise bleiben erhalten. Nach <code>reset</code> oder wenn kein passender Aktionsanbieter mehr verfügbar ist, entfernt HcNpcs seine zusätzlich eingeblendeten Hinweise. Die Aktualisierung erfolgt innerhalb etwa einer Sekunde. Es wird kein eigenes HUD und kein dauerhaftes Interactable-Flag in den Weltdateien angelegt. Die Darstellung ist im Client zu prüfen.</p>
 
 
 

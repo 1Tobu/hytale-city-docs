@@ -1312,6 +1312,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#label-texte-und-zusammengesetzte-nachrichten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Label-Texte und zusammengesetzte Nachrichten
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1701,6 +1712,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#label-texte-und-zusammengesetzte-nachrichten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Label-Texte und zusammengesetzte Nachrichten
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1772,6 +1794,9 @@
 <p>Ein Build prüft Java und Ressourcenverpackung, nicht die Hytale-Clientsyntax. Im echten Client öffnen, auslösen und schließen. Auflösungen, UI-Skalierung, lange Namen, leere Listen, ESC, schnelle Klicks, Weltwechsel und Disconnect prüfen.</p>
 <p><code>Failed to load Custom UI documents</code> kann den Verbindungsaufbau abbrechen. Dann zuerst zuletzt geänderte <code>.ui</code>-Dateien, Template-Struktur und Ressourcenpfade eingrenzen. Ein unauffälliger Maven-Build ist kein Gegenbeweis.</p>
 <p>Für neue Noesis-/XAML-APIs oder andere Releases ist eine eigene Prüfung gegen den konkreten Server-/Clientbuild nötig; diese Dokumentation behauptet keine Kompatibilität mit einem neueren Framework.</p>
+<h2 id="label-texte-und-zusammengesetzte-nachrichten">Label-Texte und zusammengesetzte Nachrichten<a class="headerlink" href="#label-texte-und-zusammengesetzte-nachrichten" title="Permanent link">&para;</a></h2>
+<p>Bei Labels reine Zeichenketten über <code>.Text</code>, übersetzte oder zusammengesetzte Hytale-<code>Message</code>-Werte über <code>.TextSpans</code> setzen. Das entspricht beispielsweise Hytales nativer <code>ConfirmationPage</code>. Ein zusammengesetzter Reward-Text als Message auf <code>#Reward0.Text</code> kann den Client mit <code>CustomUI Set command couldn't set value</code> trennen.</p>
+<p>Die Jobs-Meilensteinseite (<code>/job info</code>) setzt Itemnamen und Belohnungsvorschauen deshalb einheitlich über <code>.TextSpans</code>, auch beim Leeren ungenutzter Zeilen mit <code>Message.raw("")</code>. Regressionstests bauen die Seite für leere Listen, Items ohne Meilensteine und zusammengesetzte Geld-/XP-/Itembelohnungen. Das ersetzt keinen Test im Hytale-Client.</p>
 
 
 

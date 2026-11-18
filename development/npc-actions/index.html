@@ -1735,7 +1735,7 @@
 </code></pre></div>
 <p>Beim Plugin-Shutdown <code>registration.close()</code> aufrufen; alternativ die Registrierungen des eigenen Owners entfernen. Doppelregistrierungen desselben Aktionsschlüssels werden abgewiesen. Das Schließen eines alten Handles entfernt keine inzwischen neu registrierte Instanz.</p>
 <h2 id="eine-aktion-zuweisen">Eine Aktion zuweisen<a class="headerlink" href="#eine-aktion-zuweisen" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>/hcnpc action city.lumberjack quests:giver forest
+<div class="highlight"><pre><span></span><code>/hcnpc set &lt;identifier&gt; quests:giver forest
 </code></pre></div>
 <p>Das Beispiel setzt einen vorhandenen NPC voraus. Ohne registrierten Quest-Anbieter wird keine Questlogik ausgeführt. Das Aktionsargument ist eine Zeichenkette, deren Bedeutung der Anbieter festlegt; derzeit maximal 256 Zeichen. Pro NPC sind höchstens sechs Aktionen vorgesehen.</p>
 <h2 id="asynchrone-antworten">Asynchrone Antworten<a class="headerlink" href="#asynchrone-antworten" title="Permanent link">&para;</a></h2>
@@ -1748,9 +1748,9 @@
 <li>Ist noch dieselbe Seite geöffnet, wenn eine bestehende Seite aktualisiert werden soll?</li>
 </ol>
 <p>Die Reichweitenprüfung auch bei späteren kaufenden/claimenden UI-Aktionen berücksichtigen. <code>CompletableFuture</code>-Rückgaben der API nicht auf einem Welt-Thread blockieren.</p>
-<p>Die persistente Identität ist <code>definition.key()</code>, nicht die momentane Entity-UUID. Verwaltete NPCs können nach Konfigurations-, Welt- oder Chunkwechseln neu erzeugt werden. <a href="../../reference/npc-contracts/">Referenz</a>.</p>
+<p>Der gespeicherte Schlüssel ist <code>definition.key()</code>; die Bindung verweist auf eine native Entity-UUID. HcNpcs erzeugt keine NPCs. Wird ein NPC durch Hytale mit neuer UUID ersetzt, muss seine Zuordnung erneut gesetzt werden. <a href="../../reference/npc-contracts/">Referenz</a>.</p>
 <h2 id="registrierte-npc-jobs">Registrierte NPC-Jobs<a class="headerlink" href="#registrierte-npc-jobs" title="Permanent link">&para;</a></h2>
-<p>Für die Kurzsyntax <code>/hcnpc action &lt;npc&gt; &lt;job&gt; &lt;typ&gt;</code> registriert ein Anbieter seinen Aktionsschlüssel unter dem Namensraum <code>job</code>, beispielsweise <code>job:worker</code>. HcNpcs prüft die tatsächliche Registrierung und beschränkt die Funktion nicht fest auf Händler. Das Argument wird als kanonischer Typ wie <code>typ:miner</code> übergeben. <code>NpcJobBinding.jobKey(argument)</code> aus Core liefert für bestehende Berufe den internen Schlüssel wie <code>Miner</code> oder <code>Holzfäller</code>.</p>
+<p>Für die Kurzsyntax <code>/hcnpc set [identifier] &lt;job&gt; &lt;typ&gt;</code> registriert ein Anbieter seinen Aktionsschlüssel unter dem Namensraum <code>job</code>, beispielsweise <code>job:worker</code>. HcNpcs prüft die tatsächliche Registrierung und beschränkt die Funktion nicht fest auf Händler. Das Argument wird als kanonischer Typ wie <code>typ:miner</code> übergeben. <code>NpcJobBinding.jobKey(argument)</code> aus Core liefert für bestehende Berufe den internen Schlüssel wie <code>Miner</code> oder <code>Holzfäller</code>.</p>
 <p>Aktuell ist nur <code>job:merchant</code> implementiert. Zusätzliche Funktionsanbieter müssen ihre Regeln und UI selbst bereitstellen; ein neuer Name allein implementiert keinen Worker. Für weitere Berufe wird die gemeinsame Typzuordnung erweitert. Allgemeine Aktionsnamensräume wie <code>quests:giver</code> bleiben davon unabhängig.</p>
 
 

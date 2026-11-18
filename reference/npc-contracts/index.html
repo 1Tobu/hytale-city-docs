@@ -1642,6 +1642,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#selection-and-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selection and verification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#native-interaction-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Native interaction prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1789,6 +1811,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#selection-and-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selection and verification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#native-interaction-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Native interaction prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1813,29 +1857,28 @@
 <p>Hytale 0.7.7 NPC runtime. Install <strong>CorePlugin, HcNpcs and JobsPlugin together</strong> when updating this feature. Jobs now declares a required HcNpcs dependency; the reflective listener and duplicate Jobs packet hook have been removed.</p>
 <h2 id="ownership-and-persistence">Ownership and persistence<a class="headerlink" href="#ownership-and-persistence" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Core owns <code>hc_npcs</code>, <code>hc_npc_actions</code> and the migration from <code>jobs_npc_job_keys</code>.</li>
-<li>The stable NPC key (for example <code>city.lumberjack</code>) is independent of the current entity UUID.</li>
-<li>Managed definitions contain world, role asset, position/rotation, name, appearance, flags and up to six actions. Changes go through the Core service on the HcNpcs IO worker. <code>/hcnpc reload</code> refreshes the runtime cache after direct DB administration.</li>
-<li>Managed instances have Hytale's <code>NonSerialized</code> component: they are reconstructed from the DB in loaded chunks and are never also saved into world chunks. Reconciliation runs once per second on world queues. Disabled definitions despawn; changed definitions are recreated. This also restores the role's default appearance when <code>default</code> is selected.</li>
-<li>Worlds/chunks are not loaded just to spawn NPCs. Failed role/model spawns retry after 60 seconds; <code>/hcnpc reload</code> resets this delay. Use an actual existing NPC role asset, not a model ID, in <code>create</code>.</li>
-<li>Previously mapped NPCs are attached by their original entity UUID. Their native spawner still owns spawning, movement location and persistence. Import is idempotent and leaves the old table intact. Existing definitions, including intentionally removed actions, win over legacy mappings. Do not delete migration definitions to disable a legacy NPC; set <code>enabled=false</code> instead.</li>
-<li>Attached NPCs also receive configured name/model/frozen/invulnerable flags while loaded. <code>appearance=default</code> preserves an attached NPC's native appearance; moving/recreating attached NPCs is intentionally left to their original spawner.</li>
+<li>Core owns <code>hc_npcs</code>, <code>hc_npc_actions</code> and migration from <code>jobs_npc_job_keys</code>.</li>
+<li>Hytale owns every NPC's spawning, movement and world persistence. HcNpcs only attaches actions and optional names to existing native entity UUIDs.</li>
+<li>Runtime bindings require <code>role == null</code> and an entity UUID. Historical managed definitions with a role, including invalid test roles such as <code>holzfaeller</code>, stay in the DB for inspection but are ignored on startup and every refresh. No automatic spawn, despawn, role validation, chunk loading or spawn retry exists in HcNpcs.</li>
+<li>Native bindings, including disabled reset tombstones, remain cached so deferred original-name restoration works when the NPC loads.</li>
+<li>Import is idempotent and leaves the old table intact. Existing definitions, including intentionally reset mappings, win over legacy mappings.</li>
+<li>Name changes run on world queues. All database work goes through Core on the HcNpcs IO worker.</li>
 </ul>
 <h2 id="admin-commands">Admin commands<a class="headerlink" href="#admin-commands" title="Permanent link">&para;</a></h2>
-<p>Permission: <code>hcnpcs.admin</code>. All commands are player commands; position comes from the executing player. Names with spaces need command quoting.</p>
+<p>Spawn NPCs with native Hytale tools first. Permission: <code>hcnpcs.admin</code>.</p>
 <div class="highlight"><pre><span></span><code>/hcnpc
-/hcnpc create city.lumberjack &lt;EXISTING_ROLE_ASSET&gt; Holzhaendler
-/hcnpc action city.lumberjack merchant lumberjack
-/hcnpc move city.lumberjack
-/hcnpc configure city.lumberjack &lt;MODEL_ASSET_OR_default&gt; Holzhaendler true true true
-/hcnpc removeaction city.lumberjack merchant
+/hcnpc set merchant lumberjack
+/hcnpc set merchant lumberjack "Holz Haendler"
+/hcnpc set &lt;ENTITY_UUID_OR_SAVED_KEY&gt; merchant miner
+/hcnpc set &lt;ENTITY_UUID_OR_SAVED_KEY&gt; merchant miner "Erz Haendler"
+/hcnpc reset
+/hcnpc reset &lt;ENTITY_UUID_OR_SAVED_KEY&gt;
 /hcnpc reload
 </code></pre></div>
-<p>The three configure booleans are <code>stationary</code>, <code>invulnerable</code>, <code>enabled</code>. Set the last one to <code>false</code> to despawn a managed NPC while retaining its definition. A successful command means the DB change was stored; spawning follows when its world/chunk is loaded. Invalid assets are reported in the server log.</p>
-<p>Existing workflow remains available:</p>
-<div class="highlight"><pre><span></span><code>/job admin npcset Holzfäller
-</code></pre></div>
-<p>Then interact with a real NPC within 60 seconds. Both arming and selection check <code>hcnpcs.admin</code>. The selection belongs to that login session and is consumed once. Job keys remain the existing keys: <code>Farmer</code>, <code>Holzfäller</code>, <code>Jäger</code>, <code>Miner</code>.</p>
+<p>Without an identifier, set/reset uses the NPC under the crosshair within five blocks. Explicit identifiers take precedence. New UUID bindings require a loaded real NPC in the same world. Existing keys may be assigned without a name, or reset, while unloaded. A new name requires the NPC to be loaded so its original Nameplate can be captured safely. Names with spaces must be quoted; names must contain 1-128 characters and no control characters. With three set arguments, a registered job in first position means <code>job type name</code>; otherwise they mean <code>identifier job type</code>. Saved keys matching registered job names should use the unambiguous entity UUID instead.</p>
+<p>Names are stored atomically with the action in Core and applied through Hytale's <code>Nameplate</code> component, making them visible above the NPC. Omitting the name preserves it. The first overridden native name (including an absent nameplate) is recorded durably. Reset clears <strong>all</strong> plugin actions, disables dispatch and restores that original name on the world queue, also after restart/unload. The native NPC remains in the world. A disabled tombstone prevents old mappings from being reimported; set reactivates it. Historical managed definitions are ignored and cannot be selected through HcNpcs.</p>
+<p>Only <code>set</code>, <code>reset</code> and <code>reload</code> remain as admin subcommands. <code>create</code>, <code>action</code>, <code>configure</code>, <code>removeaction</code> and <code>move</code> are removed. Native tools/role assets own models, position and physical behaviour. HcNpcs no longer applies Frozen/invulnerability/model changes to attached native NPCs. The former create/move/configure runtime APIs are removed as well. Old physical overrides already present on an attached NPC are not automatically reconstructed or undone; use native tools if needed.</p>
+<p>The older Jobs one-shot selection API and <code>/job admin npcset</code> remain compatible; it is not needed for the new immediate crosshair commands.</p>
 <h2 id="plugin-api">Plugin API<a class="headerlink" href="#plugin-api" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">HcNpcsService</span><span class="w"> </span><span class="n">npcs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HcNpcsAPI</span><span class="p">.</span><span class="na">getService</span><span class="p">();</span>
 <span class="n">Registration</span><span class="w"> </span><span class="n">registration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">npcs</span><span class="p">.</span><span class="na">registerAction</span><span class="p">(</span>
@@ -1848,7 +1891,7 @@
 <span class="c1">// In plugin shutdown:</span>
 <span class="n">registration</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"> </span><span class="c1">// idempotent; alternatively unregisterOwner("MyQuestPlugin")</span>
 </code></pre></div>
-<p><code>create</code>, <code>move</code>, <code>configure</code>, <code>setAction</code>, <code>attachAction</code>, <code>removeAction</code> and <code>reload</code> return futures. Never join these futures on a world thread. Future completions run on an IO thread: queue ECS/UI operations with <code>world.execute</code>, then recheck player session, NPC binding and range using <code>validate(world, player, entityUuid)</code>. <code>definitions()</code> and <code>findByEntity()</code> return immutable cached snapshots. <code>entityUuid(key)</code> resolves the current binding; always validate it before ECS use.</p>
+<p><code>assign</code> and <code>reset</code> return futures for atomic named assignments and reset. <code>setAction</code>, <code>attachAction</code>, <code>removeAction</code> and <code>reload</code> also return futures. HcNpcs exposes no create/move/configure API. Never join these futures on a world thread. Future completions run on an IO thread: queue ECS/UI operations with <code>world.execute</code>, then recheck player session, NPC binding and range using <code>validate(world, player, entityUuid)</code>. <code>definitions()</code> and <code>findByEntity()</code> return immutable cached snapshots. <code>entityUuid(key)</code> resolves the current binding; always validate it before ECS use.</p>
 <p>Duplicate action registrations are rejected. Registration handles remove only their own instance, so closing an old handle cannot unregister a replacement. A single action opens directly; several available actions show a custom selection page. Missing providers do not run. The chooser rechecks target and current binding on submit and expires after two minutes. A quest provider is an extension point, not an implemented quest system.</p>
 <h2 id="interaction-and-ui">Interaction and UI<a class="headerlink" href="#interaction-and-ui" title="Permanent link">&para;</a></h2>
 <p>One retained inbound watcher recognizes Use interaction targets, limits scheduling to once per player per 250 ms, and is deregistered on shutdown. All target resolution happens on the captured world queue. It verifies the current PlayerRef/store/world, an actual NPC component and a maximum distance of five blocks. Only persisted bindings dispatch actions. Internal exceptions are logged with their cause; implementation details are not sent to players.</p>
@@ -1865,11 +1908,16 @@
 </ul>
 <p><code>abort</code> grants a physical refund only on its first PREPARED-to-REFUND_DUE transition; repeated calls never authorize returning the same items again. Core provides <code>pending(playerUuid)</code>, <code>diagnostic(operationUuid)</code>, idempotent <code>commit(request)</code>, <code>abort(request)</code> and <code>confirmRefund(request)</code> for explicit reconciliation. <code>confirmRefund</code> must only be called after actual item restitution (or verified absence of removal). Unresolved operations block further sales for that player. Ambiguous outcomes log the operation UUID and remain recorded. Receipt retention/archival must preserve deduplication and all unresolved records.</p>
 <h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h2>
-<p>Core tests cover migration, immutable snapshots, optimistic bindings, movement ownership, action limits, atomic rewards, rollback, concurrent replay, stale job writes, opposing transfers, concurrent deposits/XP changes and unresolved sales. HcNpcs tests cover action registration/cleanup. Jobs tests cover exact inventory plans, changed items and compensation failures.</p>
-<p>Maven cannot validate Hytale's client UI DSL or a live world. Before production acceptance, test create/restart/chunk unload, configure/disable, both merchant confirmation paths, movement during UI loads and plugin shutdown on a Hytale 0.7.7 test server. The UI files reuse native Common.ui templates and send only server-defined action values.</p>
+<p>Core tests cover migration, immutable snapshots, optimistic bindings, movement ownership, action limits, atomic rewards, rollback, concurrent replay, stale job writes, opposing transfers, concurrent deposits/XP changes and unresolved sales. HcNpcs tests cover action registration/cleanup, command inputs and ignored legacy spawn definitions on repeated reloads. Jobs tests cover exact inventory plans, changed items and compensation failures.</p>
+<p>Maven cannot validate Hytale's client UI DSL or a live world. Before production acceptance, test native spawn/set/name/reset/restart/chunk unload, both merchant confirmation paths, movement during UI loads and plugin shutdown on a Hytale 0.7.7 test server. The UI files reuse native Common.ui templates and send only server-defined action values.</p>
 <h2 id="short-npc-duty-commands">Short NPC duty commands<a class="headerlink" href="#short-npc-duty-commands" title="Permanent link">&para;</a></h2>
-<p><code>/hcnpc action &lt;npc&gt; &lt;job&gt; &lt;typ&gt;</code> uses plain command arguments, for example <code>merchant lumberjack</code> or <code>merchant miner</code>. The duty is resolved against registered providers; the command does not hardcode a merchant-only switch. Only <code>merchant</code> is currently registered by Jobs. A future provider can register <code>job:worker</code> and use the same command after adding its implementation.</p>
+<p><code>/hcnpc set [identifier] &lt;job&gt; &lt;typ&gt;</code> uses plain command arguments, for example <code>merchant lumberjack</code> or <code>merchant miner</code>. The duty is resolved against registered providers; the command does not hardcode a merchant-only switch. Only <code>merchant</code> is currently registered by Jobs. A future provider can register <code>job:worker</code> and use the same command after adding its implementation.</p>
 <p>Stored keys use singular <code>job:merchant</code> and canonical type arguments such as <code>typ:lumberjack</code>. Current type names are <code>farmer</code>, <code>lumberjack</code>, <code>hunter</code>, <code>miner</code>; Core maps these to the existing profession keys without renaming job progress. Old <code>jobs:merchant</code> bindings with German profession arguments migrate idempotently on startup. Generic namespaced actions such as <code>quests:giver forest</code> remain supported. Unregistered duties and unknown profession types are rejected before saving.</p>
+<h2 id="selection-and-verification">Selection and verification<a class="headerlink" href="#selection-and-verification" title="Permanent link">&para;</a></h2>
+<p><code>/hcnpc</code> lists saved keys and entity UUIDs. Display names, role IDs and model IDs are not unique entity identifiers. New bindings currently use <code>legacy.&lt;UUID&gt;</code> keys for persistence compatibility. Set/reset use Hytale native positional command variants; tests cover registration, ambiguity, name validation, original-name preservation, rollback and reset tombstones. Live crosshair/nameplate/UI/restart checks are still required.</p>
+<h2 id="native-interaction-prompt">Native interaction prompt<a class="headerlink" href="#native-interaction-prompt" title="Permanent link">&para;</a></h2>
+<p>Enabled native NPC bindings with an available action advertise Hytale's native interactable hint to their current entity viewers. Merchants use <code>server.interactionHints.trade</code>; other providers use <code>server.interactionHints.generic</code>. The client draws the crosshair/key prompt with its configured Use binding (normally F). Existing native Interactable components and their hints are preserved.</p>
+<p>Hints use the native EntityViewer/InteractableUpdate replication path, without persisting an Interactable component or adding a custom HUD. The world queue refreshes visible-viewer hints once per second, including newly connected viewers. Reset, removed/unavailable actions and shutdown remove only HcNpcs-added client hints; native interactability is retained. Live client visibility, key remapping and interaction tests are still required.</p>
 
 
 

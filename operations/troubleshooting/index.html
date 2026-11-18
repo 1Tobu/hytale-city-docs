@@ -1505,6 +1505,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#alte-hcnpcs-spawnversuche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alte HcNpcs-Spawnversuche
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1745,6 +1756,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#alte-hcnpcs-spawnversuche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alte HcNpcs-Spawnversuche
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1781,6 +1803,8 @@
 <h2 id="assets-und-drittanbieter">Assets und Drittanbieter<a class="headerlink" href="#assets-und-drittanbieter" title="Permanent link">&para;</a></h2>
 <p>Warnungen zu doppelten Asset-IDs anhand der benannten Pfade untersuchen. Ein Pack mit eigenen Inhalten kann trotzdem kopierte oder kollidierende IDs enthalten. Ordner mit Plugin-Konfiguration sind keine Asset-Packs und besitzen entsprechend nicht zwingend ein Asset-Manifest.</p>
 <p>Versionswarnungen können von externen Plugins stammen. Vor Zuordnung den Plugin-/Dateinamen aus dem Log prüfen, statt alle Warnungen pauschal dem Core zuzuschreiben.</p>
+<h2 id="alte-hcnpcs-spawnversuche">Alte HcNpcs-Spawnversuche<a class="headerlink" href="#alte-hcnpcs-spawnversuche" title="Permanent link">&para;</a></h2>
+<p><code>Could not spawn NPC city.lumberjack</code> mit <code>Unknown or invalid NPC role: holzfaeller</code> stammt aus einer historischen DB-Spawn-Definition. Es ist keine Folge des neuen <code>set merchant miner</code>-Befehls. Die aktuelle HcNpcs-Version enthält keine Spawn-/Despawn-Logik mehr und ignoriert Rollendefinitionen beim Laden. Neue HcNpcs-JAR bei gestopptem Server ersetzen und neu starten. Eine manuelle DB-Löschung ist für diese Korrektur nicht erforderlich. Bereits gespeicherte native Zuordnungen und Anzeigenamen bleiben erhalten.</p>
 
 
 

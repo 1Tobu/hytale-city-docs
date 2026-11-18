@@ -861,6 +861,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#job-info-und-meilensteine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job-Info und Meilensteine
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1701,6 +1712,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#job-info-und-meilensteine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Job-Info und Meilensteine
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1725,13 +1747,15 @@
 <p>Jobs bietet Berufe, Job-XP, Verkauf, Händlerseiten, Shops, Upgrades und Meilensteine. Es benötigt <strong>CorePlugin und HcNpcs</strong>; Enchantments ist optional.</p>
 <h2 id="berufe-und-bedienung">Berufe und Bedienung<a class="headerlink" href="#berufe-und-bedienung" title="Permanent link">&para;</a></h2>
 <p>Die bestehenden Schlüssel sind <code>Farmer</code>, <code>Holzfäller</code>, <code>Jäger</code> und <code>Miner</code>. <code>/job enter &lt;jobKey&gt;</code> aktiviert einen Beruf. <code>/job &lt;jobKey&gt;</code> öffnet die Job-Seite für einen freigeschalteten Beruf. <code>/job info</code> und die Admin-Werkzeuge sind in der <a href="../../getting-started/commands/">Befehlsübersicht</a> eingeordnet.</p>
-<p>Ein NPC wird über <code>/hcnpc action &lt;npc&gt; merchant &lt;typ&gt;</code> zum Händler. Die Typen heißen <code>farmer</code>, <code>lumberjack</code>, <code>hunter</code> und <code>miner</code>; intern werden sie den vorhandenen Berufsschlüsseln zugeordnet. <code>/job admin npcset &lt;jobKey&gt;</code> bindet den nächsten echten NPC innerhalb von 60 Sekunden; benötigt <code>hcnpcs.admin</code>. Der NPC-Klick lädt die Anzeige im Hintergrund und prüft die Bindung erneut vor dem Öffnen.</p>
+<p>Ein NPC wird über <code>/hcnpc set [identifier] merchant &lt;typ&gt; [Anzeigename]</code> zum Händler. Die <a href="../npcs/">Custom-NPC-Anleitung</a> erklärt Zielauswahl, Anzeigenamen und Reset. Die Typen heißen <code>farmer</code>, <code>lumberjack</code>, <code>hunter</code> und <code>miner</code>; intern werden sie den vorhandenen Berufsschlüsseln zugeordnet. <code>/job admin npcset &lt;jobKey&gt;</code> bindet den nächsten echten NPC innerhalb von 60 Sekunden; benötigt <code>hcnpcs.admin</code>. Der NPC-Klick lädt die Anzeige im Hintergrund und prüft die Bindung erneut vor dem Öffnen.</p>
 <h2 id="verkauf">Verkauf<a class="headerlink" href="#verkauf" title="Permanent link">&para;</a></h2>
 <p><code>/job sell &lt;amount|all&gt;</code> verkauft den gehaltenen Itemtyp nach zweiter Bestätigung innerhalb von 30 Sekunden. Der NPC-Button nutzt denselben Pfad, verkauft den vorhandenen Bestand dieses Typs und beschränkt ihn auf den Beruf des Händlers. Unbekannte Items haben beim allgemeinen Befehl einen Fallbackpreis und geben keine Job-XP; ein spezialisierter Händler akzeptiert sie nicht als Berufsware.</p>
 <p>Core verbucht Geld, passende Job-XP und Verkaufszähler zusammen. Unklare Inventar-/DB-Abbrüche bleiben als prüfpflichtiger Vorgang gespeichert. <a href="../../reference/npc-contracts/">Verkaufsvertrag</a>.</p>
 <h2 id="speicherung-und-grenzen">Speicherung und Grenzen<a class="headerlink" href="#speicherung-und-grenzen" title="Permanent link">&para;</a></h2>
 <p>Jobs, Fortschritt, Itemtotale, Meilensteindefinitionen und Claims liegen im Core. Meilensteine werden ausschließlich aus der DB gelesen; es gibt keinen YAML-/JSON-Fallback. Eine leere DB-Liste bleibt leer. Änderungen über die Jobs-Verwaltung werden vom transaktionalen Core-Service gespeichert. Shopangebote (<code>job-shop-offers.json</code>) und Rezepte (<code>job-upgrades.json</code>) sind weiterhin lokale Konfiguration. Die Job-XP-Kurve ist unabhängig vom allgemeinen Spielerlevel. Ältere Shop-/Upgrade-/Meilensteinabläufe sind noch nicht insgesamt so transaktional und asynchron wie der neue Verkaufspfad.</p>
 <p>Die frühere <code>JobsPlugin/jobConfig.json</code> und Item-Seed-Loader sind nicht mehr Teil der aktiven Konfiguration. <code>CorePlugin/jobConfig.yml</code> enthält nur globale Balancingwerte (<code>baseXp</code>, <code>xpScale</code>, <code>maxLevel</code>, Preis- und XP-Multiplikatoren). Alte <code>jobMilestones</code>-Abschnitte werden aus Kompatibilitätsgründen ignoriert und nicht als Testdefinitionen in die DB importiert. Aktive Shopangebote und Upgrade-Rezepte bleiben bis zu ihrer gesonderten DB-Migration dateibasiert.</p>
+<h2 id="job-info-und-meilensteine">Job-Info und Meilensteine<a class="headerlink" href="#job-info-und-meilensteine" title="Permanent link">&para;</a></h2>
+<p><code>/job info</code> öffnet die Job- und Meilensteinübersicht. Übersetzte Itemnamen und zusammengesetzte Belohnungstexte werden als Hytale-TextSpans übertragen. Der frühere Clientabbruch bei <code>#Reward0.Text</code> ist damit im UI-Befehl korrigiert; die Darstellung weiterhin im Client prüfen.</p>
 
 
 
