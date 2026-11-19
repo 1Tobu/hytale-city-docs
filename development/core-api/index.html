@@ -1322,6 +1322,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../new-profession/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neuen Beruf hinzufügen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../wands/" class="md-nav__link">
         
   
@@ -1549,6 +1577,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../operations/profession-content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Berufsaufträge und Belohnungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../operations/troubleshooting/" class="md-nav__link">
         
   
@@ -1672,6 +1728,34 @@
     
   
     NPC- und Verkaufsverträge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/custom-assets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Assets
   
 
     
@@ -1899,7 +1983,7 @@
 <span class="w">        </span><span class="c1">// Erfolg/Fehler auswerten, dann passende Weltaufgabe planen.</span>
 <span class="w">    </span><span class="p">});</span>
 </code></pre></div>
-<p>Job-XP dagegen mit <code>jobs.adjustXp(playerUuid, jobKey, delta)</code> additiv ändern. <code>unlock</code> schaltet einen Beruf ausdrücklich frei. <code>prepareNpcJob</code> erstellt einen fehlenden Job für einen Händlerzugriff, schaltet einen gesperrten vorhandenen Job aber nicht stillschweigend wieder frei.</p>
+<p>Job-XP dagegen mit <code>jobs.adjustXp(playerUuid, jobKey, delta)</code> additiv ändern. <code>unlock</code> schaltet einen Beruf ausdrücklich frei. Der Händler aktiviert Berufe ausdrücklich über ProfessionService.activate. ProfessionService.activeProfession liefert den aktiven Beruf und XP für das HUD über eine Leseabfrage.</p>
 <h2 id="weitere-vertrage">Weitere Verträge<a class="headerlink" href="#weitere-vertrage" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../reference/level-api/">Allgemeine Level- und Reward-API</a></li>

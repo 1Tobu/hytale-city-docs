@@ -1322,6 +1322,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../development/new-profession/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neuen Beruf hinzufügen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../development/wands/" class="md-nav__link">
         
   
@@ -1549,6 +1577,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../operations/profession-content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Berufsaufträge und Belohnungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../operations/troubleshooting/" class="md-nav__link">
         
   
@@ -1672,6 +1728,34 @@
     
   
     NPC- und Verkaufsverträge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/custom-assets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Assets
   
 
     
@@ -1833,7 +1917,7 @@
 <tbody>
 <tr>
 <td>MariaDB über Core</td>
-<td>Profile, Ränge, Kontostände, Homes, Plots, Einladungen/Angebote, Schutzbereiche, Jobs und Itemtotale, Statistiken, Spielerlevel und Levelbelohnungen, NPC-Definitionen/-Aktionen, Verkaufsbelege, Shopangebote, Upgrade-Rezepte und Enchantment-/Upgrade-Definitionen</td>
+<td>Profile, Ränge, Kontostände, Homes, Plots, Einladungen/Angebote, Schutzbereiche, aktive Berufe, Job-XP, Sammelzähler, Aufträge, Händlerbestand und Berufs-Meilensteine, Statistiken, Spielerlevel und Levelbelohnungen, NPC-Definitionen/-Aktionen, Verkaufsbelege, Shopangebote, Upgrade-Rezepte und Enchantment-/Upgrade-Definitionen</td>
 </tr>
 <tr>
 <td>Plugin-Konfiguration</td>
@@ -1859,7 +1943,7 @@
 <p>DB-, Datei- und Netzwerkzugriffe dürfen den Welt-Tick nicht blockieren. Ein Future-Callback läuft nicht automatisch auf dem World-Thread. <code>join()</code> und <code>get()</code> auf solchen Futures gehören nicht in Tick-, Interaktions- oder UI-Handler.</p>
 <p>Die neue NPC-Öffnung und der gemeinsame Verkauf nutzen IO-Worker. Ältere Shop-, Upgrade- und Meilensteinpfade sind noch nicht insgesamt auf asynchrone, gemeinsame Transaktionen umgebaut.</p>
 <h2 id="transaktion-ist-nicht-gleich-globale-atomizitat">Transaktion ist nicht gleich globale Atomizität<a class="headerlink" href="#transaktion-ist-nicht-gleich-globale-atomizitat" title="Permanent link">&para;</a></h2>
-<p>Core-Verkäufe verbuchen Geld, Job-XP und Itemtotale zusammen. Ein Inventar und MariaDB können dennoch keine gemeinsame ACID-Transaktion bilden. Verkaufsbelege halten deshalb den Zustand und den geplanten Itembestand fest. Unklare Vorgänge müssen vor einer Erstattung geprüft werden.</p>
+<p>Core verbucht die Geldgutschrift eines Verkaufs idempotent. Berufsaktionen verbuchen XP, Auftragsfortschritt und passende Sammelzähler in MariaDB. Ein Inventar und MariaDB können dennoch keine gemeinsame ACID-Transaktion bilden. Verkaufsbelege halten deshalb den Zustand und den geplanten Itembestand fest. Unklare Vorgänge müssen vor einer Erstattung geprüft werden.</p>
 <p>Für Spielerlevel und Belohnungen verwendet Core Operations- und Claim-Schlüssel. Eine wiederholte Anfrage muss denselben Schlüssel behalten; ein neuer Zufallswert bei jedem Retry hebt die Wiederholungssicherheit auf.</p>
 <p>Statistiken werden im Speicher gesammelt und ungefähr alle fünf Sekunden geschrieben. Nicht bestätigte Batches bleiben für Wiederholungen erhalten. Ein harter Prozessabbruch kann noch nicht persistierte Puffer verlieren; der Puffer ist keine dauerhafte Queue.</p>
 <h2 id="nebenlaufigkeit">Nebenläufigkeit<a class="headerlink" href="#nebenlaufigkeit" title="Permanent link">&para;</a></h2>

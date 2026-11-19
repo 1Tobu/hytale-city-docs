@@ -1311,6 +1311,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../development/new-profession/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neuen Beruf hinzufügen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../development/wands/" class="md-nav__link">
         
   
@@ -1538,6 +1566,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../operations/profession-content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Berufsaufträge und Belohnungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../operations/troubleshooting/" class="md-nav__link">
         
   
@@ -1661,6 +1717,34 @@
     
   
     NPC- und Verkaufsverträge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/custom-assets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Assets
   
 
     
@@ -1881,7 +1965,7 @@
 <li><strong>Spielerlevel:</strong> allgemeine XP, konfigurierbare Kurve, dauerhafte Levelbelohnungen.</li>
 <li><strong>Joblevel:</strong> XP pro Beruf und die davon abhängigen Shop-/Upgrade-/Meilensteinregeln.</li>
 </ul>
-<p>Holzverkauf erhöht bei aktivem passendem Beruf dessen Job-XP. Daraus folgt keine automatische Vergabe allgemeiner Spieler-XP. Das aktuelle PlayerHud zeigt Geld und Jobs an; ein echtes allgemeines Spielerlevel ist dort noch nicht angebunden.</p>
+<p>Berufsaktionen und Aufträge erhöhen die XP des aktiven Berufs. Verkäufe erhöhen das Guthaben. PlayerHud zeigt Kontostand, allgemeines Spielerlevel und Fortschritt des aktiven Berufs.</p>
 <h2 id="bestehender-datenfluss">Bestehender Datenfluss<a class="headerlink" href="#bestehender-datenfluss" title="Permanent link">&para;</a></h2>
 <p><code>Hytale-Eingabe -&gt; Gameplay-Prüfung -&gt; Core-Service -&gt; Datenbank -&gt; bestätigtes Ergebnis -&gt; Welt-/UI-Aktualisierung</code></p>
 <p>Bei asynchroner Arbeit liegen Welt-/UI-Aktualisierung und DB-Ergebnis auf unterschiedlichen Threads. Deshalb nach Abschluss erneut prüfen, ob dieselbe Spielersitzung, Welt, Seite und NPC-Bindung noch gelten. Details: <a href="../data-and-threads/">Daten und Threads</a>.</p>

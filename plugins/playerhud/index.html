@@ -969,10 +969,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aktueller-inhalt" class="md-nav__link">
+  <a href="#bedienung" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Aktueller Inhalt
+        Bedienung
       
     </span>
   </a>
@@ -980,10 +980,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#entwicklung" class="md-nav__link">
+  <a href="#daten-und-ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Entwicklung
+        Daten und UI
       
     </span>
   </a>
@@ -1289,6 +1289,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../development/new-profession/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neuen Beruf hinzufügen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../development/wands/" class="md-nav__link">
         
   
@@ -1516,6 +1544,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../operations/profession-content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Berufsaufträge und Belohnungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../operations/troubleshooting/" class="md-nav__link">
         
   
@@ -1659,6 +1715,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/custom-assets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/inventory/" class="md-nav__link">
         
   
@@ -1714,10 +1798,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aktueller-inhalt" class="md-nav__link">
+  <a href="#bedienung" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Aktueller Inhalt
+        Bedienung
       
     </span>
   </a>
@@ -1725,10 +1809,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#entwicklung" class="md-nav__link">
+  <a href="#daten-und-ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Entwicklung
+        Daten und UI
       
     </span>
   </a>
@@ -1756,12 +1840,12 @@
 
 
 <h1 id="playerhudplugin">PlayerHudPlugin<a class="headerlink" href="#playerhudplugin" title="Permanent link">&para;</a></h1>
-<p>PlayerHud zeigt gemeinsame Spielerdaten als Hytale-Custom-HUD. Das HUD ist nach jedem Beitritt ab <code>PlayerReadyEvent</code> automatisch eingeschaltet. <code>/hud</code> schaltet die Anzeige für die laufende Verbindung um; beim nächsten Beitritt ist sie wieder eingeschaltet. Wiederholte Ready-Events derselben Verbindung überschreiben die manuelle Auswahl nicht. Beim Disconnect werden HUD- und Sitzungsreferenzen entfernt. Das UI-Dokument liegt unter <code>Hud/PlayerHud.ui</code>.</p>
-<h2 id="aktueller-inhalt">Aktueller Inhalt<a class="headerlink" href="#aktueller-inhalt" title="Permanent link">&para;</a></h2>
-<p>Der Dienst liest Geld über <code>PlayerService</code> sowie freigeschaltete Berufe und deren Level über <code>JobService</code>. Er aktualisiert im Sekundentakt. Das Einblenden beim Beitritt führt keine synchronen DB-Abfragen auf dem Welt-Thread aus; die Werte folgen mit der nächsten Aktualisierung. Die allgemeine Levelzeile ist derzeit der Text <code>Jobs</code>; sie ist noch keine Anbindung an den allgemeinen Level-Fortschritt.</p>
-<h2 id="entwicklung">Entwicklung<a class="headerlink" href="#entwicklung" title="Permanent link">&para;</a></h2>
-<p><code>GeneralPlayerHud</code> verwendet einen HUD-Schlüssel zum Hinzufügen und Entfernen. Die bestehenden Setter senden einzelne Aktualisierungen; eine gemeinsame ereignisgetriebene Snapshot-/Diff-Verwaltung ist ein sinnvoller weiterer Ausbau, aber noch nicht umgesetzt.</p>
-<p>Bei neuen Minigame-HUDs die Lebensdauer beachten: Anzeigen beim Disconnect, Weltwechsel, Rundenende und Plugin-Shutdown entfernen. Fachwerte gehören nicht in UI-Labels als führenden Speicher. <a href="../../development/ui/">UI- und HUD-Verträge</a>.</p>
+<p>Das mittig ausgerichtete HUD rechts oben zeigt Spielernamen, Geld, das allgemeine <strong>Spielerlevel</strong> und den <strong>aktiven Beruf</strong> mit Berufslevel, XP innerhalb der Stufe und Fortschrittsbalken. Ohne aktiven Beruf blendet es den Berufsbereich aus.</p>
+<h2 id="bedienung">Bedienung<a class="headerlink" href="#bedienung" title="Permanent link">&para;</a></h2>
+<p>PlayerHud schaltet sich ab PlayerReadyEvent einmal je Verbindung ein. <code>/hud</code> blendet es für die laufende Verbindung ein oder aus. Wiederholte Ready-Events überschreiben die Auswahl nicht. Beim nächsten Beitritt ist das HUD wieder sichtbar.</p>
+<h2 id="daten-und-ui">Daten und UI<a class="headerlink" href="#daten-und-ui" title="Permanent link">&para;</a></h2>
+<p>HudService liest Kontostand, Spielerlevel und aktiven Beruf etwa einmal pro Sekunde über PlayerService, PlayerLevelService und ProfessionService.activeProfession. Die DB-Abfragen laufen auf dem HUD-Worker. GeneralPlayerHud sendet UI-Updates bei geänderten Snapshots. Das UI liegt unter Hud/PlayerHud.ui. Beim Disconnect werden HUD- und Sitzungsreferenzen entfernt.</p>
+<p><a href="../../development/ui/">UI- und HUD-Verträge</a></p>
 
 
 

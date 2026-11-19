@@ -16,7 +16,7 @@
         <link rel="prev" href="../updates/">
       
       
-        <link rel="next" href="../troubleshooting/">
+        <link rel="next" href="../profession-content/">
       
       
         
@@ -1218,6 +1218,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../development/new-profession/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neuen Beruf hinzufügen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../development/wands/" class="md-nav__link">
         
   
@@ -1490,6 +1518,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#professions-and-merchants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Professions and merchants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#core-api" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1537,6 +1576,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profession-content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Berufsaufträge und Belohnungen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1692,6 +1759,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/custom-assets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/inventory/" class="md-nav__link">
         
   
@@ -1751,6 +1846,17 @@
     <span class="md-ellipsis">
       
         First deployment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#professions-and-merchants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Professions and merchants
       
     </span>
   </a>
@@ -1832,8 +1938,10 @@
 <li>Jobs imports each legacy JSON file transactionally through Core, recording a data_import_markers entry. Only after commit does it move the source to <code>.imported-catalog/</code>. Invalid data leaves the file and transaction unchanged. Archive failure does not repeat a committed import.</li>
 <li>Check startup, shop/upgrade admin saves, NPC UI and actual inventory operations in the Hytale client.</li>
 </ol>
-<p>Shop offers and upgrade recipes now live in job_catalog_entries and job_catalog_requirements. Core returns immutable snapshots; Jobs refreshes a read cache every five seconds and performs admin writes on its catalog IO worker. Existing enabled-items fallback for Tools is preserved. No shop JSON is written or regenerated.</p>
+<p>Shop offers and upgrade recipes now live in job_catalog_entries and job_catalog_requirements. Core returns immutable snapshots; Jobs refreshes a read cache every five seconds and performs admin writes on its catalog IO worker. The legacy job page retains its enabled-items fallback for Tools. NPC purchases use job_merchant_stock. No shop JSON is written or regenerated.</p>
 <p>A missing legacy file keeps bundled defaults. An explicit legacy file, even an empty list, replaces unmodified DEFAULT entries of that kind. Existing ADMIN/IMPORT entries win on matching keys. Four Farmer upgrade defaults are seeded once from the supplied config, with HC_ identifiers. Shop offers have no invented defaults. Import markers prevent reimport; deleting an entry is permanent across restarts. Editing or copying an already-imported JSON is not a supported update path; use the admin UI or Core API.</p>
+<h2 id="professions-and-merchants">Professions and merchants<a class="headerlink" href="#professions-and-merchants" title="Permanent link">&para;</a></h2>
+<p>Core migrations V4–V7 create profession tracking, daily offers, inventory receipts, merchant stock, level rewards and collection rules. V6 preserves prior award records. V7 reuses item totals for valid collection actions. See <a href="../profession-content/">quest and reward maintenance</a>.</p>
 <h2 id="core-api">Core API<a class="headerlink" href="#core-api" title="Permanent link">&para;</a></h2>
 <p><code>JobCatalogService.listAll()</code>, <code>save(JobCatalogRecord)</code>, <code>delete(kind, job, category, item)</code> and <code>importOnce(source, kind, rows)</code> own persistence. Kind is SHOP or UPGRADE. Imports use a stable source key and commit all rows with their marker. Costs are nonnegative, amounts positive, requirements merged by item (at most eight). Physical legacy asset IDs are canonicalized on writes; logical enchantment family keys such as vibranium_hoe stay unchanged.</p>
 <h2 id="asset-migration">Asset migration<a class="headerlink" href="#asset-migration" title="Permanent link">&para;</a></h2>
