@@ -1289,6 +1289,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../development/wands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eigene Zauberstäbe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../development/ui/" class="md-nav__link">
         
   
@@ -1440,6 +1468,34 @@
     
   
     Updates und Wiederherstellung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/database-migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbankmigrationen
   
 
     
@@ -1705,14 +1761,14 @@
 <ul>
 <li>Spieler beim ersten Kontakt anlegen, Profile und Ränge bereitstellen.</li>
 <li>Geld, Plot-/Home-Limits, Grundstücke, Angebote, Einladungen und Schutzgebiete verwalten.</li>
-<li>Jobs, Job-XP, Itemtotale, Meilensteindefinitionen/-claims und Enchantment-Definitionen speichern. Meilensteindefinitionen werden ausschließlich aus der DB bezogen.</li>
+<li>Jobs, Job-XP, Itemtotale, Meilensteindefinitionen/-claims, Shopangebote, Upgrade-Rezepte und Enchantment-Definitionen speichern. Meilensteindefinitionen werden ausschließlich aus der DB bezogen.</li>
 <li>Allgemeine Spielerlevel, XP-Operationen und dauerhafte Levelbelohnungen verwalten.</li>
 <li>NPC-Definitionen und Aktionen sowie vorbereitete/verbuchte Verkaufsvorgänge speichern.</li>
 <li>Statistikbatches atomar und mit wiederholbaren Vorgangskennungen anwenden.</li>
 </ul>
 <h2 id="konfiguration-und-grenzen">Konfiguration und Grenzen<a class="headerlink" href="#konfiguration-und-grenzen" title="Permanent link">&para;</a></h2>
 <p><code>database.yml</code>, <code>coreConfig.yml</code> und <code>jobConfig.yml</code> werden im Core-Datenverzeichnis gelesen. Die YAML-Wurzeln heißen entsprechend <code>database</code>, <code>coreConfig</code> und <code>jobConfig</code>. Diese Dateien sind keine vollständig implementierte Hot-Reload-Schnittstelle.</p>
-<p>Core nutzt aktuell Hibernate-Schema-Updates und Start-Seeds. Vor Änderungen an bestehenden Datenbanken sind Backup und Wiederherstellungstest erforderlich. Allgemeine Spielerlevel und Joblevel sind verschiedene Systeme.</p>
+<p>Core nutzt versionierte Liquibase-Migrationen und einmalige Start-Seeds; Hibernate prüft das Schema mit <code>validate</code>. <a href="../../operations/database-migrations/">Übernahme bestehender Datenbanken und Configs</a>. Vor Änderungen an bestehenden Datenbanken sind Backup und Wiederherstellungstest erforderlich. Allgemeine Spielerlevel und Joblevel sind verschiedene Systeme.</p>
 <p>Weiter: <a href="../../development/core-api/">Core-APIs</a>, <a href="../../architecture/data-and-threads/">Datenhaltung</a>.</p>
 
 

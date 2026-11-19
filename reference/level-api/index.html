@@ -1218,6 +1218,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../development/wands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eigene Zauberstäbe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../development/ui/" class="md-nav__link">
         
   
@@ -1369,6 +1397,34 @@
     
   
     Updates und Wiederherstellung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/database-migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbankmigrationen
   
 
     
@@ -1890,8 +1946,8 @@ isolated and cannot undo committed XP or suppress durable reward claims. These
 callbacks are cosmetic/gameplay notifications, not durable delivery records. Direct
 Core calls update the Core read cache and rewards but do not emit LevelPlugin's
 local callbacks; callers should rely on the returned change or reward records.</p>
-<p>Deploy new CorePlugin and LevelPlugin together. Core creates the four new tables
-through its existing Hibernate schema-update configuration. Legacy JSON files are
+<p>Deploy new CorePlugin and LevelPlugin together. Core creates tables through versioned Liquibase migrations, then Hibernate validates
+the schema. Legacy JSON files are
 imported idempotently at setup and remain unchanged backups, never a live backend.
 HUD job levels use the independent Core JobService; no existing global-level caller
 was found in other shared plugin sources. Its current global label is literal <code>Jobs</code>.

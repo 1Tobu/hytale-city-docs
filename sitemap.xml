@@ -2,138 +2,146 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/architecture/data-and-threads/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/architecture/flows/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/architecture/minigames/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/architecture/overview/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/development/build-and-test/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/development/core-api/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/development/documentation/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/development/npc-actions/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/development/ui/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://1tobu.github.io/hytale-city-docs/development/wands/</loc>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/getting-started/commands/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/getting-started/setup/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
+    </url>
+    <url>
+         <loc>https://1tobu.github.io/hytale-city-docs/operations/database-migrations/</loc>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/operations/troubleshooting/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/operations/updates/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/afk/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/citybuild/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/core/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/documentation/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/economy/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/enchantments/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/farmworld/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/homes/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/jobs/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/level/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/npcs/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/playerhud/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/playerstats/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/protection/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/teleport/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/plugins/warp/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/reference/inventory/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/reference/level-api/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
     <url>
          <loc>https://1tobu.github.io/hytale-city-docs/reference/npc-contracts/</loc>
-         <lastmod>2026-11-18</lastmod>
+         <lastmod>2026-11-19</lastmod>
     </url>
 </urlset>

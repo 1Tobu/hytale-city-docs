@@ -1322,6 +1322,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../development/wands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eigene Zauberstäbe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../development/ui/" class="md-nav__link">
         
   
@@ -1473,6 +1501,34 @@
     
   
     Updates und Wiederherstellung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/database-migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbankmigrationen
   
 
     
@@ -1777,11 +1833,11 @@
 <tbody>
 <tr>
 <td>MariaDB über Core</td>
-<td>Profile, Ränge, Kontostände, Homes, Plots, Einladungen/Angebote, Schutzbereiche, Jobs und Itemtotale, Statistiken, Spielerlevel und Levelbelohnungen, NPC-Definitionen/-Aktionen, Verkaufsbelege, Enchantment-/Upgrade-Definitionen</td>
+<td>Profile, Ränge, Kontostände, Homes, Plots, Einladungen/Angebote, Schutzbereiche, Jobs und Itemtotale, Statistiken, Spielerlevel und Levelbelohnungen, NPC-Definitionen/-Aktionen, Verkaufsbelege, Shopangebote, Upgrade-Rezepte und Enchantment-/Upgrade-Definitionen</td>
 </tr>
 <tr>
 <td>Plugin-Konfiguration</td>
-<td>Core-/DB-/Job-YAML, Level-Kurve, AFK-JSON, Jobs-Shopangebote und Upgrade-Rezepte</td>
+<td>Core-/DB-/Job-YAML, Level-Kurve, AFK-JSON</td>
 </tr>
 <tr>
 <td>Hytale-Weltdateien</td>
@@ -1797,7 +1853,7 @@
 </tr>
 </tbody>
 </table>
-<p>Der Core ist der gemeinsame DB-Eigentümer. Das bedeutet nicht, dass bereits jede Jobs-Konfiguration in der DB liegt: <code>job-shop-offers.json</code> und <code>job-upgrades.json</code> sind weiterhin lokale Dateien.</p>
+<p>Der Core ist der gemeinsame DB-Eigentümer. Shopangebote und Upgrade-Rezepte liegen ebenfalls in der DB; alte JSON-Dateien werden einmalig importiert und danach archiviert. <a href="../../operations/database-migrations/">Migrationsablauf</a>.</p>
 <h2 id="world-thread-ecs">World-Thread / ECS<a class="headerlink" href="#world-thread-ecs" title="Permanent link">&para;</a></h2>
 <p>ECS-Komponenten und Inventare auf dem zugehörigen Welt-Thread lesen bzw. ändern. Store-Mutationen nicht direkt während einer laufenden ECS-Systemverarbeitung erzwingen. Dafür die geeigneten CommandBuffer-Verträge oder eine spätere <code>world.execute(...)</code>-Aufgabe verwenden.</p>
 <p>DB-, Datei- und Netzwerkzugriffe dürfen den Welt-Tick nicht blockieren. Ein Future-Callback läuft nicht automatisch auf dem World-Thread. <code>join()</code> und <code>get()</code> auf solchen Futures gehören nicht in Tick-, Interaktions- oder UI-Handler.</p>
@@ -1809,7 +1865,7 @@
 <h2 id="nebenlaufigkeit">Nebenläufigkeit<a class="headerlink" href="#nebenlaufigkeit" title="Permanent link">&para;</a></h2>
 <p>Geldänderungen sperren dieselbe Spielerzeile. Transfers nehmen Sperren in stabiler UUID-Reihenfolge. Additive Job-XP-Änderungen verwenden <code>JobService.adjustXp</code>; alte Entity-Snapshots dürfen nicht als unbedingter Ersatz des aktuellen Fortschritts gespeichert werden. <code>player_jobs.version</code> erkennt veraltete Schreibversuche zusätzlich.</p>
 <h2 id="schema-und-backups">Schema und Backups<a class="headerlink" href="#schema-und-backups" title="Permanent link">&para;</a></h2>
-<p>Aktuell führt Hibernate Schema-Updates über <code>hbm2ddl.auto=update</code> aus. Die SQL-Dateien unter <code>db/migration</code> werden als Start-Initialisierung ausgeführt; das ist keine vollständige Flyway-Migrationshistorie. Vor gemeinsamen Core-/Gameplay-Updates DB und relevante Welt-/Konfigurationsdateien sichern. Belege nicht ohne festgelegte Aufbewahrungs- und Wiederholungsstrategie löschen.</p>
+<p>Liquibase verwaltet Schema und einmalige Startdaten. Hibernate verwendet <code>hbm2ddl.auto=validate</code> nach erfolgreicher Migration. Alte Seed-Dateien laufen als versionierte Changesets nur einmal. Vor gemeinsamen Core-/Gameplay-Updates DB und relevante Welt-/Konfigurationsdateien sichern. Belege nicht ohne festgelegte Aufbewahrungs- und Wiederholungsstrategie löschen.</p>
 
 
 

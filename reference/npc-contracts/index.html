@@ -1218,6 +1218,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../development/wands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eigene Zauberstäbe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../development/ui/" class="md-nav__link">
         
   
@@ -1369,6 +1397,34 @@
     
   
     Updates und Wiederherstellung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/database-migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbankmigrationen
   
 
     
@@ -1920,7 +1976,7 @@
 <p>Jobs loads a Core merchant snapshot on its IO worker before opening the UI. Tab rendering uses this immutable snapshot. The page rechecks NPC/session/range on interactions, including the upgrade selector's return path. Existing shop purchase/upgrade and milestone-claim workflows remain separate operations; their XP mutations now use the shared additive API. This change does not claim those older workflows are fully asynchronous, atomic or deduplicated like the new sale path.</p>
 <p>The merchant overview offers sale of the held item type, restricted to that NPC's job. Two activations confirm the sale, like <code>/job sell all</code>; they share the same sale coordinator and confirmation state. The original shop and upgrade tabs remain available.</p>
 <h2 id="sale-consistency-and-recovery">Sale consistency and recovery<a class="headerlink" href="#sale-consistency-and-recovery" title="Permanent link">&para;</a></h2>
-<p>Core's <code>JobSaleService</code> owns money, job XP and sold-item totals in one transaction, serialized per player and deduplicated by operation UUID. Normal balance setters/deposits/withdrawals use the same player row lock; transfers lock both players in UUID order and reject overflow. Unrelated Player updates use dynamic SQL updates so they do not write stale balances. Jobs uses additive <code>adjustXp</code> and an explicit <code>unlock</code> operation for existing entry/upgrade/reward paths; <code>player_jobs.version</code> provides an additional optimistic guard for legacy detached job writes. Hibernate's existing schema-update mechanism adds this column with default zero for existing rows. The Jobs coordinator reserves exact planned slots/stacks on the world thread, preserving metadata/durability in compensation. <code>prepare</code> returns <code>true</code> only for a newly created operation; an existing operation returns <code>false</code> and must never trigger another inventory removal. Preparation stores a BSON inventory plan before removal. Changed slots cancel the sale before removal. Arithmetic overflow rolls back all DB effects.</p>
+<p>Core's <code>JobSaleService</code> owns money, job XP and sold-item totals in one transaction, serialized per player and deduplicated by operation UUID. Normal balance setters/deposits/withdrawals use the same player row lock; transfers lock both players in UUID order and reject overflow. Unrelated Player updates use dynamic SQL updates so they do not write stale balances. Jobs uses additive <code>adjustXp</code> and an explicit <code>unlock</code> operation for existing entry/upgrade/reward paths; <code>player_jobs.version</code> provides an additional optimistic guard for legacy detached job writes. Liquibase owns the schema; Hibernate validates it after migration. player_jobs.version has default zero. The Jobs coordinator reserves exact planned slots/stacks on the world thread, preserving metadata/durability in compensation. <code>prepare</code> returns <code>true</code> only for a newly created operation; an existing operation returns <code>false</code> and must never trigger another inventory removal. Preparation stores a BSON inventory plan before removal. Changed slots cancel the sale before removal. Arithmetic overflow rolls back all DB effects.</p>
 <p>Inventory/world saving and MariaDB cannot share a transaction. A crash between reservation and commit therefore requires reconciliation rather than an automatic payout/refund:</p>
 <ul>
 <li><code>PREPARED</code>: removal may or may not have happened. Check the recorded <code>inventoryEvidence</code>, actual inventory and logs before taking action.</li>

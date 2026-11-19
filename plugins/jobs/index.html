@@ -1333,6 +1333,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../development/wands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eigene Zauberstäbe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../development/ui/" class="md-nav__link">
         
   
@@ -1484,6 +1512,34 @@
     
   
     Updates und Wiederherstellung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/database-migrations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbankmigrationen
   
 
     
@@ -1796,8 +1852,8 @@
 <p><code>/job sell &lt;amount|all&gt;</code> verkauft den gehaltenen Itemtyp nach zweiter Bestätigung innerhalb von 30 Sekunden. Der NPC-Button nutzt denselben Pfad, verkauft den vorhandenen Bestand dieses Typs und beschränkt ihn auf den Beruf des Händlers. Unbekannte Items haben beim allgemeinen Befehl einen Fallbackpreis und geben keine Job-XP; ein spezialisierter Händler akzeptiert sie nicht als Berufsware.</p>
 <p>Core verbucht Geld, passende Job-XP und Verkaufszähler zusammen. Unklare Inventar-/DB-Abbrüche bleiben als prüfpflichtiger Vorgang gespeichert. <a href="../../reference/npc-contracts/">Verkaufsvertrag</a>.</p>
 <h2 id="speicherung-und-grenzen">Speicherung und Grenzen<a class="headerlink" href="#speicherung-und-grenzen" title="Permanent link">&para;</a></h2>
-<p>Jobs, Fortschritt, Itemtotale, Meilensteindefinitionen und Claims liegen im Core. Meilensteine werden ausschließlich aus der DB gelesen; es gibt keinen YAML-/JSON-Fallback. Eine leere DB-Liste bleibt leer. Änderungen über die Jobs-Verwaltung werden vom transaktionalen Core-Service gespeichert. Shopangebote (<code>job-shop-offers.json</code>) und Rezepte (<code>job-upgrades.json</code>) sind weiterhin lokale Konfiguration. Die Job-XP-Kurve ist unabhängig vom allgemeinen Spielerlevel. Ältere Shop-/Upgrade-/Meilensteinabläufe sind noch nicht insgesamt so transaktional und asynchron wie der neue Verkaufspfad.</p>
-<p>Die frühere <code>JobsPlugin/jobConfig.json</code> und Item-Seed-Loader sind nicht mehr Teil der aktiven Konfiguration. <code>CorePlugin/jobConfig.yml</code> enthält nur globale Balancingwerte (<code>baseXp</code>, <code>xpScale</code>, <code>maxLevel</code>, Preis- und XP-Multiplikatoren). Alte <code>jobMilestones</code>-Abschnitte werden aus Kompatibilitätsgründen ignoriert und nicht als Testdefinitionen in die DB importiert. Aktive Shopangebote und Upgrade-Rezepte bleiben bis zu ihrer gesonderten DB-Migration dateibasiert.</p>
+<p>Jobs, Fortschritt, Itemtotale, Meilensteindefinitionen und Claims liegen im Core. Meilensteine werden ausschließlich aus der DB gelesen; es gibt keinen YAML-/JSON-Fallback. Eine leere DB-Liste bleibt leer. Änderungen über die Jobs-Verwaltung werden vom transaktionalen Core-Service gespeichert. Shopangebote und Upgrade-Rezepte werden ebenfalls über Core in <code>job_catalog_entries</code> und <code>job_catalog_requirements</code> gespeichert. Die bisherigen JSON-Dateien werden einmalig importiert und nach erfolgreichem Commit unter <code>.imported-catalog/</code> archiviert. Danach die Admin-UIs oder Core-API verwenden; JSON wird nicht neu erzeugt. Die Anzeige liest einen Cache, der alle fünf Sekunden aktualisiert wird; Admin-Schreibvorgänge laufen asynchron. Die Job-XP-Kurve ist unabhängig vom allgemeinen Spielerlevel. Ältere Shop-/Upgrade-/Meilensteinabläufe sind noch nicht insgesamt so transaktional und asynchron wie der neue Verkaufspfad.</p>
+<p>Die frühere <code>JobsPlugin/jobConfig.json</code> und Item-Seed-Loader sind nicht mehr Teil der aktiven Konfiguration. <code>CorePlugin/jobConfig.yml</code> enthält nur globale Balancingwerte (<code>baseXp</code>, <code>xpScale</code>, <code>maxLevel</code>, Preis- und XP-Multiplikatoren). Alte <code>jobMilestones</code>-Abschnitte werden aus Kompatibilitätsgründen ignoriert und nicht als Testdefinitionen in die DB importiert. Die <a href="../../operations/database-migrations/">Liquibase-Migration</a> legt vier Farmer-Upgrade-Startrezepte mit HC_-Assets einmalig an. Vorhandene JSON-Rezepte ersetzen unmodifizierte Startrezepte; bestehende Admin-Daten bleiben erhalten. Fehlende Shopangebote verwenden weiterhin den bisherigen Tools-Fallback aus aktivierten DB-Items.</p>
 <h2 id="job-info-und-meilensteine">Job-Info und Meilensteine<a class="headerlink" href="#job-info-und-meilensteine" title="Permanent link">&para;</a></h2>
 <p><code>/job info</code> öffnet die Job- und Meilensteinübersicht. Übersetzte Itemnamen und zusammengesetzte Belohnungstexte werden als Hytale-TextSpans übertragen. Der frühere Clientabbruch bei <code>#Reward0.Text</code> ist damit im UI-Befehl korrigiert; die Darstellung weiterhin im Client prüfen.</p>
 <h2 id="handler-shoplayout">Händler-Shoplayout<a class="headerlink" href="#handler-shoplayout" title="Permanent link">&para;</a></h2>
