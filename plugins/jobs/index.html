@@ -840,10 +840,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verkauf" class="md-nav__link">
+  <a href="#berufsfortschritt-und-auftrage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verkauf
+        Berufsfortschritt und Aufträge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handel
       
     </span>
   </a>
@@ -858,6 +869,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Speicherung und Grenzen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#berufsangebote-und-handlerbestand-pflegen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Berufsangebote und Händlerbestand pflegen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1769,10 +1797,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verkauf" class="md-nav__link">
+  <a href="#berufsfortschritt-und-auftrage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verkauf
+        Berufsfortschritt und Aufträge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handel
       
     </span>
   </a>
@@ -1787,6 +1826,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Speicherung und Grenzen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#berufsangebote-und-handlerbestand-pflegen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Berufsangebote und Händlerbestand pflegen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1848,14 +1904,60 @@
 <h2 id="berufe-und-bedienung">Berufe und Bedienung<a class="headerlink" href="#berufe-und-bedienung" title="Permanent link">&para;</a></h2>
 <p>Die bestehenden Schlüssel sind <code>Farmer</code>, <code>Holzfäller</code>, <code>Jäger</code> und <code>Miner</code>. <code>/job enter &lt;jobKey&gt;</code> aktiviert einen Beruf. <code>/job &lt;jobKey&gt;</code> öffnet die Job-Seite für einen freigeschalteten Beruf. <code>/job info</code> und die Admin-Werkzeuge sind in der <a href="../../getting-started/commands/">Befehlsübersicht</a> eingeordnet.</p>
 <p>Ein NPC wird über <code>/hcnpc set [identifier] merchant &lt;type&gt; [name]</code> zum Händler. Die <a href="../npcs/">Custom-NPC-Anleitung</a> erklärt Zielauswahl, Anzeigenamen und Reset. Die Typen heißen <code>farmer</code>, <code>lumberjack</code>, <code>hunter</code> und <code>miner</code>; intern werden sie den vorhandenen Berufsschlüsseln zugeordnet. <code>/job admin npcset &lt;jobKey&gt;</code> bindet den nächsten echten NPC innerhalb von 60 Sekunden; benötigt <code>hcnpcs.admin</code>. Der NPC-Klick lädt die Anzeige im Hintergrund und prüft die Bindung erneut vor dem Öffnen.</p>
-<h2 id="verkauf">Verkauf<a class="headerlink" href="#verkauf" title="Permanent link">&para;</a></h2>
-<p><code>/job sell &lt;amount|all&gt;</code> verkauft den gehaltenen Itemtyp nach zweiter Bestätigung innerhalb von 30 Sekunden. Der NPC-Button nutzt denselben Pfad, verkauft den vorhandenen Bestand dieses Typs und beschränkt ihn auf den Beruf des Händlers. Unbekannte Items haben beim allgemeinen Befehl einen Fallbackpreis und geben keine Job-XP; ein spezialisierter Händler akzeptiert sie nicht als Berufsware.</p>
-<p>Core verbucht Geld, passende Job-XP und Verkaufszähler zusammen. Unklare Inventar-/DB-Abbrüche bleiben als prüfpflichtiger Vorgang gespeichert. <a href="../../reference/npc-contracts/">Verkaufsvertrag</a>.</p>
+<h2 id="berufsfortschritt-und-auftrage">Berufsfortschritt und Aufträge<a class="headerlink" href="#berufsfortschritt-und-auftrage" title="Permanent link">&para;</a></h2>
+<p>Im NPC-Menü gibt es <strong>Verkaufen</strong>, <strong>Kaufen</strong>, <strong>Aufträge</strong>, <strong>Beruf</strong> und <strong>Meilensteine</strong>. Unter <strong>Beruf</strong> nimmt der Spieler den Beruf an oder wechselt kostenlos. Es ist jeweils ein Beruf aktiv. Alle erlernten Berufe behalten ihre XP und ihre Stufe.</p>
+<ul>
+<li>Holzfäller und Miner erhalten XP für natürliche Baumstämme und Erze in der Farmwelt. Spielerplatzierte Ressourcenblöcke werden von der XP-Vergabe ausgeschlossen.</li>
+<li>Farmer erhalten XP für reife Feldfrüchte. Jäger erhalten XP für ausgewählte Wildtiere in der Farmwelt.</li>
+<li>Tätigkeiten und abgegebene Aufträge bringen Berufs-XP. Der Verkauf zahlt den Grundpreis aus.</li>
+<li>Pro Beruf werden bis zu drei Angebote pro Tag und Spieler gespeichert. Der Wechsel erfolgt um Mitternacht in der Zeitzone Europe/Berlin. Zwei Aufträge pro Beruf können gleichzeitig offen sein. Offene Aufträge bleiben beim Berufswechsel und am nächsten Tag erhalten.</li>
+<li>Die Startdaten enthalten acht Auftragsvorlagen je Beruf. Ziele können Gegenstände zur Abgabe und Berufsaktionen ab Annahme kombinieren. Spezialaufträge beginnen ab Level 10, Meisteraufträge ab Level 25. Auf den Berufsleveln 5, 10, 25, 50, 100, 150, 200, 500 und 1000 können Spieler je Beruf eine einmalige Belohnung abholen.</li>
+</ul>
+<h2 id="handel">Handel<a class="headerlink" href="#handel" title="Permanent link">&para;</a></h2>
+<p>Jeder Spieler kann Händlerwaren zum hinterlegten Stückpreis verkaufen. Das Menü zeigt die Waren aus dem eigenen Inventar, die ausgewählte Menge und den Gesamterlös. Im Kaufmenü zeigt es den gemeinsamen Bestand des Händlerprofils und den Gesamtpreis vor der Bestätigung. Der Bestand füllt sich täglich bis zur Obergrenze auf.</p>
+<p>Der allgemeine Befehl <code>/job sell &lt;amount|all&gt;</code> verkauft den gehaltenen Itemtyp nach zweiter Bestätigung innerhalb von 30 Sekunden. Der NPC nutzt denselben transaktionalen Verkaufspfad und akzeptiert die hinterlegten Waren seines Berufs. Unklare Inventar- und DB-Abbrüche beim Verkauf bleiben prüfpflichtig. <a href="../../reference/npc-contracts/">Verkaufsvertrag</a>.</p>
 <h2 id="speicherung-und-grenzen">Speicherung und Grenzen<a class="headerlink" href="#speicherung-und-grenzen" title="Permanent link">&para;</a></h2>
 <p>Jobs, Fortschritt, Itemtotale, Meilensteindefinitionen und Claims liegen im Core. Meilensteine werden ausschließlich aus der DB gelesen; es gibt keinen YAML-/JSON-Fallback. Eine leere DB-Liste bleibt leer. Änderungen über die Jobs-Verwaltung werden vom transaktionalen Core-Service gespeichert. Shopangebote und Upgrade-Rezepte werden ebenfalls über Core in <code>job_catalog_entries</code> und <code>job_catalog_requirements</code> gespeichert. Die bisherigen JSON-Dateien werden einmalig importiert und nach erfolgreichem Commit unter <code>.imported-catalog/</code> archiviert. Danach die Admin-UIs oder Core-API verwenden; JSON wird nicht neu erzeugt. Die Anzeige liest einen Cache, der alle fünf Sekunden aktualisiert wird; Admin-Schreibvorgänge laufen asynchron. Die Job-XP-Kurve ist unabhängig vom allgemeinen Spielerlevel. Ältere Shop-/Upgrade-/Meilensteinabläufe sind noch nicht insgesamt so transaktional und asynchron wie der neue Verkaufspfad.</p>
-<p>Die frühere <code>JobsPlugin/jobConfig.json</code> und Item-Seed-Loader sind nicht mehr Teil der aktiven Konfiguration. <code>CorePlugin/jobConfig.yml</code> enthält nur globale Balancingwerte (<code>baseXp</code>, <code>xpScale</code>, <code>maxLevel</code>, Preis- und XP-Multiplikatoren). Alte <code>jobMilestones</code>-Abschnitte werden aus Kompatibilitätsgründen ignoriert und nicht als Testdefinitionen in die DB importiert. Die <a href="../../operations/database-migrations/">Liquibase-Migration</a> legt vier Farmer-Upgrade-Startrezepte mit HC_-Assets einmalig an. Vorhandene JSON-Rezepte ersetzen unmodifizierte Startrezepte; bestehende Admin-Daten bleiben erhalten. Fehlende Shopangebote verwenden weiterhin den bisherigen Tools-Fallback aus aktivierten DB-Items.</p>
+<p>Die frühere <code>JobsPlugin/jobConfig.json</code> und Item-Seed-Loader sind nicht mehr Teil der aktiven Konfiguration. <code>CorePlugin/jobConfig.yml</code> enthält nur globale Balancingwerte (<code>baseXp</code>, <code>xpScale</code>, <code>maxLevel</code>, Preis- und XP-Multiplikatoren). Alte <code>jobMilestones</code>-Abschnitte werden aus Kompatibilitätsgründen ignoriert und nicht als Testdefinitionen in die DB importiert. Die <a href="../../operations/database-migrations/">Liquibase-Migration</a> legt vier Farmer-Upgrade-Startrezepte mit HC_-Assets einmalig an. Vorhandene JSON-Rezepte ersetzen unmodifizierte Startrezepte; bestehende Admin-Daten bleiben erhalten.</p>
+<h3 id="berufsangebote-und-handlerbestand-pflegen">Berufsangebote und Händlerbestand pflegen<a class="headerlink" href="#berufsangebote-und-handlerbestand-pflegen" title="Permanent link">&para;</a></h3>
+<p>Die Startdaten kommen aus der Core-Liquibase-Migration. Neue Inhalte und Balancingänderungen werden in MariaDB gepflegt. Bei Rollouts mit versionierten SQL-Änderungen eine neue Migration verwenden.</p>
+<table>
+<thead>
+<tr>
+<th>Tabellen</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>Aktivierte Waren und Grundpreise beim Verkauf an den Händler</td>
+</tr>
+<tr>
+<td>job_merchant_stock</td>
+<td>Verkaufssortiment des Händlers, Stückpreis, Vorrat, Obergrenze und tägliche Nachfüllmenge</td>
+</tr>
+<tr>
+<td>job_activity_rules</td>
+<td>Berufs-XP pro Block, Feldfrucht oder Wildtierrolle</td>
+</tr>
+<tr>
+<td>job_quest_templates, job_quest_goals</td>
+<td>Titel, Mindestlevel, Geld und XP sowie Ziele mit Typ, Asset-ID und Menge</td>
+</tr>
+<tr>
+<td>job_level_milestones</td>
+<td>Stufe und einmaliger Geldbetrag je Beruf</td>
+</tr>
+<tr>
+<td>job_level_milestone_items</td>
+<td>Zusätzliche Belohnungsitems pro Beruf und Stufe mit Item-ID und Menge</td>
+</tr>
+</tbody>
+</table>
+<p>DELIVER zieht Items bei der Abgabe ein. BREAK, HARVEST und HUNT zählen gültige Aktionen nach Annahme. Als Ziel-ID kann bei Aktionszielen ein Stern für alle zulässigen Aktionen des Berufs verwendet werden. Beim Annehmen werden die Ziele und die Belohnung des Auftrags kopiert. Änderungen an Vorlagen wirken sich auf kommende Annahmen aus.</p>
 <h2 id="job-info-und-meilensteine">Job-Info und Meilensteine<a class="headerlink" href="#job-info-und-meilensteine" title="Permanent link">&para;</a></h2>
-<p><code>/job info</code> öffnet die Job- und Meilensteinübersicht. Übersetzte Itemnamen und zusammengesetzte Belohnungstexte werden als Hytale-TextSpans übertragen. Der frühere Clientabbruch bei <code>#Reward0.Text</code> ist damit im UI-Befehl korrigiert; die Darstellung weiterhin im Client prüfen.</p>
+<p><code>/job info</code> öffnet die bisherige Job- und Meilensteinübersicht. Der Händler-Tab <strong>Meilensteine</strong> bietet <strong>Level-Meilensteine</strong> und <strong>Sammelmeilensteine</strong>. Sammelfortschritt zählt beim aktiven Beruf. Holzfäller zählen natürliche Stämme, Miner natürliche Erze, Farmer reife Ernten und Jäger passende Wildtiere sowie die Herstellung von leichtem Leder. Die Tabelle job_collection_rules ordnet Aktionen ihren Meilenstein-Items zu. Aufheben, Fallenlassen und Verkaufen erhöhen den Zähler nicht. Bestehender Fortschritt bleibt erhalten. Level-Belohnungen werden einzeln abgeholt. Bereits ausgezahlte Belohnungen werden als abgeholt angezeigt. Für Itembelohnungen muss das Inventar ausreichend Platz haben. Übersetzte Itemnamen und zusammengesetzte Belohnungstexte werden als Hytale-TextSpans übertragen. Der frühere Clientabbruch bei <code>#Reward0.Text</code> ist damit im UI-Befehl korrigiert; die Darstellung weiterhin im Client prüfen.</p>
 <h2 id="handler-shoplayout">Händler-Shoplayout<a class="headerlink" href="#handler-shoplayout" title="Permanent link">&para;</a></h2>
 <p>Die Shopkategorien Tools, Seeds und Essence verwenden gemeinsame Zeilen mit getrennten Bereichen für Itemname, Preis und Kaufen-Button. Größere Tab-Zeilen berücksichtigen die native Buttonhöhe; Abstände trennen Kategorien, Liste und Kaufaktionen. Beide mitgelieferten UI-Ressourcenkopien sind synchron. Übersetzte Shopnamen werden über <code>TextSpans</code> übertragen. Die visuelle Darstellung muss im Hytale-Client geprüft werden.</p>
 <h2 id="verkaufen-mit-leerer-hand">Verkaufen mit leerer Hand<a class="headerlink" href="#verkaufen-mit-leerer-hand" title="Permanent link">&para;</a></h2>
