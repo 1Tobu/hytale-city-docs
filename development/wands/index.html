@@ -1357,6 +1357,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#natives-iconformat-und-ressourcen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Natives Iconformat und Ressourcen
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1852,6 +1863,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#natives-iconformat-und-ressourcen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Natives Iconformat und Ressourcen
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2034,10 +2056,12 @@
 <li><code>Weapons/Wand/</code> für Zauberstabicons.</li>
 <li><code>Resources/Ores/</code> für Erzicons.</li>
 </ul>
-<p>Modelle und ihre Texturatlanten bleiben in <code>Common/Items/Tools/&lt;Typ&gt;/</code>, <code>Common/Items/Weapons/Wand/HytaleCity/</code> und den nativen <code>Common/Resources/</code>-Kategorien. <code>Pickaxe</code> wird überall mit derselben Großschreibung verwendet. Die Itemdefinitionen unter <code>Server/Item/Items</code> referenzieren die Pfade relativ zu <code>Common</code>; der Generator erzeugt die Zauberstabicons direkt in der neuen Struktur. Die Validierung prüft Pfadschreibweisen auch unter Windows exakt und kontrolliert, dass das ZIP keine veralteten Ressourcen enthält.</p>
+<p>Modelle und ihre Texturatlanten bleiben in <code>Common/Items/Tools/&lt;Typ&gt;/</code>, <code>Common/Items/Weapons/Wand/HytaleCity/</code> und den eigenen <code>Common/Items/Resources/</code>-Kategorien. <code>Pickaxe</code> wird überall mit derselben Großschreibung verwendet. Die Itemdefinitionen unter <code>Server/Item/Items</code> referenzieren die Pfade relativ zu <code>Common</code>; der Generator erzeugt die Zauberstabicons direkt in der neuen Struktur. Die Validierung prüft Pfadschreibweisen auch unter Windows exakt und kontrolliert, dass das ZIP keine veralteten Ressourcen enthält.</p>
 <p>Diese Ordneränderung behält alle <code>HC_</code>-Item-IDs bei und benötigt keine zusätzliche DB-Migration. Beim Installieren das alte Pack ersetzen, statt neue Dateien darüberzukopieren. Nach der Umstrukturierung sind statische Referenz- und ZIP-Prüfungen erfolgreich; ein neuer nativer Server-/Clienttest steht noch aus.</p>
 <h3 id="hotbar-icon-und-schaftverbindung">Hotbar-Icon und Schaftverbindung<a class="headerlink" href="#hotbar-icon-und-schaftverbindung" title="Permanent link">&para;</a></h3>
-<p>Die Zauberstäbe verwenden eigene <code>_Icon.png</code>-Dateien ohne <code>IconProperties</code>-Transformation. Innenliegende Verbindungsstücke schließen die Lücke am Endstück und verbinden den Schaft mit dem Kopf. Die eigenen Formen und Item-IDs bleiben erhalten. Statische Prüfungen bestätigen durchgängige Schaftgeometrie und gültige Iconpfade; die Darstellung muss noch im Client bestätigt werden.</p>
+<p>Die Zauberstäbe verwenden eigene <code>_Icon64.png</code>-Dateien ohne <code>IconProperties</code>-Transformation. Innenliegende Verbindungsstücke schließen die Lücke am Endstück und verbinden den Schaft mit dem Kopf. Die eigenen Formen und Item-IDs bleiben erhalten. Statische Prüfungen bestätigen durchgängige Schaftgeometrie und gültige Iconpfade; die Darstellung muss noch im Client bestätigt werden.</p>
+<h3 id="natives-iconformat-und-ressourcen">Natives Iconformat und Ressourcen<a class="headerlink" href="#natives-iconformat-und-ressourcen" title="Permanent link">&para;</a></h3>
+<p>Alle eigenen Itemicons verwenden 64 × 64 Pixel als RGBA-PNG, entsprechend den 4.537 nativen generierten Itemicons im geprüften Hytale-Assetbestand. Die vorherigen Zauberstabicons hatten 128 × 128 Pixel. Generator und Validator erzwingen jetzt die native Größe; neue <code>_Icon64.png</code>-Pfade vermeiden die Wiederverwendung der alten Dateien. Eigene Material-/Erztexturen liegen unter <code>Common/Items/Resources/Materials/Ingot_Textures</code> beziehungsweise <code>Common/Items/Resources/Ores/Ores_Texture</code>. Referenzen auf native Modelle unter <code>Resources/...</code> bleiben erhalten. Die Ingame-Darstellung muss nach Pack-Austausch und Neustart bestätigt werden.</p>
 
 
 
