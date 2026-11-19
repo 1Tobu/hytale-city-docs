@@ -1756,9 +1756,9 @@
 
 
 <h1 id="playerhudplugin">PlayerHudPlugin<a class="headerlink" href="#playerhudplugin" title="Permanent link">&para;</a></h1>
-<p>PlayerHud zeigt gemeinsame Spielerdaten als Hytale-Custom-HUD. <code>/hud</code> schaltet die Anzeige um. Das UI-Dokument liegt unter <code>Hud/PlayerHud.ui</code>.</p>
+<p>PlayerHud zeigt gemeinsame Spielerdaten als Hytale-Custom-HUD. Das HUD ist nach jedem Beitritt ab <code>PlayerReadyEvent</code> automatisch eingeschaltet. <code>/hud</code> schaltet die Anzeige für die laufende Verbindung um; beim nächsten Beitritt ist sie wieder eingeschaltet. Wiederholte Ready-Events derselben Verbindung überschreiben die manuelle Auswahl nicht. Beim Disconnect werden HUD- und Sitzungsreferenzen entfernt. Das UI-Dokument liegt unter <code>Hud/PlayerHud.ui</code>.</p>
 <h2 id="aktueller-inhalt">Aktueller Inhalt<a class="headerlink" href="#aktueller-inhalt" title="Permanent link">&para;</a></h2>
-<p>Der Dienst liest Geld über <code>PlayerService</code> sowie freigeschaltete Berufe und deren Level über <code>JobService</code>. Er aktualisiert im Sekundentakt. Die allgemeine Levelzeile ist derzeit der Text <code>Jobs</code>; sie ist noch keine Anbindung an den allgemeinen Level-Fortschritt.</p>
+<p>Der Dienst liest Geld über <code>PlayerService</code> sowie freigeschaltete Berufe und deren Level über <code>JobService</code>. Er aktualisiert im Sekundentakt. Das Einblenden beim Beitritt führt keine synchronen DB-Abfragen auf dem Welt-Thread aus; die Werte folgen mit der nächsten Aktualisierung. Die allgemeine Levelzeile ist derzeit der Text <code>Jobs</code>; sie ist noch keine Anbindung an den allgemeinen Level-Fortschritt.</p>
 <h2 id="entwicklung">Entwicklung<a class="headerlink" href="#entwicklung" title="Permanent link">&para;</a></h2>
 <p><code>GeneralPlayerHud</code> verwendet einen HUD-Schlüssel zum Hinzufügen und Entfernen. Die bestehenden Setter senden einzelne Aktualisierungen; eine gemeinsame ereignisgetriebene Snapshot-/Diff-Verwaltung ist ein sinnvoller weiterer Ausbau, aber noch nicht umgesetzt.</p>
 <p>Bei neuen Minigame-HUDs die Lebensdauer beachten: Anzeigen beim Disconnect, Weltwechsel, Rundenende und Plugin-Shutdown entfernen. Fachwerte gehören nicht in UI-Labels als führenden Speicher. <a href="../../development/ui/">UI- und HUD-Verträge</a>.</p>
