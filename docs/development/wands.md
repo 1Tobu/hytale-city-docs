@@ -85,10 +85,14 @@ Hytale trennt Inventaricons von Modelltexturen. Der native Ordner `Icons/ItemsGe
 - `Weapons/Wand/` für Zauberstabicons.
 - `Resources/Ores/` für Erzicons.
 
-Modelle und ihre Texturatlanten bleiben in `Common/Items/Tools/<Typ>/`, `Common/Items/Weapons/Wand/HytaleCity/` und den nativen `Common/Resources/`-Kategorien. `Pickaxe` wird überall mit derselben Großschreibung verwendet. Die Itemdefinitionen unter `Server/Item/Items` referenzieren die Pfade relativ zu `Common`; der Generator erzeugt die Zauberstabicons direkt in der neuen Struktur. Die Validierung prüft Pfadschreibweisen auch unter Windows exakt und kontrolliert, dass das ZIP keine veralteten Ressourcen enthält.
+Modelle und ihre Texturatlanten bleiben in `Common/Items/Tools/<Typ>/`, `Common/Items/Weapons/Wand/HytaleCity/` und den eigenen `Common/Items/Resources/`-Kategorien. `Pickaxe` wird überall mit derselben Großschreibung verwendet. Die Itemdefinitionen unter `Server/Item/Items` referenzieren die Pfade relativ zu `Common`; der Generator erzeugt die Zauberstabicons direkt in der neuen Struktur. Die Validierung prüft Pfadschreibweisen auch unter Windows exakt und kontrolliert, dass das ZIP keine veralteten Ressourcen enthält.
 
 Diese Ordneränderung behält alle `HC_`-Item-IDs bei und benötigt keine zusätzliche DB-Migration. Beim Installieren das alte Pack ersetzen, statt neue Dateien darüberzukopieren. Nach der Umstrukturierung sind statische Referenz- und ZIP-Prüfungen erfolgreich; ein neuer nativer Server-/Clienttest steht noch aus.
 
 ### Hotbar-Icon und Schaftverbindung
 
-Die Zauberstäbe verwenden eigene `_Icon.png`-Dateien ohne `IconProperties`-Transformation. Innenliegende Verbindungsstücke schließen die Lücke am Endstück und verbinden den Schaft mit dem Kopf. Die eigenen Formen und Item-IDs bleiben erhalten. Statische Prüfungen bestätigen durchgängige Schaftgeometrie und gültige Iconpfade; die Darstellung muss noch im Client bestätigt werden.
+Die Zauberstäbe verwenden eigene `_Icon64.png`-Dateien ohne `IconProperties`-Transformation. Innenliegende Verbindungsstücke schließen die Lücke am Endstück und verbinden den Schaft mit dem Kopf. Die eigenen Formen und Item-IDs bleiben erhalten. Statische Prüfungen bestätigen durchgängige Schaftgeometrie und gültige Iconpfade; die Darstellung muss noch im Client bestätigt werden.
+
+### Natives Iconformat und Ressourcen
+
+Alle eigenen Itemicons verwenden 64 × 64 Pixel als RGBA-PNG, entsprechend den 4.537 nativen generierten Itemicons im geprüften Hytale-Assetbestand. Die vorherigen Zauberstabicons hatten 128 × 128 Pixel. Generator und Validator erzwingen jetzt die native Größe; neue `_Icon64.png`-Pfade vermeiden die Wiederverwendung der alten Dateien. Eigene Material-/Erztexturen liegen unter `Common/Items/Resources/Materials/Ingot_Textures` beziehungsweise `Common/Items/Resources/Ores/Ores_Texture`. Referenzen auf native Modelle unter `Resources/...` bleiben erhalten. Die Ingame-Darstellung muss nach Pack-Austausch und Neustart bestätigt werden.
