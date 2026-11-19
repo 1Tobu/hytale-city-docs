@@ -12,18 +12,18 @@ Core zählt keine zusätzlichen Joins neben PlayerStats. PlayerStats führt auch
 
 ## Job-NPC verwenden
 
-`Use-Paket -> ein HcNpcs-Watcher -> Weltwarteschlange -> echte NPC-Komponente + Sitzung + Reichweite prüfen -> gespeicherte Aktion -> Jobs-Handler -> Hintergrundabfrage -> Sitzung/NPC erneut prüfen -> JobNpcUI öffnen`
+`Use-Paket -> ein HcNpcs-Watcher -> Weltwarteschlange -> echte NPC-Komponente + Sitzung + Reichweite prüfen -> gespeicherte Aktion -> Jobs-Handler -> Hintergrundabfrage -> Sitzung/NPC erneut prüfen -> ProfessionUI öffnen`
 
 Eine verfügbare Aktion öffnet direkt. Mehrere registrierte Aktionen zeigen ein Auswahlmenü. Nicht verfügbare Anbieter werden nicht ausgeführt. Eine UI-Auswahl ist eine Eingabe und ersetzt keine erneute Berechtigungsprüfung.
 
 ## Holz verkaufen
 
 1. Der Händler muss `job:merchant` mit dem Typ `typ:lumberjack` (Beruf `Holzfäller`) besitzen; das Item muss diesem Beruf zugeordnet sein.
-2. Jobs ermittelt Menge, Preis und XP, fordert eine zweite Bestätigung und erstellt einen exakten Inventarplan.
+2. Der Spieler bestätigt die gewählte Menge und den angezeigten Erlös. Jobs erstellt einen exakten Inventarplan.
 3. Core speichert einen neuen Verkaufsvorgang vor der Entnahme. Eine bereits bekannte ID erlaubt keine zweite Entnahme.
 4. Auf dem World-Thread wird geprüft, ob die geplanten Slots und Metadaten noch passen. Dann werden die Items reserviert.
-5. Core schreibt Geld, Job-XP und Verkaufszähler gemeinsam und idempotent.
-6. Nach Bestätigung aktualisiert Jobs die Anzeige und gegebenenfalls Meilensteinbenachrichtigungen.
+5. Core schreibt die Geldgutschrift idempotent.
+6. Nach Bestätigung aktualisiert Jobs die Anzeige des Händlers.
 
 Die Core-Vorgänge und Grenzen stehen im [NPC-/Verkaufsvertrag](../reference/npc-contracts.md). Jobs-Meilensteinclaims sind nicht dieselben Claims wie allgemeine Levelbelohnungen.
 

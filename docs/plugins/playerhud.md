@@ -1,13 +1,13 @@
 # PlayerHudPlugin
 
-PlayerHud zeigt gemeinsame Spielerdaten als Hytale-Custom-HUD. Das HUD ist nach jedem Beitritt ab `PlayerReadyEvent` automatisch eingeschaltet. `/hud` schaltet die Anzeige für die laufende Verbindung um; beim nächsten Beitritt ist sie wieder eingeschaltet. Wiederholte Ready-Events derselben Verbindung überschreiben die manuelle Auswahl nicht. Beim Disconnect werden HUD- und Sitzungsreferenzen entfernt. Das UI-Dokument liegt unter `Hud/PlayerHud.ui`.
+Das mittig ausgerichtete HUD rechts oben zeigt Spielernamen, Geld, das allgemeine **Spielerlevel** und den **aktiven Beruf** mit Berufslevel, XP innerhalb der Stufe und Fortschrittsbalken. Ohne aktiven Beruf blendet es den Berufsbereich aus.
 
-## Aktueller Inhalt
+## Bedienung
 
-Der Dienst liest Geld über `PlayerService` sowie freigeschaltete Berufe und deren Level über `JobService`. Er aktualisiert im Sekundentakt. Das Einblenden beim Beitritt führt keine synchronen DB-Abfragen auf dem Welt-Thread aus; die Werte folgen mit der nächsten Aktualisierung. Die allgemeine Levelzeile ist derzeit der Text `Jobs`; sie ist noch keine Anbindung an den allgemeinen Level-Fortschritt.
+PlayerHud schaltet sich ab PlayerReadyEvent einmal je Verbindung ein. `/hud` blendet es für die laufende Verbindung ein oder aus. Wiederholte Ready-Events überschreiben die Auswahl nicht. Beim nächsten Beitritt ist das HUD wieder sichtbar.
 
-## Entwicklung
+## Daten und UI
 
-`GeneralPlayerHud` verwendet einen HUD-Schlüssel zum Hinzufügen und Entfernen. Die bestehenden Setter senden einzelne Aktualisierungen; eine gemeinsame ereignisgetriebene Snapshot-/Diff-Verwaltung ist ein sinnvoller weiterer Ausbau, aber noch nicht umgesetzt.
+HudService liest Kontostand, Spielerlevel und aktiven Beruf etwa einmal pro Sekunde über PlayerService, PlayerLevelService und ProfessionService.activeProfession. Die DB-Abfragen laufen auf dem HUD-Worker. GeneralPlayerHud sendet UI-Updates bei geänderten Snapshots. Das UI liegt unter Hud/PlayerHud.ui. Beim Disconnect werden HUD- und Sitzungsreferenzen entfernt.
 
-Bei neuen Minigame-HUDs die Lebensdauer beachten: Anzeigen beim Disconnect, Weltwechsel, Rundenende und Plugin-Shutdown entfernen. Fachwerte gehören nicht in UI-Labels als führenden Speicher. [UI- und HUD-Verträge](../development/ui.md).
+[UI- und HUD-Verträge](../development/ui.md)

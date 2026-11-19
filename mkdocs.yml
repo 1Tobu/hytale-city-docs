@@ -70,6 +70,7 @@ nav:
   - Entwicklung:
       - Core-APIs nutzen: development/core-api.md
       - NPC-Aktionen erweitern: development/npc-actions.md
+      - Neuen Beruf hinzufügen: development/new-profession.md
       - Eigene Zauberstäbe: development/wands.md
       - Hytale UIs und HUDs: development/ui.md
       - Bauen und Prüfen: development/build-and-test.md
@@ -77,8 +78,10 @@ nav:
   - Betrieb:
       - Updates und Wiederherstellung: operations/updates.md
       - Datenbankmigrationen: operations/database-migrations.md
+      - Berufsaufträge und Belohnungen: operations/profession-content.md
       - Fehler und Logs: operations/troubleshooting.md
   - Referenz:
       - Level-API im Detail: reference/level-api.md
       - NPC- und Verkaufsverträge: reference/npc-contracts.md
+      - Custom Assets: reference/custom-assets.md
       - Plugin-Inventar und Quellstände: reference/inventory.md

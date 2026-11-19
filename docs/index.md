@@ -24,3 +24,9 @@ Minigames wie Fangen und Verstecken sowie ein vollständiges Quest-System sind [
 ## Öffentliche Inhalte
 
 Diese Website ist öffentlich. Die Plugin-Quellrepositories bleiben privat; Quellcode-Links können deshalb einen GitHub-Login mit entsprechenden Rechten voraussetzen. Produktive Konfigurationen und Zugangsdaten gehören nicht in diese Dokumentation.
+
+## Inhalte pflegen
+
+- [Custom Assets und Item-IDs](reference/custom-assets.md)
+- [Berufsaufträge und Meilensteinbelohnungen anlegen](operations/profession-content.md)
+- [Einen neuen Beruf hinzufügen](development/new-profession.md)

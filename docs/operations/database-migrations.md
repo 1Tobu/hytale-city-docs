@@ -11,9 +11,13 @@ Core owns all database access. MariaDB is the supported database. Spring starts 
 5. Jobs imports each legacy JSON file transactionally through Core, recording a data_import_markers entry. Only after commit does it move the source to `.imported-catalog/`. Invalid data leaves the file and transaction unchanged. Archive failure does not repeat a committed import.
 6. Check startup, shop/upgrade admin saves, NPC UI and actual inventory operations in the Hytale client.
 
-Shop offers and upgrade recipes now live in job_catalog_entries and job_catalog_requirements. Core returns immutable snapshots; Jobs refreshes a read cache every five seconds and performs admin writes on its catalog IO worker. Existing enabled-items fallback for Tools is preserved. No shop JSON is written or regenerated.
+Shop offers and upgrade recipes now live in job_catalog_entries and job_catalog_requirements. Core returns immutable snapshots; Jobs refreshes a read cache every five seconds and performs admin writes on its catalog IO worker. The legacy job page retains its enabled-items fallback for Tools. NPC purchases use job_merchant_stock. No shop JSON is written or regenerated.
 
 A missing legacy file keeps bundled defaults. An explicit legacy file, even an empty list, replaces unmodified DEFAULT entries of that kind. Existing ADMIN/IMPORT entries win on matching keys. Four Farmer upgrade defaults are seeded once from the supplied config, with HC_ identifiers. Shop offers have no invented defaults. Import markers prevent reimport; deleting an entry is permanent across restarts. Editing or copying an already-imported JSON is not a supported update path; use the admin UI or Core API.
+
+## Professions and merchants
+
+Core migrations V4–V7 create profession tracking, daily offers, inventory receipts, merchant stock, level rewards and collection rules. V6 preserves prior award records. V7 reuses item totals for valid collection actions. See [quest and reward maintenance](profession-content.md).
 
 ## Core API
 

@@ -1,6 +1,6 @@
 # Plugin-Inventar und Quellstände
 
-Inventar erzeugt am **2026-11-18**. Die Tabelle nennt den lokalen Commit, nicht einen behaupteten produktiven Deploymentstand.
+Inventar erzeugt am **2026-11-20**. Die Tabelle nennt den lokalen Commit, nicht einen behaupteten produktiven Deploymentstand.
 
 Der Bericht exportiert ausschließlich ausgewählte Metadaten. Er liest keine produktiven Konfigurationsdateien oder Logs. Private Quellrepositories erfordern weiterhin eigene Zugriffsrechte.
 
@@ -8,16 +8,16 @@ Der Bericht exportiert ausschließlich ausgewählte Metadaten. Er liest keine pr
 
 | Plugin | Repository | Commit | Serverbereich |
 | --- | --- | --- | --- |
-| CorePlugin | `hytale-city-core-plugin` | [`ef05e49`](https://github.com/1Tobu/hytale-city-core-plugin/commit/ef05e49f5bf0adca247bd52fd88808dfc0015b66) | `^0.7.7` |
-| CityBuildPlugin | `hytale-city-build-plugin` | [`38c0e94`](https://github.com/1Tobu/hytale-city-build-plugin/commit/38c0e9497fa64d49bc189f991c385e6a0653c45e) | `^0.7.7` |
+| CorePlugin | `hytale-city-core-plugin` | [`d292436`](https://github.com/1Tobu/hytale-city-core-plugin/commit/d2924360521012880616dfa77ceb98e7557a1d11) | `^0.7.7` |
+| CityBuildPlugin | `hytale-city-build-plugin` | [`263080f`](https://github.com/1Tobu/hytale-city-build-plugin/commit/263080fa3f78926f0297fe6ae73d0290c1dc605d) | `^0.7.7` |
 | HomePlugin | `hytale-home-plugin` | [`ac917ae`](https://github.com/1Tobu/hytale-home-plugin/commit/ac917aee14dc540ab598278f04b447487eda6a24) | `^0.7.7` |
 | EconomyPlugin | `hytale-money-system-plugin` | [`2390970`](https://github.com/1Tobu/hytale-money-system-plugin/commit/2390970146c959861369e8da4ba8f806fb3765d3) | `^0.7.7` |
-| JobsPlugin | `hytale-jobs-plugin` | [`bd40fa7`](https://github.com/nebbsen/hytale-jobs-plugin/commit/bd40fa713297b3ad4bc93264a3cf16d982850692) | `^0.7.7` |
+| JobsPlugin | `hytale-jobs-plugin` | [`70bc47f`](https://github.com/nebbsen/hytale-jobs-plugin/commit/70bc47f18e6c4453054185288f35f640d9bd1360) | `^0.7.7` |
 | LevelPlugin | `hytale-level-plugin` | [`54f7097`](https://github.com/1Tobu/hytale-level-plugin/commit/54f7097607d38494f41a2957299d412f11ea2a8d) | `^0.7.7` |
 | HcNpcs | `HcNpcs` | [`f8929fd`](https://github.com/nebbsen/HcNpcs/commit/f8929fdcb57c29ab0272ddae785b962a27069188) | `^0.7.7` |
 | EnchantmentsPlugin | `hytale-city-enchantments` | [`6d78e4a`](https://github.com/nebbsen/hytale-city-enchantments/commit/6d78e4ac514b0cc13c8edcf49150de3231074d4b) | `^0.7.7` |
 | PlayerStatsPlugin | `hytale-player-stats-plugin` | [`74b23c1`](https://github.com/1Tobu/PlayerStatsPlugin/commit/74b23c1436152b0264658c282f33afa6c9ad1a3c) | `^0.7.7` |
-| PlayerHudPlugin | `hytale-playerhud-plugin` | [`d94de79`](https://github.com/nebbsen/hytale-playerhud-plugin/commit/d94de792f66baa6065d1051f1dc605cb636bdcc2) | `^0.7.7` |
+| PlayerHudPlugin | `hytale-playerhud-plugin` | [`750e5f4`](https://github.com/nebbsen/hytale-playerhud-plugin/commit/750e5f4d72ef8bcde59c4e57c78bf19936b1fe32) | `^0.7.7` |
 | AfkPlugin | `hytale-afk-plugin` | [`c7e598a`](https://github.com/1Tobu/hytale-afk-plugin/commit/c7e598a743b8ca6f974fcd73df03e8f34192a44b) | `^0.7.7` |
 | TeleportPlugin | `hytale-teleport-plugin` | [`45bd8fd`](https://github.com/1Tobu/hytale-teleport-plugin/commit/45bd8fd233c6dc92eb05e166602a3811e119486d) | `^0.7.7` |
 | WarpPlugin | `hytale-warp-plugin` | [`882fd9d`](https://github.com/1Tobu/hytale-warp-plugin/commit/882fd9df67b3b2759eecf5ed7eab0d642938b2de) | `^0.7.7` |
@@ -37,7 +37,7 @@ Optionale Abhängigkeiten: keine deklariert.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** `AsyncLevelService`, `HomeService`, `ItemEnchantmentService`, `ItemService`, `JobItemTotalService`, `JobItemUnlockService`, `JobMerchantQueryService`, `JobMilestoneClaimService`, `JobMilestoneDefinitionService`, `JobSaleService`, `JobService`, `JobXpProgressService`, `LevelProgressionService`, `LevelRewardService`, `NpcDefinitionService`, `PlayerLevelService`, `PlayerService`, `PlayerStatsBatchService`, `PlayerStatsService`, `PlotCoOwnerService`, `PlotInviteService`, `PlotMenuService`, `PlotOfferService`, `PlotService`, `ProtectionService`, `RankService`.
+**Services:** `AsyncLevelService`, `HomeService`, `ItemEnchantmentService`, `ItemService`, `JobCatalogService`, `JobItemTotalService`, `JobItemUnlockService`, `JobMerchantQueryService`, `JobMilestoneClaimService`, `JobMilestoneDefinitionService`, `JobSaleService`, `JobService`, `JobXpProgressService`, `LevelProgressionService`, `LevelRewardService`, `NpcDefinitionService`, `PlayerLevelService`, `PlayerService`, `PlayerStatsBatchService`, `PlayerStatsService`, `PlotCoOwnerService`, `PlotInviteService`, `PlotMenuService`, `PlotOfferService`, `PlotService`, `ProfessionService`, `ProtectionService`, `RankService`.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
@@ -103,7 +103,7 @@ Optionale Abhängigkeiten: `HytaleCity:EnchantmentsPlugin` (`*`).
 
 **Services:** `EnchantmentsBridgeService`, `JobMilestoneRuntimeService`, `JobShopOfferService`, `JobUpgradeRecipeService`, `NpcJobKeyService`.
 
-**UI-Dokumente:** `Common/UI/Custom/Jobs/JobNpc.ui`, `Common/UI/Custom/Jobs/JobShopAdmin.ui`, `Common/UI/Custom/Jobs/JobUpgradeAdmin.ui`, `Common/UI/Custom/Jobs/JobUpgradeSelect.ui`, `Common/UI/Custom/Jobs/Jobs.ui`, `Common/UI/Custom/Jobs/MilestoneAdmin.ui`, `Common/UI/Custom/Jobs/MilestoneRow.ui`.
+**UI-Dokumente:** `Common/UI/Custom/Jobs/JobMilestonePanel.ui`, `Common/UI/Custom/Jobs/JobNpc.ui`, `Common/UI/Custom/Jobs/JobShopAdmin.ui`, `Common/UI/Custom/Jobs/JobUpgradeAdmin.ui`, `Common/UI/Custom/Jobs/JobUpgradeSelect.ui`, `Common/UI/Custom/Jobs/Jobs.ui`, `Common/UI/Custom/Jobs/MilestoneAdmin.ui`, `Common/UI/Custom/Jobs/MilestoneRow.ui`, `Common/UI/Custom/Jobs/Profession.ui`, `Common/UI/Custom/Jobs/ProfessionCard.ui`, `Common/UI/Custom/Jobs/ProfessionTradeRow.ui`.
 
 ## LevelPlugin
 

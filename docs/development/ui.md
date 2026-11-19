@@ -10,12 +10,12 @@ UI-Dokumente liegen unter `src/main/resources/Common/UI/Custom/`. Java referenzi
 | --- | --- |
 | `Plots/Plots.ui` | Grundstücksliste und Formulare |
 | `Homes/Homes.ui` | Persönliche Ziele |
-| `Jobs/JobNpc.ui` | Händler, Shop und Upgrades |
+| `Jobs/JobNpc.ui` | Bisherige Shop- und Upgrade-Seite |
 | `HcNpcs/Actions.ui` und `ActionRow.ui` | Dynamisches NPC-Auswahlmenü |
 | `Hud/PlayerHud.ui` | Wiederkehrende Anzeige |
 | `Rules/Rules.ui`, `Tutorial/Tutorial.ui` | Ingame-Hilfeseiten |
 
-Teleport verwendet im aktuellen Code `EventTitleUtil`; das ist kein eigenes `.ui`-Dokument. Ein zusätzlich freigegebenes Asset-Pack ist nicht Teil dieses Dokumentations-Checkouts. Dessen konkrete Block-/Modellpfade werden deshalb nicht erfunden.
+Teleport verwendet im aktuellen Code `EventTitleUtil`; das ist kein eigenes `.ui`-Dokument. Profession.ui ist das aktuelle Händlerfenster. JobMilestonePanel.ui enthält die gemeinsame Sammelliste für Händler und /job info. Das [Custom-Asset-Verzeichnis](../reference/custom-assets.md) listet Pack- und Plugin-Ressourcen.
 
 ## Sichere Änderungen
 

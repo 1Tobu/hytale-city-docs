@@ -50,7 +50,7 @@ levels.grantRawExp(playerUuid, operationId, 100L)
     });
 ```
 
-Job-XP dagegen mit `jobs.adjustXp(playerUuid, jobKey, delta)` additiv ändern. `unlock` schaltet einen Beruf ausdrücklich frei. `prepareNpcJob` erstellt einen fehlenden Job für einen Händlerzugriff, schaltet einen gesperrten vorhandenen Job aber nicht stillschweigend wieder frei.
+Job-XP dagegen mit `jobs.adjustXp(playerUuid, jobKey, delta)` additiv ändern. `unlock` schaltet einen Beruf ausdrücklich frei. Der Händler aktiviert Berufe ausdrücklich über ProfessionService.activate. ProfessionService.activeProfession liefert den aktiven Beruf und XP für das HUD über eine Leseabfrage.
 
 ## Weitere Verträge
 

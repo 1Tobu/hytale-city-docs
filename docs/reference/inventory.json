@@ -1,10 +1,10 @@
 {
-  "snapshot_date": "2026-11-18",
+  "snapshot_date": "2026-11-20",
   "plugins": [
     {
       "repository": "hytale-city-core-plugin",
       "source_url": "https://github.com/1Tobu/hytale-city-core-plugin",
-      "commit": "ef05e49f5bf0adca247bd52fd88808dfc0015b66",
+      "commit": "d2924360521012880616dfa77ceb98e7557a1d11",
       "plugin": "CorePlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",
@@ -18,6 +18,7 @@
         "HomeService",
         "ItemEnchantmentService",
         "ItemService",
+        "JobCatalogService",
         "JobItemTotalService",
         "JobItemUnlockService",
         "JobMerchantQueryService",
@@ -38,6 +39,7 @@
         "PlotMenuService",
         "PlotOfferService",
         "PlotService",
+        "ProfessionService",
         "ProtectionService",
         "RankService"
       ],
@@ -46,7 +48,7 @@
     {
       "repository": "hytale-city-build-plugin",
       "source_url": "https://github.com/1Tobu/hytale-city-build-plugin",
-      "commit": "38c0e9497fa64d49bc189f991c385e6a0653c45e",
+      "commit": "263080fa3f78926f0297fe6ae73d0290c1dc605d",
       "plugin": "CityBuildPlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",
@@ -135,7 +137,7 @@
     {
       "repository": "hytale-jobs-plugin",
       "source_url": "https://github.com/nebbsen/hytale-jobs-plugin",
-      "commit": "bd40fa713297b3ad4bc93264a3cf16d982850692",
+      "commit": "70bc47f18e6c4453054185288f35f640d9bd1360",
       "plugin": "JobsPlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",
@@ -171,13 +173,17 @@
         "NpcJobKeyService"
       ],
       "ui_documents": [
+        "Common/UI/Custom/Jobs/JobMilestonePanel.ui",
         "Common/UI/Custom/Jobs/JobNpc.ui",
         "Common/UI/Custom/Jobs/JobShopAdmin.ui",
         "Common/UI/Custom/Jobs/JobUpgradeAdmin.ui",
         "Common/UI/Custom/Jobs/JobUpgradeSelect.ui",
         "Common/UI/Custom/Jobs/Jobs.ui",
         "Common/UI/Custom/Jobs/MilestoneAdmin.ui",
-        "Common/UI/Custom/Jobs/MilestoneRow.ui"
+        "Common/UI/Custom/Jobs/MilestoneRow.ui",
+        "Common/UI/Custom/Jobs/Profession.ui",
+        "Common/UI/Custom/Jobs/ProfessionCard.ui",
+        "Common/UI/Custom/Jobs/ProfessionTradeRow.ui"
       ]
     },
     {
@@ -275,7 +281,7 @@
     {
       "repository": "hytale-playerhud-plugin",
       "source_url": "https://github.com/nebbsen/hytale-playerhud-plugin",
-      "commit": "d94de792f66baa6065d1051f1dc605cb636bdcc2",
+      "commit": "750e5f4d72ef8bcde59c4e57c78bf19936b1fe32",
       "plugin": "PlayerHudPlugin",
       "group": "HytaleCity",
       "server_range": "^0.7.7",

@@ -4,7 +4,7 @@
 
 | Speicher | Bestehende Inhalte |
 | --- | --- |
-| MariaDB über Core | Profile, Ränge, Kontostände, Homes, Plots, Einladungen/Angebote, Schutzbereiche, Jobs und Itemtotale, Statistiken, Spielerlevel und Levelbelohnungen, NPC-Definitionen/-Aktionen, Verkaufsbelege, Shopangebote, Upgrade-Rezepte und Enchantment-/Upgrade-Definitionen |
+| MariaDB über Core | Profile, Ränge, Kontostände, Homes, Plots, Einladungen/Angebote, Schutzbereiche, aktive Berufe, Job-XP, Sammelzähler, Aufträge, Händlerbestand und Berufs-Meilensteine, Statistiken, Spielerlevel und Levelbelohnungen, NPC-Definitionen/-Aktionen, Verkaufsbelege, Shopangebote, Upgrade-Rezepte und Enchantment-/Upgrade-Definitionen |
 | Plugin-Konfiguration | Core-/DB-/Job-YAML, Level-Kurve, AFK-JSON |
 | Hytale-Weltdateien | Welten, Chunks und native persistente Entities |
 | Plugin-Assets | `.ui`, Texturen, Modelle, Rollenkonfigurationen und Ingame-Texte |
@@ -22,7 +22,7 @@ Die neue NPC-Öffnung und der gemeinsame Verkauf nutzen IO-Worker. Ältere Shop-
 
 ## Transaktion ist nicht gleich globale Atomizität
 
-Core-Verkäufe verbuchen Geld, Job-XP und Itemtotale zusammen. Ein Inventar und MariaDB können dennoch keine gemeinsame ACID-Transaktion bilden. Verkaufsbelege halten deshalb den Zustand und den geplanten Itembestand fest. Unklare Vorgänge müssen vor einer Erstattung geprüft werden.
+Core verbucht die Geldgutschrift eines Verkaufs idempotent. Berufsaktionen verbuchen XP, Auftragsfortschritt und passende Sammelzähler in MariaDB. Ein Inventar und MariaDB können dennoch keine gemeinsame ACID-Transaktion bilden. Verkaufsbelege halten deshalb den Zustand und den geplanten Itembestand fest. Unklare Vorgänge müssen vor einer Erstattung geprüft werden.
 
 Für Spielerlevel und Belohnungen verwendet Core Operations- und Claim-Schlüssel. Eine wiederholte Anfrage muss denselben Schlüssel behalten; ein neuer Zufallswert bei jedem Retry hebt die Wiederholungssicherheit auf.
 

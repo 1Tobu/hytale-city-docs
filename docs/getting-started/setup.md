@@ -11,7 +11,7 @@
 
 1. Core-Konfigurationsdateien im vom Server verwendeten Core-Datenverzeichnis vorbereiten.
 2. Core-JAR installieren und erfolgreichen Spring-/DB-Start prüfen.
-3. Benötigte Gameplay-JARs installieren. Jobs, HcNpcs und Core gemeinsam aktualisieren.
+3. Benötigte Gameplay-JARs installieren. Jobs, HcNpcs, PlayerHud und Core auf zueinander passende Stände bringen. Das [Custom-Asset-Pack](../reference/custom-assets.md) installieren.
 4. Welten `spawn`, `city` und bei Bedarf `farmworld` passend zu den verwendeten Befehlen vorbereiten.
 5. Mit einem Testspieler Profile, Geld, Teleports, Plots, Jobs und UIs prüfen.
 
@@ -33,7 +33,7 @@ Hytale-eigene Module behalten ihre eigenen Verzeichnisse, beispielsweise `Hytale
 | --- | --- | --- |
 | `database.yml` | `database` | JDBC-Treiber, URL, Zugangsdaten und Pool |
 | `coreConfig.yml` | `coreConfig` | Bauhöhe, Plotgröße/-preise/-namenlänge, Limits und Startgeld |
-| `jobConfig.yml` | `jobConfig` | Globale Job-XP-Kurve und Raritätsmultiplikatoren; Meilensteine ausschließlich in der DB |
+| `jobConfig.yml` | `jobConfig` | Globale Berufs-XP-Kurve und Legacy-Balancingwerte. Aufträge und Meilensteine liegen in MariaDB. |
 
 Beispiel mit ausschließlich fiktiven Werten:
 

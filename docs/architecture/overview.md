@@ -30,7 +30,7 @@ Eine Maven-Abhängigkeit mit `provided` macht die gemeinsame API beim Kompiliere
 - **Spielerlevel:** allgemeine XP, konfigurierbare Kurve, dauerhafte Levelbelohnungen.
 - **Joblevel:** XP pro Beruf und die davon abhängigen Shop-/Upgrade-/Meilensteinregeln.
 
-Holzverkauf erhöht bei aktivem passendem Beruf dessen Job-XP. Daraus folgt keine automatische Vergabe allgemeiner Spieler-XP. Das aktuelle PlayerHud zeigt Geld und Jobs an; ein echtes allgemeines Spielerlevel ist dort noch nicht angebunden.
+Berufsaktionen und Aufträge erhöhen die XP des aktiven Berufs. Verkäufe erhöhen das Guthaben. PlayerHud zeigt Kontostand, allgemeines Spielerlevel und Fortschritt des aktiven Berufs.
 
 ## Bestehender Datenfluss
 
