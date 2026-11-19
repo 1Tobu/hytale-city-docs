@@ -96,3 +96,7 @@ Die Zauberstäbe verwenden eigene `_Icon64.png`-Dateien ohne `IconProperties`-Tr
 ### Natives Iconformat und Ressourcen
 
 Alle eigenen Itemicons verwenden 64 × 64 Pixel als RGBA-PNG, entsprechend den 4.537 nativen generierten Itemicons im geprüften Hytale-Assetbestand. Die vorherigen Zauberstabicons hatten 128 × 128 Pixel. Generator und Validator erzwingen jetzt die native Größe; neue `_Icon64.png`-Pfade vermeiden die Wiederverwendung der alten Dateien. Eigene Material-/Erztexturen liegen unter `Common/Items/Resources/Materials/Ingot_Textures` beziehungsweise `Common/Items/Resources/Ores/Ores_Texture`. Referenzen auf native Modelle unter `Resources/...` bleiben erhalten. Die Ingame-Darstellung muss nach Pack-Austausch und Neustart bestätigt werden.
+
+### Modellatlanten: 128 × 128
+
+Alle 19 eigenen Modelltexturen verwenden 128 × 128 Pixel RGBA; die 19 Itemicons bleiben unverändert bei 64 × 64. Die Atlas-Erweiterung erhält die bisherigen Pixel an ihren UV-Positionen und füllt zusätzliche Fläche durch Randfortsetzung. Sie erzeugt keine zusätzlichen Texturdetails und skaliert keine Modelle. `prepare_textures.py` wird beim Pack-Build automatisch ausgeführt; der Validator erzwingt die getrennten Formate. Eine Live-Prüfung dieser Atlas-Erweiterung steht noch aus.
