@@ -70,11 +70,13 @@ nav:
   - Entwicklung:
       - Core-APIs nutzen: development/core-api.md
       - NPC-Aktionen erweitern: development/npc-actions.md
+      - Eigene Zauberstäbe: development/wands.md
       - Hytale UIs und HUDs: development/ui.md
       - Bauen und Prüfen: development/build-and-test.md
       - Dokumentation pflegen: development/documentation.md
   - Betrieb:
       - Updates und Wiederherstellung: operations/updates.md
+      - Datenbankmigrationen: operations/database-migrations.md
       - Fehler und Logs: operations/troubleshooting.md
   - Referenz:
       - Level-API im Detail: reference/level-api.md

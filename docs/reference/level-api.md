@@ -147,8 +147,8 @@ callbacks are cosmetic/gameplay notifications, not durable delivery records. Dir
 Core calls update the Core read cache and rewards but do not emit LevelPlugin's
 local callbacks; callers should rely on the returned change or reward records.
 
-Deploy new CorePlugin and LevelPlugin together. Core creates the four new tables
-through its existing Hibernate schema-update configuration. Legacy JSON files are
+Deploy new CorePlugin and LevelPlugin together. Core creates tables through versioned Liquibase migrations, then Hibernate validates
+the schema. Legacy JSON files are
 imported idempotently at setup and remain unchanged backups, never a live backend.
 HUD job levels use the independent Core JobService; no existing global-level caller
 was found in other shared plugin sources. Its current global label is literal `Jobs`.

@@ -6,7 +6,7 @@ Der gemeinsame Kern stellt den Spring-Kontext, Datenbankzugriffe und fachliche S
 
 - Spieler beim ersten Kontakt anlegen, Profile und Ränge bereitstellen.
 - Geld, Plot-/Home-Limits, Grundstücke, Angebote, Einladungen und Schutzgebiete verwalten.
-- Jobs, Job-XP, Itemtotale, Meilensteindefinitionen/-claims und Enchantment-Definitionen speichern. Meilensteindefinitionen werden ausschließlich aus der DB bezogen.
+- Jobs, Job-XP, Itemtotale, Meilensteindefinitionen/-claims, Shopangebote, Upgrade-Rezepte und Enchantment-Definitionen speichern. Meilensteindefinitionen werden ausschließlich aus der DB bezogen.
 - Allgemeine Spielerlevel, XP-Operationen und dauerhafte Levelbelohnungen verwalten.
 - NPC-Definitionen und Aktionen sowie vorbereitete/verbuchte Verkaufsvorgänge speichern.
 - Statistikbatches atomar und mit wiederholbaren Vorgangskennungen anwenden.
@@ -15,6 +15,6 @@ Der gemeinsame Kern stellt den Spring-Kontext, Datenbankzugriffe und fachliche S
 
 `database.yml`, `coreConfig.yml` und `jobConfig.yml` werden im Core-Datenverzeichnis gelesen. Die YAML-Wurzeln heißen entsprechend `database`, `coreConfig` und `jobConfig`. Diese Dateien sind keine vollständig implementierte Hot-Reload-Schnittstelle.
 
-Core nutzt aktuell Hibernate-Schema-Updates und Start-Seeds. Vor Änderungen an bestehenden Datenbanken sind Backup und Wiederherstellungstest erforderlich. Allgemeine Spielerlevel und Joblevel sind verschiedene Systeme.
+Core nutzt versionierte Liquibase-Migrationen und einmalige Start-Seeds; Hibernate prüft das Schema mit `validate`. [Übernahme bestehender Datenbanken und Configs](../operations/database-migrations.md). Vor Änderungen an bestehenden Datenbanken sind Backup und Wiederherstellungstest erforderlich. Allgemeine Spielerlevel und Joblevel sind verschiedene Systeme.
 
 Weiter: [Core-APIs](../development/core-api.md), [Datenhaltung](../architecture/data-and-threads.md).

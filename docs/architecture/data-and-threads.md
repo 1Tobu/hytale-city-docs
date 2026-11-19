@@ -4,13 +4,13 @@
 
 | Speicher | Bestehende Inhalte |
 | --- | --- |
-| MariaDB über Core | Profile, Ränge, Kontostände, Homes, Plots, Einladungen/Angebote, Schutzbereiche, Jobs und Itemtotale, Statistiken, Spielerlevel und Levelbelohnungen, NPC-Definitionen/-Aktionen, Verkaufsbelege, Enchantment-/Upgrade-Definitionen |
-| Plugin-Konfiguration | Core-/DB-/Job-YAML, Level-Kurve, AFK-JSON, Jobs-Shopangebote und Upgrade-Rezepte |
+| MariaDB über Core | Profile, Ränge, Kontostände, Homes, Plots, Einladungen/Angebote, Schutzbereiche, Jobs und Itemtotale, Statistiken, Spielerlevel und Levelbelohnungen, NPC-Definitionen/-Aktionen, Verkaufsbelege, Shopangebote, Upgrade-Rezepte und Enchantment-/Upgrade-Definitionen |
+| Plugin-Konfiguration | Core-/DB-/Job-YAML, Level-Kurve, AFK-JSON |
 | Hytale-Weltdateien | Welten, Chunks und native persistente Entities |
 | Plugin-Assets | `.ui`, Texturen, Modelle, Rollenkonfigurationen und Ingame-Texte |
 | Arbeitsspeicher | AFK-Timer, TPA-Anfragen, offene Seiten, aktuelle NPC-Entities, Statistikpuffer und Caches |
 
-Der Core ist der gemeinsame DB-Eigentümer. Das bedeutet nicht, dass bereits jede Jobs-Konfiguration in der DB liegt: `job-shop-offers.json` und `job-upgrades.json` sind weiterhin lokale Dateien.
+Der Core ist der gemeinsame DB-Eigentümer. Shopangebote und Upgrade-Rezepte liegen ebenfalls in der DB; alte JSON-Dateien werden einmalig importiert und danach archiviert. [Migrationsablauf](../operations/database-migrations.md).
 
 ## World-Thread / ECS
 
@@ -34,4 +34,4 @@ Geldänderungen sperren dieselbe Spielerzeile. Transfers nehmen Sperren in stabi
 
 ## Schema und Backups
 
-Aktuell führt Hibernate Schema-Updates über `hbm2ddl.auto=update` aus. Die SQL-Dateien unter `db/migration` werden als Start-Initialisierung ausgeführt; das ist keine vollständige Flyway-Migrationshistorie. Vor gemeinsamen Core-/Gameplay-Updates DB und relevante Welt-/Konfigurationsdateien sichern. Belege nicht ohne festgelegte Aufbewahrungs- und Wiederholungsstrategie löschen.
+Liquibase verwaltet Schema und einmalige Startdaten. Hibernate verwendet `hbm2ddl.auto=validate` nach erfolgreicher Migration. Alte Seed-Dateien laufen als versionierte Changesets nur einmal. Vor gemeinsamen Core-/Gameplay-Updates DB und relevante Welt-/Konfigurationsdateien sichern. Belege nicht ohne festgelegte Aufbewahrungs- und Wiederholungsstrategie löschen.

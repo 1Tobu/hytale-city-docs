@@ -56,7 +56,7 @@ Das Beispiel ist nur der DB-Teil. Die beiden anderen Konfigurationen sind ebenfa
 
 - AFK: `afk.json`, validierter Live-Reload.
 - Level: `config.json` ausschließlich mit `maxLevel`, `startLevel` und `scalingExponent`; feste Kurven-/Overflow-Vorgaben im Core.
-- Jobs: `job-shop-offers.json` und `job-upgrades.json` zusätzlich zu Core-Jobdaten.
+- Jobs: Shopangebote und Upgrade-Rezepte liegen in der DB; vorhandene `job-shop-offers.json` und `job-upgrades.json` für den einmaligen Import beim ersten Start behalten.
 - FarmWorld: eingebettete `worldConfig.json`; der Resetzeitpunkt ist aktuell im Code festgelegt.
 - HcNpcs: NPC-Zuordnungen in der DB; `HcNpcs/config.json` enthält `interactionDistanceMeters` (Standard 3.0). Änderungen mit `/hcnpc reload` laden.
 
