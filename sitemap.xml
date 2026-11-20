@@ -1,159 +1,563 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/architecture/data-and-threads/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/architecture/data-and-threads/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/architecture/data-and-threads/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/architecture/data-and-threads/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/architecture/flows/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/architecture/flows/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/architecture/flows/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/architecture/flows/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/architecture/minigames/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/architecture/minigames/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/architecture/minigames/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/architecture/minigames/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/architecture/overview/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/architecture/overview/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/architecture/overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/architecture/overview/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/development/build-and-test/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/development/build-and-test/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/build-and-test/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/build-and-test/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/development/core-api/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/development/core-api/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/core-api/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/core-api/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/development/documentation/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/development/documentation/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/documentation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/documentation/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/development/new-profession/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/development/new-profession/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/new-profession/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/new-profession/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/development/npc-actions/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/development/npc-actions/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/npc-actions/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/npc-actions/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/development/ui/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/development/ui/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/ui/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/ui/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/development/wands/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/development/wands/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/wands/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/wands/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/getting-started/commands/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/getting-started/commands/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/getting-started/commands/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/getting-started/commands/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/getting-started/setup/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/getting-started/setup/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/getting-started/setup/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/getting-started/setup/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/operations/database-migrations/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/operations/database-migrations/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/operations/database-migrations/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/operations/database-migrations/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/operations/profession-content/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/operations/profession-content/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/operations/profession-content/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/operations/profession-content/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/operations/troubleshooting/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/operations/troubleshooting/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/operations/troubleshooting/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/operations/troubleshooting/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/operations/updates/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/operations/updates/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/operations/updates/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/operations/updates/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/afk/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/afk/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/afk/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/afk/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/citybuild/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/citybuild/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/citybuild/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/citybuild/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/core/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/core/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/core/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/core/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/documentation/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/documentation/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/documentation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/documentation/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/economy/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/economy/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/economy/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/economy/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/enchantments/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/enchantments/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/enchantments/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/enchantments/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/farmworld/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/farmworld/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/farmworld/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/farmworld/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/homes/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/homes/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/homes/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/homes/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/jobs/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/jobs/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/jobs/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/jobs/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/level/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/level/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/level/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/level/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/npcs/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/npcs/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/npcs/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/npcs/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/playerhud/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/playerhud/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/playerhud/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/playerhud/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/playerstats/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/playerstats/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/playerstats/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/playerstats/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/protection/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/protection/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/protection/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/protection/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/teleport/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/teleport/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/teleport/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/teleport/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/plugins/warp/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/warp/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/warp/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/warp/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/reference/custom-assets/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/reference/custom-assets/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/reference/custom-assets/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/reference/custom-assets/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/reference/inventory/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/reference/inventory/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/reference/inventory/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/reference/inventory/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/reference/level-api/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/reference/item-catalog/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/reference/item-catalog/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/reference/item-catalog/"/>
     </url>
     <url>
-         <loc>https://1tobu.github.io/hytale-city-docs/reference/npc-contracts/</loc>
-         <lastmod>2026-11-19</lastmod>
+        <loc>https://1tobu.github.io/hytale-city-docs/reference/level-api/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/reference/level-api/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/reference/level-api/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/reference/npc-contracts/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/reference/npc-contracts/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/reference/npc-contracts/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/architecture/data-and-threads/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/architecture/data-and-threads/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/architecture/data-and-threads/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/architecture/flows/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/architecture/flows/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/architecture/flows/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/architecture/minigames/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/architecture/minigames/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/architecture/minigames/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/architecture/overview/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/architecture/overview/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/architecture/overview/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/development/build-and-test/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/build-and-test/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/build-and-test/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/development/core-api/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/core-api/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/core-api/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/development/documentation/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/documentation/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/documentation/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/development/new-profession/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/new-profession/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/new-profession/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/development/npc-actions/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/npc-actions/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/npc-actions/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/development/ui/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/ui/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/ui/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/development/wands/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/development/wands/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/development/wands/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/getting-started/commands/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/getting-started/commands/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/getting-started/commands/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/getting-started/setup/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/getting-started/setup/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/getting-started/setup/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/operations/database-migrations/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/operations/database-migrations/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/operations/database-migrations/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/operations/profession-content/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/operations/profession-content/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/operations/profession-content/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/operations/troubleshooting/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/operations/troubleshooting/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/operations/troubleshooting/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/operations/updates/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/operations/updates/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/operations/updates/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/afk/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/afk/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/afk/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/citybuild/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/citybuild/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/citybuild/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/core/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/core/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/core/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/documentation/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/documentation/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/documentation/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/economy/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/economy/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/economy/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/enchantments/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/enchantments/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/enchantments/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/farmworld/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/farmworld/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/farmworld/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/homes/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/homes/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/homes/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/jobs/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/jobs/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/jobs/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/level/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/level/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/level/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/npcs/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/npcs/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/npcs/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/playerhud/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/playerhud/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/playerhud/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/playerstats/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/playerstats/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/playerstats/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/protection/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/protection/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/protection/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/teleport/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/teleport/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/teleport/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/warp/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/warp/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/warp/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/reference/custom-assets/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/reference/custom-assets/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/reference/custom-assets/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/reference/inventory/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/reference/inventory/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/reference/inventory/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/reference/item-catalog/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/reference/item-catalog/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/reference/item-catalog/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/reference/level-api/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/reference/level-api/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/reference/level-api/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/reference/npc-contracts/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/reference/npc-contracts/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/reference/npc-contracts/"/>
     </url>
 </urlset>

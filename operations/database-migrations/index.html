@@ -20,6 +20,10 @@
       
       
         
+          <link rel="alternate" href="./" hreflang="de">
+        
+          <link rel="alternate" href="../../en/operations/database-migrations/" hreflang="en">
+        
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -53,12 +57,18 @@
       
     
     
+      <link rel="stylesheet" href="../../assets/item-catalog/catalog.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
+  
+  <link rel="stylesheet" href="../../assets/docs-access.css">
+  <script defer src="../../assets/docs-access.js"></script>
+
   </head>
   
   
@@ -78,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#database-migrations" class="md-skip">
+        <a href="#datenbankmigrationen" class="md-skip">
           Zum Inhalt
         </a>
       
@@ -88,6 +98,7 @@
     </div>
     
     
+  
       
 
   
@@ -151,6 +162,32 @@
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Sprache wechseln">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="de" class="md-select__link">
+              Deutsch
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../en/operations/database-migrations/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
     
       
       
@@ -211,6 +248,20 @@
   
 </header>
     
+  
+  <dialog class="docs-access" aria-labelledby="docs-access-title">
+    <form>
+      <h1 id="docs-access-title">HytaleCity</h1>
+      <label for="docs-password">Passwort für die Dokumentation</label>
+      <input id="docs-password" name="password" type="password" autocomplete="current-password" required autofocus>
+      <button type="submit">Freischalten</button>
+      <p class="docs-access__error" role="alert" hidden
+         data-invalid="Das Passwort ist falsch."
+         data-unavailable="Die Passwortprüfung ist nicht verfügbar. Öffne die Seite über HTTPS."></p>
+    </form>
+  </dialog>
+  <noscript class="docs-access-no-script">Aktiviere JavaScript, um die Dokumentation zu öffnen.</noscript>
+
     <div class="md-container" data-md-component="container">
       
       
@@ -1510,7 +1561,7 @@
   <a href="#first-deployment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        First deployment
+        Erste Bereitstellung
       
     </span>
   </a>
@@ -1521,7 +1572,7 @@
   <a href="#professions-and-merchants" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Professions and merchants
+        Berufe und Händler
       
     </span>
   </a>
@@ -1532,7 +1583,7 @@
   <a href="#core-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core API
+        Core-API
       
     </span>
   </a>
@@ -1543,7 +1594,7 @@
   <a href="#asset-migration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Asset migration
+        Migration der Spielressourcen
       
     </span>
   </a>
@@ -1554,7 +1605,7 @@
   <a href="#future-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Future changes
+        Künftige Änderungen
       
     </span>
   </a>
@@ -1565,7 +1616,7 @@
   <a href="#verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verification
+        Prüfung
       
     </span>
   </a>
@@ -1759,6 +1810,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/item-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hytale-Itemkatalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/custom-assets/" class="md-nav__link">
         
   
@@ -1766,7 +1845,7 @@
   <span class="md-ellipsis">
     
   
-    Custom Assets
+    Eigene Spielressourcen
   
 
     
@@ -1845,7 +1924,7 @@
   <a href="#first-deployment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        First deployment
+        Erste Bereitstellung
       
     </span>
   </a>
@@ -1856,7 +1935,7 @@
   <a href="#professions-and-merchants" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Professions and merchants
+        Berufe und Händler
       
     </span>
   </a>
@@ -1867,7 +1946,7 @@
   <a href="#core-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core API
+        Core-API
       
     </span>
   </a>
@@ -1878,7 +1957,7 @@
   <a href="#asset-migration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Asset migration
+        Migration der Spielressourcen
       
     </span>
   </a>
@@ -1889,7 +1968,7 @@
   <a href="#future-changes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Future changes
+        Künftige Änderungen
       
     </span>
   </a>
@@ -1900,7 +1979,7 @@
   <a href="#verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verification
+        Prüfung
       
     </span>
   </a>
@@ -1927,30 +2006,30 @@
   
 
 
-<h1 id="database-migrations">Database migrations<a class="headerlink" href="#database-migrations" title="Permanent link">&para;</a></h1>
-<p>Core owns all database access. MariaDB is the supported database. Spring starts Liquibase (<code>db/changelog/db.changelog-master.xml</code>) before the EntityManagerFactory, then Hibernate runs <code>validate</code>. Never enable <code>update</code> as a workaround for a failed migration.</p>
-<h2 id="first-deployment">First deployment<a class="headerlink" href="#first-deployment" title="Permanent link">&para;</a></h2>
+<h1 id="datenbankmigrationen">Datenbankmigrationen<a class="headerlink" href="#datenbankmigrationen" title="Permanent link">&para;</a></h1>
+<p>Core verwaltet alle Datenbankzugriffe. Unterstützt wird MariaDB. Spring startet Liquibase (<code>db/changelog/db.changelog-master.xml</code>) vor der EntityManagerFactory. Danach prüft Hibernate das Schema mit <code>validate</code>. Verwende bei einer fehlgeschlagenen Migration keinesfalls <code>update</code> als Ersatz.</p>
+<h2 id="first-deployment">Erste Bereitstellung<a class="headerlink" href="#first-deployment" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Stop the Hytale server and back up MariaDB, plugin configuration and worlds.</li>
-<li>Deploy the matching CorePlugin, JobsPlugin and HC asset pack together.</li>
-<li>Keep existing JobsPlugin/job-shop-offers.json and job-upgrades.json in the server plugin data directory for this first start.</li>
-<li>Start the server. Liquibase adopts existing tables using guarded baseline changesets, creates absent tables/indexes/constraints, applies one-time seeds and renames exact custom item IDs to HC_. Existing incompatible column layouts or unique-key collisions fail startup; inspect the error rather than dropping data or clearing DATABASECHANGELOG.</li>
-<li>Jobs imports each legacy JSON file transactionally through Core, recording a data_import_markers entry. Only after commit does it move the source to <code>.imported-catalog/</code>. Invalid data leaves the file and transaction unchanged. Archive failure does not repeat a committed import.</li>
-<li>Check startup, shop/upgrade admin saves, NPC UI and actual inventory operations in the Hytale client.</li>
+<li>Stoppe den Hytale-Server und sichere MariaDB, Plugin-Konfiguration und Welten.</li>
+<li>Installiere die zusammengehörigen Versionen von CorePlugin, JobsPlugin und dem HC-Asset-Pack.</li>
+<li>Lass <code>JobsPlugin/job-shop-offers.json</code> und <code>job-upgrades.json</code> für den ersten Start im Datenverzeichnis des Plugins.</li>
+<li>Starte den Server. Liquibase übernimmt vorhandene Tabellen mit abgesicherten Baseline-Changesets, erstellt fehlende Tabellen, Indizes und Constraints, fügt einmalige Ausgangsdaten ein und stellt exakte eigene Item-IDs auf <code>HC_</code> um. Inkompatible Spalten oder Kollisionen bei eindeutigen Schlüsseln brechen den Start ab. Prüfe die Fehlermeldung und erhalte dabei die Daten und <code>DATABASECHANGELOG</code>.</li>
+<li>Jobs importiert jede alte JSON-Datei über Core in einer Transaktion und legt einen Eintrag in <code>data_import_markers</code> an. Erst nach dem Commit verschiebt es die Quelldatei nach <code>.imported-catalog/</code>. Ungültige Daten lassen Datei und Datenbankstand unverändert. Scheitert das Archivieren, bleibt der Importmarker erhalten und verhindert einen erneuten Import.</li>
+<li>Prüfe den Start, das Speichern von Shopangeboten und Upgrades über die Admin-Oberfläche, die NPC-Oberfläche und die tatsächlichen Inventarvorgänge im Hytale-Client.</li>
 </ol>
-<p>Shop offers and upgrade recipes now live in job_catalog_entries and job_catalog_requirements. Core returns immutable snapshots; Jobs refreshes a read cache every five seconds and performs admin writes on its catalog IO worker. The legacy job page retains its enabled-items fallback for Tools. NPC purchases use job_merchant_stock. No shop JSON is written or regenerated.</p>
-<p>A missing legacy file keeps bundled defaults. An explicit legacy file, even an empty list, replaces unmodified DEFAULT entries of that kind. Existing ADMIN/IMPORT entries win on matching keys. Four Farmer upgrade defaults are seeded once from the supplied config, with HC_ identifiers. Shop offers have no invented defaults. Import markers prevent reimport; deleting an entry is permanent across restarts. Editing or copying an already-imported JSON is not a supported update path; use the admin UI or Core API.</p>
-<h2 id="professions-and-merchants">Professions and merchants<a class="headerlink" href="#professions-and-merchants" title="Permanent link">&para;</a></h2>
-<p>Core migrations V4–V7 create profession tracking, daily offers, inventory receipts, merchant stock, level rewards and collection rules. V6 preserves prior award records. V7 reuses item totals for valid collection actions. See <a href="../profession-content/">quest and reward maintenance</a>.</p>
-<h2 id="core-api">Core API<a class="headerlink" href="#core-api" title="Permanent link">&para;</a></h2>
-<p><code>JobCatalogService.listAll()</code>, <code>save(JobCatalogRecord)</code>, <code>delete(kind, job, category, item)</code> and <code>importOnce(source, kind, rows)</code> own persistence. Kind is SHOP or UPGRADE. Imports use a stable source key and commit all rows with their marker. Costs are nonnegative, amounts positive, requirements merged by item (at most eight). Physical legacy asset IDs are canonicalized on writes; logical enchantment family keys such as vibranium_hoe stay unchanged.</p>
-<h2 id="asset-migration">Asset migration<a class="headerlink" href="#asset-migration" title="Permanent link">&para;</a></h2>
-<p>The versioned HC migration updates items, upgrade/enchantment references, catalog entries/requirements, sold-item totals, unlocks, milestone definitions/rewards and claim item references. IDs of definitions/players and balances are retained. JSON rewards replace complete quoted identifiers, not arbitrary substrings. Unique-key collisions abort the DML changeset and require reconciliation. Historical serialized inventory evidence and physical world/inventory data are not rewritten; pending sales must be reviewed before changing physical inventory asset IDs.</p>
-<p>This code prepares the production migration; local tests do not imply the live server database has already been updated.</p>
-<h2 id="future-changes">Future changes<a class="headerlink" href="#future-changes" title="Permanent link">&para;</a></h2>
-<p>Add a new numbered changelog include for every schema/data change, update matching JPA mappings, and test fresh and existing MariaDB plus a second startup. Never edit an already deployed changeset or old seed file: Liquibase verifies checksums. Use one-time seeds for fixed initial values, not recurring overwrites of operator-managed data. Keep DATABASECHANGELOG and DATABASECHANGELOGLOCK in backups. MariaDB DDL is not globally transactional; recovery from an interrupted schema change uses guarded steps and a backup, not a promise of full DDL rollback.</p>
-<h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h2>
-<p>Normal <code>mvnw test</code> runs the Core suite. <code>JobCatalogMigrationTest</code> requires an explicitly supplied <code>-Dhc.testDbPort=&lt;port&gt;</code> on a dedicated disposable localhost MariaDB instance (root password hytale-local-test). It creates uniquely named test databases, tests new schema, adoption, HC renames, import rollback, admin precedence and restart idempotence. Never point it at production. SchemaExportTest is an opt-in developer aid (<code>-Dhc.exportSchema=true</code>); exported SQL does not change the frozen migrations automatically.</p>
+<p>Shopangebote und Upgrade-Rezepte liegen in <code>job_catalog_entries</code> und <code>job_catalog_requirements</code>. Core liefert unveränderliche Momentaufnahmen. Jobs aktualisiert seinen Lese-Cache alle fünf Sekunden und führt administrative Schreibvorgänge auf einem IO-Thread aus. Die bisherige Berufsseite nutzt für Tools weiterhin die aktivierten Items als Rückfall. NPC-Käufe greifen auf <code>job_merchant_stock</code> zu. Jobs erzeugt keine Shop-JSON-Dateien.</p>
+<p>Fehlt eine alte Datei, bleiben die mitgelieferten Vorgaben erhalten. Eine vorhandene alte Datei ersetzt unveränderte <code>DEFAULT</code>-Einträge desselben Typs, auch wenn sie eine leere Liste enthält. Bei gleichen Schlüsseln haben <code>ADMIN</code>- und <code>IMPORT</code>-Einträge Vorrang. Vier Farmer-Upgrades mit <code>HC_</code>-IDs werden einmalig aus der mitgelieferten Konfiguration angelegt. Shopangebote haben keine Vorgaben. Importmarker verhindern Wiederholungen. Gelöschte Einträge bleiben über Neustarts hinweg gelöscht. Verwende für Änderungen nach dem Import die Admin-Oberfläche oder die Core-API.</p>
+<h2 id="professions-and-merchants">Berufe und Händler<a class="headerlink" href="#professions-and-merchants" title="Permanent link">&para;</a></h2>
+<p>Die Core-Migrationen V4–V7 führen Berufsfortschritt, Tagesangebote, Inventarbelege, Händlerbestände, Level-Belohnungen und Sammelregeln ein. V6 erhält frühere Belohnungseinträge. V7 verwendet die Item-Gesamtzahlen für gültige Sammelaktionen weiter. Siehe <a href="../profession-content/">Berufsaufträge und Belohnungen</a>.</p>
+<h2 id="core-api">Core-API<a class="headerlink" href="#core-api" title="Permanent link">&para;</a></h2>
+<p><code>JobCatalogService.listAll()</code>, <code>save(JobCatalogRecord)</code>, <code>delete(kind, job, category, item)</code> und <code>importOnce(source, kind, rows)</code> verwalten die Daten. Als Typ sind <code>SHOP</code> und <code>UPGRADE</code> zulässig. Importe verwenden einen stabilen Quellschlüssel und schreiben alle Zeilen zusammen mit dem Importmarker. Kosten müssen mindestens null und Mengen größer als null sein. Anforderungen werden pro Item zusammengefasst und sind auf acht verschiedene Items begrenzt. Alte IDs physischer Assets werden beim Schreiben vereinheitlicht. Logische Verzauberungsfamilien wie <code>vibranium_hoe</code> behalten ihren Namen.</p>
+<h2 id="asset-migration">Migration der Spielressourcen<a class="headerlink" href="#asset-migration" title="Permanent link">&para;</a></h2>
+<p>Die versionierte HC-Migration aktualisiert Items, Upgrade- und Verzauberungsreferenzen, Katalogeinträge und Anforderungen, Verkaufszahlen, Freischaltungen, Meilensteindefinitionen und Belohnungen sowie Item-Referenzen in Ansprüchen. IDs von Definitionen und Spielern sowie Guthaben bleiben erhalten. In JSON-Belohnungen werden vollständige Bezeichner in Anführungszeichen ersetzt. Kollisionen bei eindeutigen Schlüsseln brechen das DML-Changeset ab und müssen geklärt werden. Historische serialisierte Inventarbelege sowie Welt- und Inventardaten bleiben unverändert. Prüfe ausstehende Verkäufe, bevor du dort Item-IDs änderst.</p>
+<p>Der Code bereitet die Produktionsmigration vor. Lokale Tests belegen den Migrationsstand des produktiven Servers nicht.</p>
+<h2 id="future-changes">Künftige Änderungen<a class="headerlink" href="#future-changes" title="Permanent link">&para;</a></h2>
+<p>Füge für jede Schema- oder Datenänderung ein neues nummeriertes Changelog-Include hinzu und passe die JPA-Zuordnungen an. Teste die Migration mit einer leeren und einer bestehenden MariaDB sowie bei einem zweiten Start. Liquibase prüft die Prüfsummen bereits ausgerollter Changesets und Ausgangsdateien. Lege feste Anfangswerte einmalig an, damit spätere Startvorgänge gepflegte Daten erhalten. Sichere <code>DATABASECHANGELOG</code> und <code>DATABASECHANGELOGLOCK</code>. MariaDB kann DDL-Änderungen nicht als Ganzes zurückrollen. Für die Wiederherstellung nach einem Abbruch dienen abgesicherte Schritte und ein Backup.</p>
+<h2 id="verification">Prüfung<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h2>
+<p><code>mvnw test</code> führt die Core-Tests aus. <code>JobCatalogMigrationTest</code> benötigt ein explizites <code>-Dhc.testDbPort=&lt;port&gt;</code> und eine separate, temporäre lokale MariaDB mit dem Root-Passwort <code>hytale-local-test</code>. Er erstellt eindeutig benannte Testdatenbanken und prüft ein neues Schema, die Übernahme vorhandener Tabellen, HC-Umbenennungen, Import-Rollback, Vorrang administrativer Einträge und wiederholte Starts. Verwende dafür ausschließlich die Testdatenbank. <code>SchemaExportTest</code> lässt sich mit <code>-Dhc.exportSchema=true</code> aktivieren. Der SQL-Export ändert die festgeschriebenen Migrationen nicht.</p>
 
 
 
@@ -2010,6 +2089,8 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/item-catalog/catalog.js"></script>
       
     
   </body>

@@ -16,9 +16,13 @@
         <link rel="prev" href="../level-api/">
       
       
-        <link rel="next" href="../custom-assets/">
+        <link rel="next" href="../item-catalog/">
       
       
+        
+          <link rel="alternate" href="./" hreflang="de">
+        
+          <link rel="alternate" href="../../en/reference/npc-contracts/" hreflang="en">
         
       
       
@@ -53,12 +57,18 @@
       
     
     
+      <link rel="stylesheet" href="../../assets/item-catalog/catalog.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
+  
+  <link rel="stylesheet" href="../../assets/docs-access.css">
+  <script defer src="../../assets/docs-access.js"></script>
+
   </head>
   
   
@@ -88,6 +98,7 @@
     </div>
     
     
+  
       
 
   
@@ -151,6 +162,32 @@
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Sprache wechseln">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="de" class="md-select__link">
+              Deutsch
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../en/reference/npc-contracts/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
     
       
       
@@ -211,6 +248,20 @@
   
 </header>
     
+  
+  <dialog class="docs-access" aria-labelledby="docs-access-title">
+    <form>
+      <h1 id="docs-access-title">HytaleCity</h1>
+      <label for="docs-password">Passwort für die Dokumentation</label>
+      <input id="docs-password" name="password" type="password" autocomplete="current-password" required autofocus>
+      <button type="submit">Freischalten</button>
+      <p class="docs-access__error" role="alert" hidden
+         data-invalid="Das Passwort ist falsch."
+         data-unavailable="Die Passwortprüfung ist nicht verfügbar. Öffne die Seite über HTTPS."></p>
+    </form>
+  </dialog>
+  <noscript class="docs-access-no-script">Aktiviere JavaScript, um die Dokumentation zu öffnen.</noscript>
+
     <div class="md-container" data-md-component="container">
       
       
@@ -1681,7 +1732,7 @@
   <a href="#ownership-and-persistence" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ownership and persistence
+        Zuständigkeit und Speicherung
       
     </span>
   </a>
@@ -1692,7 +1743,7 @@
   <a href="#admin-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Admin commands
+        Admin-Befehle
       
     </span>
   </a>
@@ -1703,7 +1754,7 @@
   <a href="#plugin-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plugin API
+        Plugin-API
       
     </span>
   </a>
@@ -1714,7 +1765,7 @@
   <a href="#interaction-and-ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Interaction and UI
+        Interaktion und Oberfläche
       
     </span>
   </a>
@@ -1725,7 +1776,7 @@
   <a href="#sale-consistency-and-recovery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sale consistency and recovery
+        Konsistenz und Wiederherstellung von Verkäufen
       
     </span>
   </a>
@@ -1736,7 +1787,7 @@
   <a href="#verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verification
+        Prüfung
       
     </span>
   </a>
@@ -1747,7 +1798,7 @@
   <a href="#short-npc-duty-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Short NPC duty commands
+        Kurzbefehle für NPC-Aufgaben
       
     </span>
   </a>
@@ -1758,7 +1809,7 @@
   <a href="#selection-and-verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Selection and verification
+        Auswahl und Prüfung
       
     </span>
   </a>
@@ -1769,7 +1820,7 @@
   <a href="#native-interaction-prompt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Native interaction prompt
+        Nativer Interaktionshinweis
       
     </span>
   </a>
@@ -1780,7 +1831,7 @@
   <a href="#interaction-distance-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Interaction distance configuration
+        Interaktionsdistanz konfigurieren
       
     </span>
   </a>
@@ -1803,6 +1854,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../item-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hytale-Itemkatalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../custom-assets/" class="md-nav__link">
         
   
@@ -1810,7 +1889,7 @@
   <span class="md-ellipsis">
     
   
-    Custom Assets
+    Eigene Spielressourcen
   
 
     
@@ -1889,7 +1968,7 @@
   <a href="#ownership-and-persistence" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ownership and persistence
+        Zuständigkeit und Speicherung
       
     </span>
   </a>
@@ -1900,7 +1979,7 @@
   <a href="#admin-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Admin commands
+        Admin-Befehle
       
     </span>
   </a>
@@ -1911,7 +1990,7 @@
   <a href="#plugin-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plugin API
+        Plugin-API
       
     </span>
   </a>
@@ -1922,7 +2001,7 @@
   <a href="#interaction-and-ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Interaction and UI
+        Interaktion und Oberfläche
       
     </span>
   </a>
@@ -1933,7 +2012,7 @@
   <a href="#sale-consistency-and-recovery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sale consistency and recovery
+        Konsistenz und Wiederherstellung von Verkäufen
       
     </span>
   </a>
@@ -1944,7 +2023,7 @@
   <a href="#verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verification
+        Prüfung
       
     </span>
   </a>
@@ -1955,7 +2034,7 @@
   <a href="#short-npc-duty-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Short NPC duty commands
+        Kurzbefehle für NPC-Aufgaben
       
     </span>
   </a>
@@ -1966,7 +2045,7 @@
   <a href="#selection-and-verification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Selection and verification
+        Auswahl und Prüfung
       
     </span>
   </a>
@@ -1977,7 +2056,7 @@
   <a href="#native-interaction-prompt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Native interaction prompt
+        Nativer Interaktionshinweis
       
     </span>
   </a>
@@ -1988,7 +2067,7 @@
   <a href="#interaction-distance-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Interaction distance configuration
+        Interaktionsdistanz konfigurieren
       
     </span>
   </a>
@@ -2016,18 +2095,18 @@
 
 
 <h1 id="hcnpcs">HcNpcs<a class="headerlink" href="#hcnpcs" title="Permanent link">&para;</a></h1>
-<p>Hytale 0.7.7 NPC runtime. Install <strong>CorePlugin, HcNpcs and JobsPlugin together</strong> when updating this feature. Jobs now declares a required HcNpcs dependency; the reflective listener and duplicate Jobs packet hook have been removed.</p>
-<h2 id="ownership-and-persistence">Ownership and persistence<a class="headerlink" href="#ownership-and-persistence" title="Permanent link">&para;</a></h2>
+<p>HcNpcs bindet NPC-Aktionen in Hytale 0.7.7 ein. Installiere bei einem Update dieser Funktion <strong>CorePlugin, HcNpcs und JobsPlugin gemeinsam</strong>. Jobs deklariert HcNpcs als Pflichtabhängigkeit. Der Listener auf Basis von Reflection und der doppelte Paket-Hook von Jobs wurden entfernt.</p>
+<h2 id="ownership-and-persistence">Zuständigkeit und Speicherung<a class="headerlink" href="#ownership-and-persistence" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Core owns <code>hc_npcs</code>, <code>hc_npc_actions</code> and migration from <code>jobs_npc_job_keys</code>.</li>
-<li>Hytale owns every NPC's spawning, movement and world persistence. HcNpcs only attaches actions and optional names to existing native entity UUIDs.</li>
-<li>Runtime bindings require <code>role == null</code> and an entity UUID. Historical managed definitions with a role, including invalid test roles such as <code>holzfaeller</code>, stay in the DB for inspection but are ignored on startup and every refresh. No automatic spawn, despawn, role validation, chunk loading or spawn retry exists in HcNpcs.</li>
-<li>Native bindings, including disabled reset tombstones, remain cached so deferred original-name restoration works when the NPC loads.</li>
-<li>Import is idempotent and leaves the old table intact. Existing definitions, including intentionally reset mappings, win over legacy mappings.</li>
-<li>Name changes run on world queues. All database work goes through Core on the HcNpcs IO worker.</li>
+<li>Core verwaltet <code>hc_npcs</code>, <code>hc_npc_actions</code> und die Migration aus <code>jobs_npc_job_keys</code>.</li>
+<li>Hytale übernimmt das Spawnen, die Bewegung und Speicherung aller NPCs in der Welt. HcNpcs ordnet bereits existierenden Entitäts-UUIDs Aktionen und optionale Namen zu.</li>
+<li>Aktive Bindungen brauchen <code>role == null</code> und eine Entitäts-UUID. Alte verwaltete Definitionen mit einer Rolle bleiben zur Prüfung in der Datenbank, einschließlich ungültiger Testrollen wie <code>holzfaeller</code>. HcNpcs ignoriert sie beim Start und beim Neuladen. Das Plugin übernimmt weder Spawnen, Entfernen und Rollenprüfung noch das Laden von Chunks oder erneute Spawnversuche.</li>
+<li>Native Bindungen bleiben im Cache, auch deaktivierte Einträge nach einem Reset. So lässt sich der ursprüngliche Name beim späteren Laden des NPCs wiederherstellen.</li>
+<li>Der Import ist idempotent und erhält die alte Tabelle. Bereits vorhandene Definitionen haben Vorrang, auch absichtlich zurückgesetzte Zuordnungen.</li>
+<li>Namensänderungen laufen auf der Warteschlange der Welt. Datenbankzugriffe erfolgen über Core auf dem IO-Worker von HcNpcs.</li>
 </ul>
-<h2 id="admin-commands">Admin commands<a class="headerlink" href="#admin-commands" title="Permanent link">&para;</a></h2>
-<p>Spawn NPCs with native Hytale tools first. Permission: <code>hcnpcs.admin</code>.</p>
+<h2 id="admin-commands">Admin-Befehle<a class="headerlink" href="#admin-commands" title="Permanent link">&para;</a></h2>
+<p>Erzeuge den NPC zunächst mit den nativen Hytale-Werkzeugen. Die nötige Berechtigung lautet <code>hcnpcs.admin</code>.</p>
 <div class="highlight"><pre><span></span><code>/hcnpc
 /hcnpc set merchant lumberjack
 /hcnpc set merchant lumberjack "Holz Haendler"
@@ -2037,11 +2116,11 @@
 /hcnpc reset &lt;ENTITY_UUID_OR_SAVED_KEY&gt;
 /hcnpc reload
 </code></pre></div>
-<p>Without an identifier, set/reset uses the NPC under the crosshair within the configured interaction distance (three metres by default). Explicit identifiers take precedence. New UUID bindings require a loaded real NPC in the same world. Existing keys may be assigned without a name, or reset, while unloaded. A new name requires the NPC to be loaded so its original Nameplate can be captured safely. Names with spaces must be quoted; names must contain 1-128 characters and no control characters. With three set arguments, a registered job in first position means <code>job type name</code>; otherwise they mean <code>identifier job type</code>. Saved keys matching registered job names should use the unambiguous entity UUID instead.</p>
-<p>Names are stored atomically with the action in Core and applied through Hytale's <code>Nameplate</code> component, making them visible above the NPC. Omitting the name preserves it. The first overridden native name (including an absent nameplate) is recorded durably. Reset clears <strong>all</strong> plugin actions, disables dispatch and restores that original name on the world queue, also after restart/unload. The native NPC remains in the world. A disabled tombstone prevents old mappings from being reimported; set reactivates it. Historical managed definitions are ignored and cannot be selected through HcNpcs.</p>
-<p>Only <code>set</code>, <code>reset</code> and <code>reload</code> remain as admin subcommands. <code>create</code>, <code>action</code>, <code>configure</code>, <code>removeaction</code> and <code>move</code> are removed. Native tools/role assets own models, position and physical behaviour. HcNpcs no longer applies Frozen/invulnerability/model changes to attached native NPCs. The former create/move/configure runtime APIs are removed as well. Old physical overrides already present on an attached NPC are not automatically reconstructed or undone; use native tools if needed.</p>
-<p>The older Jobs one-shot selection API and <code>/job admin npcset</code> remain compatible; it is not needed for the new immediate crosshair commands.</p>
-<h2 id="plugin-api">Plugin API<a class="headerlink" href="#plugin-api" title="Permanent link">&para;</a></h2>
+<p>Ohne Kennung wählen <code>set</code> und <code>reset</code> den NPC im Fadenkreuz innerhalb der konfigurierten Interaktionsdistanz von standardmäßig drei Metern. Explizite Kennungen haben Vorrang. Für neue UUID-Bindungen muss ein echter NPC in derselben Welt geladen sein. Bestehende Schlüssel können auch bei entladenem NPC ohne neuen Namen zugewiesen oder zurückgesetzt werden. Für einen neuen Namen muss der NPC geladen sein, damit seine ursprüngliche <code>Nameplate</code> zuverlässig erfasst wird. Namen mit Leerzeichen stehen in Anführungszeichen. Zulässig sind 1 bis 128 Zeichen ohne Steuerzeichen. Bei drei Argumenten interpretiert <code>set</code> einen registrierten Beruf an erster Stelle als <code>job type name</code>. Sonst gilt <code>identifier job type</code>. Verwende die eindeutige Entitäts-UUID, wenn der gespeicherte Schlüssel mit einem registrierten Berufsnamen kollidiert.</p>
+<p>Core speichert Namen zusammen mit der Aktion atomar. Hytale zeigt sie über die Komponente <code>Nameplate</code> oberhalb des NPCs an. Ohne Namensargument bleibt der Name erhalten. Beim ersten Überschreiben speichert Core den ursprünglichen Zustand dauerhaft, auch wenn es kein Namensschild gab. <code>reset</code> löscht <strong>alle</strong> Plugin-Aktionen, unterbindet weitere Aufrufe und stellt den ursprünglichen Namen auf der Weltwarteschlange wieder her. Das gilt auch nach Neustart oder Entladen. Der native NPC bleibt in der Welt. Ein deaktivierter Eintrag verhindert die erneute Übernahme alter Zuordnungen und lässt sich mit <code>set</code> reaktivieren. Historische verwaltete Definitionen bleiben bei der Auswahl außen vor.</p>
+<p>Als Admin-Unterbefehle bleiben <code>set</code>, <code>reset</code> und <code>reload</code> erhalten. <code>create</code>, <code>action</code>, <code>configure</code>, <code>removeaction</code> und <code>move</code> wurden entfernt, ebenso die früheren Laufzeit-APIs zum Erstellen, Verschieben und Konfigurieren. Modelle, Position und physisches Verhalten gehören zu den nativen Werkzeugen und Rollenressourcen. HcNpcs setzt bei nativen NPCs keine Änderungen an <code>Frozen</code>, Unverwundbarkeit oder Modell mehr. Korrigiere bei Bedarf alte physische Überschreibungen mit den nativen Werkzeugen.</p>
+<p>Die frühere einmalige Auswahl-API von Jobs und <code>/job admin npcset</code> bleiben kompatibel. Die Befehle mit sofortiger Auswahl über das Fadenkreuz kommen ohne diese API aus.</p>
+<h2 id="plugin-api">Plugin-API<a class="headerlink" href="#plugin-api" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">HcNpcsService</span><span class="w"> </span><span class="n">npcs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HcNpcsAPI</span><span class="p">.</span><span class="na">getService</span><span class="p">();</span>
 <span class="n">Registration</span><span class="w"> </span><span class="n">registration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">npcs</span><span class="p">.</span><span class="na">registerAction</span><span class="p">(</span>
 <span class="w">    </span><span class="s">"MyQuestPlugin"</span><span class="p">,</span><span class="w"> </span><span class="s">"quests:giver"</span><span class="p">,</span><span class="w"> </span><span class="s">"Quests"</span><span class="p">,</span>
@@ -2053,42 +2132,42 @@
 <span class="c1">// In plugin shutdown:</span>
 <span class="n">registration</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"> </span><span class="c1">// idempotent; alternatively unregisterOwner("MyQuestPlugin")</span>
 </code></pre></div>
-<p><code>assign</code> and <code>reset</code> return futures for atomic named assignments and reset. <code>setAction</code>, <code>attachAction</code>, <code>removeAction</code> and <code>reload</code> also return futures. HcNpcs exposes no create/move/configure API. Never join these futures on a world thread. Future completions run on an IO thread: queue ECS/UI operations with <code>world.execute</code>, then recheck player session, NPC binding and range using <code>validate(world, player, entityUuid)</code>. <code>definitions()</code> and <code>findByEntity()</code> return immutable cached snapshots. <code>entityUuid(key)</code> resolves the current binding; always validate it before ECS use.</p>
-<p>Duplicate action registrations are rejected. Registration handles remove only their own instance, so closing an old handle cannot unregister a replacement. A single action opens directly; several available actions show a custom selection page. Missing providers do not run. The chooser rechecks target and current binding on submit and expires after two minutes. A quest provider is an extension point, not an implemented quest system.</p>
-<h2 id="interaction-and-ui">Interaction and UI<a class="headerlink" href="#interaction-and-ui" title="Permanent link">&para;</a></h2>
-<p>One retained inbound watcher recognizes Use interaction targets, limits scheduling to once per player per 250 ms, and is deregistered on shutdown. All target resolution happens on the captured world queue. It verifies the current PlayerRef/store/world, an actual NPC component and the configured interaction distance (three metres by default). Only persisted bindings dispatch actions. Internal exceptions are logged with their cause; implementation details are not sent to players.</p>
-<p>Jobs loads the profession and merchant snapshots on its IO worker. ProfessionUI validates NPC proximity and the current session before handling actions. The merchant provides selling, limited stock purchases, profession activation, quests and milestone claims.</p>
-<p>At the merchant, choose an inventory item and quantity and confirm the displayed total. The command /job sell uses the same coordinator with a two-step confirmation for the held item. The previous shop and upgrade screen is accessible via <code>/job &lt;jobKey&gt;</code>.</p>
-<h2 id="sale-consistency-and-recovery">Sale consistency and recovery<a class="headerlink" href="#sale-consistency-and-recovery" title="Permanent link">&para;</a></h2>
-<p>Core's <code>JobSaleService</code> credits money for current sales in one transaction, serialized per player and deduplicated by operation UUID. Normal balance setters/deposits/withdrawals use the same player row lock; transfers lock both players in UUID order and reject overflow. Unrelated Player updates use dynamic SQL updates so they do not write stale balances. Jobs uses additive <code>adjustXp</code> and an explicit <code>unlock</code> operation for existing entry/upgrade/reward paths; <code>player_jobs.version</code> provides an additional optimistic guard for legacy detached job writes. Liquibase owns the schema; Hibernate validates it after migration. player_jobs.version has default zero. The Jobs coordinator reserves exact planned slots/stacks on the world thread, preserving metadata/durability in compensation. <code>prepare</code> returns <code>true</code> only for a newly created operation; an existing operation returns <code>false</code> and must never trigger another inventory removal. Preparation stores a BSON inventory plan before removal. Changed slots cancel the sale before removal. Arithmetic overflow rolls back all DB effects.</p>
-<p>Inventory/world saving and MariaDB cannot share a transaction. A crash between reservation and commit therefore requires reconciliation rather than an automatic payout/refund:</p>
+<p><code>assign</code> und <code>reset</code> geben Futures für atomare Zuweisungen mit Namen und für das Zurücksetzen zurück. Auch <code>setAction</code>, <code>attachAction</code>, <code>removeAction</code> und <code>reload</code> geben Futures zurück. HcNpcs bietet keine API zum Erstellen, Verschieben oder Konfigurieren von NPCs. Warte auf einem World-Thread nie blockierend auf diese Futures. Fortsetzungen laufen auf einem IO-Thread. Plane ECS- und UI-Vorgänge mit <code>world.execute</code> ein und prüfe dann Sitzung, NPC-Bindung und Reichweite erneut mit <code>validate(world, player, entityUuid)</code>. <code>definitions()</code> und <code>findByEntity()</code> liefern unveränderliche Momentaufnahmen aus dem Cache. <code>entityUuid(key)</code> löst die aktuelle Bindung auf. Prüfe sie vor dem Zugriff auf das ECS.</p>
+<p>Doppelte Aktionsregistrierungen werden abgelehnt. Ein Registrierungsobjekt entfernt beim Schließen nur seine eigene Instanz. Eine verfügbare Aktion öffnet sich direkt. Bei mehreren Aktionen erscheint eine Auswahlseite. Aktionen ohne registrierten Anbieter werden übersprungen. Die Auswahl prüft beim Bestätigen Ziel und aktuelle Bindung erneut und läuft nach zwei Minuten ab. Ein Quest-Anbieter kann die Schnittstelle für ein eigenes Questsystem nutzen.</p>
+<h2 id="interaction-and-ui">Interaktion und Oberfläche<a class="headerlink" href="#interaction-and-ui" title="Permanent link">&para;</a></h2>
+<p>Ein zentraler Listener erkennt eingehende Use-Interaktionen, plant pro Spieler höchstens alle 250 ms eine Verarbeitung ein und wird beim Herunterfahren abgemeldet. Die Zielauflösung läuft auf der erfassten Weltwarteschlange. Sie prüft den aktuellen PlayerRef, Store und die Welt, eine echte NPC-Komponente sowie die konfigurierte Interaktionsreichweite von standardmäßig drei Metern. Nur gespeicherte Bindungen lösen Aktionen aus. Interne Ausnahmen werden mit Ursache protokolliert. Spieler erhalten keine internen Details.</p>
+<p>Jobs lädt Berufs- und Händlerdaten auf seinem IO-Worker. <code>ProfessionUI</code> prüft vor jeder Aktion die Entfernung zum NPC und die Sitzung. Händler bieten Verkauf, Käufe aus begrenztem Bestand, Berufsaktivierung, Aufträge und Meilensteinbelohnungen.</p>
+<p>Wähle beim Händler einen Inventargegenstand und eine Menge und bestätige den angezeigten Gesamtbetrag. <code>/job sell</code> verwendet dieselbe Verkaufslogik mit einer zweistufigen Bestätigung für den gehaltenen Gegenstand. Die bisherige Shop- und Upgrade-Ansicht ist über <code>/job &lt;jobKey&gt;</code> erreichbar.</p>
+<h2 id="sale-consistency-and-recovery">Konsistenz und Wiederherstellung von Verkäufen<a class="headerlink" href="#sale-consistency-and-recovery" title="Permanent link">&para;</a></h2>
+<p>Cores <code>JobSaleService</code> schreibt das Guthaben eines Verkaufs in einer Transaktion gut. Vorgänge werden pro Spieler serialisiert und anhand der Vorgangs-UUID dedupliziert. Reguläres Setzen, Einzahlen und Abheben von Guthaben verwendet dieselbe Zeilensperre. Überweisungen sperren beide Spieler in UUID-Reihenfolge und lehnen Überläufe ab. Andere Spieleränderungen nutzen dynamische SQL-Updates, damit sie keine veralteten Guthaben zurückschreiben. Jobs verwendet additives <code>adjustXp</code> und ein ausdrückliches <code>unlock</code> für Einträge, Upgrades und Belohnungen. <code>player_jobs.version</code> schützt alte Schreibpfade mit abgelösten Entities zusätzlich optimistisch und hat den numerischen Standardwert <code>0</code>. Liquibase verwaltet das Schema, Hibernate prüft es nach der Migration.</p>
+<p>Jobs reserviert die geplanten Slots und Stapel exakt auf dem World-Thread und erhält Metadaten und Haltbarkeit bei einer Rückgabe. <code>prepare</code> gibt nur bei einem neu angelegten Vorgang <code>true</code> zurück. Bei <code>false</code> darf kein weiteres Item entfernt werden. Vor der Inventarentnahme speichert Jobs einen BSON-Inventarplan. Geänderte Slots brechen den Verkauf vor der Entnahme ab. Ein arithmetischer Überlauf rollt alle Datenbankänderungen zurück.</p>
+<p>Inventar- und Weltspeicherung laufen außerhalb der MariaDB-Transaktion. Nach einem Absturz zwischen Reservierung und Commit muss der tatsächliche Stand geprüft werden.</p>
 <ul>
-<li><code>PREPARED</code>: removal may or may not have happened. Check the recorded <code>inventoryEvidence</code>, actual inventory and logs before taking action.</li>
-<li><code>COMMITTED</code>: DB rewards were applied. Never automatically refund this operation.</li>
-<li><code>REFUND_DUE</code>: compensation is outstanding or may have been partially returned. Inspect actual inventory; do not blindly restore the whole plan.</li>
-<li><code>ABORTED</code>: no payout remains and the caller confirmed compensation/no removal.</li>
+<li><code>PREPARED</code>. Die Entnahme kann stattgefunden haben. Prüfe <code>inventoryEvidence</code>, Inventar und Logs.</li>
+<li><code>COMMITTED</code>. Die Auszahlung wurde verbucht. Erstatte diesen Verkauf nicht automatisch.</li>
+<li><code>REFUND_DUE</code>. Eine Rückgabe steht aus oder wurde möglicherweise teilweise durchgeführt. Gleiche den Plan mit dem tatsächlichen Inventar ab.</li>
+<li><code>ABORTED</code>. Es ist keine Auszahlung offen und der Aufrufer hat die Rückgabe oder das Ausbleiben der Entnahme bestätigt.</li>
 </ul>
-<p><code>abort</code> grants a physical refund only on its first PREPARED-to-REFUND_DUE transition; repeated calls never authorize returning the same items again. Core provides <code>pending(playerUuid)</code>, <code>diagnostic(operationUuid)</code>, idempotent <code>commit(request)</code>, <code>abort(request)</code> and <code>confirmRefund(request)</code> for explicit reconciliation. <code>confirmRefund</code> must only be called after actual item restitution (or verified absence of removal). Unresolved operations block further sales for that player. Ambiguous outcomes log the operation UUID and remain recorded. Receipt retention/archival must preserve deduplication and all unresolved records.</p>
-<h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h2>
-<p>Core tests cover migration, immutable snapshots, optimistic bindings, movement ownership, action limits, atomic rewards, rollback, concurrent replay, stale job writes, opposing transfers, concurrent deposits/XP changes and unresolved sales. HcNpcs tests cover action registration/cleanup, command inputs and ignored legacy spawn definitions on repeated reloads. Jobs tests cover exact inventory plans, changed items and compensation failures.</p>
-<p>Maven cannot validate Hytale's client UI DSL or a live world. Before production acceptance, test native spawn/set/name/reset/restart/chunk unload, both merchant confirmation paths, movement during UI loads and plugin shutdown on a Hytale 0.7.7 test server. The UI files reuse native Common.ui templates and send only server-defined action values.</p>
-<h2 id="short-npc-duty-commands">Short NPC duty commands<a class="headerlink" href="#short-npc-duty-commands" title="Permanent link">&para;</a></h2>
-<p><code>/hcnpc set [identifier] &lt;job&gt; &lt;typ&gt;</code> uses plain command arguments, for example <code>merchant lumberjack</code> or <code>merchant miner</code>. The duty is resolved against registered providers; the command does not hardcode a merchant-only switch. Only <code>merchant</code> is currently registered by Jobs. A future provider can register <code>job:worker</code> and use the same command after adding its implementation.</p>
-<p>Stored keys use singular <code>job:merchant</code> and canonical type arguments such as <code>typ:lumberjack</code>. Current type names are <code>farmer</code>, <code>lumberjack</code>, <code>hunter</code>, <code>miner</code>; Core maps these to the existing profession keys without renaming job progress. Old <code>jobs:merchant</code> bindings with German profession arguments migrate idempotently on startup. Generic namespaced actions such as <code>quests:giver forest</code> remain supported. Unregistered duties and unknown profession types are rejected before saving.</p>
-<h2 id="selection-and-verification">Selection and verification<a class="headerlink" href="#selection-and-verification" title="Permanent link">&para;</a></h2>
-<p><code>/hcnpc</code> lists saved keys and entity UUIDs. Display names, role IDs and model IDs are not unique entity identifiers. New bindings currently use <code>legacy.&lt;UUID&gt;</code> keys for persistence compatibility. Set/reset use Hytale native positional command variants; tests cover registration, ambiguity, name validation, original-name preservation, rollback and reset tombstones. Live crosshair/nameplate/UI/restart checks are still required.</p>
-<h2 id="native-interaction-prompt">Native interaction prompt<a class="headerlink" href="#native-interaction-prompt" title="Permanent link">&para;</a></h2>
-<p>Enabled native NPC bindings with an available action advertise Hytale's native interactable hint to their current entity viewers. Merchants use <code>server.interactionHints.trade</code>; other providers use <code>server.interactionHints.generic</code>. The client draws the crosshair/key prompt with its configured Use binding (normally F). Existing native Interactable components and their hints are preserved.</p>
-<p>Hints use the native EntityViewer/InteractableUpdate replication path, without persisting an Interactable component or adding a custom HUD. The world queue refreshes visible-viewer hints once per second, including newly connected viewers. Reset, removed/unavailable actions and shutdown remove only HcNpcs-added client hints; native interactability is retained. Live client visibility, key remapping and interaction tests are still required.</p>
-<p>Command results use Core <code>NotificationUtility</code>: success displays <code>NPC Gespeichert</code>, failure displays <code>NPC Aktion Fehlgeschlagen</code>. Help and the binding list remain chat output.</p>
-<p>Command descriptions, argument hints and usage placeholders are in English (<code>type</code>, <code>identifier-or-job</code>, <code>job-or-type</code>, <code>type-or-name</code>). Result notifications retain the configured German wording.</p>
-<h2 id="interaction-distance-configuration">Interaction distance configuration<a class="headerlink" href="#interaction-distance-configuration" title="Permanent link">&para;</a></h2>
-<p>HcNpcs creates <code>HcNpcs/config.json</code> in its short plugin data directory:</p>
+<p><code>abort</code> erlaubt die physische Rückgabe nur beim ersten Übergang von <code>PREPARED</code> zu <code>REFUND_DUE</code>. Core bietet für den Abgleich <code>pending(playerUuid)</code>, <code>diagnostic(operationUuid)</code>, das idempotente <code>commit(request)</code>, <code>abort(request)</code> und <code>confirmRefund(request)</code> an. Rufe <code>confirmRefund</code> erst nach der tatsächlichen Rückgabe oder nach bestätigtem Ausbleiben der Entnahme auf. Ungeklärte Vorgänge blockieren weitere Verkäufe dieses Spielers. Bei unklarem Ausgang bleibt der Vorgang gespeichert und die UUID wird protokolliert. Aufbewahrung und Archivierung müssen die Deduplizierung und alle ungeklärten Datensätze erhalten.</p>
+<h2 id="verification">Prüfung<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h2>
+<p>Core-Tests decken Migration, unveränderliche Momentaufnahmen, optimistische Bindungen, Zuständigkeit für Bewegungen, Aktionslimits, atomare Belohnungen, Rollbacks, parallele Wiederholungen, veraltete Berufsänderungen, gegenläufige Überweisungen, parallele Einzahlungen und XP-Änderungen sowie offene Verkäufe ab. HcNpcs testet Registrierung und Abmeldung, Befehlseingaben und das Ignorieren alter Spawn-Definitionen beim wiederholten Neuladen. Jobs testet exakte Inventarpläne, geänderte Items und fehlgeschlagene Rückgaben.</p>
+<p>Prüfe vor der Freigabe auf einem Hytale-0.7.7-Testserver das native Spawnen, Zuweisen, Benennen und Zurücksetzen, Neustarts, Chunk-Entladen, beide Verkaufspfade, Spielerbewegung während des Ladens der UI und das Herunterfahren der Plugins. Maven prüft die Hytale-Client-UI und die laufende Welt nicht. Die UI-Dateien verwenden native Vorlagen aus <code>Common.ui</code> und senden nur vom Server definierte Aktionswerte.</p>
+<h2 id="short-npc-duty-commands">Kurzbefehle für NPC-Aufgaben<a class="headerlink" href="#short-npc-duty-commands" title="Permanent link">&para;</a></h2>
+<p><code>/hcnpc set [identifier] &lt;job&gt; &lt;typ&gt;</code> verwendet einfache Argumente wie <code>merchant lumberjack</code> und <code>merchant miner</code>. Der Befehl löst die Aufgabe über registrierte Anbieter auf. Derzeit registriert Jobs nur <code>merchant</code>. Ein weiterer Anbieter könnte etwa <code>job:worker</code> registrieren, seine Implementierung ergänzen und denselben Befehl verwenden.</p>
+<p>Gespeicherte Schlüssel verwenden <code>job:merchant</code> im Singular und kanonische Typen wie <code>typ:lumberjack</code>. Aktuell gibt es <code>farmer</code>, <code>lumberjack</code>, <code>hunter</code> und <code>miner</code>. Core ordnet sie vorhandenen Berufsschlüsseln zu und erhält den Berufsfortschritt. Alte Bindungen mit <code>jobs:merchant</code> und deutschen Berufsargumenten werden beim Start idempotent migriert. Aktionen mit Namensraum wie <code>quests:giver forest</code> bleiben möglich. Unbekannte Aufgaben und Berufstypen werden vor dem Speichern abgelehnt.</p>
+<h2 id="selection-and-verification">Auswahl und Prüfung<a class="headerlink" href="#selection-and-verification" title="Permanent link">&para;</a></h2>
+<p><code>/hcnpc</code> listet gespeicherte Schlüssel und Entitäts-UUIDs auf. Anzeigenamen, Rollen-IDs und Modell-IDs identifizieren einen NPC nicht eindeutig. Neue Bindungen verwenden aus Kompatibilitätsgründen <code>legacy.&lt;UUID&gt;</code>. Die Befehle <code>set</code> und <code>reset</code> nutzen Hytales native positionale Befehlsvarianten. Tests prüfen Registrierung, mehrdeutige Argumente, Namensprüfung, Erhalt des Originalnamens, Rollback und deaktivierte Reset-Einträge. Fadenkreuz, Namensschild, UI und Neustart müssen im laufenden Spiel geprüft werden.</p>
+<h2 id="native-interaction-prompt">Nativer Interaktionshinweis<a class="headerlink" href="#native-interaction-prompt" title="Permanent link">&para;</a></h2>
+<p>Aktive native NPC-Bindungen mit verfügbarer Aktion zeigen ihren aktuellen Betrachtern Hytales nativen Interaktionshinweis. Händler verwenden <code>server.interactionHints.trade</code>, andere Anbieter <code>server.interactionHints.generic</code>. Der Client zeichnet den Hinweis am Fadenkreuz mit der belegten Use-Taste, üblicherweise F. Bestehende <code>Interactable</code>-Komponenten und Hinweise bleiben erhalten.</p>
+<p>Die Hinweise nutzen die native Replikation über <code>EntityViewer</code> und <code>InteractableUpdate</code>. Eine zusätzliche persistente Komponente oder ein eigenes HUD ist dafür nicht nötig. Die Weltwarteschlange aktualisiert Hinweise einmal pro Sekunde, auch für neu verbundene Betrachter. Ein Reset, entfernte oder nicht verfügbare Aktionen und das Herunterfahren entfernen nur die von HcNpcs ergänzten Hinweise. Sichtbarkeit, geänderte Tastenbelegung und Interaktion müssen im Client geprüft werden.</p>
+<p>Befehlsergebnisse verwenden Cores <code>NotificationUtility</code>. Bei Erfolg erscheint <code>NPC Gespeichert</code>, bei einem Fehler <code>NPC Aktion Fehlgeschlagen</code>. Hilfe und Bindungsliste erscheinen im Chat. Befehlsbeschreibungen, Argumenthinweise und Platzhalter sind englisch (<code>type</code>, <code>identifier-or-job</code>, <code>job-or-type</code>, <code>type-or-name</code>). Ergebnisbenachrichtigungen behalten ihren konfigurierten deutschen Wortlaut.</p>
+<h2 id="interaction-distance-configuration">Interaktionsdistanz konfigurieren<a class="headerlink" href="#interaction-distance-configuration" title="Permanent link">&para;</a></h2>
+<p>HcNpcs legt <code>HcNpcs/config.json</code> im kurzen Plugin-Datenverzeichnis an.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"interactionDistanceMeters"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Edit the value and run <code>/hcnpc reload</code> to apply it without restarting. Accepted range: 0.5 to 10 metres. Invalid reloads retain the last valid value and leave the file unchanged; startup logs invalid settings and uses the default. The same distance gates crosshair selection, Use/action dispatch, UI validation and HcNpcs-added viewer hints. Explicit administrative identifiers can still update/reset stored bindings without standing beside the NPC. Hytale's own pre-existing hints/client targeting may impose their own presentation limits; setting a larger server limit does not extend native client targeting automatically.</p>
+<p>Ändere den Wert und führe <code>/hcnpc reload</code> aus, um ihn ohne Neustart zu übernehmen. Zulässig sind 0,5 bis 10 Meter. Bei einem ungültigen Reload bleiben der letzte gültige Wert und die Datei erhalten. Beim Start protokolliert das Plugin eine ungültige Einstellung und verwendet den Standardwert. Dieselbe Distanz gilt für Fadenkreuzauswahl, Use-Aktionen, UI-Prüfung und die HcNpcs-Hinweise. Mit expliziter Kennung können Admins gespeicherte Bindungen auch aus größerer Entfernung ändern oder zurücksetzen. Hytales eigene Hinweise und die Zielauswahl des Clients können eine abweichende Reichweite haben. Ein größerer Serverwert erweitert die Client-Reichweite nicht automatisch.</p>
 
 
 
@@ -2148,6 +2227,8 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/item-catalog/catalog.js"></script>
       
     
   </body>

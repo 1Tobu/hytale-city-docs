@@ -18,6 +18,10 @@
       
       
         
+          <link rel="alternate" href="./" hreflang="de">
+        
+          <link rel="alternate" href="../../en/reference/inventory/" hreflang="en">
+        
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -51,12 +55,18 @@
       
     
     
+      <link rel="stylesheet" href="../../assets/item-catalog/catalog.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
+  
+  <link rel="stylesheet" href="../../assets/docs-access.css">
+  <script defer src="../../assets/docs-access.js"></script>
+
   </head>
   
   
@@ -86,6 +96,7 @@
     </div>
     
     
+  
       
 
   
@@ -149,6 +160,32 @@
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Sprache wechseln">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="de" class="md-select__link">
+              Deutsch
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../en/reference/inventory/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
     
       
       
@@ -209,6 +246,20 @@
   
 </header>
     
+  
+  <dialog class="docs-access" aria-labelledby="docs-access-title">
+    <form>
+      <h1 id="docs-access-title">HytaleCity</h1>
+      <label for="docs-password">Passwort für die Dokumentation</label>
+      <input id="docs-password" name="password" type="password" autocomplete="current-password" required autofocus>
+      <button type="submit">Freischalten</button>
+      <p class="docs-access__error" role="alert" hidden
+         data-invalid="Das Passwort ist falsch."
+         data-unavailable="Die Passwortprüfung ist nicht verfügbar. Öffne die Seite über HTTPS."></p>
+    </form>
+  </dialog>
+  <noscript class="docs-access-no-script">Aktiviere JavaScript, um die Dokumentation zu öffnen.</noscript>
+
     <div class="md-container" data-md-component="container">
       
       
@@ -1644,6 +1695,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../item-catalog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hytale-Itemkatalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../custom-assets/" class="md-nav__link">
         
   
@@ -1651,7 +1730,7 @@
   <span class="md-ellipsis">
     
   
-    Custom Assets
+    Eigene Spielressourcen
   
 
     
@@ -2146,8 +2225,8 @@
 
 
 <h1 id="plugin-inventar-und-quellstande">Plugin-Inventar und Quellstände<a class="headerlink" href="#plugin-inventar-und-quellstande" title="Permanent link">&para;</a></h1>
-<p>Inventar erzeugt am <strong>2026-11-20</strong>. Die Tabelle nennt den lokalen Commit, nicht einen behaupteten produktiven Deploymentstand.</p>
-<p>Der Bericht exportiert ausschließlich ausgewählte Metadaten. Er liest keine produktiven Konfigurationsdateien oder Logs. Private Quellrepositories erfordern weiterhin eigene Zugriffsrechte.</p>
+<p>Inventar erzeugt am <strong>2026-11-20</strong>. Die Tabelle nennt den lokalen Commit des jeweiligen Repositories.</p>
+<p>Der Bericht exportiert ausgewählte Metadaten. Private Quellrepositories erfordern eigene Zugriffsrechte.</p>
 <p><a href="../inventory.json">Inventar als JSON herunterladen</a>.</p>
 <table>
 <thead>
@@ -2261,129 +2340,129 @@
 <p>Maven: <code>com.hytalecity:CorePlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: keine deklariert.</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Befehlsklassen:</strong> keine im erfassten Bereich.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> <code>AsyncLevelService</code>, <code>HomeService</code>, <code>ItemEnchantmentService</code>, <code>ItemService</code>, <code>JobCatalogService</code>, <code>JobItemTotalService</code>, <code>JobItemUnlockService</code>, <code>JobMerchantQueryService</code>, <code>JobMilestoneClaimService</code>, <code>JobMilestoneDefinitionService</code>, <code>JobSaleService</code>, <code>JobService</code>, <code>JobXpProgressService</code>, <code>LevelProgressionService</code>, <code>LevelRewardService</code>, <code>NpcDefinitionService</code>, <code>PlayerLevelService</code>, <code>PlayerService</code>, <code>PlayerStatsBatchService</code>, <code>PlayerStatsService</code>, <code>PlotCoOwnerService</code>, <code>PlotInviteService</code>, <code>PlotMenuService</code>, <code>PlotOfferService</code>, <code>PlotService</code>, <code>ProfessionService</code>, <code>ProtectionService</code>, <code>RankService</code>.</p>
+<p><strong>Dienste:</strong> <code>AsyncLevelService</code>, <code>HomeService</code>, <code>ItemEnchantmentService</code>, <code>ItemService</code>, <code>JobCatalogService</code>, <code>JobItemTotalService</code>, <code>JobItemUnlockService</code>, <code>JobMerchantQueryService</code>, <code>JobMilestoneClaimService</code>, <code>JobMilestoneDefinitionService</code>, <code>JobSaleService</code>, <code>JobService</code>, <code>JobXpProgressService</code>, <code>LevelProgressionService</code>, <code>LevelRewardService</code>, <code>NpcDefinitionService</code>, <code>PlayerLevelService</code>, <code>PlayerService</code>, <code>PlayerStatsBatchService</code>, <code>PlayerStatsService</code>, <code>PlotCoOwnerService</code>, <code>PlotInviteService</code>, <code>PlotMenuService</code>, <code>PlotOfferService</code>, <code>PlotService</code>, <code>ProfessionService</code>, <code>ProtectionService</code>, <code>RankService</code>.</p>
 <p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
 <h2 id="citybuildplugin">CityBuildPlugin<a class="headerlink" href="#citybuildplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:CityBuildPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> <code>PlotCommand</code>, <code>PlotsCommand</code>, <code>BuySubCommand</code>, <code>InfoSubCommand</code>, <code>InviteAcceptSubCommand</code>, <code>InviteCancelSubCommand</code>, <code>InviteDenySubCommand</code>, <code>InvitesSubCommand</code>, <code>InviteSubCommand</code>, <code>LimitGetSubCommand</code>, <code>LimitIncreaseSubCommand</code>, <code>LimitResetSubCommand</code>, <code>LimitSetSubCommand</code>, <code>LimitSubCommand</code>, <code>ListSubCommand</code>, <code>OfferAcceptSubCommand</code>, <code>OfferCancelSubCommand</code>, <code>OfferDenySubCommand</code>, <code>OffersSubCommand</code>, <code>OfferSubCommand</code>, <code>RenameSubCommand</code>, <code>SellToCitySubCommand</code>.</p>
+<p><strong>Befehlsklassen:</strong> <code>PlotCommand</code>, <code>PlotsCommand</code>, <code>BuySubCommand</code>, <code>InfoSubCommand</code>, <code>InviteAcceptSubCommand</code>, <code>InviteCancelSubCommand</code>, <code>InviteDenySubCommand</code>, <code>InvitesSubCommand</code>, <code>InviteSubCommand</code>, <code>LimitGetSubCommand</code>, <code>LimitIncreaseSubCommand</code>, <code>LimitResetSubCommand</code>, <code>LimitSetSubCommand</code>, <code>LimitSubCommand</code>, <code>ListSubCommand</code>, <code>OfferAcceptSubCommand</code>, <code>OfferCancelSubCommand</code>, <code>OfferDenySubCommand</code>, <code>OffersSubCommand</code>, <code>OfferSubCommand</code>, <code>RenameSubCommand</code>, <code>SellToCitySubCommand</code>.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>Dienste:</strong> keine im erfassten Bereich.</p>
 <p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/Plots/Plots.ui</code>.</p>
 <h2 id="homeplugin">HomePlugin<a class="headerlink" href="#homeplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:HomePlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> <code>HomeCommand</code>, <code>HomesCommand</code>, <code>SetHomeCommand</code>, <code>HomeRemoveSubCommand</code>.</p>
+<p><strong>Befehlsklassen:</strong> <code>HomeCommand</code>, <code>HomesCommand</code>, <code>SetHomeCommand</code>, <code>HomeRemoveSubCommand</code>.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>Dienste:</strong> keine im erfassten Bereich.</p>
 <p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/Homes/Homes.ui</code>.</p>
 <h2 id="economyplugin">EconomyPlugin<a class="headerlink" href="#economyplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:EconomyPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> <code>MoneyCommand</code>, <code>MoneyAddSubCommand</code>, <code>MoneyRemoveSubCommand</code>, <code>MoneySendSubCommand</code>, <code>MoneySetSubCommand</code>.</p>
+<p><strong>Befehlsklassen:</strong> <code>MoneyCommand</code>, <code>MoneyAddSubCommand</code>, <code>MoneyRemoveSubCommand</code>, <code>MoneySendSubCommand</code>, <code>MoneySetSubCommand</code>.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>Dienste:</strong> keine im erfassten Bereich.</p>
 <p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
 <h2 id="jobsplugin">JobsPlugin<a class="headerlink" href="#jobsplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:JobsPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>), <code>HytaleCity:HcNpcs</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: <code>HytaleCity:EnchantmentsPlugin</code> (<code>*</code>).</p>
-<p><strong>Command-Klassen:</strong> <code>JobCommand</code>, <code>JobAdminItemAddSubCommand</code>, <code>JobAdminMilestonesUiSubCommand</code>, <code>JobAdminNpcSetSubCommand</code>, <code>JobAdminShopUiSubCommand</code>, <code>JobAdminSubCommand</code>, <code>JobAdminUpgradeUiSubCommand</code>, <code>JobEnterSubCommand</code>, <code>JobInfoSubCommand</code>, <code>JobSellSubCommand</code>.</p>
+<p><strong>Befehlsklassen:</strong> <code>JobCommand</code>, <code>JobAdminItemAddSubCommand</code>, <code>JobAdminMilestonesUiSubCommand</code>, <code>JobAdminNpcSetSubCommand</code>, <code>JobAdminShopUiSubCommand</code>, <code>JobAdminSubCommand</code>, <code>JobAdminUpgradeUiSubCommand</code>, <code>JobEnterSubCommand</code>, <code>JobInfoSubCommand</code>, <code>JobSellSubCommand</code>.</p>
 <p><strong>API-Klassen:</strong> <code>JobsAPI</code>, <code>JobUpdateListener</code>.</p>
-<p><strong>Services:</strong> <code>EnchantmentsBridgeService</code>, <code>JobMilestoneRuntimeService</code>, <code>JobShopOfferService</code>, <code>JobUpgradeRecipeService</code>, <code>NpcJobKeyService</code>.</p>
+<p><strong>Dienste:</strong> <code>EnchantmentsBridgeService</code>, <code>JobMilestoneRuntimeService</code>, <code>JobShopOfferService</code>, <code>JobUpgradeRecipeService</code>, <code>NpcJobKeyService</code>.</p>
 <p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/Jobs/JobMilestonePanel.ui</code>, <code>Common/UI/Custom/Jobs/JobNpc.ui</code>, <code>Common/UI/Custom/Jobs/JobShopAdmin.ui</code>, <code>Common/UI/Custom/Jobs/JobUpgradeAdmin.ui</code>, <code>Common/UI/Custom/Jobs/JobUpgradeSelect.ui</code>, <code>Common/UI/Custom/Jobs/Jobs.ui</code>, <code>Common/UI/Custom/Jobs/MilestoneAdmin.ui</code>, <code>Common/UI/Custom/Jobs/MilestoneRow.ui</code>, <code>Common/UI/Custom/Jobs/Profession.ui</code>, <code>Common/UI/Custom/Jobs/ProfessionCard.ui</code>, <code>Common/UI/Custom/Jobs/ProfessionTradeRow.ui</code>.</p>
 <h2 id="levelplugin">LevelPlugin<a class="headerlink" href="#levelplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:LevelPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Befehlsklassen:</strong> keine im erfassten Bereich.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> <code>LevelService</code>.</p>
+<p><strong>Dienste:</strong> <code>LevelService</code>.</p>
 <p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
 <h2 id="hcnpcs">HcNpcs<a class="headerlink" href="#hcnpcs" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:HcNpcs:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> <code>NpcCommand</code>.</p>
+<p><strong>Befehlsklassen:</strong> <code>NpcCommand</code>.</p>
 <p><strong>API-Klassen:</strong> <code>HcNpcsAPI</code>, <code>HcNpcsService</code>, <code>NpcActionHandler</code>, <code>Registration</code>.</p>
-<p><strong>Services:</strong> <code>HcNpcsService</code>.</p>
+<p><strong>Dienste:</strong> <code>HcNpcsService</code>.</p>
 <p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/HcNpcs/ActionRow.ui</code>, <code>Common/UI/Custom/HcNpcs/Actions.ui</code>.</p>
 <h2 id="enchantmentsplugin">EnchantmentsPlugin<a class="headerlink" href="#enchantmentsplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:EnchantmentsPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> <code>EnchantItemCommand</code>.</p>
+<p><strong>Befehlsklassen:</strong> <code>EnchantItemCommand</code>.</p>
 <p><strong>API-Klassen:</strong> <code>EnchantmentsApi</code>.</p>
-<p><strong>Services:</strong> <code>EnchantmentBehaviorService</code>, <code>EnchantmentsService</code>, <code>EnchantmentValueService</code>, <code>ItemUpgradeRollService</code>, <code>MoneyFindRewardService</code>.</p>
+<p><strong>Dienste:</strong> <code>EnchantmentBehaviorService</code>, <code>EnchantmentsService</code>, <code>EnchantmentValueService</code>, <code>ItemUpgradeRollService</code>, <code>MoneyFindRewardService</code>.</p>
 <p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
 <h2 id="playerstatsplugin">PlayerStatsPlugin<a class="headerlink" href="#playerstatsplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:PlayerStatsPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Befehlsklassen:</strong> keine im erfassten Bereich.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>Dienste:</strong> keine im erfassten Bereich.</p>
 <p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
 <h2 id="playerhudplugin">PlayerHudPlugin<a class="headerlink" href="#playerhudplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:PlayerHudPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> <code>HudCommand</code>.</p>
+<p><strong>Befehlsklassen:</strong> <code>HudCommand</code>.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> <code>HudService</code>.</p>
+<p><strong>Dienste:</strong> <code>HudService</code>.</p>
 <p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/Hud/PlayerHud.ui</code>.</p>
 <h2 id="afkplugin">AfkPlugin<a class="headerlink" href="#afkplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:AfkPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Befehlsklassen:</strong> keine im erfassten Bereich.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> <code>AfkDisconnectService</code>, <code>AfkService</code>.</p>
+<p><strong>Dienste:</strong> <code>AfkDisconnectService</code>, <code>AfkService</code>.</p>
 <p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
 <h2 id="teleportplugin">TeleportPlugin<a class="headerlink" href="#teleportplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:TeleportPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> <code>TpAcceptCommand</code>, <code>TpaCommand</code>, <code>TpDenyCommand</code>.</p>
+<p><strong>Befehlsklassen:</strong> <code>TpAcceptCommand</code>, <code>TpaCommand</code>, <code>TpDenyCommand</code>.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> <code>TpaService</code>.</p>
+<p><strong>Dienste:</strong> <code>TpaService</code>.</p>
 <p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
 <h2 id="warpplugin">WarpPlugin<a class="headerlink" href="#warpplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:WarpPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: keine deklariert.</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> <code>CitySubCommand</code>, <code>FarmWorldSubCommand</code>, <code>SpawnSubCommand</code>, <code>WarpCommand</code>.</p>
+<p><strong>Befehlsklassen:</strong> <code>CitySubCommand</code>, <code>FarmWorldSubCommand</code>, <code>SpawnSubCommand</code>, <code>WarpCommand</code>.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>Dienste:</strong> keine im erfassten Bereich.</p>
 <p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
 <h2 id="farmworldplugin">FarmWorldPlugin<a class="headerlink" href="#farmworldplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:FarmWorldPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: keine deklariert.</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> keine im erfassten Bereich.</p>
+<p><strong>Befehlsklassen:</strong> keine im erfassten Bereich.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> <code>FarmWorldService</code>.</p>
+<p><strong>Dienste:</strong> <code>FarmWorldService</code>.</p>
 <p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
 <h2 id="protectionplugin">ProtectionPlugin<a class="headerlink" href="#protectionplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:ProtectionPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: <code>HytaleCity:CorePlugin</code> (<code>*</code>).</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> <code>ProtectionCommand</code>, <code>ListSubCommand</code>, <code>RegisterSubCommand</code>, <code>RemoveSubCommand</code>.</p>
+<p><strong>Befehlsklassen:</strong> <code>ProtectionCommand</code>, <code>ListSubCommand</code>, <code>RegisterSubCommand</code>, <code>RemoveSubCommand</code>.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> keine im erfassten Bereich.</p>
+<p><strong>Dienste:</strong> keine im erfassten Bereich.</p>
 <p><strong>UI-Dokumente:</strong> keine im erfassten Bereich.</p>
 <h2 id="documentationplugin">DocumentationPlugin<a class="headerlink" href="#documentationplugin" title="Permanent link">&para;</a></h2>
 <p>Maven: <code>com.hytalecity:DocumentationPlugin:1.0.0</code>.</p>
 <p>Pflichtabhängigkeiten: keine deklariert.</p>
 <p>Optionale Abhängigkeiten: keine deklariert.</p>
-<p><strong>Command-Klassen:</strong> <code>RulesCommand</code>, <code>TutorialCommand</code>.</p>
+<p><strong>Befehlsklassen:</strong> <code>RulesCommand</code>, <code>TutorialCommand</code>.</p>
 <p><strong>API-Klassen:</strong> keine im erfassten Bereich.</p>
-<p><strong>Services:</strong> <code>DocumentationService</code>.</p>
+<p><strong>Dienste:</strong> <code>DocumentationService</code>.</p>
 <p><strong>UI-Dokumente:</strong> <code>Common/UI/Custom/Rules/Rules.ui</code>, <code>Common/UI/Custom/Tutorial/Tutorial.ui</code>.</p>
 
 
@@ -2444,6 +2523,8 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/item-catalog/catalog.js"></script>
       
     
   </body>
