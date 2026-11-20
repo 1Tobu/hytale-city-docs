@@ -532,6 +532,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#rollen-vergeben-prufen-und-entfernen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollen vergeben, prüfen und entfernen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rollen vergeben, prüfen und entfernen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#einzelne-rechte-verwalten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Einzelne Rechte verwalten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#moderatoren-einrichten" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1977,6 +2005,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#rollen-vergeben-prufen-und-entfernen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollen vergeben, prüfen und entfernen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rollen vergeben, prüfen und entfernen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#einzelne-rechte-verwalten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Einzelne Rechte verwalten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#moderatoren-einrichten" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2099,6 +2155,75 @@
 </tbody>
 </table>
 <p>Spieler ohne Sonderrechte verwenden das Händlerfenster für Beruf, Aufträge, Meilensteine und Handel. Moderatoren können mit der folgenden Konfiguration Schutzzonen und NPCs verwalten. Wer nur NPCs zuweisen soll, braucht zusätzlich zu den Grundrechten lediglich <code>hcnpcs.admin</code> und kann <code>/hcnpc set</code> nutzen.</p>
+<h2 id="rollen-vergeben-prufen-und-entfernen">Rollen vergeben, prüfen und entfernen<a class="headerlink" href="#rollen-vergeben-prufen-und-entfernen" title="Permanent link">&para;</a></h2>
+<p>Führe die Befehle als Admin aus. Ersetze <code>&lt;UUID&gt;</code> durch die Spieler-UUID und <code>&lt;Gruppe&gt;</code> durch den vollständigen Gruppennamen, etwa <code>hytale:Builder</code> oder <code>hytalecity:Moderator</code>. Die spitzen Klammern lässt du weg.</p>
+<table>
+<thead>
+<tr>
+<th>Aufgabe</th>
+<th>Befehl</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rolle zu bestehenden Rollen hinzufügen</td>
+<td><code>/perm user group add &lt;UUID&gt; &lt;Gruppe&gt;</code></td>
+</tr>
+<tr>
+<td>Gruppen eines Spielers anzeigen</td>
+<td><code>/perm user group list &lt;UUID&gt;</code></td>
+</tr>
+<tr>
+<td>Eine Rolle entfernen</td>
+<td><code>/perm user group remove &lt;UUID&gt; &lt;Gruppe&gt;</code></td>
+</tr>
+<tr>
+<td>Alle Gruppen eines Online-Spielers durch eine Gruppe ersetzen</td>
+<td><code>/setgroup &lt;Gruppe&gt; &lt;Spieler&gt;</code></td>
+</tr>
+<tr>
+<td>Die für eine Gruppe konfigurierten Rechte anzeigen</td>
+<td><code>/perm group list &lt;Gruppe&gt;</code></td>
+</tr>
+<tr>
+<td>Direkt vergebene Rechte eines Spielers anzeigen</td>
+<td><code>/perm user list &lt;UUID&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>Vollen Adminzugriff vergibst du mit <code>/perm user group add &lt;UUID&gt; hytale:Admin</code>. Mit <code>/perm user group remove &lt;UUID&gt; hytale:Admin</code> entfernst du diese Mitgliedschaft. Bei einem Rollenwechsel mit weiteren bestehenden Rollen vergibst du die neue Rolle mit <code>group add</code> und entfernst die alte mit <code>group remove</code>. <code>/setgroup</code> ersetzt alle Gruppenmitgliedschaften. Direkt vergebene Rechte bleiben dabei bestehen.</p>
+<h3 id="einzelne-rechte-verwalten">Einzelne Rechte verwalten<a class="headerlink" href="#einzelne-rechte-verwalten" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Aufgabe</th>
+<th>Befehl</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Einer Gruppe ein Recht geben</td>
+<td><code>/perm group add &lt;Gruppe&gt; &lt;Recht&gt;</code></td>
+</tr>
+<tr>
+<td>Einer Gruppe ein Recht entziehen</td>
+<td><code>/perm group remove &lt;Gruppe&gt; &lt;Recht&gt;</code></td>
+</tr>
+<tr>
+<td>Einem Spieler ein Recht direkt geben</td>
+<td><code>/perm user add &lt;UUID&gt; &lt;Recht&gt;</code></td>
+</tr>
+<tr>
+<td>Ein direkt vergebenes Recht entziehen</td>
+<td><code>/perm user remove &lt;UUID&gt; &lt;Recht&gt;</code></td>
+</tr>
+<tr>
+<td>Ein Recht für das ausführende Konto prüfen</td>
+<td><code>/perm test &lt;Recht&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>Prüfe nach dem Entfernen einer Rolle den Zugriff mit dem betroffenen Konto. Falls er bestehen bleibt, prüfe direkte Rechte, weitere Gruppen samt Elternrollen und Wildcards wie <code>*</code>.</p>
 <h2 id="moderatoren-einrichten">Moderatoren einrichten<a class="headerlink" href="#moderatoren-einrichten" title="Permanent link">&para;</a></h2>
 <p>Ein Admin kann die Gruppe anlegen und einem Spieler zuweisen. Ersetze <code>&lt;UUID&gt;</code> durch die Spieler-UUID. Die zusätzliche Adventurer-Mitgliedschaft erhält die Grundrechte auch dann, wenn die benutzerdefinierte Gruppe per Befehl ohne Elternrolle angelegt wird.</p>
 <div class="highlight"><pre><span></span><code>/perm group add hytalecity:Moderator protection.admin

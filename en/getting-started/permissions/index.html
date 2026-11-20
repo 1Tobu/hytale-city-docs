@@ -532,6 +532,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#assign-inspect-and-remove-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assign, inspect, and remove roles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Assign, inspect, and remove roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manage-individual-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manage individual permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#set-up-moderators" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1977,6 +2005,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#assign-inspect-and-remove-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assign, inspect, and remove roles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Assign, inspect, and remove roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manage-individual-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manage individual permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#set-up-moderators" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2099,6 +2155,75 @@
 </tbody>
 </table>
 <p>Ordinary players use the merchant menu for professions, quests, milestones, and trading. The configuration below lets moderators manage protection zones and NPCs. Staff who only assign NPCs can use <code>/hcnpc set</code> with <code>hcnpcs.admin</code>.</p>
+<h2 id="assign-inspect-and-remove-roles">Assign, inspect, and remove roles<a class="headerlink" href="#assign-inspect-and-remove-roles" title="Permanent link">&para;</a></h2>
+<p>Run these commands as an administrator. Replace <code>&lt;UUID&gt;</code> with the player's UUID and <code>&lt;Group&gt;</code> with the full group name, such as <code>hytale:Builder</code> or <code>hytalecity:Moderator</code>. Omit the angle brackets.</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add a role while preserving other roles</td>
+<td><code>/perm user group add &lt;UUID&gt; &lt;Group&gt;</code></td>
+</tr>
+<tr>
+<td>List a player's groups</td>
+<td><code>/perm user group list &lt;UUID&gt;</code></td>
+</tr>
+<tr>
+<td>Remove one role</td>
+<td><code>/perm user group remove &lt;UUID&gt; &lt;Group&gt;</code></td>
+</tr>
+<tr>
+<td>Replace all group memberships for an online player</td>
+<td><code>/setgroup &lt;Group&gt; &lt;Player&gt;</code></td>
+</tr>
+<tr>
+<td>List the permissions configured for a group</td>
+<td><code>/perm group list &lt;Group&gt;</code></td>
+</tr>
+<tr>
+<td>List a player's directly assigned permissions</td>
+<td><code>/perm user list &lt;UUID&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>For example, use <code>/perm user group add &lt;UUID&gt; hytale:Admin</code> to grant full admin access. Remove that membership with <code>/perm user group remove &lt;UUID&gt; hytale:Admin</code>. To change roles while keeping other memberships, use <code>group add</code> for the new role and <code>group remove</code> for the old one. <code>/setgroup</code> replaces the player's group memberships. Direct permission grants remain in place.</p>
+<h3 id="manage-individual-permissions">Manage individual permissions<a class="headerlink" href="#manage-individual-permissions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grant a permission to a group</td>
+<td><code>/perm group add &lt;Group&gt; &lt;Permission&gt;</code></td>
+</tr>
+<tr>
+<td>Remove a permission from a group</td>
+<td><code>/perm group remove &lt;Group&gt; &lt;Permission&gt;</code></td>
+</tr>
+<tr>
+<td>Grant a permission directly to one player</td>
+<td><code>/perm user add &lt;UUID&gt; &lt;Permission&gt;</code></td>
+</tr>
+<tr>
+<td>Remove a direct grant</td>
+<td><code>/perm user remove &lt;UUID&gt; &lt;Permission&gt;</code></td>
+</tr>
+<tr>
+<td>Check a permission for the account running the command</td>
+<td><code>/perm test &lt;Permission&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>After removing a role, verify access with the affected account. If access remains, check direct grants, other groups and their parents, and wildcard permissions such as <code>*</code>.</p>
 <h2 id="set-up-moderators">Set up moderators<a class="headerlink" href="#set-up-moderators" title="Permanent link">&para;</a></h2>
 <p>An admin can create the group and assign it to a player. Replace <code>&lt;UUID&gt;</code> with the player's UUID. Explicit Adventurer membership preserves its permissions when commands create the custom group without a parent.</p>
 <div class="highlight"><pre><span></span><code>/perm group add hytalecity:Moderator protection.admin
