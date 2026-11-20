@@ -9,7 +9,7 @@ Die Tabelle beschreibt die vorhandenen Einstiegspunkte. `<...>` sind Pflichtwert
 | Plot-Limits | `/plot limit get`, `set`, `increase`, `reset` mit Zielspieler und ggf. Limit |
 | Homes | `/homes`, `/sethome`, `/home <name>`, `/home remove <name>` |
 | Geld | `/money`, `/money send <player> <amount>`; Admin: `add`, `remove`, `set` |
-| Jobs | `/job <jobKey>`, `/job enter <jobKey>`, `/job info`, `/job sell <amount|all>` |
+| Jobs mit Befehlsrecht | `/job <jobKey>`, `/job enter <jobKey>`, `/job info`, `/job sell <amount|all>` |
 | Jobs-Admin | `/job admin item`, `milestones`, `shop`, `upgrades`, `npcset <jobKey>` |
 | NPCs | `/hcnpc`, `set [identifier] <job> <type> [name]`, `reset [identifier]`, `reload` |
 | Verzaubern | `/enchant item [enchantment] [value]` |
@@ -23,6 +23,8 @@ Die Tabelle beschreibt die vorhandenen Einstiegspunkte. `<...>` sind Pflichtwert
 Für AFK, PlayerStats und das allgemeine Levelsystem ist in den aktuellen Quellen kein eigener registrierter Spielerbefehl dokumentiert. Integrationen greifen auf Events bzw. Core-Services zurück.
 
 ## Rechte
+
+Siehe [Rollenvergabe und Rechte je Befehl](permissions.md).
 
 HcNpcs-Administration und die NPC-Auswahl für Jobs verlangen ausdrücklich `hcnpcs.admin`. Der Enchantment-Testbefehl wird der Gruppe `hytale:WorldEditor` zugeordnet. Andere Admin-Befehle verwenden ihre Hytale-Befehlskonfiguration; konkrete generierte Permission-Namen nicht ohne Prüfung erraten.
 

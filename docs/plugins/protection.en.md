@@ -2,6 +2,14 @@
 
 ProtectionPlugin associates registered areas with allowed and blocked actions. Shared area data and decisions live in Core.
 
+`/protection` and its subcommands require `protection.admin`. [Roles and permissions](../getting-started/permissions.md)
+
+## Zone manager
+
+`/protection` opens a list of zones across all worlds. Select a zone to edit its name, corners, or restricted actions. To create a zone in your current world, choose **Neue Zone**. Enter both corners as three integer coordinates each, or copy the current block selection with **Markierung übernehmen**. Select at least one restriction before saving. Deleting a zone takes two clicks.
+
+The available restrictions are breaking blocks, placing blocks, and interaction. The menu uses the permissions of the existing list, register, and remove commands. Editing an existing zone requires both register and remove permissions.
+
 ## Commands
 
 - `/protection register <areaName> <actionType>` registers an area for an action type.

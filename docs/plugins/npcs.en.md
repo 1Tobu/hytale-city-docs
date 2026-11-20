@@ -2,7 +2,7 @@
 
 Create the NPC with Hytale's native tools. HcNpcs binds a function and profession type to that NPC and opens the appropriate custom UI on interaction.
 
-Required permission: `hcnpcs.admin`.
+The `/hcnpc` command requires `hcnpcs.admin`. Players can open the merchant window by interacting with the NPC. [Roles and permissions](../getting-started/permissions.md)
 
 ## Assign an NPC
 

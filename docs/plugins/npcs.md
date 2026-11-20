@@ -2,7 +2,7 @@
 
 Erzeuge den gewünschten NPC mit Hytales nativen Werkzeugen. HcNpcs weist diesem NPC eine Funktion und einen Jobtyp zu und öffnet bei Interaktion die passende eigene UI. HcNpcs spawnt keine NPCs.
 
-Benötigte Berechtigung: `hcnpcs.admin`.
+Der Befehl `/hcnpc` verlangt `hcnpcs.admin`. Spieler öffnen das Händlerfenster über die Interaktion mit dem NPC. [Rollen und Rechte](../getting-started/permissions.md)
 
 ## NPC setzen
 

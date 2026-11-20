@@ -11,11 +11,13 @@ Jobs benötigt Core und HcNpcs. Das Berufsmenü eines Händler-NPCs enthält **V
 | Koch | cook | Brot, Gemüse- und Fleischspieße sowie Kürbiskuchen an der Kochstation herstellen |
 | Fischer | fisher | Lachs, Regenbogenforelle, Hecht oder Wels in der Farmwelt fangen |
 
+Normale Spieler verwenden das Händlerfenster. Direkte Job-Befehle brauchen `jobs.command`. [Rollen und Rechte](../getting-started/permissions.md)
+
 ## Beruf annehmen und wechseln
 
 Unter **Beruf** oder über `/job enter <jobKey>` lässt sich ein Beruf aktivieren. Es ist jeweils ein Beruf aktiv. Gelernte Berufe, XP und offene Aufträge bleiben beim Wechsel erhalten. Die XP-Kurve steigt bis Stufe 25 exponentiell, danach linear. Das System unterstützt mindestens Level 1000. Das allgemeine Spielerlevel hat eine eigene Kurve.
 
-Ein NPC wird mit `/hcnpc set [identifier] merchant <type> [name]` zum Händler. `/job admin npcset <jobKey>` bindet den nächsten anvisierten NPC innerhalb von 60 Sekunden und verlangt hcnpcs.admin. Der NPC behält seine native Rolle. [HcNpcs einrichten](npcs.md).
+Ein NPC wird mit `/hcnpc set [identifier] merchant <type> [name]` zum Händler. `/job admin npcset <jobKey>` bindet den nächsten anvisierten NPC innerhalb von 60 Sekunden und verlangt `jobs.command`, `jobs.admin` und `hcnpcs.admin`. Der NPC behält seine native Rolle. [HcNpcs einrichten](npcs.md).
 
 ## Fortschritt und Belohnungen
 

@@ -9,7 +9,7 @@ Replace required placeholders such as `<player>` with actual values. See the cur
 | Plot limits | `/plot limit get`, `set`, `increase`, and `reset` with a target player and a limit where applicable |
 | Homes | `/homes`, `/sethome`, `/home <name>`, `/home remove <name>` |
 | Money | `/money`, `/money send <player> <amount>`; Admin: `add`, `remove`, `set` |
-| Jobs | `/job <jobKey>`, `/job enter <jobKey>`, `/job info`, `/job sell <amount|all>` |
+| Jobs with command access | `/job <jobKey>`, `/job enter <jobKey>`, `/job info`, `/job sell <amount|all>` |
 | Jobs-Admin | `/job admin item`, `milestones`, `shop`, `upgrades`, `npcset <jobKey>` |
 | NPCs | `/hcnpc`, `set [identifier] <job> <type> [name]`, `reset [identifier]`, `reload` |
 | Enchanting | `/enchant item [enchantment] [value]` |
@@ -23,6 +23,8 @@ Replace required placeholders such as `<player>` with actual values. See the cur
 For AFK, PlayerStats and the general level system, no registered player command is documented in the current sources.
 
 ## Permissions
+
+See the [role setup and permission matrix](permissions.md).
 
 HcNpcs administration and Jobs NPC selection require `hcnpcs.admin`. The enchantment test command belongs to `hytale:WorldEditor`. Check other administrative permissions against the registered Hytale commands.
 

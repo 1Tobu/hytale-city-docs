@@ -49,6 +49,7 @@ plugins:
             Einstieg: Getting started
             Installation und Konfiguration: Installation and configuration
             Befehle und Berechtigungen: Commands and permissions
+            Rollen und Rechte: Roles and permissions
             Architektur: Architecture
             Zusammenspiel: How the plugins work together
             Daten und Threads: Data and threads
@@ -91,6 +92,7 @@ nav:
   - Einstieg:
       - Installation und Konfiguration: getting-started/setup.md
       - Befehle und Berechtigungen: getting-started/commands.md
+      - Rollen und Rechte: getting-started/permissions.md
   - Architektur:
       - Zusammenspiel: architecture/overview.md
       - Daten und Threads: architecture/data-and-threads.md

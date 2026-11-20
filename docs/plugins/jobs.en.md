@@ -11,11 +11,13 @@ Jobs requires Core and HcNpcs. A merchant NPC's profession menu offers selling, 
 | Cook | cook | Make bread, vegetable skewers, meat skewers, or pumpkin pie at a cooking bench |
 | Fisher | fisher | Catch salmon, rainbow trout, pike, or catfish in the farm world |
 
+Regular players use the merchant menu. Direct job commands require `jobs.command`. [Roles and permissions](../getting-started/permissions.md)
+
 ## Activating and switching professions
 
 Activate a profession in the profession menu or with `/job enter <jobKey>`. Only one profession is active at a time. Unlocked professions, XP, and open quests are retained when switching. The XP curve rises exponentially through level 25 and linearly afterward. The system supports at least level 1000. Overall player progression has its own curve.
 
-Use `/hcnpc set [identifier] merchant <type> [name]` to make an NPC a merchant. `/job admin npcset <jobKey>` binds the next targeted NPC within 60 seconds and requires `hcnpcs.admin`. The NPC keeps its native role. See [HcNpcs setup](npcs.md).
+Use `/hcnpc set [identifier] merchant <type> [name]` to make an NPC a merchant. `/job admin npcset <jobKey>` binds the next targeted NPC within 60 seconds and requires `jobs.command`, `jobs.admin`, and `hcnpcs.admin`. The NPC keeps its native role. See [HcNpcs setup](npcs.md).
 
 ## Progress and rewards
 
