@@ -28,6 +28,33 @@ Legacy group names `Default` and `OP` resolve to `hytale:Adventurer` and `hytale
 
 Ordinary players use the merchant menu for professions, quests, milestones, and trading. The configuration below lets moderators manage protection zones and NPCs. Staff who only assign NPCs can use `/hcnpc set` with `hcnpcs.admin`.
 
+## Assign, inspect, and remove roles
+
+Run these commands as an administrator. Replace `<UUID>` with the player's UUID and `<Group>` with the full group name, such as `hytale:Builder` or `hytalecity:Moderator`. Omit the angle brackets.
+
+| Task | Command |
+| --- | --- |
+| Add a role while preserving other roles | `/perm user group add <UUID> <Group>` |
+| List a player's groups | `/perm user group list <UUID>` |
+| Remove one role | `/perm user group remove <UUID> <Group>` |
+| Replace all group memberships for an online player | `/setgroup <Group> <Player>` |
+| List the permissions configured for a group | `/perm group list <Group>` |
+| List a player's directly assigned permissions | `/perm user list <UUID>` |
+
+For example, use `/perm user group add <UUID> hytale:Admin` to grant full admin access. Remove that membership with `/perm user group remove <UUID> hytale:Admin`. To change roles while keeping other memberships, use `group add` for the new role and `group remove` for the old one. `/setgroup` replaces the player's group memberships. Direct permission grants remain in place.
+
+### Manage individual permissions
+
+| Task | Command |
+| --- | --- |
+| Grant a permission to a group | `/perm group add <Group> <Permission>` |
+| Remove a permission from a group | `/perm group remove <Group> <Permission>` |
+| Grant a permission directly to one player | `/perm user add <UUID> <Permission>` |
+| Remove a direct grant | `/perm user remove <UUID> <Permission>` |
+| Check a permission for the account running the command | `/perm test <Permission>` |
+
+After removing a role, verify access with the affected account. If access remains, check direct grants, other groups and their parents, and wildcard permissions such as `*`.
+
 ## Set up moderators
 
 An admin can create the group and assign it to a player. Replace `<UUID>` with the player's UUID. Explicit Adventurer membership preserves its permissions when commands create the custom group without a parent.
