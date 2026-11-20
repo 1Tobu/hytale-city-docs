@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ 'assets/docs-access.css' | url }}">
+  <script defer src="{{ 'assets/docs-access.js' | url }}"></script>
+{% endblock %}
+
+{% block header %}
+  {{ super() }}
+  {% set english = config.theme.language == "en" %}
+  <dialog class="docs-access" aria-labelledby="docs-access-title">
+    <form>
+      <h1 id="docs-access-title">HytaleCity</h1>
+      <label for="docs-password">{{ "Documentation password" if english else "Passwort für die Dokumentation" }}</label>
+      <input id="docs-password" name="password" type="password" autocomplete="current-password" required autofocus>
+      <button type="submit">{{ "Unlock" if english else "Freischalten" }}</button>
+      <p class="docs-access__error" role="alert" hidden
+         data-invalid="{{ 'Incorrect password.' if english else 'Das Passwort ist falsch.' }}"
+         data-unavailable="{{ 'Password verification is unavailable. Open the site over HTTPS.' if english else 'Die Passwortprüfung ist nicht verfügbar. Öffne die Seite über HTTPS.' }}"></p>
+    </form>
+  </dialog>
+  <noscript class="docs-access-no-script">{{ "Enable JavaScript to open the documentation." if english else "Aktiviere JavaScript, um die Dokumentation zu öffnen." }}</noscript>
+{% endblock %}

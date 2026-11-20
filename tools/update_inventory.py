@@ -59,21 +59,43 @@ def inspect(root):
         "ui_documents": sorted(p.relative_to(resources).as_posix() for p in (resources / "Common/UI").rglob("*.ui")),
     }
 
-def render(items, snapshot):
-    lines = ["# Plugin-Inventar und Quellstände", "", f"Inventar erzeugt am **{snapshot}**. Die Tabelle nennt den lokalen Commit, nicht einen behaupteten produktiven Deploymentstand.",
-             "", "Der Bericht exportiert ausschließlich ausgewählte Metadaten. Er liest keine produktiven Konfigurationsdateien oder Logs. Private Quellrepositories erfordern weiterhin eigene Zugriffsrechte.",
-             "", "[Inventar als JSON herunterladen](inventory.json).", "", "| Plugin | Repository | Commit | Serverbereich |", "| --- | --- | --- | --- |"]
+def render(items, snapshot, language="de"):
+    if language == "en":
+        lines = [
+            "# Plugin inventory and source revisions", "",
+            f"Inventory generated on **{snapshot}**. The table reports the local commit recorded for each checkout.", "",
+            "The report exports selected metadata only. Access to private source repositories requires permission.", "",
+            "[Download the inventory as JSON](inventory.json).", "",
+            "| Plugin | Repository | Commit | Server version range |",
+        ]
+        required, optional, undeclared, empty = (
+            "Required dependencies", "Optional dependencies", "none declared", "none found",
+        )
+        labels = ("Command classes", "API classes", "Services", "UI documents")
+    else:
+        lines = [
+            "# Plugin-Inventar und Quellstände", "",
+            f"Inventar erzeugt am **{snapshot}**. Die Tabelle nennt den lokalen Commit des jeweiligen Repositories.", "",
+            "Der Bericht exportiert ausgewählte Metadaten. Private Quellrepositories erfordern eigene Zugriffsrechte.", "",
+            "[Inventar als JSON herunterladen](inventory.json).", "",
+            "| Plugin | Repository | Commit | Serverbereich |",
+        ]
+        required, optional, undeclared, empty = (
+            "Pflichtabhängigkeiten", "Optionale Abhängigkeiten", "keine deklariert", "keine im erfassten Bereich",
+        )
+        labels = ("Befehlsklassen", "API-Klassen", "Dienste", "UI-Dokumente")
+    lines.append("| --- | --- | --- | --- |")
     for item in items:
         sha = item["commit"]
         commit = f"[`{sha[:7]}`]({item['source_url']}/commit/{sha})" if item["source_url"] else f"`{sha[:7]}`"
         lines.append(f"| {item['plugin']} | `{item['repository']}` | {commit} | `{item['server_range']}` |")
     for item in items:
         lines.extend(["", "## " + item["plugin"], "", f"Maven: `{item['artifact']}`.", "",
-                      "Pflichtabhängigkeiten: " + (", ".join(f"`{k}` (`{v}`)" for k,v in item["dependencies"].items()) or "keine deklariert") + ".", "",
-                      "Optionale Abhängigkeiten: " + (", ".join(f"`{k}` (`{v}`)" for k,v in item["optional_dependencies"].items()) or "keine deklariert") + "."])
-        for label,key in [("Command-Klassen", "command_classes"), ("API-Klassen", "api_classes"), ("Services", "service_classes"), ("UI-Dokumente", "ui_documents")]:
+                      required + ": " + (", ".join(f"`{k}` (`{v}`)" for k,v in item["dependencies"].items()) or undeclared) + ".", "",
+                      optional + ": " + (", ".join(f"`{k}` (`{v}`)" for k,v in item["optional_dependencies"].items()) or undeclared) + "."])
+        for label, key in zip(labels, ("command_classes", "api_classes", "service_classes", "ui_documents")):
             values = item[key]
-            lines.extend(["", "**" + label + ":** " + (", ".join("`" + value + "`" for value in values) or "keine im erfassten Bereich") + "."])
+            lines.extend(["", "**" + label + ":** " + (", ".join("`" + value + "`" for value in values) or empty) + "."])
     return "\n".join(lines) + "\n"
 
 def main():
@@ -86,6 +108,7 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     (output / "inventory.json").write_text(json.dumps({"snapshot_date": snapshot, "plugins": items}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (output / "inventory.md").write_text(render(items, snapshot), encoding="utf-8")
+    (output / "inventory.en.md").write_text(render(items, snapshot, "en"), encoding="utf-8")
     print(f"Inventar aktualisiert: {len(items)} Plugins")
 
 if __name__ == "__main__":

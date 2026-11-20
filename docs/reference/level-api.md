@@ -1,19 +1,10 @@
-# Core level and reward API
+# Core-API für Level und Belohnungen
 
-## Ownership and thread contract
+## Zuständigkeit und Threads { #ownership-and-thread-contract }
 
-Core owns the XP curve, authoritative progression, repositories, transactions,
-operation receipts, reward definitions, earned claims and payouts. LevelPlugin is
-a Hytale adapter: config, legacy-file import, world-thread events, and the existing
-inventory helper. The public XP mutators in its `LevelService` now return
-`CompletableFuture<ExpChangeResult>`. No other shared plugin currently calls those
-mutators. Do not block a world thread with `join()` or `get()`.
+Core verwaltet die XP-Kurve, den verbindlichen Fortschritt, Repositories, Transaktionen, Vorgangsbelege, Belohnungsdefinitionen, verdiente Ansprüche und Auszahlungen. LevelPlugin bindet Hytale an und übernimmt Konfiguration, Import alter Dateien, Ereignisse auf dem World-Thread und die bestehende Inventarhilfe. Die öffentlichen XP-Änderungsmethoden in `LevelService` geben `CompletableFuture<ExpChangeResult>` zurück. Andere gemeinsame Plugins verwenden diese Methoden derzeit nicht. Blockiere einen World-Thread nie mit `join()` oder `get()`.
 
-Use `MainCore.getBean(AsyncLevelService.class)` from other Hytale plugins. Core's
-bounded worker pool completes a future only after transaction commit. Queue-full,
-stopped worker, invalid requests and database errors complete exceptionally. Never
-announce success before the future completes. Continuations run on worker threads;
-schedule inventory, world and UI actions on the owning Hytale world executor.
+Andere Hytale-Plugins beziehen den Dienst über `MainCore.getBean(AsyncLevelService.class)`. Der begrenzte Worker-Pool von Core schließt das Future erst nach dem Commit erfolgreich ab. Eine volle Warteschlange, ein gestoppter Worker, ungültige Anfragen und Datenbankfehler schließen es mit einer Ausnahme ab. Melde Erfolg erst nach Abschluss des Futures. Die Fortsetzungen laufen auf Worker-Threads. Plane Inventar-, Welt- und UI-Aktionen auf dem zuständigen Hytale-World-Executor ein.
 
 ```java
 var levels = MainCore.getBean(AsyncLevelService.class);
@@ -25,87 +16,39 @@ levels.load(playerUuid).thenCompose(ignored ->
 });
 ```
 
-`LevelProgressionService` is the blocking transactional API for background workers:
+`LevelProgressionService` ist die blockierende Transaktions-API für Hintergrund-Worker.
 
-- `getProgress`, `getLevel`, `getExpInLevel`, `getOverflowExp`, `getRemainingXp`,
-  `getProgress01`, `isMaxLevel` read authoritative state.
-- `getCachedProgress` never queries the database. It returns an optional immutable
-  snapshot and is suitable for HUD polling. Local cache publication happens only
-  after commit, including mutations made directly by other plugins through Core.
-- `requiredXp`, `totalXpToLevel`, `getPolicy` expose curve information.
-- `grantRawExp`, `grantScaledExp`, `grantPercent`, `removeExp`, `setLevel`,
-  `setExpInLevel` perform atomic changes under a database row lock.
-- `apply` accepts a stable operation UUID for every action, including setters.
-  Same ID + same request returns the stored result with `replayed=true`; a different
-  request using that ID fails. Retries do not repeat XP or reward issuance.
-- `AsyncLevelService` offers async counterparts and generic `apply` plus loading,
-  refresh, pending rewards, claiming and reward synchronization.
-- `PlayerLevelService` initializes/imports raw persisted state. Its snapshot `save`
-  method is low-level persistence, not the gameplay API: it bypasses XP rules,
-  operation receipts, reward issuance and progression-cache publication.
+- `getProgress`, `getLevel`, `getExpInLevel`, `getOverflowExp`, `getRemainingXp`, `getProgress01` und `isMaxLevel` lesen den verbindlichen Stand.
+- `getCachedProgress` liefert optional eine unveränderliche Momentaufnahme ohne Datenbankabfrage und eignet sich für regelmäßige HUD-Abfragen. Core veröffentlicht den Cache-Stand erst nach dem Commit, auch bei direkten Änderungen durch andere Plugins.
+- `requiredXp`, `totalXpToLevel` und `getPolicy` geben Auskunft über die Kurve.
+- `grantRawExp`, `grantScaledExp`, `grantPercent`, `removeExp`, `setLevel` und `setExpInLevel` ändern Werte atomar unter einer Datenbank-Zeilensperre.
+- `apply` akzeptiert für alle Aktionen eine stabile Vorgangs-UUID, auch beim Setzen von Werten. Gleiche UUID und Anfrage liefern das gespeicherte Ergebnis mit `replayed=true`. Eine abweichende Anfrage mit derselben UUID schlägt fehl. Wiederholungen vergeben keine weiteren XP oder Belohnungen.
+- `AsyncLevelService` bietet asynchrone Varianten, ein allgemeines `apply`, Laden und Aktualisieren sowie die Abfrage, Abholung und Synchronisierung von Belohnungen.
+- `PlayerLevelService` initialisiert oder importiert den gespeicherten Stand. Die Methode `save` speichert Momentaufnahmen direkt und umgeht XP-Regeln, Vorgangsbelege, Belohnungen und die Aktualisierung des Fortschritts-Caches.
 
-Initialize new players using `AsyncLevelService.load`. Direct Core mutations require
-an existing level row. Initialization failures never fabricate a level-one cache.
-The local read cache is not a cross-server notification bus; use `refresh` after
-remote-server mutations if running the same UUID on multiple servers. Concurrent
-committed mutations are protected by database row locks, even across servers.
-Chain dependent operations with `thenCompose`; independent concurrent calls do not
-promise submission order. Administrative callers must enforce their own permissions.
+Initialisiere neue Spieler über `AsyncLevelService.load`. Direkte Core-Änderungen erfordern eine vorhandene Level-Zeile. Bei fehlgeschlagener Initialisierung wird kein künstlicher Level-1-Stand im Cache angelegt. Ist dieselbe UUID auf mehreren Servern aktiv, rufe nach Änderungen auf einem anderen Server `refresh` auf. Datenbank-Zeilensperren sichern konkurrierende Änderungen auch serverübergreifend. Verknüpfe abhängige Vorgänge mit `thenCompose`. Bei unabhängigen parallelen Aufrufen ist die Reihenfolge offen. Administrative Aufrufer prüfen ihre Berechtigungen selbst.
 
-## Curve and XP semantics
+## XP-Kurve und Fortschritt { #curve-and-xp-semantics }
 
-Default max level is 50. The curve retains the original coefficients and stitches
-quadratic sections together at levels 10 and 30, eliminating the previous resets.
-Default XP requirements are 150 (level 1), 951 (10), 1085 (11), 8951 (30), 9299 (31)
-and 26551 (50). Actual pacing still depends on XP sources and session lengths.
-`LevelPolicy` validates finite scaling and overflow settings, strictly increasing
-coefficients, arithmetic limits, and level range. LevelPlugin configures this Core
-policy at setup using only `maxLevel`, `startLevel` and `scalingExponent` from
-`config.json`. Curve coefficients and the overflow-cap multiplier are fixed Core
-defaults. Valid legacy configs are rewritten to those three supported fields at
-startup; obsolete autosave/debug/curve/overflow settings are removed. Malformed
-or invalid files remain unchanged while the plugin falls back to defaults.
+Das voreingestellte Höchstlevel ist 50. Die Kurve behält ihre ursprünglichen Koeffizienten und verbindet die quadratischen Abschnitte bei Level 10 und 30 ohne die früheren Sprünge. Die Standardanforderungen liegen bei 150 XP (Level 1), 951 (10), 1085 (11), 8951 (30), 9299 (31) und 26551 (50). Das tatsächliche Fortschrittstempo hängt von den XP-Quellen und der Sitzungsdauer ab.
 
-`scalingExponent` affects **XP awarded by scaled grants**, not the level thresholds.
-The scaled amount is rounded from `baseXp * (requiredXp(currentLevel) /
-requiredXp(1))^scalingExponent`. With exponent `0`, no level-based award scaling
-is applied; `0.35` gives moderate scaling, not a fixed 35% increase per level.
-For example, 100 base XP at level 10 becomes approximately 191 XP. Raw XP grants
-remain unscaled. The fixed quadratic curve independently determines XP required
-for each next level (150, 191 and 244 XP at levels 1, 2 and 3).
+`LevelPolicy` prüft endliche Skalierungs- und Überschusswerte, streng steigende Koeffizienten, Rechengrenzen und den Levelbereich. LevelPlugin konfiguriert diese Core-Richtlinie mit `maxLevel`, `startLevel` und `scalingExponent` aus `config.json`. Kurvenkoeffizienten und der Multiplikator für das Überschusslimit sind feste Core-Vorgaben. Beim Start werden gültige alte Konfigurationen auf die drei unterstützten Felder umgeschrieben. Alte Einstellungen für Autosave, Debug-Ausgaben, Kurve und Überschuss entfallen. Bei fehlerhaften oder ungültigen Dateien verwendet das Plugin Standardwerte und lässt die Datei unverändert.
 
-Reaching a threshold exactly levels up immediately, carries remaining XP forward,
-and may cross multiple levels in one operation. Reaching level 50 exactly does not
-invent overflow XP. Additional XP at max level goes to overflow using the existing
-award-based diminishing-return rule; at max the displayed progress is 100%.
-XP removals consume overflow first and clamp at level 1; effectiveDelta reports
-only XP actually removed. Negative/non-finite values and arithmetic overflow fail
-the entire transaction. `grantPercent` accepts [0,1] of the current level's cap.
-`setExpInLevel` resets current-level XP and applies the specified amount, including
-normal threshold crossings; at max level use grant/remove for overflow instead.
-A lower configured max than an existing player's level rejects mutations rather
-than silently deleting progress. No existing player is reset by changing the curve.
+`scalingExponent` beeinflusst die **Menge der skaliert vergebenen XP**. Der gerundete Betrag ergibt sich aus `baseXp * (requiredXp(currentLevel) / requiredXp(1))^scalingExponent`. Bei `0` entfällt die levelabhängige Skalierung. Bei `0.35` ergeben beispielsweise 100 Basis-XP auf Level 10 etwa 191 XP. Direkte XP-Vergaben bleiben unskaliert. Die feste quadratische Kurve bestimmt unabhängig davon die Anforderungen für das jeweils nächste Level (150, 191 und 244 XP auf Level 1, 2 und 3).
 
-## Crash semantics
+Beim exakten Erreichen der Schwelle steigt das Level sofort. Verbleibende XP werden übertragen und ein Vorgang kann mehrere Level überspringen. Wer Level 50 genau erreicht, erhält keine Überschuss-XP. Weitere XP am Höchstlevel fließen nach der bestehenden Regel mit abnehmendem Ertrag in den Überschuss. Die Fortschrittsanzeige steht auf 100 %.
 
-There is no write-behind/autosave window. A successful future means that XP,
-new reward entitlements and the idempotency receipt committed together. Losing the
-server process or its in-memory cache after that point does not require a shutdown
-save to recover progression. A crash before commit/future acknowledgement may have
-an unknown outcome: retry with the same operation ID. Pending queued work is not
-a durable queue and is not described as successfully applied. This assumes durable
-MariaDB/InnoDB commit settings; database-host loss and storage failure still require
-normal database durability/backups.
+Ein XP-Abzug verbraucht zuerst den Überschuss und endet spätestens auf Level 1. `effectiveDelta` meldet nur die tatsächlich abgezogenen XP. Negative oder nicht endliche Werte und arithmetische Überläufe brechen die Transaktion ab. `grantPercent` akzeptiert Werte von 0 bis 1 bezogen auf die XP-Grenze des aktuellen Levels. `setExpInLevel` setzt die XP des aktuellen Levels auf den angegebenen Betrag und verarbeitet dabei normale Levelaufstiege. Nutze am Höchstlevel die Vergabe- oder Abzugsmethoden für den Überschuss. Liegt ein Spieler bereits über einem neu konfigurierten Höchstlevel, werden Änderungen abgelehnt. Kurvenänderungen setzen bestehende Spieler nicht zurück.
 
-`player_xp_operations` retains receipts to make retries safe. It grows with the
-number of requests. Do not delete receipts blindly: removing one also removes its
-idempotency guarantee. Configure a deliberate archival/retention policy once event
-rates and the maximum retry horizon are known.
+## Verhalten bei Abstürzen { #crash-semantics }
 
-## Rewards
+Ein erfolgreiches Future bestätigt, dass XP, neue Belohnungsansprüche und der Idempotenzbeleg gemeinsam festgeschrieben wurden. Der Fortschritt bleibt nach einem Prozessabsturz oder Cache-Verlust ohne nachträgliches Speichern erhalten. Bei einem Absturz vor Commit oder Bestätigung kann der Ausgang offen sein. Wiederhole den Vorgang mit derselben Vorgangs-ID. Die Warteschlange ist flüchtig und wartende Vorgänge gelten als offen. Voraussetzung sind dauerhafte MariaDB/InnoDB-Commits. Für den Ausfall des Datenbankhosts oder Datenträgers sind die üblichen Backups erforderlich.
 
-No economy amounts are silently seeded. Define rewards through Core at setup or
-from an admin tool:
+`player_xp_operations` speichert Belege für sichere Wiederholungen und wächst mit der Zahl der Anfragen. Das Löschen eines Belegs hebt dessen Idempotenzgarantie auf. Lege Archivierung und Aufbewahrung anhand der Ereignisrate und der maximalen Wiederholungsfrist fest.
+
+## Belohnungen { #rewards }
+
+Definiere Guthaben- und Freischaltbelohnungen beim Start oder über ein Admin-Werkzeug in Core. Die Installation legt keine Geldbeträge automatisch an.
 
 ```java
 var rewards = MainCore.getBean(LevelRewardService.class);
@@ -113,44 +56,16 @@ rewards.defineReward("level.5.money", 5, 500L, null);
 rewards.defineReward("level.10.title", 10, 0L, "title:explorer");
 ```
 
-`defineReward` and `setEnabled` manage definitions. Every intermediate level crossed
-by a successful progression transaction records earned rewards. Each player/key
-pair is unique. Losing and regaining a level cannot earn the same reward twice.
-Already earned rewards snapshot the original amount/entitlement; changing or
-disabling a definition does not rewrite or revoke an existing claim.
+`defineReward` und `setEnabled` verwalten Definitionen. Eine erfolgreiche Fortschrittstransaktion erfasst die Belohnungen jedes erreichten Zwischenlevels. Spieler und Belohnungsschlüssel bilden ein eindeutiges Paar. Nach einem Abstieg kann dieselbe Belohnung beim erneuten Erreichen des Levels nicht nochmals verdient werden. Verdiente Ansprüche speichern Betrag oder Freischaltung zum Zeitpunkt des Erwerbs. Spätere Änderungen an der Definition oder ihre Deaktivierung lassen bestehende Ansprüche bestehen.
 
-`listRewards`, `listPendingRewards`, `claim`, and `synchronizeAvailableRewards` expose
-reward state. Async loading synchronizes rewards for imported players, starting
-levels and newly added definitions. Explicit synchronization is available for
-online players after definition changes. Earned/pending rewards survive logout,
-cache eviction and process restart. Claiming does not require retaining the level
-once it was legitimately earned.
+`listRewards`, `listPendingRewards`, `claim` und `synchronizeAvailableRewards` geben Zugriff auf den Belohnungsstand. Das asynchrone Laden gleicht Belohnungen für importierte Spieler, Startlevel und neu angelegte Definitionen ab. Nach Änderungen lassen sich Online-Spieler ausdrücklich synchronisieren. Verdiente Ansprüche überstehen Abmeldung, Cache-Verlust und Neustart. Ein berechtigt verdienter Anspruch bleibt nach einem Levelabstieg abholbar.
 
-A claim's money payout and `claimedAt` marker commit in one transaction. Concurrent
-claims or retries return `newlyClaimed=false` after the first payout. Missing player
-accounts, balance overflow or transaction failures leave the reward pending. An
-entitlement is a durable unlock record that other plugins can read; it is not an
-arbitrary callback that can deliver an item twice after a crash.
+Auszahlung und `claimedAt` werden gemeinsam in einer Transaktion festgeschrieben. Nach der ersten Auszahlung geben parallele Abholungen oder Wiederholungen `newlyClaimed=false` zurück. Bei fehlendem Spielerkonto, Guthabenüberlauf oder Transaktionsfehler bleibt der Anspruch offen. Andere Plugins können eine dauerhaft gespeicherte Freischaltung auslesen.
 
-Physical inventory items and arbitrary external commands are deliberately not run
-inside reward transactions. Exactly-once item delivery requires a separate Hytale
-inventory reconciliation/idempotency design; marking a DB claim then giving an item
-(or vice versa) cannot provide that guarantee. `LevelService.giveItem` remains a raw
-inventory helper, not a durable level-reward claim API.
+Inventargegenstände und externe Befehle laufen außerhalb der Belohnungstransaktion. Eine garantiert einmalige Item-Zustellung braucht eine eigene Regelung für Hytale-Inventarabgleich und Idempotenz. Allein die Reihenfolge von Datenbankmarkierung und Item-Vergabe reicht dafür nicht aus. `LevelService.giveItem` ist eine direkte Inventarhilfe.
 
-## Events, deployment and validation
+## Ereignisse, Bereitstellung und Prüfung { #events-deployment-and-validation }
 
-LevelPlugin emits its gameplay callbacks on the owning world executor after commit.
-It emits one LevelUp/LevelDown event per intermediate level. Listener failures are
-isolated and cannot undo committed XP or suppress durable reward claims. These
-callbacks are cosmetic/gameplay notifications, not durable delivery records. Direct
-Core calls update the Core read cache and rewards but do not emit LevelPlugin's
-local callbacks; callers should rely on the returned change or reward records.
+LevelPlugin löst seine Ereignisse nach dem Commit auf dem zuständigen World-Executor aus. Pro erreichtem Zwischenlevel wird ein LevelUp- oder LevelDown-Ereignis ausgelöst. Fehler in Listenern machen bereits verbuchte XP und Belohnungsansprüche nicht rückgängig. Die Ereignisse dienen UI und Spiellogik. Direkte Core-Aufrufe aktualisieren den Lese-Cache und die Belohnungen, lösen aber keine lokalen Ereignisse von LevelPlugin aus. Verwende bei solchen Aufrufen den zurückgegebenen Fortschritt oder die Belohnungsdatensätze.
 
-Deploy new CorePlugin and LevelPlugin together. Core creates tables through versioned Liquibase migrations, then Hibernate validates
-the schema. Legacy JSON files are
-imported idempotently at setup and remain unchanged backups, never a live backend.
-HUD job levels use the independent Core JobService; no existing global-level caller
-was found in other shared plugin sources. Its current global label is literal `Jobs`.
-Tests use H2 transactions and concurrent workers; live MariaDB/Hytale acceptance
-must verify plugin startup, schema creation/import, XP grants and reward claims.
+Installiere die neuen Versionen von CorePlugin und LevelPlugin gemeinsam. Core erstellt Tabellen über versionierte Liquibase-Migrationen, danach prüft Hibernate das Schema. Alte JSON-Dateien werden beim Start idempotent importiert und bleiben als Sicherungen erhalten. Das HUD bezieht Berufslevel aus dem unabhängigen Core-Dienst `JobService`. In den übrigen gemeinsamen Plugin-Quellen wurde kein Aufrufer für globale Level gefunden. Das globale HUD-Label lautet derzeit `Jobs`. Die Tests verwenden H2-Transaktionen und parallele Worker. Prüfe im echten MariaDB- und Hytale-Betrieb zusätzlich Start, Schemaerstellung, Import, XP-Vergabe und Abholen von Belohnungen.

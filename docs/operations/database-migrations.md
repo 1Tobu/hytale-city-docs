@@ -1,38 +1,38 @@
-# Database migrations
+# Datenbankmigrationen
 
-Core owns all database access. MariaDB is the supported database. Spring starts Liquibase (`db/changelog/db.changelog-master.xml`) before the EntityManagerFactory, then Hibernate runs `validate`. Never enable `update` as a workaround for a failed migration.
+Core verwaltet alle Datenbankzugriffe. Unterstützt wird MariaDB. Spring startet Liquibase (`db/changelog/db.changelog-master.xml`) vor der EntityManagerFactory. Danach prüft Hibernate das Schema mit `validate`. Verwende bei einer fehlgeschlagenen Migration keinesfalls `update` als Ersatz.
 
-## First deployment
+## Erste Bereitstellung { #first-deployment }
 
-1. Stop the Hytale server and back up MariaDB, plugin configuration and worlds.
-2. Deploy the matching CorePlugin, JobsPlugin and HC asset pack together.
-3. Keep existing JobsPlugin/job-shop-offers.json and job-upgrades.json in the server plugin data directory for this first start.
-4. Start the server. Liquibase adopts existing tables using guarded baseline changesets, creates absent tables/indexes/constraints, applies one-time seeds and renames exact custom item IDs to HC_. Existing incompatible column layouts or unique-key collisions fail startup; inspect the error rather than dropping data or clearing DATABASECHANGELOG.
-5. Jobs imports each legacy JSON file transactionally through Core, recording a data_import_markers entry. Only after commit does it move the source to `.imported-catalog/`. Invalid data leaves the file and transaction unchanged. Archive failure does not repeat a committed import.
-6. Check startup, shop/upgrade admin saves, NPC UI and actual inventory operations in the Hytale client.
+1. Stoppe den Hytale-Server und sichere MariaDB, Plugin-Konfiguration und Welten.
+2. Installiere die zusammengehörigen Versionen von CorePlugin, JobsPlugin und dem HC-Asset-Pack.
+3. Lass `JobsPlugin/job-shop-offers.json` und `job-upgrades.json` für den ersten Start im Datenverzeichnis des Plugins.
+4. Starte den Server. Liquibase übernimmt vorhandene Tabellen mit abgesicherten Baseline-Changesets, erstellt fehlende Tabellen, Indizes und Constraints, fügt einmalige Ausgangsdaten ein und stellt exakte eigene Item-IDs auf `HC_` um. Inkompatible Spalten oder Kollisionen bei eindeutigen Schlüsseln brechen den Start ab. Prüfe die Fehlermeldung und erhalte dabei die Daten und `DATABASECHANGELOG`.
+5. Jobs importiert jede alte JSON-Datei über Core in einer Transaktion und legt einen Eintrag in `data_import_markers` an. Erst nach dem Commit verschiebt es die Quelldatei nach `.imported-catalog/`. Ungültige Daten lassen Datei und Datenbankstand unverändert. Scheitert das Archivieren, bleibt der Importmarker erhalten und verhindert einen erneuten Import.
+6. Prüfe den Start, das Speichern von Shopangeboten und Upgrades über die Admin-Oberfläche, die NPC-Oberfläche und die tatsächlichen Inventarvorgänge im Hytale-Client.
 
-Shop offers and upgrade recipes now live in job_catalog_entries and job_catalog_requirements. Core returns immutable snapshots; Jobs refreshes a read cache every five seconds and performs admin writes on its catalog IO worker. The legacy job page retains its enabled-items fallback for Tools. NPC purchases use job_merchant_stock. No shop JSON is written or regenerated.
+Shopangebote und Upgrade-Rezepte liegen in `job_catalog_entries` und `job_catalog_requirements`. Core liefert unveränderliche Momentaufnahmen. Jobs aktualisiert seinen Lese-Cache alle fünf Sekunden und führt administrative Schreibvorgänge auf einem IO-Thread aus. Die bisherige Berufsseite nutzt für Tools weiterhin die aktivierten Items als Rückfall. NPC-Käufe greifen auf `job_merchant_stock` zu. Jobs erzeugt keine Shop-JSON-Dateien.
 
-A missing legacy file keeps bundled defaults. An explicit legacy file, even an empty list, replaces unmodified DEFAULT entries of that kind. Existing ADMIN/IMPORT entries win on matching keys. Four Farmer upgrade defaults are seeded once from the supplied config, with HC_ identifiers. Shop offers have no invented defaults. Import markers prevent reimport; deleting an entry is permanent across restarts. Editing or copying an already-imported JSON is not a supported update path; use the admin UI or Core API.
+Fehlt eine alte Datei, bleiben die mitgelieferten Vorgaben erhalten. Eine vorhandene alte Datei ersetzt unveränderte `DEFAULT`-Einträge desselben Typs, auch wenn sie eine leere Liste enthält. Bei gleichen Schlüsseln haben `ADMIN`- und `IMPORT`-Einträge Vorrang. Vier Farmer-Upgrades mit `HC_`-IDs werden einmalig aus der mitgelieferten Konfiguration angelegt. Shopangebote haben keine Vorgaben. Importmarker verhindern Wiederholungen. Gelöschte Einträge bleiben über Neustarts hinweg gelöscht. Verwende für Änderungen nach dem Import die Admin-Oberfläche oder die Core-API.
 
-## Professions and merchants
+## Berufe und Händler { #professions-and-merchants }
 
-Core migrations V4–V7 create profession tracking, daily offers, inventory receipts, merchant stock, level rewards and collection rules. V6 preserves prior award records. V7 reuses item totals for valid collection actions. See [quest and reward maintenance](profession-content.md).
+Die Core-Migrationen V4–V7 führen Berufsfortschritt, Tagesangebote, Inventarbelege, Händlerbestände, Level-Belohnungen und Sammelregeln ein. V6 erhält frühere Belohnungseinträge. V7 verwendet die Item-Gesamtzahlen für gültige Sammelaktionen weiter. Siehe [Berufsaufträge und Belohnungen](profession-content.md).
 
-## Core API
+## Core-API
 
-`JobCatalogService.listAll()`, `save(JobCatalogRecord)`, `delete(kind, job, category, item)` and `importOnce(source, kind, rows)` own persistence. Kind is SHOP or UPGRADE. Imports use a stable source key and commit all rows with their marker. Costs are nonnegative, amounts positive, requirements merged by item (at most eight). Physical legacy asset IDs are canonicalized on writes; logical enchantment family keys such as vibranium_hoe stay unchanged.
+`JobCatalogService.listAll()`, `save(JobCatalogRecord)`, `delete(kind, job, category, item)` und `importOnce(source, kind, rows)` verwalten die Daten. Als Typ sind `SHOP` und `UPGRADE` zulässig. Importe verwenden einen stabilen Quellschlüssel und schreiben alle Zeilen zusammen mit dem Importmarker. Kosten müssen mindestens null und Mengen größer als null sein. Anforderungen werden pro Item zusammengefasst und sind auf acht verschiedene Items begrenzt. Alte IDs physischer Assets werden beim Schreiben vereinheitlicht. Logische Verzauberungsfamilien wie `vibranium_hoe` behalten ihren Namen.
 
-## Asset migration
+## Migration der Spielressourcen { #asset-migration }
 
-The versioned HC migration updates items, upgrade/enchantment references, catalog entries/requirements, sold-item totals, unlocks, milestone definitions/rewards and claim item references. IDs of definitions/players and balances are retained. JSON rewards replace complete quoted identifiers, not arbitrary substrings. Unique-key collisions abort the DML changeset and require reconciliation. Historical serialized inventory evidence and physical world/inventory data are not rewritten; pending sales must be reviewed before changing physical inventory asset IDs.
+Die versionierte HC-Migration aktualisiert Items, Upgrade- und Verzauberungsreferenzen, Katalogeinträge und Anforderungen, Verkaufszahlen, Freischaltungen, Meilensteindefinitionen und Belohnungen sowie Item-Referenzen in Ansprüchen. IDs von Definitionen und Spielern sowie Guthaben bleiben erhalten. In JSON-Belohnungen werden vollständige Bezeichner in Anführungszeichen ersetzt. Kollisionen bei eindeutigen Schlüsseln brechen das DML-Changeset ab und müssen geklärt werden. Historische serialisierte Inventarbelege sowie Welt- und Inventardaten bleiben unverändert. Prüfe ausstehende Verkäufe, bevor du dort Item-IDs änderst.
 
-This code prepares the production migration; local tests do not imply the live server database has already been updated.
+Der Code bereitet die Produktionsmigration vor. Lokale Tests belegen den Migrationsstand des produktiven Servers nicht.
 
-## Future changes
+## Künftige Änderungen { #future-changes }
 
-Add a new numbered changelog include for every schema/data change, update matching JPA mappings, and test fresh and existing MariaDB plus a second startup. Never edit an already deployed changeset or old seed file: Liquibase verifies checksums. Use one-time seeds for fixed initial values, not recurring overwrites of operator-managed data. Keep DATABASECHANGELOG and DATABASECHANGELOGLOCK in backups. MariaDB DDL is not globally transactional; recovery from an interrupted schema change uses guarded steps and a backup, not a promise of full DDL rollback.
+Füge für jede Schema- oder Datenänderung ein neues nummeriertes Changelog-Include hinzu und passe die JPA-Zuordnungen an. Teste die Migration mit einer leeren und einer bestehenden MariaDB sowie bei einem zweiten Start. Liquibase prüft die Prüfsummen bereits ausgerollter Changesets und Ausgangsdateien. Lege feste Anfangswerte einmalig an, damit spätere Startvorgänge gepflegte Daten erhalten. Sichere `DATABASECHANGELOG` und `DATABASECHANGELOGLOCK`. MariaDB kann DDL-Änderungen nicht als Ganzes zurückrollen. Für die Wiederherstellung nach einem Abbruch dienen abgesicherte Schritte und ein Backup.
 
-## Verification
+## Prüfung { #verification }
 
-Normal `mvnw test` runs the Core suite. `JobCatalogMigrationTest` requires an explicitly supplied `-Dhc.testDbPort=<port>` on a dedicated disposable localhost MariaDB instance (root password hytale-local-test). It creates uniquely named test databases, tests new schema, adoption, HC renames, import rollback, admin precedence and restart idempotence. Never point it at production. SchemaExportTest is an opt-in developer aid (`-Dhc.exportSchema=true`); exported SQL does not change the frozen migrations automatically.
+`mvnw test` führt die Core-Tests aus. `JobCatalogMigrationTest` benötigt ein explizites `-Dhc.testDbPort=<port>` und eine separate, temporäre lokale MariaDB mit dem Root-Passwort `hytale-local-test`. Er erstellt eindeutig benannte Testdatenbanken und prüft ein neues Schema, die Übernahme vorhandener Tabellen, HC-Umbenennungen, Import-Rollback, Vorrang administrativer Einträge und wiederholte Starts. Verwende dafür ausschließlich die Testdatenbank. `SchemaExportTest` lässt sich mit `-Dhc.exportSchema=true` aktivieren. Der SQL-Export ändert die festgeschriebenen Migrationen nicht.

@@ -1,8 +1,8 @@
 # Plugin-Inventar und Quellstände
 
-Inventar erzeugt am **2026-11-20**. Die Tabelle nennt den lokalen Commit, nicht einen behaupteten produktiven Deploymentstand.
+Inventar erzeugt am **2026-11-20**. Die Tabelle nennt den lokalen Commit des jeweiligen Repositories.
 
-Der Bericht exportiert ausschließlich ausgewählte Metadaten. Er liest keine produktiven Konfigurationsdateien oder Logs. Private Quellrepositories erfordern weiterhin eigene Zugriffsrechte.
+Der Bericht exportiert ausgewählte Metadaten. Private Quellrepositories erfordern eigene Zugriffsrechte.
 
 [Inventar als JSON herunterladen](inventory.json).
 
@@ -33,11 +33,11 @@ Pflichtabhängigkeiten: keine deklariert.
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** keine im erfassten Bereich.
+**Befehlsklassen:** keine im erfassten Bereich.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** `AsyncLevelService`, `HomeService`, `ItemEnchantmentService`, `ItemService`, `JobCatalogService`, `JobItemTotalService`, `JobItemUnlockService`, `JobMerchantQueryService`, `JobMilestoneClaimService`, `JobMilestoneDefinitionService`, `JobSaleService`, `JobService`, `JobXpProgressService`, `LevelProgressionService`, `LevelRewardService`, `NpcDefinitionService`, `PlayerLevelService`, `PlayerService`, `PlayerStatsBatchService`, `PlayerStatsService`, `PlotCoOwnerService`, `PlotInviteService`, `PlotMenuService`, `PlotOfferService`, `PlotService`, `ProfessionService`, `ProtectionService`, `RankService`.
+**Dienste:** `AsyncLevelService`, `HomeService`, `ItemEnchantmentService`, `ItemService`, `JobCatalogService`, `JobItemTotalService`, `JobItemUnlockService`, `JobMerchantQueryService`, `JobMilestoneClaimService`, `JobMilestoneDefinitionService`, `JobSaleService`, `JobService`, `JobXpProgressService`, `LevelProgressionService`, `LevelRewardService`, `NpcDefinitionService`, `PlayerLevelService`, `PlayerService`, `PlayerStatsBatchService`, `PlayerStatsService`, `PlotCoOwnerService`, `PlotInviteService`, `PlotMenuService`, `PlotOfferService`, `PlotService`, `ProfessionService`, `ProtectionService`, `RankService`.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
@@ -49,11 +49,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`).
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** `PlotCommand`, `PlotsCommand`, `BuySubCommand`, `InfoSubCommand`, `InviteAcceptSubCommand`, `InviteCancelSubCommand`, `InviteDenySubCommand`, `InvitesSubCommand`, `InviteSubCommand`, `LimitGetSubCommand`, `LimitIncreaseSubCommand`, `LimitResetSubCommand`, `LimitSetSubCommand`, `LimitSubCommand`, `ListSubCommand`, `OfferAcceptSubCommand`, `OfferCancelSubCommand`, `OfferDenySubCommand`, `OffersSubCommand`, `OfferSubCommand`, `RenameSubCommand`, `SellToCitySubCommand`.
+**Befehlsklassen:** `PlotCommand`, `PlotsCommand`, `BuySubCommand`, `InfoSubCommand`, `InviteAcceptSubCommand`, `InviteCancelSubCommand`, `InviteDenySubCommand`, `InvitesSubCommand`, `InviteSubCommand`, `LimitGetSubCommand`, `LimitIncreaseSubCommand`, `LimitResetSubCommand`, `LimitSetSubCommand`, `LimitSubCommand`, `ListSubCommand`, `OfferAcceptSubCommand`, `OfferCancelSubCommand`, `OfferDenySubCommand`, `OffersSubCommand`, `OfferSubCommand`, `RenameSubCommand`, `SellToCitySubCommand`.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** keine im erfassten Bereich.
+**Dienste:** keine im erfassten Bereich.
 
 **UI-Dokumente:** `Common/UI/Custom/Plots/Plots.ui`.
 
@@ -65,11 +65,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`).
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** `HomeCommand`, `HomesCommand`, `SetHomeCommand`, `HomeRemoveSubCommand`.
+**Befehlsklassen:** `HomeCommand`, `HomesCommand`, `SetHomeCommand`, `HomeRemoveSubCommand`.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** keine im erfassten Bereich.
+**Dienste:** keine im erfassten Bereich.
 
 **UI-Dokumente:** `Common/UI/Custom/Homes/Homes.ui`.
 
@@ -81,11 +81,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`).
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** `MoneyCommand`, `MoneyAddSubCommand`, `MoneyRemoveSubCommand`, `MoneySendSubCommand`, `MoneySetSubCommand`.
+**Befehlsklassen:** `MoneyCommand`, `MoneyAddSubCommand`, `MoneyRemoveSubCommand`, `MoneySendSubCommand`, `MoneySetSubCommand`.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** keine im erfassten Bereich.
+**Dienste:** keine im erfassten Bereich.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
@@ -97,11 +97,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`), `HytaleCity:HcNpcs` (`*`)
 
 Optionale Abhängigkeiten: `HytaleCity:EnchantmentsPlugin` (`*`).
 
-**Command-Klassen:** `JobCommand`, `JobAdminItemAddSubCommand`, `JobAdminMilestonesUiSubCommand`, `JobAdminNpcSetSubCommand`, `JobAdminShopUiSubCommand`, `JobAdminSubCommand`, `JobAdminUpgradeUiSubCommand`, `JobEnterSubCommand`, `JobInfoSubCommand`, `JobSellSubCommand`.
+**Befehlsklassen:** `JobCommand`, `JobAdminItemAddSubCommand`, `JobAdminMilestonesUiSubCommand`, `JobAdminNpcSetSubCommand`, `JobAdminShopUiSubCommand`, `JobAdminSubCommand`, `JobAdminUpgradeUiSubCommand`, `JobEnterSubCommand`, `JobInfoSubCommand`, `JobSellSubCommand`.
 
 **API-Klassen:** `JobsAPI`, `JobUpdateListener`.
 
-**Services:** `EnchantmentsBridgeService`, `JobMilestoneRuntimeService`, `JobShopOfferService`, `JobUpgradeRecipeService`, `NpcJobKeyService`.
+**Dienste:** `EnchantmentsBridgeService`, `JobMilestoneRuntimeService`, `JobShopOfferService`, `JobUpgradeRecipeService`, `NpcJobKeyService`.
 
 **UI-Dokumente:** `Common/UI/Custom/Jobs/JobMilestonePanel.ui`, `Common/UI/Custom/Jobs/JobNpc.ui`, `Common/UI/Custom/Jobs/JobShopAdmin.ui`, `Common/UI/Custom/Jobs/JobUpgradeAdmin.ui`, `Common/UI/Custom/Jobs/JobUpgradeSelect.ui`, `Common/UI/Custom/Jobs/Jobs.ui`, `Common/UI/Custom/Jobs/MilestoneAdmin.ui`, `Common/UI/Custom/Jobs/MilestoneRow.ui`, `Common/UI/Custom/Jobs/Profession.ui`, `Common/UI/Custom/Jobs/ProfessionCard.ui`, `Common/UI/Custom/Jobs/ProfessionTradeRow.ui`.
 
@@ -113,11 +113,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`).
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** keine im erfassten Bereich.
+**Befehlsklassen:** keine im erfassten Bereich.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** `LevelService`.
+**Dienste:** `LevelService`.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
@@ -129,11 +129,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`).
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** `NpcCommand`.
+**Befehlsklassen:** `NpcCommand`.
 
 **API-Klassen:** `HcNpcsAPI`, `HcNpcsService`, `NpcActionHandler`, `Registration`.
 
-**Services:** `HcNpcsService`.
+**Dienste:** `HcNpcsService`.
 
 **UI-Dokumente:** `Common/UI/Custom/HcNpcs/ActionRow.ui`, `Common/UI/Custom/HcNpcs/Actions.ui`.
 
@@ -145,11 +145,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`).
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** `EnchantItemCommand`.
+**Befehlsklassen:** `EnchantItemCommand`.
 
 **API-Klassen:** `EnchantmentsApi`.
 
-**Services:** `EnchantmentBehaviorService`, `EnchantmentsService`, `EnchantmentValueService`, `ItemUpgradeRollService`, `MoneyFindRewardService`.
+**Dienste:** `EnchantmentBehaviorService`, `EnchantmentsService`, `EnchantmentValueService`, `ItemUpgradeRollService`, `MoneyFindRewardService`.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
@@ -161,11 +161,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`).
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** keine im erfassten Bereich.
+**Befehlsklassen:** keine im erfassten Bereich.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** keine im erfassten Bereich.
+**Dienste:** keine im erfassten Bereich.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
@@ -177,11 +177,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`).
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** `HudCommand`.
+**Befehlsklassen:** `HudCommand`.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** `HudService`.
+**Dienste:** `HudService`.
 
 **UI-Dokumente:** `Common/UI/Custom/Hud/PlayerHud.ui`.
 
@@ -193,11 +193,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`).
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** keine im erfassten Bereich.
+**Befehlsklassen:** keine im erfassten Bereich.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** `AfkDisconnectService`, `AfkService`.
+**Dienste:** `AfkDisconnectService`, `AfkService`.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
@@ -209,11 +209,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`).
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** `TpAcceptCommand`, `TpaCommand`, `TpDenyCommand`.
+**Befehlsklassen:** `TpAcceptCommand`, `TpaCommand`, `TpDenyCommand`.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** `TpaService`.
+**Dienste:** `TpaService`.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
@@ -225,11 +225,11 @@ Pflichtabhängigkeiten: keine deklariert.
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** `CitySubCommand`, `FarmWorldSubCommand`, `SpawnSubCommand`, `WarpCommand`.
+**Befehlsklassen:** `CitySubCommand`, `FarmWorldSubCommand`, `SpawnSubCommand`, `WarpCommand`.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** keine im erfassten Bereich.
+**Dienste:** keine im erfassten Bereich.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
@@ -241,11 +241,11 @@ Pflichtabhängigkeiten: keine deklariert.
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** keine im erfassten Bereich.
+**Befehlsklassen:** keine im erfassten Bereich.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** `FarmWorldService`.
+**Dienste:** `FarmWorldService`.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
@@ -257,11 +257,11 @@ Pflichtabhängigkeiten: `HytaleCity:CorePlugin` (`*`).
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** `ProtectionCommand`, `ListSubCommand`, `RegisterSubCommand`, `RemoveSubCommand`.
+**Befehlsklassen:** `ProtectionCommand`, `ListSubCommand`, `RegisterSubCommand`, `RemoveSubCommand`.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** keine im erfassten Bereich.
+**Dienste:** keine im erfassten Bereich.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
@@ -273,10 +273,10 @@ Pflichtabhängigkeiten: keine deklariert.
 
 Optionale Abhängigkeiten: keine deklariert.
 
-**Command-Klassen:** `RulesCommand`, `TutorialCommand`.
+**Befehlsklassen:** `RulesCommand`, `TutorialCommand`.
 
 **API-Klassen:** keine im erfassten Bereich.
 
-**Services:** `DocumentationService`.
+**Dienste:** `DocumentationService`.
 
 **UI-Dokumente:** `Common/UI/Custom/Rules/Rules.ui`, `Common/UI/Custom/Tutorial/Tutorial.ui`.

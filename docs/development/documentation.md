@@ -4,7 +4,7 @@
 
 Dieses öffentliche Repository ist die führende MkDocs-Dokumentation. Private Core-/Plugin-Repositories verlinken darauf. Der Branch `main` enthält die Markdown-Quellen; `gh-pages` enthält ausschließlich die erzeugte Website und wird nicht von Hand editiert.
 
-Bei Änderungen sowohl Pluginseite als auch betroffene Befehle, API-Verträge, Konfiguration, Abläufe und bekannte Grenzen aktualisieren. Geplante Funktionen ausdrücklich als Entwurf kennzeichnen.
+Bei Änderungen sowohl Pluginseite als auch betroffene Befehle, API-Verträge, Konfiguration, Abläufe und bekannte Grenzen aktualisieren. Geplante Funktionen ausdrücklich als Entwurf kennzeichnen. Pflege die deutsche `.md`-Datei und die englische `.en.md`-Datei nebeneinander. Verwende in relativen Markdown-Links den Dateinamen ohne Sprachsuffix, damit MkDocs die passende Fassung auswählt.
 
 ## Inventar aktualisieren
 

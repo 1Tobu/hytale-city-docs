@@ -7,6 +7,7 @@ edit_uri: edit/main/docs/
 strict: true
 theme:
   name: material
+  custom_dir: overrides
   language: de
   features:
     - navigation.sections
@@ -27,7 +28,52 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Dunkles Design
+extra_css:
+  - assets/item-catalog/catalog.css
+extra_javascript:
+  - assets/item-catalog/catalog.js
 plugins:
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: de
+          default: true
+          name: Deutsch
+          build: true
+        - locale: en
+          name: English
+          build: true
+          site_name: HytaleCity Plugin Documentation
+          nav_translations:
+            Start: Home
+            Einstieg: Getting started
+            Installation und Konfiguration: Installation and configuration
+            Befehle und Berechtigungen: Commands and permissions
+            Architektur: Architecture
+            Zusammenspiel: How the plugins work together
+            Daten und Threads: Data and threads
+            Ablaufbeispiele: Example flows
+            Minigames und Ausblick: Minigames and plans
+            Überblick: Overview
+            Ingame-Dokumentation: In-game documentation
+            Entwicklung: Development
+            Core-APIs nutzen: Using the Core APIs
+            NPC-Aktionen erweitern: Extending NPC actions
+            Neuen Beruf hinzufügen: Adding a profession
+            Eigene Zauberstäbe: Custom wands
+            Bauen und Prüfen: Build and verification
+            Dokumentation pflegen: Maintaining the documentation
+            Betrieb: Operations
+            Updates und Wiederherstellung: Updates and recovery
+            Datenbankmigrationen: Database migrations
+            Berufsaufträge und Belohnungen: Profession quests and rewards
+            Fehler und Logs: Errors and logs
+            Referenz: Reference
+            Level-API im Detail: Level API details
+            NPC- und Verkaufsverträge: NPC and sale contracts
+            Hytale-Itemkatalog: Hytale item catalog
+            Eigene Spielressourcen: Custom assets
+            Plugin-Inventar und Quellstände: Plugin inventory and source revisions
   - search:
       lang: [de, en]
 markdown_extensions:
@@ -83,5 +129,6 @@ nav:
   - Referenz:
       - Level-API im Detail: reference/level-api.md
       - NPC- und Verkaufsverträge: reference/npc-contracts.md
-      - Custom Assets: reference/custom-assets.md
+      - Hytale-Itemkatalog: reference/item-catalog.md
+      - Eigene Spielressourcen: reference/custom-assets.md
       - Plugin-Inventar und Quellstände: reference/inventory.md

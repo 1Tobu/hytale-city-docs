@@ -1,4 +1,4 @@
-# Custom Assets
+# Eigene Spielressourcen
 
 Das gemeinsame Pack **HytaleCity:Assets** liegt im Repository [hytale-city-assets](https://github.com/1Tobu/hytale-city-assets). Installiere den Ordner **HytaleCity.Assets** im Asset-Pack- beziehungsweise Mods-Verzeichnis des Servers. Bei einer ZIP muss die Manifestdatei direkt im Archivstamm liegen. Ersetze beim Update die alte Pack-Kopie vollständig und starte danach den Server neu.
 

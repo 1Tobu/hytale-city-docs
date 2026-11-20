@@ -1,0 +1,63 @@
+html:not([data-docs-unlocked]) body {
+  visibility: hidden;
+}
+
+.docs-access,
+.docs-access-no-script {
+  visibility: visible;
+  max-width: calc(100% - 2rem);
+  margin: auto;
+  padding: 1.3rem;
+  border: 1px solid var(--md-default-fg-color--lightest, #64748b);
+  border-radius: .5rem;
+  background: var(--md-default-bg-color, #fff);
+  color: var(--md-default-fg-color, #222);
+}
+
+.docs-access {
+  width: 20rem;
+}
+
+.docs-access::backdrop {
+  background: #17212b;
+}
+
+.docs-access form {
+  display: grid;
+  gap: .6rem;
+}
+
+.docs-access h1 {
+  margin: 0 0 .3rem;
+  font-size: 1.5rem;
+}
+
+.docs-access input,
+.docs-access button {
+  padding: .55rem .7rem;
+  border: 1px solid var(--md-default-fg-color--light, #64748b);
+  border-radius: .25rem;
+}
+
+.docs-access button {
+  background: #006b63;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.docs-access :is(input, button):focus-visible {
+  outline: 2px solid var(--md-accent-fg-color, #006b63);
+  outline-offset: 2px;
+}
+
+.docs-access__error {
+  margin: 0;
+}
+
+.docs-access-no-script {
+  position: fixed;
+  top: 20%;
+  inset-inline: 1rem;
+  width: fit-content;
+}

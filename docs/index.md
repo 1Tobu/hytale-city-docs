@@ -27,6 +27,7 @@ Diese Website ist öffentlich. Die Plugin-Quellrepositories bleiben privat; Quel
 
 ## Inhalte pflegen
 
-- [Custom Assets und Item-IDs](reference/custom-assets.md)
+- [Vanilla-Items im Hytale-Itemkatalog nachschlagen](reference/item-catalog.md)
+- [Eigene Spielressourcen und Item-IDs](reference/custom-assets.md)
 - [Berufsaufträge und Meilensteinbelohnungen anlegen](operations/profession-content.md)
 - [Einen neuen Beruf hinzufügen](development/new-profession.md)

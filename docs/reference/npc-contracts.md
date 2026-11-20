@@ -1,19 +1,19 @@
 # HcNpcs
 
-Hytale 0.7.7 NPC runtime. Install **CorePlugin, HcNpcs and JobsPlugin together** when updating this feature. Jobs now declares a required HcNpcs dependency; the reflective listener and duplicate Jobs packet hook have been removed.
+HcNpcs bindet NPC-Aktionen in Hytale 0.7.7 ein. Installiere bei einem Update dieser Funktion **CorePlugin, HcNpcs und JobsPlugin gemeinsam**. Jobs deklariert HcNpcs als Pflichtabhängigkeit. Der Listener auf Basis von Reflection und der doppelte Paket-Hook von Jobs wurden entfernt.
 
-## Ownership and persistence
+## Zuständigkeit und Speicherung { #ownership-and-persistence }
 
-- Core owns `hc_npcs`, `hc_npc_actions` and migration from `jobs_npc_job_keys`.
-- Hytale owns every NPC's spawning, movement and world persistence. HcNpcs only attaches actions and optional names to existing native entity UUIDs.
-- Runtime bindings require `role == null` and an entity UUID. Historical managed definitions with a role, including invalid test roles such as `holzfaeller`, stay in the DB for inspection but are ignored on startup and every refresh. No automatic spawn, despawn, role validation, chunk loading or spawn retry exists in HcNpcs.
-- Native bindings, including disabled reset tombstones, remain cached so deferred original-name restoration works when the NPC loads.
-- Import is idempotent and leaves the old table intact. Existing definitions, including intentionally reset mappings, win over legacy mappings.
-- Name changes run on world queues. All database work goes through Core on the HcNpcs IO worker.
+- Core verwaltet `hc_npcs`, `hc_npc_actions` und die Migration aus `jobs_npc_job_keys`.
+- Hytale übernimmt das Spawnen, die Bewegung und Speicherung aller NPCs in der Welt. HcNpcs ordnet bereits existierenden Entitäts-UUIDs Aktionen und optionale Namen zu.
+- Aktive Bindungen brauchen `role == null` und eine Entitäts-UUID. Alte verwaltete Definitionen mit einer Rolle bleiben zur Prüfung in der Datenbank, einschließlich ungültiger Testrollen wie `holzfaeller`. HcNpcs ignoriert sie beim Start und beim Neuladen. Das Plugin übernimmt weder Spawnen, Entfernen und Rollenprüfung noch das Laden von Chunks oder erneute Spawnversuche.
+- Native Bindungen bleiben im Cache, auch deaktivierte Einträge nach einem Reset. So lässt sich der ursprüngliche Name beim späteren Laden des NPCs wiederherstellen.
+- Der Import ist idempotent und erhält die alte Tabelle. Bereits vorhandene Definitionen haben Vorrang, auch absichtlich zurückgesetzte Zuordnungen.
+- Namensänderungen laufen auf der Warteschlange der Welt. Datenbankzugriffe erfolgen über Core auf dem IO-Worker von HcNpcs.
 
-## Admin commands
+## Admin-Befehle { #admin-commands }
 
-Spawn NPCs with native Hytale tools first. Permission: `hcnpcs.admin`.
+Erzeuge den NPC zunächst mit den nativen Hytale-Werkzeugen. Die nötige Berechtigung lautet `hcnpcs.admin`.
 
 ```text
 /hcnpc
@@ -26,15 +26,15 @@ Spawn NPCs with native Hytale tools first. Permission: `hcnpcs.admin`.
 /hcnpc reload
 ```
 
-Without an identifier, set/reset uses the NPC under the crosshair within the configured interaction distance (three metres by default). Explicit identifiers take precedence. New UUID bindings require a loaded real NPC in the same world. Existing keys may be assigned without a name, or reset, while unloaded. A new name requires the NPC to be loaded so its original Nameplate can be captured safely. Names with spaces must be quoted; names must contain 1-128 characters and no control characters. With three set arguments, a registered job in first position means `job type name`; otherwise they mean `identifier job type`. Saved keys matching registered job names should use the unambiguous entity UUID instead.
+Ohne Kennung wählen `set` und `reset` den NPC im Fadenkreuz innerhalb der konfigurierten Interaktionsdistanz von standardmäßig drei Metern. Explizite Kennungen haben Vorrang. Für neue UUID-Bindungen muss ein echter NPC in derselben Welt geladen sein. Bestehende Schlüssel können auch bei entladenem NPC ohne neuen Namen zugewiesen oder zurückgesetzt werden. Für einen neuen Namen muss der NPC geladen sein, damit seine ursprüngliche `Nameplate` zuverlässig erfasst wird. Namen mit Leerzeichen stehen in Anführungszeichen. Zulässig sind 1 bis 128 Zeichen ohne Steuerzeichen. Bei drei Argumenten interpretiert `set` einen registrierten Beruf an erster Stelle als `job type name`. Sonst gilt `identifier job type`. Verwende die eindeutige Entitäts-UUID, wenn der gespeicherte Schlüssel mit einem registrierten Berufsnamen kollidiert.
 
-Names are stored atomically with the action in Core and applied through Hytale's `Nameplate` component, making them visible above the NPC. Omitting the name preserves it. The first overridden native name (including an absent nameplate) is recorded durably. Reset clears **all** plugin actions, disables dispatch and restores that original name on the world queue, also after restart/unload. The native NPC remains in the world. A disabled tombstone prevents old mappings from being reimported; set reactivates it. Historical managed definitions are ignored and cannot be selected through HcNpcs.
+Core speichert Namen zusammen mit der Aktion atomar. Hytale zeigt sie über die Komponente `Nameplate` oberhalb des NPCs an. Ohne Namensargument bleibt der Name erhalten. Beim ersten Überschreiben speichert Core den ursprünglichen Zustand dauerhaft, auch wenn es kein Namensschild gab. `reset` löscht **alle** Plugin-Aktionen, unterbindet weitere Aufrufe und stellt den ursprünglichen Namen auf der Weltwarteschlange wieder her. Das gilt auch nach Neustart oder Entladen. Der native NPC bleibt in der Welt. Ein deaktivierter Eintrag verhindert die erneute Übernahme alter Zuordnungen und lässt sich mit `set` reaktivieren. Historische verwaltete Definitionen bleiben bei der Auswahl außen vor.
 
-Only `set`, `reset` and `reload` remain as admin subcommands. `create`, `action`, `configure`, `removeaction` and `move` are removed. Native tools/role assets own models, position and physical behaviour. HcNpcs no longer applies Frozen/invulnerability/model changes to attached native NPCs. The former create/move/configure runtime APIs are removed as well. Old physical overrides already present on an attached NPC are not automatically reconstructed or undone; use native tools if needed.
+Als Admin-Unterbefehle bleiben `set`, `reset` und `reload` erhalten. `create`, `action`, `configure`, `removeaction` und `move` wurden entfernt, ebenso die früheren Laufzeit-APIs zum Erstellen, Verschieben und Konfigurieren. Modelle, Position und physisches Verhalten gehören zu den nativen Werkzeugen und Rollenressourcen. HcNpcs setzt bei nativen NPCs keine Änderungen an `Frozen`, Unverwundbarkeit oder Modell mehr. Korrigiere bei Bedarf alte physische Überschreibungen mit den nativen Werkzeugen.
 
-The older Jobs one-shot selection API and `/job admin npcset` remain compatible; it is not needed for the new immediate crosshair commands.
+Die frühere einmalige Auswahl-API von Jobs und `/job admin npcset` bleiben kompatibel. Die Befehle mit sofortiger Auswahl über das Fadenkreuz kommen ohne diese API aus.
 
-## Plugin API
+## Plugin-API
 
 ```java
 HcNpcsService npcs = HcNpcsAPI.getService();
@@ -49,60 +49,60 @@ Registration registration = npcs.registerAction(
 registration.close(); // idempotent; alternatively unregisterOwner("MyQuestPlugin")
 ```
 
-`assign` and `reset` return futures for atomic named assignments and reset. `setAction`, `attachAction`, `removeAction` and `reload` also return futures. HcNpcs exposes no create/move/configure API. Never join these futures on a world thread. Future completions run on an IO thread: queue ECS/UI operations with `world.execute`, then recheck player session, NPC binding and range using `validate(world, player, entityUuid)`. `definitions()` and `findByEntity()` return immutable cached snapshots. `entityUuid(key)` resolves the current binding; always validate it before ECS use.
+`assign` und `reset` geben Futures für atomare Zuweisungen mit Namen und für das Zurücksetzen zurück. Auch `setAction`, `attachAction`, `removeAction` und `reload` geben Futures zurück. HcNpcs bietet keine API zum Erstellen, Verschieben oder Konfigurieren von NPCs. Warte auf einem World-Thread nie blockierend auf diese Futures. Fortsetzungen laufen auf einem IO-Thread. Plane ECS- und UI-Vorgänge mit `world.execute` ein und prüfe dann Sitzung, NPC-Bindung und Reichweite erneut mit `validate(world, player, entityUuid)`. `definitions()` und `findByEntity()` liefern unveränderliche Momentaufnahmen aus dem Cache. `entityUuid(key)` löst die aktuelle Bindung auf. Prüfe sie vor dem Zugriff auf das ECS.
 
-Duplicate action registrations are rejected. Registration handles remove only their own instance, so closing an old handle cannot unregister a replacement. A single action opens directly; several available actions show a custom selection page. Missing providers do not run. The chooser rechecks target and current binding on submit and expires after two minutes. A quest provider is an extension point, not an implemented quest system.
+Doppelte Aktionsregistrierungen werden abgelehnt. Ein Registrierungsobjekt entfernt beim Schließen nur seine eigene Instanz. Eine verfügbare Aktion öffnet sich direkt. Bei mehreren Aktionen erscheint eine Auswahlseite. Aktionen ohne registrierten Anbieter werden übersprungen. Die Auswahl prüft beim Bestätigen Ziel und aktuelle Bindung erneut und läuft nach zwei Minuten ab. Ein Quest-Anbieter kann die Schnittstelle für ein eigenes Questsystem nutzen.
 
-## Interaction and UI
+## Interaktion und Oberfläche { #interaction-and-ui }
 
-One retained inbound watcher recognizes Use interaction targets, limits scheduling to once per player per 250 ms, and is deregistered on shutdown. All target resolution happens on the captured world queue. It verifies the current PlayerRef/store/world, an actual NPC component and the configured interaction distance (three metres by default). Only persisted bindings dispatch actions. Internal exceptions are logged with their cause; implementation details are not sent to players.
+Ein zentraler Listener erkennt eingehende Use-Interaktionen, plant pro Spieler höchstens alle 250 ms eine Verarbeitung ein und wird beim Herunterfahren abgemeldet. Die Zielauflösung läuft auf der erfassten Weltwarteschlange. Sie prüft den aktuellen PlayerRef, Store und die Welt, eine echte NPC-Komponente sowie die konfigurierte Interaktionsreichweite von standardmäßig drei Metern. Nur gespeicherte Bindungen lösen Aktionen aus. Interne Ausnahmen werden mit Ursache protokolliert. Spieler erhalten keine internen Details.
 
-Jobs loads the profession and merchant snapshots on its IO worker. ProfessionUI validates NPC proximity and the current session before handling actions. The merchant provides selling, limited stock purchases, profession activation, quests and milestone claims.
+Jobs lädt Berufs- und Händlerdaten auf seinem IO-Worker. `ProfessionUI` prüft vor jeder Aktion die Entfernung zum NPC und die Sitzung. Händler bieten Verkauf, Käufe aus begrenztem Bestand, Berufsaktivierung, Aufträge und Meilensteinbelohnungen.
 
-At the merchant, choose an inventory item and quantity and confirm the displayed total. The command /job sell uses the same coordinator with a two-step confirmation for the held item. The previous shop and upgrade screen is accessible via `/job <jobKey>`.
+Wähle beim Händler einen Inventargegenstand und eine Menge und bestätige den angezeigten Gesamtbetrag. `/job sell` verwendet dieselbe Verkaufslogik mit einer zweistufigen Bestätigung für den gehaltenen Gegenstand. Die bisherige Shop- und Upgrade-Ansicht ist über `/job <jobKey>` erreichbar.
 
-## Sale consistency and recovery
+## Konsistenz und Wiederherstellung von Verkäufen { #sale-consistency-and-recovery }
 
-Core's `JobSaleService` credits money for current sales in one transaction, serialized per player and deduplicated by operation UUID. Normal balance setters/deposits/withdrawals use the same player row lock; transfers lock both players in UUID order and reject overflow. Unrelated Player updates use dynamic SQL updates so they do not write stale balances. Jobs uses additive `adjustXp` and an explicit `unlock` operation for existing entry/upgrade/reward paths; `player_jobs.version` provides an additional optimistic guard for legacy detached job writes. Liquibase owns the schema; Hibernate validates it after migration. player_jobs.version has default zero. The Jobs coordinator reserves exact planned slots/stacks on the world thread, preserving metadata/durability in compensation. `prepare` returns `true` only for a newly created operation; an existing operation returns `false` and must never trigger another inventory removal. Preparation stores a BSON inventory plan before removal. Changed slots cancel the sale before removal. Arithmetic overflow rolls back all DB effects.
+Cores `JobSaleService` schreibt das Guthaben eines Verkaufs in einer Transaktion gut. Vorgänge werden pro Spieler serialisiert und anhand der Vorgangs-UUID dedupliziert. Reguläres Setzen, Einzahlen und Abheben von Guthaben verwendet dieselbe Zeilensperre. Überweisungen sperren beide Spieler in UUID-Reihenfolge und lehnen Überläufe ab. Andere Spieleränderungen nutzen dynamische SQL-Updates, damit sie keine veralteten Guthaben zurückschreiben. Jobs verwendet additives `adjustXp` und ein ausdrückliches `unlock` für Einträge, Upgrades und Belohnungen. `player_jobs.version` schützt alte Schreibpfade mit abgelösten Entities zusätzlich optimistisch und hat den numerischen Standardwert `0`. Liquibase verwaltet das Schema, Hibernate prüft es nach der Migration.
 
-Inventory/world saving and MariaDB cannot share a transaction. A crash between reservation and commit therefore requires reconciliation rather than an automatic payout/refund:
+Jobs reserviert die geplanten Slots und Stapel exakt auf dem World-Thread und erhält Metadaten und Haltbarkeit bei einer Rückgabe. `prepare` gibt nur bei einem neu angelegten Vorgang `true` zurück. Bei `false` darf kein weiteres Item entfernt werden. Vor der Inventarentnahme speichert Jobs einen BSON-Inventarplan. Geänderte Slots brechen den Verkauf vor der Entnahme ab. Ein arithmetischer Überlauf rollt alle Datenbankänderungen zurück.
 
-- `PREPARED`: removal may or may not have happened. Check the recorded `inventoryEvidence`, actual inventory and logs before taking action.
-- `COMMITTED`: DB rewards were applied. Never automatically refund this operation.
-- `REFUND_DUE`: compensation is outstanding or may have been partially returned. Inspect actual inventory; do not blindly restore the whole plan.
-- `ABORTED`: no payout remains and the caller confirmed compensation/no removal.
+Inventar- und Weltspeicherung laufen außerhalb der MariaDB-Transaktion. Nach einem Absturz zwischen Reservierung und Commit muss der tatsächliche Stand geprüft werden.
 
-`abort` grants a physical refund only on its first PREPARED-to-REFUND_DUE transition; repeated calls never authorize returning the same items again. Core provides `pending(playerUuid)`, `diagnostic(operationUuid)`, idempotent `commit(request)`, `abort(request)` and `confirmRefund(request)` for explicit reconciliation. `confirmRefund` must only be called after actual item restitution (or verified absence of removal). Unresolved operations block further sales for that player. Ambiguous outcomes log the operation UUID and remain recorded. Receipt retention/archival must preserve deduplication and all unresolved records.
+- `PREPARED`. Die Entnahme kann stattgefunden haben. Prüfe `inventoryEvidence`, Inventar und Logs.
+- `COMMITTED`. Die Auszahlung wurde verbucht. Erstatte diesen Verkauf nicht automatisch.
+- `REFUND_DUE`. Eine Rückgabe steht aus oder wurde möglicherweise teilweise durchgeführt. Gleiche den Plan mit dem tatsächlichen Inventar ab.
+- `ABORTED`. Es ist keine Auszahlung offen und der Aufrufer hat die Rückgabe oder das Ausbleiben der Entnahme bestätigt.
 
-## Verification
+`abort` erlaubt die physische Rückgabe nur beim ersten Übergang von `PREPARED` zu `REFUND_DUE`. Core bietet für den Abgleich `pending(playerUuid)`, `diagnostic(operationUuid)`, das idempotente `commit(request)`, `abort(request)` und `confirmRefund(request)` an. Rufe `confirmRefund` erst nach der tatsächlichen Rückgabe oder nach bestätigtem Ausbleiben der Entnahme auf. Ungeklärte Vorgänge blockieren weitere Verkäufe dieses Spielers. Bei unklarem Ausgang bleibt der Vorgang gespeichert und die UUID wird protokolliert. Aufbewahrung und Archivierung müssen die Deduplizierung und alle ungeklärten Datensätze erhalten.
 
-Core tests cover migration, immutable snapshots, optimistic bindings, movement ownership, action limits, atomic rewards, rollback, concurrent replay, stale job writes, opposing transfers, concurrent deposits/XP changes and unresolved sales. HcNpcs tests cover action registration/cleanup, command inputs and ignored legacy spawn definitions on repeated reloads. Jobs tests cover exact inventory plans, changed items and compensation failures.
+## Prüfung { #verification }
 
-Maven cannot validate Hytale's client UI DSL or a live world. Before production acceptance, test native spawn/set/name/reset/restart/chunk unload, both merchant confirmation paths, movement during UI loads and plugin shutdown on a Hytale 0.7.7 test server. The UI files reuse native Common.ui templates and send only server-defined action values.
+Core-Tests decken Migration, unveränderliche Momentaufnahmen, optimistische Bindungen, Zuständigkeit für Bewegungen, Aktionslimits, atomare Belohnungen, Rollbacks, parallele Wiederholungen, veraltete Berufsänderungen, gegenläufige Überweisungen, parallele Einzahlungen und XP-Änderungen sowie offene Verkäufe ab. HcNpcs testet Registrierung und Abmeldung, Befehlseingaben und das Ignorieren alter Spawn-Definitionen beim wiederholten Neuladen. Jobs testet exakte Inventarpläne, geänderte Items und fehlgeschlagene Rückgaben.
 
-## Short NPC duty commands
+Prüfe vor der Freigabe auf einem Hytale-0.7.7-Testserver das native Spawnen, Zuweisen, Benennen und Zurücksetzen, Neustarts, Chunk-Entladen, beide Verkaufspfade, Spielerbewegung während des Ladens der UI und das Herunterfahren der Plugins. Maven prüft die Hytale-Client-UI und die laufende Welt nicht. Die UI-Dateien verwenden native Vorlagen aus `Common.ui` und senden nur vom Server definierte Aktionswerte.
 
-`/hcnpc set [identifier] <job> <typ>` uses plain command arguments, for example `merchant lumberjack` or `merchant miner`. The duty is resolved against registered providers; the command does not hardcode a merchant-only switch. Only `merchant` is currently registered by Jobs. A future provider can register `job:worker` and use the same command after adding its implementation.
+## Kurzbefehle für NPC-Aufgaben { #short-npc-duty-commands }
 
-Stored keys use singular `job:merchant` and canonical type arguments such as `typ:lumberjack`. Current type names are `farmer`, `lumberjack`, `hunter`, `miner`; Core maps these to the existing profession keys without renaming job progress. Old `jobs:merchant` bindings with German profession arguments migrate idempotently on startup. Generic namespaced actions such as `quests:giver forest` remain supported. Unregistered duties and unknown profession types are rejected before saving.
+`/hcnpc set [identifier] <job> <typ>` verwendet einfache Argumente wie `merchant lumberjack` und `merchant miner`. Der Befehl löst die Aufgabe über registrierte Anbieter auf. Derzeit registriert Jobs nur `merchant`. Ein weiterer Anbieter könnte etwa `job:worker` registrieren, seine Implementierung ergänzen und denselben Befehl verwenden.
 
-## Selection and verification
+Gespeicherte Schlüssel verwenden `job:merchant` im Singular und kanonische Typen wie `typ:lumberjack`. Aktuell gibt es `farmer`, `lumberjack`, `hunter` und `miner`. Core ordnet sie vorhandenen Berufsschlüsseln zu und erhält den Berufsfortschritt. Alte Bindungen mit `jobs:merchant` und deutschen Berufsargumenten werden beim Start idempotent migriert. Aktionen mit Namensraum wie `quests:giver forest` bleiben möglich. Unbekannte Aufgaben und Berufstypen werden vor dem Speichern abgelehnt.
 
-`/hcnpc` lists saved keys and entity UUIDs. Display names, role IDs and model IDs are not unique entity identifiers. New bindings currently use `legacy.<UUID>` keys for persistence compatibility. Set/reset use Hytale native positional command variants; tests cover registration, ambiguity, name validation, original-name preservation, rollback and reset tombstones. Live crosshair/nameplate/UI/restart checks are still required.
+## Auswahl und Prüfung { #selection-and-verification }
 
-## Native interaction prompt
+`/hcnpc` listet gespeicherte Schlüssel und Entitäts-UUIDs auf. Anzeigenamen, Rollen-IDs und Modell-IDs identifizieren einen NPC nicht eindeutig. Neue Bindungen verwenden aus Kompatibilitätsgründen `legacy.<UUID>`. Die Befehle `set` und `reset` nutzen Hytales native positionale Befehlsvarianten. Tests prüfen Registrierung, mehrdeutige Argumente, Namensprüfung, Erhalt des Originalnamens, Rollback und deaktivierte Reset-Einträge. Fadenkreuz, Namensschild, UI und Neustart müssen im laufenden Spiel geprüft werden.
 
-Enabled native NPC bindings with an available action advertise Hytale's native interactable hint to their current entity viewers. Merchants use `server.interactionHints.trade`; other providers use `server.interactionHints.generic`. The client draws the crosshair/key prompt with its configured Use binding (normally F). Existing native Interactable components and their hints are preserved.
+## Nativer Interaktionshinweis { #native-interaction-prompt }
 
-Hints use the native EntityViewer/InteractableUpdate replication path, without persisting an Interactable component or adding a custom HUD. The world queue refreshes visible-viewer hints once per second, including newly connected viewers. Reset, removed/unavailable actions and shutdown remove only HcNpcs-added client hints; native interactability is retained. Live client visibility, key remapping and interaction tests are still required.
+Aktive native NPC-Bindungen mit verfügbarer Aktion zeigen ihren aktuellen Betrachtern Hytales nativen Interaktionshinweis. Händler verwenden `server.interactionHints.trade`, andere Anbieter `server.interactionHints.generic`. Der Client zeichnet den Hinweis am Fadenkreuz mit der belegten Use-Taste, üblicherweise F. Bestehende `Interactable`-Komponenten und Hinweise bleiben erhalten.
 
-Command results use Core `NotificationUtility`: success displays `NPC Gespeichert`, failure displays `NPC Aktion Fehlgeschlagen`. Help and the binding list remain chat output.
+Die Hinweise nutzen die native Replikation über `EntityViewer` und `InteractableUpdate`. Eine zusätzliche persistente Komponente oder ein eigenes HUD ist dafür nicht nötig. Die Weltwarteschlange aktualisiert Hinweise einmal pro Sekunde, auch für neu verbundene Betrachter. Ein Reset, entfernte oder nicht verfügbare Aktionen und das Herunterfahren entfernen nur die von HcNpcs ergänzten Hinweise. Sichtbarkeit, geänderte Tastenbelegung und Interaktion müssen im Client geprüft werden.
 
-Command descriptions, argument hints and usage placeholders are in English (`type`, `identifier-or-job`, `job-or-type`, `type-or-name`). Result notifications retain the configured German wording.
+Befehlsergebnisse verwenden Cores `NotificationUtility`. Bei Erfolg erscheint `NPC Gespeichert`, bei einem Fehler `NPC Aktion Fehlgeschlagen`. Hilfe und Bindungsliste erscheinen im Chat. Befehlsbeschreibungen, Argumenthinweise und Platzhalter sind englisch (`type`, `identifier-or-job`, `job-or-type`, `type-or-name`). Ergebnisbenachrichtigungen behalten ihren konfigurierten deutschen Wortlaut.
 
-## Interaction distance configuration
+## Interaktionsdistanz konfigurieren { #interaction-distance-configuration }
 
-HcNpcs creates `HcNpcs/config.json` in its short plugin data directory:
+HcNpcs legt `HcNpcs/config.json` im kurzen Plugin-Datenverzeichnis an.
 
 ```json
 {
@@ -110,4 +110,4 @@ HcNpcs creates `HcNpcs/config.json` in its short plugin data directory:
 }
 ```
 
-Edit the value and run `/hcnpc reload` to apply it without restarting. Accepted range: 0.5 to 10 metres. Invalid reloads retain the last valid value and leave the file unchanged; startup logs invalid settings and uses the default. The same distance gates crosshair selection, Use/action dispatch, UI validation and HcNpcs-added viewer hints. Explicit administrative identifiers can still update/reset stored bindings without standing beside the NPC. Hytale's own pre-existing hints/client targeting may impose their own presentation limits; setting a larger server limit does not extend native client targeting automatically.
+Ändere den Wert und führe `/hcnpc reload` aus, um ihn ohne Neustart zu übernehmen. Zulässig sind 0,5 bis 10 Meter. Bei einem ungültigen Reload bleiben der letzte gültige Wert und die Datei erhalten. Beim Start protokolliert das Plugin eine ungültige Einstellung und verwendet den Standardwert. Dieselbe Distanz gilt für Fadenkreuzauswahl, Use-Aktionen, UI-Prüfung und die HcNpcs-Hinweise. Mit expliziter Kennung können Admins gespeicherte Bindungen auch aus größerer Entfernung ändern oder zurücksetzen. Hytales eigene Hinweise und die Zielauswahl des Clients können eine abweichende Reichweite haben. Ein größerer Serverwert erweitert die Client-Reichweite nicht automatisch.
