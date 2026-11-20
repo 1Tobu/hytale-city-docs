@@ -16,7 +16,7 @@
         <link rel="prev" href="../homes/">
       
       
-        <link rel="next" href="../jobs/">
+        <link rel="next" href="../inbox/">
       
       
         
@@ -877,6 +877,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1922,6 +1950,7 @@
 <p>Economy provides the command layer for the shared Core account. Jobs, plot purchases, level rewards, and other systems use that same balance.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p><code>/money</code> shows the money section. <code>/money send &lt;player&gt; &lt;amount&gt;</code> transfers funds. The administrative subcommands are <code>add</code>, <code>remove</code>, and <code>set</code>, each taking a player and amount. Check the permissions registered in Hytale before granting access.</p>
+<p>Players receive balance, transfer, and administrative booking feedback as notifications. A successful transfer creates an <a href="../inbox/">inbox</a> entry for both parties. The admin console still receives text feedback.</p>
 <h2 id="core-contract">Core contract<a class="headerlink" href="#core-contract" title="Permanent link">&para;</a></h2>
 <p><code>getBalance</code>, <code>deposit</code>, <code>withdraw</code>, <code>setBalance</code>, and <code>transferMoney</code> return <code>BalanceResult</code>. Always check <code>isSuccess()</code>. Invalid amounts, missing players, insufficient funds, and overflow are errors.</p>
 <p>Balance writes lock the player's row. Transfers lock both players in a stable order. Transferring money to yourself cannot increase the balance.</p>

@@ -16,7 +16,7 @@
         <link rel="prev" href="../homes/">
       
       
-        <link rel="next" href="../jobs/">
+        <link rel="next" href="../inbox/">
       
       
         
@@ -877,6 +877,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Postfach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1922,6 +1950,7 @@
 <p>Das Geld-Plugin ist die Befehlsschicht für das gemeinsame Core-Konto. Jobs, Plotkäufe, Levelbelohnungen und andere Systeme dürfen keine unabhängigen Geldstände führen.</p>
 <h2 id="bedienung">Bedienung<a class="headerlink" href="#bedienung" title="Permanent link">&para;</a></h2>
 <p><code>/money</code> zeigt den Geldbereich an. <code>/money send &lt;player&gt; &lt;amount&gt;</code> überweist Geld. Administrative Unterbefehle sind <code>add</code>, <code>remove</code> und <code>set</code>, jeweils mit Spieler und Betrag. Für administrative Rechte die tatsächlich registrierten Hytale-Berechtigungen prüfen; diese Befehle sind nicht pauschal als frei freigegeben dokumentiert.</p>
+<p>Spieler erhalten Kontostand, Überweisungen und administrative Buchungsrückmeldungen als Benachrichtigungen. Erfolgreiche Überweisungen erzeugen für beide Seiten einen Eintrag im <a href="../inbox/">Postfach</a>. Die Admin-Konsole erhält weiterhin Textausgaben.</p>
 <h2 id="core-vertrag">Core-Vertrag<a class="headerlink" href="#core-vertrag" title="Permanent link">&para;</a></h2>
 <p><code>getBalance</code>, <code>deposit</code>, <code>withdraw</code>, <code>setBalance</code> und <code>transferMoney</code> liefern <code>BalanceResult</code>. Immer <code>isSuccess()</code> prüfen. Ungültige Beträge, fehlende Spieler, unzureichendes Guthaben und Überlauf sind Fehlerfälle.</p>
 <p>Schreibende Geldmethoden verwenden eine Spielerzeilensperre. Transfers sperren beide Spieler in stabiler Reihenfolge und erzeugen bei Selbstüberweisung kein zusätzliches Guthaben.</p>

@@ -818,6 +818,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../plugins/inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Postfach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../plugins/jobs/" class="md-nav__link">
         
   
@@ -2020,9 +2048,10 @@
 <p>Shopangebote und Upgrade-Rezepte liegen in <code>job_catalog_entries</code> und <code>job_catalog_requirements</code>. Core liefert unveränderliche Momentaufnahmen. Jobs aktualisiert seinen Lese-Cache alle fünf Sekunden und führt administrative Schreibvorgänge auf einem IO-Thread aus. Die bisherige Berufsseite nutzt für Tools weiterhin die aktivierten Items als Rückfall. NPC-Käufe greifen auf <code>job_merchant_stock</code> zu. Jobs erzeugt keine Shop-JSON-Dateien.</p>
 <p>Fehlt eine alte Datei, bleiben die mitgelieferten Vorgaben erhalten. Eine vorhandene alte Datei ersetzt unveränderte <code>DEFAULT</code>-Einträge desselben Typs, auch wenn sie eine leere Liste enthält. Bei gleichen Schlüsseln haben <code>ADMIN</code>- und <code>IMPORT</code>-Einträge Vorrang. Vier Farmer-Upgrades mit <code>HC_</code>-IDs werden einmalig aus der mitgelieferten Konfiguration angelegt. Shopangebote haben keine Vorgaben. Importmarker verhindern Wiederholungen. Gelöschte Einträge bleiben über Neustarts hinweg gelöscht. Verwende für Änderungen nach dem Import die Admin-Oberfläche oder die Core-API.</p>
 <h2 id="professions-and-merchants">Berufe und Händler<a class="headerlink" href="#professions-and-merchants" title="Permanent link">&para;</a></h2>
-<p>Die Core-Migrationen V4–V7 führen Berufsfortschritt, Tagesangebote, Inventarbelege, Händlerbestände, Level-Belohnungen und Sammelregeln ein. V6 erhält frühere Belohnungseinträge. V7 verwendet die Item-Gesamtzahlen für gültige Sammelaktionen weiter. Siehe <a href="../profession-content/">Berufsaufträge und Belohnungen</a>.</p>
+<p>Die Core-Migrationen V4–V8 führen Berufsfortschritt, Tagesangebote, Inventarbelege, Händlerbestände, Level-Belohnungen und Sammelregeln ein. V6 erhält frühere Belohnungseinträge. V7 verwendet die Item-Gesamtzahlen für gültige Sammelaktionen weiter. V8 ergänzt Koch, Fischer und die Weizen- und Reisinhalte des Farmers. Siehe <a href="../profession-content/">Berufsaufträge und Belohnungen</a>.</p>
 <h2 id="core-api">Core-API<a class="headerlink" href="#core-api" title="Permanent link">&para;</a></h2>
 <p><code>JobCatalogService.listAll()</code>, <code>save(JobCatalogRecord)</code>, <code>delete(kind, job, category, item)</code> und <code>importOnce(source, kind, rows)</code> verwalten die Daten. Als Typ sind <code>SHOP</code> und <code>UPGRADE</code> zulässig. Importe verwenden einen stabilen Quellschlüssel und schreiben alle Zeilen zusammen mit dem Importmarker. Kosten müssen mindestens null und Mengen größer als null sein. Anforderungen werden pro Item zusammengefasst und sind auf acht verschiedene Items begrenzt. Alte IDs physischer Assets werden beim Schreiben vereinheitlicht. Logische Verzauberungsfamilien wie <code>vibranium_hoe</code> behalten ihren Namen.</p>
+<p>V9 legt <code>player_inbox_messages</code> für Benachrichtigungen, Lesestatus und Archivstatus an. Die Tabelle gehört in die reguläre MariaDB-Datensicherung. <a href="../../plugins/inbox/">Postfach</a></p>
 <h2 id="asset-migration">Migration der Spielressourcen<a class="headerlink" href="#asset-migration" title="Permanent link">&para;</a></h2>
 <p>Die versionierte HC-Migration aktualisiert Items, Upgrade- und Verzauberungsreferenzen, Katalogeinträge und Anforderungen, Verkaufszahlen, Freischaltungen, Meilensteindefinitionen und Belohnungen sowie Item-Referenzen in Ansprüchen. IDs von Definitionen und Spielern sowie Guthaben bleiben erhalten. In JSON-Belohnungen werden vollständige Bezeichner in Anführungszeichen ersetzt. Kollisionen bei eindeutigen Schlüsseln brechen das DML-Changeset ab und müssen geklärt werden. Historische serialisierte Inventarbelege sowie Welt- und Inventardaten bleiben unverändert. Prüfe ausstehende Verkäufe, bevor du dort Item-IDs änderst.</p>
 <p>Der Code bereitet die Produktionsmigration vor. Lokale Tests belegen den Migrationsstand des produktiven Servers nicht.</p>

@@ -190,6 +190,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/homes/"/>
     </url>
     <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/plugins/inbox/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/inbox/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/inbox/"/>
+    </url>
+    <url>
         <loc>https://1tobu.github.io/hytale-city-docs/plugins/jobs/</loc>
         <lastmod>2026-11-20</lastmod>
         <changefreq>daily</changefreq>
@@ -468,6 +475,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/homes/"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/homes/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/inbox/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/plugins/inbox/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/plugins/inbox/"/>
     </url>
     <url>
         <loc>https://1tobu.github.io/hytale-city-docs/en/plugins/jobs/</loc>

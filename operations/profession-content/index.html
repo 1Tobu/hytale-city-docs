@@ -818,6 +818,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../plugins/inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Postfach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../plugins/jobs/" class="md-nav__link">
         
   
@@ -1597,6 +1625,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#auftrag-andern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auftrag ändern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#eine-level-meilensteinbelohnung-andern" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1899,6 +1938,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#auftrag-andern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auftrag ändern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#eine-level-meilensteinbelohnung-andern" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1941,10 +1991,10 @@
 
 
 <h1 id="berufsauftrage-und-belohnungen-anlegen">Berufsaufträge und Belohnungen anlegen<a class="headerlink" href="#berufsauftrage-und-belohnungen-anlegen" title="Permanent link">&para;</a></h1>
-<p>Die Beispiele verwenden die Core-Datenbank in MariaDB mit den Migrationen V4 bis V7. Führe die Schritte zuerst auf einem Testserver aus. Für Änderungen, die auf mehreren Servern ausgerollt werden, kommt das SQL in eine neue Liquibase-Migration im Core. Bestehende Migrationen behalten ihre Prüfsummen.</p>
+<p>Die Beispiele verwenden die Core-Datenbank in MariaDB mit den Migrationen V4 bis V8. Führe die Schritte zuerst auf einem Testserver aus. Für Änderungen, die auf mehreren Servern ausgerollt werden, kommt das SQL in eine neue Liquibase-Migration im Core. Bestehende Migrationen behalten ihre Prüfsummen.</p>
 <h2 id="einen-auftrag-hinzufugen">Einen Auftrag hinzufügen<a class="headerlink" href="#einen-auftrag-hinzufugen" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Wähle einen Beruf und eine eindeutige Auftrags-ID. Die vier Schlüssel sind Farmer, Holzfäller, Miner und Jäger.</li>
+<li>Wähle einen Beruf und eine eindeutige Auftrags-ID. Die Berufsschlüssel sind Farmer, Holzfäller, Miner, Jäger, Koch und Fischer.</li>
 <li>Lege Titel, Mindestlevel, Geld und positive Berufs-XP in job_quest_templates fest.</li>
 <li>Lege mindestens ein Ziel in job_quest_goals an. Das folgende Beispiel zählt sechs eigenhändig abgebaute Golderzblöcke in Basalt und verlangt zusätzlich vier Stück Golderz zur Abgabe.</li>
 <li>Öffne den Händler mit einem aktiven Miner ab Level 10. Für einen sofortigen Test nutze ein frisches Testprofil oder den nächsten Angebotstag. Eine neue Vorlage erscheint abhängig von der Tagesauswahl.</li>
@@ -1992,10 +2042,25 @@
 <td>NPC-Rolle, etwa Boar</td>
 <td>Wildtier wird nach Annahme unter den Berufsbedingungen erlegt.</td>
 </tr>
+<tr>
+<td>CRAFT</td>
+<td>Ergebnis-Item-ID des Primärausgangs eines Rezepts</td>
+<td>Ein erfolgreiches Crafting-Ereignis zählt.</td>
+</tr>
 </tbody>
 </table>
 <p>Für Aktionsziele kann ein Stern alle passenden Aktionen des Berufs zählen. Voraussetzung für Aktionsfortschritt ist eine passende Regel in job_activity_rules. Eine reine Sammelregel in job_collection_rules reicht dafür nicht aus. Für mehrere Ziele gilt jeweils die gesamte Anforderung. Eine Lieferung darf auch aus Lagerbeständen oder Spielerhandel stammen.</p>
 <p>Der Händler speichert pro Spieler und Beruf bis zu drei Angebote pro Kalendertag in Europe/Berlin. Zwei Aufträge können gleichzeitig offen sein. Der aktive Beruf bestimmt Annahme, Aktionsfortschritt und Abgabe. Offene Aufträge bleiben beim Wechsel und am nächsten Tag erhalten. Beim Annehmen werden Titel, Ziele und Belohnungen kopiert. Änderungen an Vorlagen gelten daher für künftige Annahmen. Setze enabled auf FALSE, um eine Vorlage aus der Auswahl zu nehmen und bestehende Aufträge spielbar zu lassen.</p>
+<h2 id="auftrag-andern">Auftrag ändern<a class="headerlink" href="#auftrag-andern" title="Permanent link">&para;</a></h2>
+<p>Passe Vorlage und Ziele in derselben Transaktion an. Bereits angenommene Aufträge behalten ihre gespeicherte Kopie.</p>
+<div class="highlight"><pre><span></span><code><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">job_quest_templates</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">reward_money</span><span class="o">=</span><span class="mi">190</span><span class="p">,</span><span class="w"> </span><span class="n">reward_xp</span><span class="o">=</span><span class="mi">50</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">quest_key</span><span class="o">=</span><span class="s1">'mine_basalt_gold'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">job_key</span><span class="o">=</span><span class="s1">'Miner'</span><span class="p">;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">job_quest_goals</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">goal_amount</span><span class="o">=</span><span class="mi">8</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">quest_key</span><span class="o">=</span><span class="s1">'mine_basalt_gold'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">goal_type</span><span class="o">=</span><span class="s1">'BREAK'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">target_key</span><span class="o">=</span><span class="s1">'Ore_Gold_Basalt'</span><span class="p">;</span>
+<span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
 <h2 id="eine-level-meilensteinbelohnung-andern">Eine Level-Meilensteinbelohnung ändern<a class="headerlink" href="#eine-level-meilensteinbelohnung-andern" title="Permanent link">&para;</a></h2>
 <p>Im Händler unter <strong>Meilensteine → Level-Meilensteine</strong> wird jede erreichte Stufe einmal abgeholt. job_level_milestones legt den Geldbetrag fest. job_level_milestone_items ergänzt eine oder mehrere Item-IDs mit Mengen. Das Beispiel setzt für Miner-Level 25 einen Geldbetrag und zwei Vibraniumbarren.</p>
 <div class="highlight"><pre><span></span><code><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>

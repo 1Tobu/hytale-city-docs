@@ -818,6 +818,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../plugins/inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../plugins/jobs/" class="md-nav__link">
         
   
@@ -1597,6 +1625,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#update-a-quest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update a quest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#change-a-level-milestone-reward" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1899,6 +1938,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#update-a-quest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update a quest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#change-a-level-milestone-reward" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1941,10 +1991,10 @@
 
 
 <h1 id="creating-profession-quests-and-rewards">Creating profession quests and rewards<a class="headerlink" href="#creating-profession-quests-and-rewards" title="Permanent link">&para;</a></h1>
-<p>These examples use the MariaDB Core database with migrations V4 through V7 applied. Try the steps on a test server first. For rollout to multiple servers, put the SQL in a new Core Liquibase migration so the existing checksums stay intact.</p>
+<p>These examples use the MariaDB Core database with migrations V4 through V8 applied. Try the steps on a test server first. For rollout to multiple servers, put the SQL in a new Core Liquibase migration so the existing checksums stay intact.</p>
 <h2 id="add-a-quest">Add a quest<a class="headerlink" href="#add-a-quest" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Choose a profession and a unique quest ID. The four profession keys are <code>Farmer</code>, <code>Holzfäller</code>, <code>Miner</code>, and <code>Jäger</code>.</li>
+<li>Choose a profession and a unique quest ID. The profession keys are Farmer, Holzfäller, Miner, Jäger, Koch, and Fischer.</li>
 <li>Set the title, minimum level, money, and positive profession XP in <code>job_quest_templates</code>.</li>
 <li>Add at least one goal in <code>job_quest_goals</code>. The example counts six gold ore blocks in basalt mined by the player and also requires delivery of four pieces of gold ore.</li>
 <li>Open the merchant with an active Miner profession at level 10 or above. For a quick test, use a fresh test profile or wait for the next daily rotation. Whether the new template appears depends on that day's selection.</li>
@@ -1992,10 +2042,25 @@
 <td>NPC role such as <code>Boar</code></td>
 <td>An eligible wild animal is killed after accepting the quest.</td>
 </tr>
+<tr>
+<td>CRAFT</td>
+<td>Primary recipe output item ID</td>
+<td>Counts a successful crafting event.</td>
+</tr>
 </tbody>
 </table>
 <p>For action goals, an asterisk matches all eligible activities of the profession. Progress requires a matching rule in <code>job_activity_rules</code>. A collection rule in <code>job_collection_rules</code> alone is insufficient. Every goal must be met in full. Deliveries can also come from stored goods or player trades.</p>
 <p>The merchant stores up to three offers per player and profession per calendar day in Europe/Berlin. Two quests can be open at once. The active profession determines eligibility for acceptance, action progress, and delivery. Open quests survive both profession changes and daily rotations. Titles, goals, and rewards are copied at acceptance, so changes to a template affect future acceptances. Set <code>enabled</code> to <code>FALSE</code> to remove a template from rotation while keeping existing quests playable.</p>
+<h2 id="update-a-quest">Update a quest<a class="headerlink" href="#update-a-quest" title="Permanent link">&para;</a></h2>
+<p>Update the template and its goals in one transaction. Accepted quests retain their stored copy.</p>
+<div class="highlight"><pre><span></span><code><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">job_quest_templates</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">reward_money</span><span class="o">=</span><span class="mi">190</span><span class="p">,</span><span class="w"> </span><span class="n">reward_xp</span><span class="o">=</span><span class="mi">50</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">quest_key</span><span class="o">=</span><span class="s1">'mine_basalt_gold'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">job_key</span><span class="o">=</span><span class="s1">'Miner'</span><span class="p">;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">job_quest_goals</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">goal_amount</span><span class="o">=</span><span class="mi">8</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">quest_key</span><span class="o">=</span><span class="s1">'mine_basalt_gold'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">goal_type</span><span class="o">=</span><span class="s1">'BREAK'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">target_key</span><span class="o">=</span><span class="s1">'Ore_Gold_Basalt'</span><span class="p">;</span>
+<span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
 <h2 id="change-a-level-milestone-reward">Change a level milestone reward<a class="headerlink" href="#change-a-level-milestone-reward" title="Permanent link">&para;</a></h2>
 <p>The merchant's level milestones screen lets players claim each reached milestone once. <code>job_level_milestones</code> sets the money amount. <code>job_level_milestone_items</code> adds item IDs and quantities. The example sets a cash reward and two Vibranium bars for Miner level 25.</p>
 <div class="highlight"><pre><span></span><code><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>

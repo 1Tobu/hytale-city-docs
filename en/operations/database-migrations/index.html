@@ -818,6 +818,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../plugins/inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../plugins/jobs/" class="md-nav__link">
         
   
@@ -2020,9 +2048,10 @@
 <p>Shop offers and upgrade recipes now live in job_catalog_entries and job_catalog_requirements. Core returns immutable snapshots; Jobs refreshes a read cache every five seconds and performs admin writes on its catalog IO worker. The legacy job page retains its enabled-items fallback for Tools. NPC purchases use job_merchant_stock. No shop JSON is written or regenerated.</p>
 <p>A missing legacy file keeps bundled defaults. An explicit legacy file, even an empty list, replaces unmodified DEFAULT entries of that kind. Existing ADMIN/IMPORT entries win on matching keys. Four Farmer upgrade defaults are seeded once from the supplied config, with HC_ identifiers. Shop offers have no invented defaults. Import markers prevent reimport; deleting an entry is permanent across restarts. Editing or copying an already-imported JSON is not a supported update path; use the admin UI or Core API.</p>
 <h2 id="professions-and-merchants">Professions and merchants<a class="headerlink" href="#professions-and-merchants" title="Permanent link">&para;</a></h2>
-<p>Core migrations V4–V7 create profession tracking, daily offers, inventory receipts, merchant stock, level rewards and collection rules. V6 preserves prior award records. V7 reuses item totals for valid collection actions. See <a href="../profession-content/">quest and reward maintenance</a>.</p>
+<p>Core migrations V4–V8 create profession tracking, daily offers, inventory receipts, merchant stock, level rewards and collection rules. V6 preserves prior award records. V7 reuses item totals for valid collection actions. V8 adds Cook, Fisher, and the Farmer wheat and rice content. See <a href="../profession-content/">quest and reward maintenance</a>.</p>
 <h2 id="core-api">Core API<a class="headerlink" href="#core-api" title="Permanent link">&para;</a></h2>
 <p><code>JobCatalogService.listAll()</code>, <code>save(JobCatalogRecord)</code>, <code>delete(kind, job, category, item)</code> and <code>importOnce(source, kind, rows)</code> own persistence. Kind is SHOP or UPGRADE. Imports use a stable source key and commit all rows with their marker. Costs are nonnegative, amounts positive, requirements merged by item (at most eight). Physical legacy asset IDs are canonicalized on writes; logical enchantment family keys such as vibranium_hoe stay unchanged.</p>
+<p>V9 adds <code>player_inbox_messages</code> for notifications, read status, and archive status. Include the table in regular MariaDB backups. <a href="../../plugins/inbox/">Inbox</a></p>
 <h2 id="asset-migration">Asset migration<a class="headerlink" href="#asset-migration" title="Permanent link">&para;</a></h2>
 <p>The versioned HC migration updates items, upgrade/enchantment references, catalog entries/requirements, sold-item totals, unlocks, milestone definitions/rewards and claim item references. IDs of definitions/players and balances are retained. JSON rewards replace complete quoted identifiers, not arbitrary substrings. Unique-key collisions abort the DML changeset and require reconciliation. Historical serialized inventory evidence and physical world/inventory data are not rewritten; pending sales must be reviewed before changing physical inventory asset IDs.</p>
 <p>This code prepares the production migration; local tests do not imply the live server database has already been updated.</p>

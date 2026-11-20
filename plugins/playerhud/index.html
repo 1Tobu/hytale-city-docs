@@ -820,6 +820,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Postfach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../jobs/" class="md-nav__link">
         
   
@@ -1920,8 +1948,10 @@
 
 <h1 id="playerhudplugin">PlayerHudPlugin<a class="headerlink" href="#playerhudplugin" title="Permanent link">&para;</a></h1>
 <p>Das mittig ausgerichtete HUD rechts oben zeigt Spielernamen, Geld, das allgemeine <strong>Spielerlevel</strong> und den <strong>aktiven Beruf</strong> mit Berufslevel, XP innerhalb der Stufe und Fortschrittsbalken. Ohne aktiven Beruf blendet es den Berufsbereich aus.</p>
+<p>Die Weltuhr zeigt die Spielzeit der aktuellen Welt im 24-Stunden-Format HH:mm. Sie folgt dem Spieler beim Weltwechsel.</p>
 <h2 id="bedienung">Bedienung<a class="headerlink" href="#bedienung" title="Permanent link">&para;</a></h2>
 <p>PlayerHud schaltet sich ab PlayerReadyEvent einmal je Verbindung ein. <code>/hud</code> blendet es für die laufende Verbindung ein oder aus. Wiederholte Ready-Events überschreiben die Auswahl nicht. Beim nächsten Beitritt ist das HUD wieder sichtbar.</p>
+<p>Der Holz-Hintergrund liegt in <code>Hud/PlayerHudPanel.png</code>. Das HUD zeigt <code>/inbox</code> und die Zahl neuer Nachrichten im <a href="../inbox/">Postfach</a>.</p>
 <h2 id="daten-und-ui">Daten und UI<a class="headerlink" href="#daten-und-ui" title="Permanent link">&para;</a></h2>
 <p>HudService liest Kontostand, Spielerlevel und aktiven Beruf etwa einmal pro Sekunde über PlayerService, PlayerLevelService und ProfessionService.activeProfession. Die DB-Abfragen laufen auf dem HUD-Worker. GeneralPlayerHud sendet UI-Updates bei geänderten Snapshots. Das UI liegt unter Hud/PlayerHud.ui. Beim Disconnect werden HUD- und Sitzungsreferenzen entfernt.</p>
 <p><a href="../../development/ui/">UI- und HUD-Verträge</a></p>

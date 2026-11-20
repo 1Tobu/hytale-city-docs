@@ -820,6 +820,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Postfach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../jobs/" class="md-nav__link">
         
   
@@ -1969,7 +1997,7 @@
 <p>Die aktuelle Standardkonfiguration startet bei Level 1 und begrenzt auf Level 50. <code>config.json</code> im Level-Datenverzeichnis enthält ausschließlich <code>maxLevel</code>, <code>startLevel</code> und <code>scalingExponent</code>. Kurvenkoeffizienten und Overflow-Grenze sind feste Core-Vorgaben. Bestehende Daten dürfen durch eine neue Kurve nicht stillschweigend zurückgesetzt werden.</p>
 <h2 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h2>
 <p>Neue Plugins verwenden bevorzugt <code>AsyncLevelService</code> aus Core. Änderungen bestätigen erst nach DB-Commit Erfolg. Für wiederholbare Vergaben dieselbe Operations-UUID verwenden. Der Level-Adapter stellt außerdem Futures und lokale LevelUp-/LevelDown-Callbacks bereit.</p>
-<p>Alte Spielerdateien werden idempotent importiert und als Sicherungen erhalten. Das allgemeine PlayerHud zeigt derzeit Jobinformationen statt eines echten allgemeinen Spielerlevels.</p>
+<p>Alte Spielerdateien werden idempotent importiert und als Sicherungen erhalten. Das HUD zeigt das allgemeine Spielerlevel und den aktiven Beruf getrennt an.</p>
 <p>Vollständige Methoden, Kurven-, Import- und Reward-Verträge: <a href="../../reference/level-api/">Level-API</a>.</p>
 <h2 id="kurze-konfiguration">Kurze Konfiguration<a class="headerlink" href="#kurze-konfiguration" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>

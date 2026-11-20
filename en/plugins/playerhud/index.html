@@ -820,6 +820,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../jobs/" class="md-nav__link">
         
   
@@ -1920,8 +1948,10 @@
 
 <h1 id="playerhudplugin">PlayerHudPlugin<a class="headerlink" href="#playerhudplugin" title="Permanent link">&para;</a></h1>
 <p>The centered HUD in the upper-right corner shows the player name, money, overall <strong>player level</strong>, and <strong>active profession</strong> with its level, XP within the level, and progress bar. It hides the profession section when none is active.</p>
+<p>The world clock displays the current world's in-game time in 24-hour HH:mm format. It follows the player across world changes.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>PlayerHud enables the display once per connection after PlayerReadyEvent. <code>/hud</code> toggles it for the current connection. Further ready events preserve that choice. The HUD is visible again on the next join.</p>
+<p>The wooden background is stored in <code>Hud/PlayerHudPanel.png</code>. The HUD shows <code>/inbox</code> and the unread count for the <a href="../inbox/">inbox</a>.</p>
 <h2 id="data-and-ui">Data and UI<a class="headerlink" href="#data-and-ui" title="Permanent link">&para;</a></h2>
 <p><code>HudService</code> reads balance, player level, and active profession about once per second through <code>PlayerService</code>, <code>PlayerLevelService</code>, and <code>ProfessionService.activeProfession</code>. Queries run on the HUD worker. <code>GeneralPlayerHud</code> sends UI updates when snapshots change. The UI is in <code>Hud/PlayerHud.ui</code>. HUD and session references are cleared on disconnect.</p>
 <p>See the <a href="../../development/ui/">UI and HUD contracts</a>.</p>

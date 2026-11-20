@@ -818,6 +818,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../plugins/inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Postfach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../plugins/jobs/" class="md-nav__link">
         
   
@@ -2154,7 +2182,7 @@
 <p>Prüfe vor der Freigabe auf einem Hytale-0.7.7-Testserver das native Spawnen, Zuweisen, Benennen und Zurücksetzen, Neustarts, Chunk-Entladen, beide Verkaufspfade, Spielerbewegung während des Ladens der UI und das Herunterfahren der Plugins. Maven prüft die Hytale-Client-UI und die laufende Welt nicht. Die UI-Dateien verwenden native Vorlagen aus <code>Common.ui</code> und senden nur vom Server definierte Aktionswerte.</p>
 <h2 id="short-npc-duty-commands">Kurzbefehle für NPC-Aufgaben<a class="headerlink" href="#short-npc-duty-commands" title="Permanent link">&para;</a></h2>
 <p><code>/hcnpc set [identifier] &lt;job&gt; &lt;typ&gt;</code> verwendet einfache Argumente wie <code>merchant lumberjack</code> und <code>merchant miner</code>. Der Befehl löst die Aufgabe über registrierte Anbieter auf. Derzeit registriert Jobs nur <code>merchant</code>. Ein weiterer Anbieter könnte etwa <code>job:worker</code> registrieren, seine Implementierung ergänzen und denselben Befehl verwenden.</p>
-<p>Gespeicherte Schlüssel verwenden <code>job:merchant</code> im Singular und kanonische Typen wie <code>typ:lumberjack</code>. Aktuell gibt es <code>farmer</code>, <code>lumberjack</code>, <code>hunter</code> und <code>miner</code>. Core ordnet sie vorhandenen Berufsschlüsseln zu und erhält den Berufsfortschritt. Alte Bindungen mit <code>jobs:merchant</code> und deutschen Berufsargumenten werden beim Start idempotent migriert. Aktionen mit Namensraum wie <code>quests:giver forest</code> bleiben möglich. Unbekannte Aufgaben und Berufstypen werden vor dem Speichern abgelehnt.</p>
+<p>Gespeicherte Schlüssel verwenden <code>job:merchant</code> im Singular und kanonische Typen wie <code>typ:lumberjack</code>. Aktuell gibt es <code>farmer</code>, <code>lumberjack</code>, <code>hunter</code>, <code>miner</code>, <code>cook</code> und <code>fisher</code>. Core ordnet sie vorhandenen Berufsschlüsseln zu und erhält den Berufsfortschritt. Alte Bindungen mit <code>jobs:merchant</code> und deutschen Berufsargumenten werden beim Start idempotent migriert. Aktionen mit Namensraum wie <code>quests:giver forest</code> bleiben möglich. Unbekannte Aufgaben und Berufstypen werden vor dem Speichern abgelehnt.</p>
 <h2 id="selection-and-verification">Auswahl und Prüfung<a class="headerlink" href="#selection-and-verification" title="Permanent link">&para;</a></h2>
 <p><code>/hcnpc</code> listet gespeicherte Schlüssel und Entitäts-UUIDs auf. Anzeigenamen, Rollen-IDs und Modell-IDs identifizieren einen NPC nicht eindeutig. Neue Bindungen verwenden aus Kompatibilitätsgründen <code>legacy.&lt;UUID&gt;</code>. Die Befehle <code>set</code> und <code>reset</code> nutzen Hytales native positionale Befehlsvarianten. Tests prüfen Registrierung, mehrdeutige Argumente, Namensprüfung, Erhalt des Originalnamens, Rollback und deaktivierte Reset-Einträge. Fadenkreuz, Namensschild, UI und Neustart müssen im laufenden Spiel geprüft werden.</p>
 <h2 id="native-interaction-prompt">Nativer Interaktionshinweis<a class="headerlink" href="#native-interaction-prompt" title="Permanent link">&para;</a></h2>

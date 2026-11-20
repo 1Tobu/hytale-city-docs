@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://1tobu.github.io/hytale-city-docs/plugins/jobs/">
       
       
-        <link rel="prev" href="../economy/">
+        <link rel="prev" href="../inbox/">
       
       
         <link rel="next" href="../level/">
@@ -800,6 +800,34 @@
     
   
     Economy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Postfach
   
 
     
@@ -1993,6 +2021,16 @@
 <td>miner</td>
 <td>Natürliche Erzblöcke in der Farmwelt abbauen</td>
 </tr>
+<tr>
+<td>Koch</td>
+<td>cook</td>
+<td>Brot, Gemüse- und Fleischspieße sowie Kürbiskuchen an der Kochstation herstellen</td>
+</tr>
+<tr>
+<td>Fischer</td>
+<td>fisher</td>
+<td>Lachs, Regenbogenforelle, Hecht oder Wels in der Farmwelt fangen</td>
+</tr>
 </tbody>
 </table>
 <h2 id="beruf-annehmen-und-wechseln">Beruf annehmen und wechseln<a class="headerlink" href="#beruf-annehmen-und-wechseln" title="Permanent link">&para;</a></h2>
@@ -2000,14 +2038,17 @@
 <p>Ein NPC wird mit <code>/hcnpc set [identifier] merchant &lt;type&gt; [name]</code> zum Händler. <code>/job admin npcset &lt;jobKey&gt;</code> bindet den nächsten anvisierten NPC innerhalb von 60 Sekunden und verlangt hcnpcs.admin. Der NPC behält seine native Rolle. <a href="../npcs/">HcNpcs einrichten</a>.</p>
 <h2 id="fortschritt-und-belohnungen">Fortschritt und Belohnungen<a class="headerlink" href="#fortschritt-und-belohnungen" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Aufträge</strong> bieten bis zu drei Tagesangebote pro Spieler und Beruf, mit Wechsel um 00:00 Uhr in Europe/Berlin. Zwei Aufträge pro Beruf können gleichzeitig offen sein. Das Startset enthält acht Vorlagen pro Beruf. Offene Aufträge bleiben über den Tageswechsel erhalten.</li>
+<li><strong>Aufträge</strong> bieten bis zu drei Tagesangebote pro Spieler und Beruf, mit Wechsel um 00:00 Uhr in Europe/Berlin. Zwei Aufträge pro Beruf können gleichzeitig offen sein. Koch und Fischer starten mit je acht Vorlagen. Farmer hat elf Vorlagen, darunter neue Weizen- und Reisaufträge. Die übrigen Berufe starten mit je acht Vorlagen. Offene Aufträge bleiben über den Tageswechsel erhalten.</li>
 <li><strong>Level-Meilensteine</strong> haben abholbare Belohnungen auf Level 5, 10, 25, 50, 100, 150, 200, 500 und 1000. Geld und Items werden in MariaDB gepflegt. Alte Auszahlungen bleiben als abgeholt gespeichert.</li>
 <li><strong>Sammelmeilensteine</strong> zählen gültige Tätigkeiten des aktiven Berufs. Ein natürlicher Golderzblock in Basalt zählt beispielsweise für den Goldzähler. Beim Jäger zählen auch die Herstellung leichten Leders sowie passende Wildtiere für die Fellzähler. Aufheben, Fallenlassen und Verkaufen erhöhen diese Zähler nicht. Spielerplatzierte Stämme und Erzblöcke sind ausgeschlossen. Der Abbaupfad erkennt sowohl die feste Farmwelt als auch spielbare Instanzen der Farmwelt-Vorlage. Belohnungen sind einzeln oder gesammelt abholbar. <code>/job info</code> öffnet die separate Sammelübersicht.</li>
 </ul>
 <p><a href="../../operations/profession-content/">Aufträge und Belohnungen anlegen</a> · <a href="../../development/new-profession/">Neuen Beruf hinzufügen</a></p>
+<p>Farmer behält seinen bisherigen Fortschritt und erhält Weizen und Reis als neue Sammelziele und Händlerwaren. Der Fischer erhält XP und Sammelfortschritt beim Erlegen der konfigurierten wilden Fischrollen. Fischfallen liefern Waren für ausgewählte Lieferquests und den Verkauf. Das Leeren einer Falle zählt aktuell nicht als Berufsaktion.</p>
+<p><a href="../../reference/item-catalog/">Item-Katalog</a></p>
 <h2 id="handel">Handel<a class="headerlink" href="#handel" title="Permanent link">&para;</a></h2>
 <p>Der Händler kauft aktivierte Waren seines Berufs zum Grundpreis. Die Vorschau zeigt Menge und Gesamterlös. Handeln ist auch ohne aktiven Beruf möglich. Beim Kaufen zeigt das Menü den gemeinsamen Bestand je Beruf und Ware. Er füllt sich täglich bis zur eingestellten Obergrenze auf. Verkäufe vergeben Geld. Berufsaktionen und Aufträge bringen XP.</p>
 <p>Der allgemeine Befehl <code>/job sell &lt;amount|all&gt;</code> verkauft den gehaltenen Itemtyp nach zweiter Bestätigung innerhalb von 30 Sekunden. Die Händleransicht verkauft die ausgewählte Ware aus dem Inventar über denselben Verkaufspfad. <a href="../../reference/npc-contracts/">Verkaufsvertrag</a>.</p>
+<p>Im Tab <strong>Beruf</strong> heißt die Schaltfläche für inaktive Berufe <strong>Job annehmen</strong>. Die englischen Jobtypen aus der Tabelle gelten auch für <code>/job enter &lt;jobKey&gt;</code> und <code>/job admin npcset &lt;jobKey&gt;</code>. Handelsbestätigungen erscheinen als Benachrichtigungen und werden im <a href="../inbox/">Postfach</a> erfasst.</p>
 <h2 id="datenbank">Datenbank<a class="headerlink" href="#datenbank" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

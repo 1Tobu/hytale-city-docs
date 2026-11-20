@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://1tobu.github.io/hytale-city-docs/en/plugins/jobs/">
       
       
-        <link rel="prev" href="../economy/">
+        <link rel="prev" href="../inbox/">
       
       
         <link rel="next" href="../level/">
@@ -800,6 +800,34 @@
     
   
     Economy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inbox
   
 
     
@@ -1993,6 +2021,16 @@
 <td><code>miner</code></td>
 <td>Mine naturally generated ore blocks in the farm world</td>
 </tr>
+<tr>
+<td>Cook</td>
+<td>cook</td>
+<td>Make bread, vegetable skewers, meat skewers, or pumpkin pie at a cooking bench</td>
+</tr>
+<tr>
+<td>Fisher</td>
+<td>fisher</td>
+<td>Catch salmon, rainbow trout, pike, or catfish in the farm world</td>
+</tr>
 </tbody>
 </table>
 <h2 id="activating-and-switching-professions">Activating and switching professions<a class="headerlink" href="#activating-and-switching-professions" title="Permanent link">&para;</a></h2>
@@ -2000,14 +2038,17 @@
 <p>Use <code>/hcnpc set [identifier] merchant &lt;type&gt; [name]</code> to make an NPC a merchant. <code>/job admin npcset &lt;jobKey&gt;</code> binds the next targeted NPC within 60 seconds and requires <code>hcnpcs.admin</code>. The NPC keeps its native role. See <a href="../npcs/">HcNpcs setup</a>.</p>
 <h2 id="progress-and-rewards">Progress and rewards<a class="headerlink" href="#progress-and-rewards" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Quests</strong> offer up to three daily choices per player and profession. Offers change at midnight in Europe/Berlin. Two quests per profession can be open at the same time. The initial set contains eight templates per profession. Open quests carry over to the next day.</li>
+<li><strong>Quests</strong> offer up to three daily choices per player and profession. Offers change at midnight in Europe/Berlin. Two quests per profession can be open at the same time. Cook and Fisher each start with eight templates. Farmer has eleven templates, including new wheat and rice quests. The other professions each start with eight templates. Open quests carry over to the next day.</li>
 <li><strong>Level milestones</strong> offer claimable rewards at levels 5, 10, 25, 50, 100, 150, 200, 500, and 1000. Money and items are configured in MariaDB. Previously paid rewards remain recorded as claimed.</li>
 <li><strong>Collection milestones</strong> count eligible actions. For example, mining natural gold ore in basalt increases the gold count. Hunters also get credit for producing light leather and killing eligible wild animals for fur. Picking up, dropping, and selling items do not increase these counts. Player-placed logs and ore blocks are excluded. Mining works both in the fixed farm world and in playable instances of its template. <code>/job info</code> opens the separate collection overview.</li>
 </ul>
 <p><a href="../../operations/profession-content/">Create quests and rewards</a> · <a href="../../development/new-profession/">Add a profession</a></p>
+<p>Farmer retains existing progress and gains wheat and rice as collection targets and merchant goods. Fisher earns XP and collection credit by killing configured wild fish. Fish traps supply goods for some delivery quests and sales. Emptying a trap does not currently award profession progress.</p>
+<p><a href="../../reference/item-catalog/">Item catalog</a></p>
 <h2 id="trade">Trade<a class="headerlink" href="#trade" title="Permanent link">&para;</a></h2>
 <p>Merchants buy enabled goods for their profession at the base price. The confirmation shows the quantity and total proceeds. Players can trade without activating the profession. The buy menu shows stock shared by profession and item. It refills daily up to its configured limit. Selling earns money. Profession activities and quests award XP.</p>
 <p><code>/job sell &lt;amount|all&gt;</code> sells the held item type after a second confirmation within 30 seconds. The merchant menu uses the same <a href="../../reference/npc-contracts/">sale flow</a> for items selected from the inventory.</p>
+<p>In the <strong>Beruf</strong> tab, the button for inactive professions is labeled <strong>Job annehmen</strong>. The English job types in the table also work with <code>/job enter &lt;jobKey&gt;</code> and <code>/job admin npcset &lt;jobKey&gt;</code>. Trade confirmations appear as notifications and are recorded in the <a href="../inbox/">inbox</a>.</p>
 <h2 id="database">Database<a class="headerlink" href="#database" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

@@ -820,6 +820,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../inbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../jobs/" class="md-nav__link">
         
   
@@ -1969,7 +1997,7 @@
 <p>The default range is level 1 to 50. <code>config.json</code> in the Level data directory contains only <code>maxLevel</code>, <code>startLevel</code>, and <code>scalingExponent</code>. Core fixes the curve coefficients and overflow cap. A curve change must preserve existing progression.</p>
 <h2 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h2>
 <p>New plugins should use Core's <code>AsyncLevelService</code>. Changes report success after database commit. Reuse the operation UUID when retrying grants. The Level adapter also provides futures and local LevelUp and LevelDown callbacks.</p>
-<p>Old player files are imported idempotently and retained as backups. The general PlayerHud currently displays profession information in place of an overall player level.</p>
+<p>Old player files are imported idempotently and retained as backups. The HUD displays the overall player level and the active profession separately.</p>
 <p>See the <a href="../../reference/level-api/">level API reference</a> for methods, curves, imports, and rewards.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
