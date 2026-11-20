@@ -46,6 +46,8 @@ Only `merchant` is currently implemented. Additional functions need a registered
 | `lumberjack` | Lumberjack |
 | `hunter` | Hunter |
 | `miner` | Miner |
+| `cook` | Cook |
+| `fisher` | Fisher |
 
 Examples:
 

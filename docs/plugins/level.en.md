@@ -12,7 +12,7 @@ The default range is level 1 to 50. `config.json` in the Level data directory co
 
 New plugins should use Core's `AsyncLevelService`. Changes report success after database commit. Reuse the operation UUID when retrying grants. The Level adapter also provides futures and local LevelUp and LevelDown callbacks.
 
-Old player files are imported idempotently and retained as backups. The general PlayerHud currently displays profession information in place of an overall player level.
+Old player files are imported idempotently and retained as backups. The HUD displays the overall player level and the active profession separately.
 
 See the [level API reference](../reference/level-api.md) for methods, curves, imports, and rewards.
 

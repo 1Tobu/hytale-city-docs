@@ -14,6 +14,7 @@ Replace required placeholders such as `<player>` with actual values. See the cur
 | NPCs | `/hcnpc`, `set [identifier] <job> <type> [name]`, `reset [identifier]`, `reload` |
 | Enchanting | `/enchant item [enchantment] [value]` |
 | HUD | `/hud` |
+| Inbox | `/inbox` |
 | Teleport request | `/tpa <player>`, `/tpaccept`, `/tpdeny` |
 | World Warps | `/warp city`, `/warp farmworld`, `/warp spawn` |
 | Protection | `/protection register <areaName> <actionType>`, `/protection remove <areaName>`, `/protection list` |

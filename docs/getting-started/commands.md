@@ -14,6 +14,7 @@ Die Tabelle beschreibt die vorhandenen Einstiegspunkte. `<...>` sind Pflichtwert
 | NPCs | `/hcnpc`, `set [identifier] <job> <type> [name]`, `reset [identifier]`, `reload` |
 | Verzaubern | `/enchant item [enchantment] [value]` |
 | HUD | `/hud` |
+| Postfach | `/inbox` |
 | Teleportanfrage | `/tpa <player>`, `/tpaccept`, `/tpdeny` |
 | Welt-Warps | `/warp city`, `/warp farmworld`, `/warp spawn` |
 | Schutz | `/protection register <areaName> <actionType>`, `/protection remove <areaName>`, `/protection list` |

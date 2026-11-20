@@ -11,7 +11,7 @@
 
 1. Prepare core configuration files in the core data directory used by the server.
 2. Install the Core JAR and verify that the plugin and database initialize successfully.
-3. Install the required gameplay JARs. Use compatible versions of Jobs, HcNpcs, PlayerHud, and Core. Install the [custom asset pack](../reference/custom-assets.md).
+3. Install the required gameplay JARs. Use compatible versions of Jobs, HcNpcs, Economy, Inbox, PlayerHud, and Core. Install the [custom asset pack](../reference/custom-assets.md).
 4. Prepare `spawn`, `city` and, if required, `farmworld` to match the commands used.
 5. Check profiles, money, teleports, plots, jobs and UIs with a test player.
 

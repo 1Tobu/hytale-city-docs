@@ -1,10 +1,10 @@
 # Berufsaufträge und Belohnungen anlegen
 
-Die Beispiele verwenden die Core-Datenbank in MariaDB mit den Migrationen V4 bis V7. Führe die Schritte zuerst auf einem Testserver aus. Für Änderungen, die auf mehreren Servern ausgerollt werden, kommt das SQL in eine neue Liquibase-Migration im Core. Bestehende Migrationen behalten ihre Prüfsummen.
+Die Beispiele verwenden die Core-Datenbank in MariaDB mit den Migrationen V4 bis V8. Führe die Schritte zuerst auf einem Testserver aus. Für Änderungen, die auf mehreren Servern ausgerollt werden, kommt das SQL in eine neue Liquibase-Migration im Core. Bestehende Migrationen behalten ihre Prüfsummen.
 
 ## Einen Auftrag hinzufügen
 
-1. Wähle einen Beruf und eine eindeutige Auftrags-ID. Die vier Schlüssel sind Farmer, Holzfäller, Miner und Jäger.
+1. Wähle einen Beruf und eine eindeutige Auftrags-ID. Die Berufsschlüssel sind Farmer, Holzfäller, Miner, Jäger, Koch und Fischer.
 2. Lege Titel, Mindestlevel, Geld und positive Berufs-XP in job_quest_templates fest.
 3. Lege mindestens ein Ziel in job_quest_goals an. Das folgende Beispiel zählt sechs eigenhändig abgebaute Golderzblöcke in Basalt und verlangt zusätzlich vier Stück Golderz zur Abgabe.
 4. Öffne den Händler mit einem aktiven Miner ab Level 10. Für einen sofortigen Test nutze ein frisches Testprofil oder den nächsten Angebotstag. Eine neue Vorlage erscheint abhängig von der Tagesauswahl.
@@ -31,10 +31,25 @@ COMMIT;
 | BREAK | Block-ID, etwa Ore_Gold_Basalt | Passender natürlicher Block wird nach Annahme erfolgreich abgebaut. |
 | HARVEST | Basis-ID der Pflanze, etwa Plant_Crop_Carrot_Block | Reife Pflanze wird nach Annahme geerntet. |
 | HUNT | NPC-Rolle, etwa Boar | Wildtier wird nach Annahme unter den Berufsbedingungen erlegt. |
+| CRAFT | Ergebnis-Item-ID des Primärausgangs eines Rezepts | Ein erfolgreiches Crafting-Ereignis zählt. |
 
 Für Aktionsziele kann ein Stern alle passenden Aktionen des Berufs zählen. Voraussetzung für Aktionsfortschritt ist eine passende Regel in job_activity_rules. Eine reine Sammelregel in job_collection_rules reicht dafür nicht aus. Für mehrere Ziele gilt jeweils die gesamte Anforderung. Eine Lieferung darf auch aus Lagerbeständen oder Spielerhandel stammen.
 
 Der Händler speichert pro Spieler und Beruf bis zu drei Angebote pro Kalendertag in Europe/Berlin. Zwei Aufträge können gleichzeitig offen sein. Der aktive Beruf bestimmt Annahme, Aktionsfortschritt und Abgabe. Offene Aufträge bleiben beim Wechsel und am nächsten Tag erhalten. Beim Annehmen werden Titel, Ziele und Belohnungen kopiert. Änderungen an Vorlagen gelten daher für künftige Annahmen. Setze enabled auf FALSE, um eine Vorlage aus der Auswahl zu nehmen und bestehende Aufträge spielbar zu lassen.
+
+## Auftrag ändern
+
+Passe Vorlage und Ziele in derselben Transaktion an. Bereits angenommene Aufträge behalten ihre gespeicherte Kopie.
+
+~~~sql
+START TRANSACTION;
+UPDATE job_quest_templates
+SET reward_money=190, reward_xp=50
+WHERE quest_key='mine_basalt_gold' AND job_key='Miner';
+UPDATE job_quest_goals SET goal_amount=8
+WHERE quest_key='mine_basalt_gold' AND goal_type='BREAK' AND target_key='Ore_Gold_Basalt';
+COMMIT;
+~~~
 
 ## Eine Level-Meilensteinbelohnung ändern
 

@@ -140,6 +140,11 @@ Diese Common- und Server-Ressourcen werden mit den jeweiligen JARs ausgeliefert.
 - `Common/UI/Custom/Jobs/ProfessionCard.ui`
 - `Common/UI/Custom/Jobs/ProfessionTradeRow.ui`
 
+### hytale-inbox-plugin
+
+- `Common/UI/Custom/Inbox/Inbox.ui`
+- `Common/UI/Custom/Inbox/Row.ui`
+
 ### hytale-playerhud-plugin
 
 - `Common/UI/Custom/Hud/PlayerHud.ui`

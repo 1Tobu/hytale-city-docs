@@ -66,3 +66,5 @@ The [quest and reward guide](../operations/profession-content.md) covers other g
 3. Open the merchant and activate the profession. Check HUD level and XP, stock, and daily quests. Switch professions and switch back while a quest is open.
 4. Check XP and collection totals with naturally generated material. Then place and break a matching block. Breaking placed blocks, dropping, picking up, or selling items must leave the collection count unchanged.
 5. Complete a quest and claim a collection and a level reward. Test claiming an item reward with a full inventory and retrying a claimed reward.
+
+Registering the new JobType also populates the shared JobKeyUtil list. Add the NPC type mapping and UI copy, and connect the activity source where needed. See the existing [Cook and Fisher rules](../plugins/jobs.md) as examples.

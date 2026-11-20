@@ -84,7 +84,7 @@ Maven cannot validate Hytale's client UI DSL or a live world. Before production 
 
 `/hcnpc set [identifier] <job> <typ>` uses plain command arguments, for example `merchant lumberjack` or `merchant miner`. The duty is resolved against registered providers; the command does not hardcode a merchant-only switch. Only `merchant` is currently registered by Jobs. A future provider can register `job:worker` and use the same command after adding its implementation.
 
-Stored keys use singular `job:merchant` and canonical type arguments such as `typ:lumberjack`. Current type names are `farmer`, `lumberjack`, `hunter`, `miner`; Core maps these to the existing profession keys without renaming job progress. Old `jobs:merchant` bindings with German profession arguments migrate idempotently on startup. Generic namespaced actions such as `quests:giver forest` remain supported. Unregistered duties and unknown profession types are rejected before saving.
+Stored keys use singular `job:merchant` and canonical type arguments such as `typ:lumberjack`. Current type names are `farmer`, `lumberjack`, `hunter`, `miner`, `cook`, and `fisher`; Core maps these to the existing profession keys without renaming job progress. Old `jobs:merchant` bindings with German profession arguments migrate idempotently on startup. Generic namespaced actions such as `quests:giver forest` remain supported. Unregistered duties and unknown profession types are rejected before saving.
 
 ## Selection and verification
 

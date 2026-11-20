@@ -17,11 +17,13 @@ A missing legacy file keeps bundled defaults. An explicit legacy file, even an e
 
 ## Professions and merchants
 
-Core migrations V4–V7 create profession tracking, daily offers, inventory receipts, merchant stock, level rewards and collection rules. V6 preserves prior award records. V7 reuses item totals for valid collection actions. See [quest and reward maintenance](profession-content.md).
+Core migrations V4–V8 create profession tracking, daily offers, inventory receipts, merchant stock, level rewards and collection rules. V6 preserves prior award records. V7 reuses item totals for valid collection actions. V8 adds Cook, Fisher, and the Farmer wheat and rice content. See [quest and reward maintenance](profession-content.md).
 
 ## Core API
 
 `JobCatalogService.listAll()`, `save(JobCatalogRecord)`, `delete(kind, job, category, item)` and `importOnce(source, kind, rows)` own persistence. Kind is SHOP or UPGRADE. Imports use a stable source key and commit all rows with their marker. Costs are nonnegative, amounts positive, requirements merged by item (at most eight). Physical legacy asset IDs are canonicalized on writes; logical enchantment family keys such as vibranium_hoe stay unchanged.
+
+V9 adds `player_inbox_messages` for notifications, read status, and archive status. Include the table in regular MariaDB backups. [Inbox](../plugins/inbox.md)
 
 ## Asset migration
 

@@ -6,6 +6,7 @@
 | [CityBuildPlugin](citybuild.md) | CityBuild stellt die Grundstücksbefehle und das Plot-Menü bereit. Persistenz und Fachentscheidungen liegen bei den Core-Plotservices. |
 | [HomePlugin](homes.md) | HomePlugin verwaltet persönliche Teleportziele über den Core und bietet eine eigene Homes-Seite. |
 | [EconomyPlugin](economy.md) | Das Geld-Plugin ist die Befehlsschicht für das gemeinsame Core-Konto. Jobs, Plotkäufe, Levelbelohnungen und andere Systeme dürfen keine unabhängigen Geldstände führen. |
+| [InboxPlugin](inbox.md) | Persönliches Postfach für Server-Benachrichtigungen. |
 | [JobsPlugin](jobs.md) | Jobs bietet Berufe, Job-XP, Verkauf, Händlerseiten, Shops, Upgrades und Meilensteine. Es benötigt **CorePlugin und HcNpcs**; Enchantments ist optional. |
 | [LevelPlugin](level.md) | LevelPlugin adaptiert das allgemeine Spielerlevel an Hytale. Fortschritt und Belohnungsverwaltung liegen im Core, nicht mehr in einer laufend gespeicherten Spieler-JSON-Datei. |
 | [HcNpcs](npcs.md) | HcNpcs verbindet vorhandene native NPCs mit sicheren Pluginaktionen und eigenen UIs. Core speichert die Zuordnungen; Hytale besitzt den nativen NPC-Lebenszyklus. |

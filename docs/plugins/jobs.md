@@ -8,6 +8,8 @@ Jobs benötigt Core und HcNpcs. Das Berufsmenü eines Händler-NPCs enthält **V
 | Holzfäller | lumberjack | Natürliche Stämme in der Farmwelt abbauen |
 | Jäger | hunter | Ausgewählte Wildtiere in der Farmwelt erlegen |
 | Miner | miner | Natürliche Erzblöcke in der Farmwelt abbauen |
+| Koch | cook | Brot, Gemüse- und Fleischspieße sowie Kürbiskuchen an der Kochstation herstellen |
+| Fischer | fisher | Lachs, Regenbogenforelle, Hecht oder Wels in der Farmwelt fangen |
 
 ## Beruf annehmen und wechseln
 
@@ -17,17 +19,23 @@ Ein NPC wird mit `/hcnpc set [identifier] merchant <type> [name]` zum Händler. 
 
 ## Fortschritt und Belohnungen
 
-- **Aufträge** bieten bis zu drei Tagesangebote pro Spieler und Beruf, mit Wechsel um 00:00 Uhr in Europe/Berlin. Zwei Aufträge pro Beruf können gleichzeitig offen sein. Das Startset enthält acht Vorlagen pro Beruf. Offene Aufträge bleiben über den Tageswechsel erhalten.
+- **Aufträge** bieten bis zu drei Tagesangebote pro Spieler und Beruf, mit Wechsel um 00:00 Uhr in Europe/Berlin. Zwei Aufträge pro Beruf können gleichzeitig offen sein. Koch und Fischer starten mit je acht Vorlagen. Farmer hat elf Vorlagen, darunter neue Weizen- und Reisaufträge. Die übrigen Berufe starten mit je acht Vorlagen. Offene Aufträge bleiben über den Tageswechsel erhalten.
 - **Level-Meilensteine** haben abholbare Belohnungen auf Level 5, 10, 25, 50, 100, 150, 200, 500 und 1000. Geld und Items werden in MariaDB gepflegt. Alte Auszahlungen bleiben als abgeholt gespeichert.
 - **Sammelmeilensteine** zählen gültige Tätigkeiten des aktiven Berufs. Ein natürlicher Golderzblock in Basalt zählt beispielsweise für den Goldzähler. Beim Jäger zählen auch die Herstellung leichten Leders sowie passende Wildtiere für die Fellzähler. Aufheben, Fallenlassen und Verkaufen erhöhen diese Zähler nicht. Spielerplatzierte Stämme und Erzblöcke sind ausgeschlossen. Der Abbaupfad erkennt sowohl die feste Farmwelt als auch spielbare Instanzen der Farmwelt-Vorlage. Belohnungen sind einzeln oder gesammelt abholbar. `/job info` öffnet die separate Sammelübersicht.
 
 [Aufträge und Belohnungen anlegen](../operations/profession-content.md) · [Neuen Beruf hinzufügen](../development/new-profession.md)
+
+Farmer behält seinen bisherigen Fortschritt und erhält Weizen und Reis als neue Sammelziele und Händlerwaren. Der Fischer erhält XP und Sammelfortschritt beim Erlegen der konfigurierten wilden Fischrollen. Fischfallen liefern Waren für ausgewählte Lieferquests und den Verkauf. Das Leeren einer Falle zählt aktuell nicht als Berufsaktion.
+
+[Item-Katalog](../reference/item-catalog.md)
 
 ## Handel
 
 Der Händler kauft aktivierte Waren seines Berufs zum Grundpreis. Die Vorschau zeigt Menge und Gesamterlös. Handeln ist auch ohne aktiven Beruf möglich. Beim Kaufen zeigt das Menü den gemeinsamen Bestand je Beruf und Ware. Er füllt sich täglich bis zur eingestellten Obergrenze auf. Verkäufe vergeben Geld. Berufsaktionen und Aufträge bringen XP.
 
 Der allgemeine Befehl `/job sell <amount|all>` verkauft den gehaltenen Itemtyp nach zweiter Bestätigung innerhalb von 30 Sekunden. Die Händleransicht verkauft die ausgewählte Ware aus dem Inventar über denselben Verkaufspfad. [Verkaufsvertrag](../reference/npc-contracts.md).
+
+Im Tab **Beruf** heißt die Schaltfläche für inaktive Berufe **Job annehmen**. Die englischen Jobtypen aus der Tabelle gelten auch für `/job enter <jobKey>` und `/job admin npcset <jobKey>`. Handelsbestätigungen erscheinen als Benachrichtigungen und werden im [Postfach](inbox.md) erfasst.
 
 ## Datenbank
 

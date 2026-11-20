@@ -169,6 +169,10 @@ Optionale Abhängigkeiten: keine deklariert.
 
 **UI-Dokumente:** keine im erfassten Bereich.
 
+## InboxPlugin
+
+Maven `com.hytalecity:InboxPlugin:1.0.0`. Der lokale Quellordner ist `hytale-inbox-plugin`. [Postfach und Installation](../plugins/inbox.md)
+
 ## PlayerHudPlugin
 
 Maven: `com.hytalecity:PlayerHudPlugin:1.0.0`.

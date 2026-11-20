@@ -169,6 +169,10 @@ Optional dependencies: none declared.
 
 **UI documents:** none found.
 
+## InboxPlugin
+
+Maven `com.hytalecity:InboxPlugin:1.0.0`. The local source folder is `hytale-inbox-plugin`. [Inbox and installation](../plugins/inbox.md)
+
 ## PlayerHudPlugin
 
 Maven: `com.hytalecity:PlayerHudPlugin:1.0.0`.

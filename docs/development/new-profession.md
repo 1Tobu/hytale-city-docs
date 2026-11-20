@@ -6,7 +6,7 @@ Ein neuer Beruf benötigt einen Eintrag im Java-Code, Datenbankinhalte und einen
 
 1. Ergänze im Core JobType um STEINMETZ mit dem stabilen Schlüssel Steinmetz.
 2. Ergänze in Core/NpcJobBinding beide Richtungen für den NPC-Typ steinmetz. typeKey normalisiert zu typ:steinmetz, jobKey liefert Steinmetz. Aktualisiere Fehlermeldungen und Tests für die Zuordnung.
-3. Registriere den Schlüssel in Jobs/JobKeyUtil und prüfe die Job-Befehle sowie die Berufsauswahl in den Admin-UIs. Hinterlege in ProfessionUI den sichtbaren Namen und den Tätigkeitshinweis. HcNpcs leitet den Typ über die Core-Zuordnung an job:merchant weiter. Der NPC behält seine native Hytale-Rolle.
+3. Prüfe die Job-Befehle sowie die Berufsauswahl in den Admin-UIs. Hinterlege in ProfessionUI den sichtbaren Namen und den Tätigkeitshinweis. HcNpcs leitet den Typ über die Core-Zuordnung an job:merchant weiter. Der NPC behält seine native Hytale-Rolle.
 4. Wenn der Beruf eine neue Quelle hat, binde sie in ProfessionActivities über ein geeignetes erfolgreiches Server-Event an. Vergib Treffer über ProfessionService.activity. Für Steinabbau muss der vorhandene BREAK-Pfad die konkreten Rock-Block-IDs für Abbau und Platzierung akzeptieren. Übernimm die Prüfung auf Farmwelt, Spielmodus, bestätigte Blockänderung und die Herkunftssperre für platzierte Ressourcen.
 
 Die Tabellen job_activity_rules und job_collection_rules haben jeweils einen eindeutigen Schlüssel aus Tätigkeit und Ziel. Verwende im Beispiel eine eigene Block-ID oder entscheide ausdrücklich, welche bisherige Zuordnung ersetzt werden soll.
@@ -66,3 +66,5 @@ Die [Anleitung für Aufträge und Belohnungen](../operations/profession-content.
 3. Öffne den Händler und aktiviere den Beruf. Prüfe Level und XP im HUD, den Händlerbestand und die Tagesaufträge. Wechsle zu einem anderen Beruf und wieder zurück, während ein Auftrag offen ist.
 4. Prüfe mit natürlich entstandenem Material den XP- und Sammelzähler. Platziere danach einen gleichartigen Block und baue ihn wieder ab. Abbau platzierter Blöcke sowie Fallenlassen, Aufheben und Verkaufen dürfen den Sammelzähler nicht erhöhen.
 5. Schließe einen Auftrag ab und hole eine Sammel- und eine Levelbelohnung ab. Prüfe bei einer Itembelohnung volles Inventar und einen wiederholten Abholversuch.
+
+Für neue Berufe ist die Enum-Registrierung in JobType ausreichend für die gemeinsame Auswahlliste in JobKeyUtil. Ergänze weiterhin die NPC-Typzuordnung, die UI-Texte und gegebenenfalls die Aktivitätsquelle. Siehe die [bestehenden Koch- und Fischerregeln](../plugins/jobs.md) als Referenz.

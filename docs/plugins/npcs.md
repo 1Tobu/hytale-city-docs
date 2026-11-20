@@ -46,6 +46,8 @@ Aktuell ist nur `merchant` implementiert. Weitere Funktionen benötigen einen re
 | `lumberjack` | Holzfäller |
 | `hunter` | Jäger |
 | `miner` | Miner |
+| `cook` | Koch |
+| `fisher` | Fischer |
 
 Beispiele:
 

@@ -6,6 +6,7 @@
 | [CityBuildPlugin](citybuild.md) | Provides plot commands and menus. Core plot services enforce rules and persist data. |
 | [HomePlugin](homes.md) | Manages personal teleport destinations through Core and provides the homes page. |
 | [EconomyPlugin](economy.md) | Provides commands for the shared Core balance used by professions, plots, and rewards. |
+| [InboxPlugin](inbox.md) | Personal inbox for server notifications. |
 | [JobsPlugin](jobs.md) | Provides professions, XP, sales, merchant pages, shops, upgrades, and milestones. Requires **CorePlugin and HcNpcs**. Enchantments is optional. |
 | [LevelPlugin](level.md) | Adapts general progression to Hytale. Core stores progress and rewards. |
 | [HcNpcs](npcs.md) | Connects existing native NPCs to plugin actions and custom UIs. Core stores bindings and Hytale owns the NPC lifecycle. |

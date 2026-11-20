@@ -12,7 +12,7 @@ Die aktuelle Standardkonfiguration startet bei Level 1 und begrenzt auf Level 50
 
 Neue Plugins verwenden bevorzugt `AsyncLevelService` aus Core. Änderungen bestätigen erst nach DB-Commit Erfolg. Für wiederholbare Vergaben dieselbe Operations-UUID verwenden. Der Level-Adapter stellt außerdem Futures und lokale LevelUp-/LevelDown-Callbacks bereit.
 
-Alte Spielerdateien werden idempotent importiert und als Sicherungen erhalten. Das allgemeine PlayerHud zeigt derzeit Jobinformationen statt eines echten allgemeinen Spielerlevels.
+Alte Spielerdateien werden idempotent importiert und als Sicherungen erhalten. Das HUD zeigt das allgemeine Spielerlevel und den aktiven Beruf getrennt an.
 
 Vollständige Methoden, Kurven-, Import- und Reward-Verträge: [Level-API](../reference/level-api.md).
 

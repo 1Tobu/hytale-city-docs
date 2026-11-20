@@ -2,9 +2,13 @@
 
 Das mittig ausgerichtete HUD rechts oben zeigt Spielernamen, Geld, das allgemeine **Spielerlevel** und den **aktiven Beruf** mit Berufslevel, XP innerhalb der Stufe und Fortschrittsbalken. Ohne aktiven Beruf blendet es den Berufsbereich aus.
 
+Die Weltuhr zeigt die Spielzeit der aktuellen Welt im 24-Stunden-Format HH:mm. Sie folgt dem Spieler beim Weltwechsel.
+
 ## Bedienung
 
 PlayerHud schaltet sich ab PlayerReadyEvent einmal je Verbindung ein. `/hud` blendet es für die laufende Verbindung ein oder aus. Wiederholte Ready-Events überschreiben die Auswahl nicht. Beim nächsten Beitritt ist das HUD wieder sichtbar.
+
+Der Holz-Hintergrund liegt in `Hud/PlayerHudPanel.png`. Das HUD zeigt `/inbox` und die Zahl neuer Nachrichten im [Postfach](inbox.md).
 
 ## Daten und UI
 

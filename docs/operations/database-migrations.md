@@ -17,11 +17,13 @@ Fehlt eine alte Datei, bleiben die mitgelieferten Vorgaben erhalten. Eine vorhan
 
 ## Berufe und Händler { #professions-and-merchants }
 
-Die Core-Migrationen V4–V7 führen Berufsfortschritt, Tagesangebote, Inventarbelege, Händlerbestände, Level-Belohnungen und Sammelregeln ein. V6 erhält frühere Belohnungseinträge. V7 verwendet die Item-Gesamtzahlen für gültige Sammelaktionen weiter. Siehe [Berufsaufträge und Belohnungen](profession-content.md).
+Die Core-Migrationen V4–V8 führen Berufsfortschritt, Tagesangebote, Inventarbelege, Händlerbestände, Level-Belohnungen und Sammelregeln ein. V6 erhält frühere Belohnungseinträge. V7 verwendet die Item-Gesamtzahlen für gültige Sammelaktionen weiter. V8 ergänzt Koch, Fischer und die Weizen- und Reisinhalte des Farmers. Siehe [Berufsaufträge und Belohnungen](profession-content.md).
 
 ## Core-API
 
 `JobCatalogService.listAll()`, `save(JobCatalogRecord)`, `delete(kind, job, category, item)` und `importOnce(source, kind, rows)` verwalten die Daten. Als Typ sind `SHOP` und `UPGRADE` zulässig. Importe verwenden einen stabilen Quellschlüssel und schreiben alle Zeilen zusammen mit dem Importmarker. Kosten müssen mindestens null und Mengen größer als null sein. Anforderungen werden pro Item zusammengefasst und sind auf acht verschiedene Items begrenzt. Alte IDs physischer Assets werden beim Schreiben vereinheitlicht. Logische Verzauberungsfamilien wie `vibranium_hoe` behalten ihren Namen.
+
+V9 legt `player_inbox_messages` für Benachrichtigungen, Lesestatus und Archivstatus an. Die Tabelle gehört in die reguläre MariaDB-Datensicherung. [Postfach](../plugins/inbox.md)
 
 ## Migration der Spielressourcen { #asset-migration }
 

@@ -86,7 +86,7 @@ Prüfe vor der Freigabe auf einem Hytale-0.7.7-Testserver das native Spawnen, Zu
 
 `/hcnpc set [identifier] <job> <typ>` verwendet einfache Argumente wie `merchant lumberjack` und `merchant miner`. Der Befehl löst die Aufgabe über registrierte Anbieter auf. Derzeit registriert Jobs nur `merchant`. Ein weiterer Anbieter könnte etwa `job:worker` registrieren, seine Implementierung ergänzen und denselben Befehl verwenden.
 
-Gespeicherte Schlüssel verwenden `job:merchant` im Singular und kanonische Typen wie `typ:lumberjack`. Aktuell gibt es `farmer`, `lumberjack`, `hunter` und `miner`. Core ordnet sie vorhandenen Berufsschlüsseln zu und erhält den Berufsfortschritt. Alte Bindungen mit `jobs:merchant` und deutschen Berufsargumenten werden beim Start idempotent migriert. Aktionen mit Namensraum wie `quests:giver forest` bleiben möglich. Unbekannte Aufgaben und Berufstypen werden vor dem Speichern abgelehnt.
+Gespeicherte Schlüssel verwenden `job:merchant` im Singular und kanonische Typen wie `typ:lumberjack`. Aktuell gibt es `farmer`, `lumberjack`, `hunter`, `miner`, `cook` und `fisher`. Core ordnet sie vorhandenen Berufsschlüsseln zu und erhält den Berufsfortschritt. Alte Bindungen mit `jobs:merchant` und deutschen Berufsargumenten werden beim Start idempotent migriert. Aktionen mit Namensraum wie `quests:giver forest` bleiben möglich. Unbekannte Aufgaben und Berufstypen werden vor dem Speichern abgelehnt.
 
 ## Auswahl und Prüfung { #selection-and-verification }
 

@@ -1,10 +1,10 @@
 # Creating profession quests and rewards
 
-These examples use the MariaDB Core database with migrations V4 through V7 applied. Try the steps on a test server first. For rollout to multiple servers, put the SQL in a new Core Liquibase migration so the existing checksums stay intact.
+These examples use the MariaDB Core database with migrations V4 through V8 applied. Try the steps on a test server first. For rollout to multiple servers, put the SQL in a new Core Liquibase migration so the existing checksums stay intact.
 
 ## Add a quest
 
-1. Choose a profession and a unique quest ID. The four profession keys are `Farmer`, `Holzfäller`, `Miner`, and `Jäger`.
+1. Choose a profession and a unique quest ID. The profession keys are Farmer, Holzfäller, Miner, Jäger, Koch, and Fischer.
 2. Set the title, minimum level, money, and positive profession XP in `job_quest_templates`.
 3. Add at least one goal in `job_quest_goals`. The example counts six gold ore blocks in basalt mined by the player and also requires delivery of four pieces of gold ore.
 4. Open the merchant with an active Miner profession at level 10 or above. For a quick test, use a fresh test profile or wait for the next daily rotation. Whether the new template appears depends on that day's selection.
@@ -31,10 +31,25 @@ COMMIT;
 | `BREAK` | Block ID such as `Ore_Gold_Basalt` | The matching natural block is successfully mined after accepting the quest. |
 | `HARVEST` | Base plant ID such as `Plant_Crop_Carrot_Block` | A mature plant is harvested after accepting the quest. |
 | `HUNT` | NPC role such as `Boar` | An eligible wild animal is killed after accepting the quest. |
+| CRAFT | Primary recipe output item ID | Counts a successful crafting event. |
 
 For action goals, an asterisk matches all eligible activities of the profession. Progress requires a matching rule in `job_activity_rules`. A collection rule in `job_collection_rules` alone is insufficient. Every goal must be met in full. Deliveries can also come from stored goods or player trades.
 
 The merchant stores up to three offers per player and profession per calendar day in Europe/Berlin. Two quests can be open at once. The active profession determines eligibility for acceptance, action progress, and delivery. Open quests survive both profession changes and daily rotations. Titles, goals, and rewards are copied at acceptance, so changes to a template affect future acceptances. Set `enabled` to `FALSE` to remove a template from rotation while keeping existing quests playable.
+
+## Update a quest
+
+Update the template and its goals in one transaction. Accepted quests retain their stored copy.
+
+~~~sql
+START TRANSACTION;
+UPDATE job_quest_templates
+SET reward_money=190, reward_xp=50
+WHERE quest_key='mine_basalt_gold' AND job_key='Miner';
+UPDATE job_quest_goals SET goal_amount=8
+WHERE quest_key='mine_basalt_gold' AND goal_type='BREAK' AND target_key='Ore_Gold_Basalt';
+COMMIT;
+~~~
 
 ## Change a level milestone reward
 

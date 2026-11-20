@@ -6,6 +6,8 @@ Economy provides the command layer for the shared Core account. Jobs, plot purch
 
 `/money` shows the money section. `/money send <player> <amount>` transfers funds. The administrative subcommands are `add`, `remove`, and `set`, each taking a player and amount. Check the permissions registered in Hytale before granting access.
 
+Players receive balance, transfer, and administrative booking feedback as notifications. A successful transfer creates an [inbox](inbox.md) entry for both parties. The admin console still receives text feedback.
+
 ## Core contract
 
 `getBalance`, `deposit`, `withdraw`, `setBalance`, and `transferMoney` return `BalanceResult`. Always check `isSuccess()`. Invalid amounts, missing players, insufficient funds, and overflow are errors.
