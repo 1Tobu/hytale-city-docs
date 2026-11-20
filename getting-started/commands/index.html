@@ -16,7 +16,7 @@
         <link rel="prev" href="../setup/">
       
       
-        <link rel="next" href="../../architecture/overview/">
+        <link rel="next" href="../permissions/">
       
       
         
@@ -496,6 +496,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rollen und Rechte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1955,7 +1983,7 @@
 <td><code>/money</code>, <code>/money send &lt;player&gt; &lt;amount&gt;</code>; Admin: <code>add</code>, <code>remove</code>, <code>set</code></td>
 </tr>
 <tr>
-<td>Jobs</td>
+<td>Jobs mit Befehlsrecht</td>
 <td><code>/job &lt;jobKey&gt;</code>, <code>/job enter &lt;jobKey&gt;</code>, <code>/job info</code>, <code>/job sell &lt;amount|all&gt;</code></td>
 </tr>
 <tr>
@@ -1998,6 +2026,7 @@
 </table>
 <p>Für AFK, PlayerStats und das allgemeine Levelsystem ist in den aktuellen Quellen kein eigener registrierter Spielerbefehl dokumentiert. Integrationen greifen auf Events bzw. Core-Services zurück.</p>
 <h2 id="rechte">Rechte<a class="headerlink" href="#rechte" title="Permanent link">&para;</a></h2>
+<p>Siehe <a href="../permissions/">Rollenvergabe und Rechte je Befehl</a>.</p>
 <p>HcNpcs-Administration und die NPC-Auswahl für Jobs verlangen ausdrücklich <code>hcnpcs.admin</code>. Der Enchantment-Testbefehl wird der Gruppe <code>hytale:WorldEditor</code> zugeordnet. Andere Admin-Befehle verwenden ihre Hytale-Befehlskonfiguration; konkrete generierte Permission-Namen nicht ohne Prüfung erraten.</p>
 <p><code>requireNoPermission()</code> bedeutet keine automatisch zusätzliche Command-Permission, nicht den Verzicht auf Besitz-, Geld-, Limit- oder Serviceprüfungen. Neue Funktionen müssen diese Prüfungen weiterhin durchführen. Eine UI darf keine alternative Route an der Autorisierung vorbei eröffnen.</p>
 <p>Vollständige NPC-Syntax: <a href="../../plugins/npcs/">HcNpcs</a>. Das <a href="../../reference/inventory/">Inventar</a> führt die gefundenen Command-Klassen zur Kontrolle auf.</p>

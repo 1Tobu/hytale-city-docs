@@ -441,6 +441,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roles and permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2033,9 +2061,10 @@
 </tr>
 </tbody>
 </table>
+<p>Regular players use the merchant menu. Direct job commands require <code>jobs.command</code>. <a href="../../getting-started/permissions/">Roles and permissions</a></p>
 <h2 id="activating-and-switching-professions">Activating and switching professions<a class="headerlink" href="#activating-and-switching-professions" title="Permanent link">&para;</a></h2>
 <p>Activate a profession in the profession menu or with <code>/job enter &lt;jobKey&gt;</code>. Only one profession is active at a time. Unlocked professions, XP, and open quests are retained when switching. The XP curve rises exponentially through level 25 and linearly afterward. The system supports at least level 1000. Overall player progression has its own curve.</p>
-<p>Use <code>/hcnpc set [identifier] merchant &lt;type&gt; [name]</code> to make an NPC a merchant. <code>/job admin npcset &lt;jobKey&gt;</code> binds the next targeted NPC within 60 seconds and requires <code>hcnpcs.admin</code>. The NPC keeps its native role. See <a href="../npcs/">HcNpcs setup</a>.</p>
+<p>Use <code>/hcnpc set [identifier] merchant &lt;type&gt; [name]</code> to make an NPC a merchant. <code>/job admin npcset &lt;jobKey&gt;</code> binds the next targeted NPC within 60 seconds and requires <code>jobs.command</code>, <code>jobs.admin</code>, and <code>hcnpcs.admin</code>. The NPC keeps its native role. See <a href="../npcs/">HcNpcs setup</a>.</p>
 <h2 id="progress-and-rewards">Progress and rewards<a class="headerlink" href="#progress-and-rewards" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Quests</strong> offer up to three daily choices per player and profession. Offers change at midnight in Europe/Berlin. Two quests per profession can be open at the same time. Cook and Fisher each start with eight templates. Farmer has eleven templates, including new wheat and rice quests. The other professions each start with eight templates. Open quests carry over to the next day.</li>

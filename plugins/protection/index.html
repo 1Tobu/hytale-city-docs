@@ -441,6 +441,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rollen und Rechte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1188,6 +1216,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#zonen-verwalten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zonen verwalten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#befehle" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1905,6 +1944,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#zonen-verwalten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zonen verwalten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#befehle" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1948,6 +1998,10 @@
 
 <h1 id="protectionplugin">ProtectionPlugin<a class="headerlink" href="#protectionplugin" title="Permanent link">&para;</a></h1>
 <p>ProtectionPlugin verbindet registrierte Bereiche mit erlaubten bzw. gesperrten Aktionen. Gemeinsame Gebietsdaten und Entscheidungen liegen im Core.</p>
+<p><code>/protection</code> und seine Unterbefehle verlangen <code>protection.admin</code>. <a href="../../getting-started/permissions/">Rollen und Rechte</a></p>
+<h2 id="zonen-verwalten">Zonen verwalten<a class="headerlink" href="#zonen-verwalten" title="Permanent link">&para;</a></h2>
+<p><code>/protection</code> öffnet die Zonenliste für alle Welten. Wähle eine Zone aus, um ihren Namen, ihre Eckpunkte oder ihre Verbote zu ändern. Mit <strong>Neue Zone</strong> legst du eine Zone in deiner aktuellen Welt an. Gib pro Ecke drei ganze Koordinaten ein oder übernimm die aktuelle Blockmarkierung mit <strong>Markierung übernehmen</strong>. Wähle vor dem Speichern mindestens ein Verbot aus. Löschen erfordert zwei Klicks.</p>
+<p>Du kannst Abbauen, Platzieren und Interagieren verbieten. Das Menü verwendet die Berechtigungen der bestehenden Befehle <code>list</code>, <code>register</code> und <code>remove</code>. Zum Bearbeiten einer bestehenden Zone brauchst du die Rechte für <code>register</code> und <code>remove</code>.</p>
 <h2 id="befehle">Befehle<a class="headerlink" href="#befehle" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>/protection register &lt;areaName&gt; &lt;actionType&gt;</code> registriert einen Bereich für einen Aktionstyp.</li>

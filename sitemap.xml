@@ -92,6 +92,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/getting-started/commands/"/>
     </url>
     <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/getting-started/permissions/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/getting-started/permissions/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/getting-started/permissions/"/>
+    </url>
+    <url>
         <loc>https://1tobu.github.io/hytale-city-docs/getting-started/setup/</loc>
         <lastmod>2026-11-20</lastmod>
         <changefreq>daily</changefreq>
@@ -377,6 +384,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/getting-started/commands/"/>
         <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/getting-started/commands/"/>
+    </url>
+    <url>
+        <loc>https://1tobu.github.io/hytale-city-docs/en/getting-started/permissions/</loc>
+        <lastmod>2026-11-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://1tobu.github.io/hytale-city-docs/en/getting-started/permissions/"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://1tobu.github.io/hytale-city-docs/getting-started/permissions/"/>
     </url>
     <url>
         <loc>https://1tobu.github.io/hytale-city-docs/en/getting-started/setup/</loc>

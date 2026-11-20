@@ -441,6 +441,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rollen und Rechte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2033,9 +2061,10 @@
 </tr>
 </tbody>
 </table>
+<p>Normale Spieler verwenden das Händlerfenster. Direkte Job-Befehle brauchen <code>jobs.command</code>. <a href="../../getting-started/permissions/">Rollen und Rechte</a></p>
 <h2 id="beruf-annehmen-und-wechseln">Beruf annehmen und wechseln<a class="headerlink" href="#beruf-annehmen-und-wechseln" title="Permanent link">&para;</a></h2>
 <p>Unter <strong>Beruf</strong> oder über <code>/job enter &lt;jobKey&gt;</code> lässt sich ein Beruf aktivieren. Es ist jeweils ein Beruf aktiv. Gelernte Berufe, XP und offene Aufträge bleiben beim Wechsel erhalten. Die XP-Kurve steigt bis Stufe 25 exponentiell, danach linear. Das System unterstützt mindestens Level 1000. Das allgemeine Spielerlevel hat eine eigene Kurve.</p>
-<p>Ein NPC wird mit <code>/hcnpc set [identifier] merchant &lt;type&gt; [name]</code> zum Händler. <code>/job admin npcset &lt;jobKey&gt;</code> bindet den nächsten anvisierten NPC innerhalb von 60 Sekunden und verlangt hcnpcs.admin. Der NPC behält seine native Rolle. <a href="../npcs/">HcNpcs einrichten</a>.</p>
+<p>Ein NPC wird mit <code>/hcnpc set [identifier] merchant &lt;type&gt; [name]</code> zum Händler. <code>/job admin npcset &lt;jobKey&gt;</code> bindet den nächsten anvisierten NPC innerhalb von 60 Sekunden und verlangt <code>jobs.command</code>, <code>jobs.admin</code> und <code>hcnpcs.admin</code>. Der NPC behält seine native Rolle. <a href="../npcs/">HcNpcs einrichten</a>.</p>
 <h2 id="fortschritt-und-belohnungen">Fortschritt und Belohnungen<a class="headerlink" href="#fortschritt-und-belohnungen" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Aufträge</strong> bieten bis zu drei Tagesangebote pro Spieler und Beruf, mit Wechsel um 00:00 Uhr in Europe/Berlin. Zwei Aufträge pro Beruf können gleichzeitig offen sein. Koch und Fischer starten mit je acht Vorlagen. Farmer hat elf Vorlagen, darunter neue Weizen- und Reisaufträge. Die übrigen Berufe starten mit je acht Vorlagen. Offene Aufträge bleiben über den Tageswechsel erhalten.</li>
