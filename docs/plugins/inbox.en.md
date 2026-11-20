@@ -1,6 +1,6 @@
 # InboxPlugin
 
-Open your personal inbox with `/inbox`. The tabs are **Ungelesen** (Unread), **Alle** (All), and **Archiv** (Archive). The inbox opens on **Alle**, with newest messages first. Money messages appear in the same views as other notifications.
+Open your personal inbox with `/inbox`. The tabs are **Ungelesen** (Unread), **Alle** (All), and **Archiv** (Archive). The inbox opens on **Ungelesen**, with newest messages first. Money messages appear in the same views as other notifications.
 
 Opening a message marks it as read. You can mark all messages as read, archive individual messages, restore them from the archive, and sort by newest, oldest, or unread first. Messages and their read and archive status survive reconnects. The [HUD](playerhud.md) shows the command and the unread count.
 
